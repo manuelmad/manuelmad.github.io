@@ -1,0 +1,60 @@
+* /* El selector universal que aplica las declaraciones en todo el documento */
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html
+{
+	font-family: 'Arial Narrow', Verdana, Helvetica,'Times New Roman', Arial;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en
+	adelante, 1rem = 10px */
+}
+
+
+/* CÓDIGO PARA LAS INSTRUCCIONES */
+
+#cero ul
+{
+	/*padding-left: 3em;*/
+	/*outline: 1px solid red;*/
+	list-style: disc;
+	font-weight: normal;
+}
+
+
+#cero ul li ul /* Oculto las instrucciones */
+{
+  /*color: #ddd;*/
+  /*background-color: #252528;*/
+  line-height: 40px;
+  padding-left: 3rem;
+  text-align: left;
+}
+
+
+.xxx
+{
+	width: 8rem;
+	padding-left: 0rem;
+	font-size: 18px;
+	text-align: center;
+}
+
+
+.instrucciones
+{
+	font-weight: bold;
+	list-style: none;
+	position: relative;
+	/*color: #ddd;*/
+	/*box-shadow: 3px 0 rgba(255, 255, 255, 0.2) inset;
+	transition: all 0.4s;*/
+	
+}
+
+.instrucciones ul
+{
+	width: 65rem;
+}

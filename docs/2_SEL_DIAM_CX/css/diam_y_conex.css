@@ -1,0 +1,9 @@
+td
+{
+border: 1px solid black; /* Aparecen los bordes de todas las celdas por separado */
+}
+
+table
+{
+border-collapse: collapse; /* Los bordes de la tabla aparecen juntos */
+}
