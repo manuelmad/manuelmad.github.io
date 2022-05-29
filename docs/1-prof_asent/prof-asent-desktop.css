@@ -1,0 +1,37 @@
+nav #menu-principal{
+    font-size: var(--lg);
+}
+
+section {
+    max-width: 80rem;
+}
+
+.ajuste_int, .ajuste_sup {
+	display: flex;
+}
+
+.ajuste_int1, .ajuste_sup1 {
+	width: 30%;
+}
+
+.ajuste_int2, .ajuste_sup2 {
+    flex-grow: 1;
+}
+
+.ajuste_int1 p, .ajuste_sup1 p {
+	width: 20rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ajuste_int1 input, .ajuste_sup1 input {
+	width: 20rem;
+}
+
+#resultadoI, #resultadoS {
+	max-width: 50rem;
+}
+
+
+
+

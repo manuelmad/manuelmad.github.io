@@ -1,0 +1,86 @@
+:root {
+    --ancho-ul: 25rem;
+    --ancho-sub-ul: 30rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+main nav {
+    width: 70%;
+}
+
+.vertical {
+    line-height: 7rem;
+    /* margin: 2rem 1rem; */
+    margin-top: 2rem;
+    /* padding-left: 1rem; */
+    width: var(--ancho-ul);
+}
+
+.vertical a {
+    /* font-size: var(--sm); */
+    transition: all 0.4s;
+}
+
+.vertical a:hover {
+    margin-left: 1rem;
+    color: white;
+}
+
+.vertical li {
+    /* padding-left: 1.5rem; */
+    transition: all 0.4s;
+}
+
+.vertical .lista4 {
+    /* font-size: var(--sm); */
+    padding-left: 1rem;
+}
+
+.vertical_3 {
+    position: absolute;
+    min-width: var(--ancho-sub-ul);
+    left: 25rem;
+    top: 0rem;
+    line-height: 7rem;
+    font-size: 0.8rem;
+    /* padding-left: 1rem; */
+}
+
+.vertical_3 li a {
+    /* font-size: 1.1rem; */
+}
+
+.vertical li:hover {
+    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
+}
+
+/* .lista:hover {
+    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
+}
+  
+.lista2:hover {
+    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
+}
+  
+.lista3:hover {
+    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
+} */
+  
+#menu .lista4:hover {
+    box-shadow: var(--ancho-ul) 0 rgba(172,217,130, 0.2) inset;
+}
+/*   
+.lista5:hover {
+    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
+} */
+
+.vertical_3 li:hover {
+    box-shadow: var(--ancho-sub-ul) 0 var(--hospital-green) inset;
+}
+
+.rev-int::after {
+    content: " / Camisa y Tieback Intermedios";
+}

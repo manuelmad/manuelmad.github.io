@@ -1,0 +1,57 @@
+.container__icono-menu {
+    display: none;
+}
+
+nav #menu-principal {
+    position: static;
+    display: flex;
+    font-size: var(--md);
+    justify-content: space-between;
+    list-style: none;
+    visibility: visible;
+    align-items: center;
+}
+
+nav #menu-principal li{
+	padding: 0.8rem;
+}
+
+nav #menu-principal a{
+	text-decoration: none;
+	color: var(--very-light-gray);
+	border: 1px solid var(--white);
+    transition: 0.1s all;
+}
+
+nav #menu-principal a:hover {
+	color: var(--hospital-green);
+    box-shadow: 0 -0.1875rem var(--hospital-green) inset;
+}
+
+section {
+    max-width: 65rem;
+}
+
+.cabecera_tabla th{ /* Le asigno un ancho a todas las columnas del encabezado de la tabla */
+    width: 9rem;
+}
+
+.container-botones-filas { /* Hacer el div del mismo ancho que la tabla */
+	width: 55.4rem;
+}
+
+.datos td:nth-child(4), th:nth-child(4){
+    width: 1rem; /* Le asigno un ancho específico a una columna específica, superponiendo la orden general anterior */
+    /* background-color: black;  */
+}
+#cuerpotabla input {
+    border: 0;
+    width: 9rem; /* Mismo tamaño de la cabecera*/
+}
+#tabla_rev td{
+    width: 7rem;
+}
+
+.coord{
+	width: 10rem;
+}

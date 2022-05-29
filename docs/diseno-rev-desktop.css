@@ -1,0 +1,26 @@
+:root {
+    --ancho-ul: 36rem;
+    --ancho-sub-ul: 46rem;
+}
+
+nav #menu-principal{
+    font-size: var(--lg);
+}
+
+.vertical {
+    width: var(--ancho-ul);
+}
+
+.vertical a {
+    font-size: var(--sm);
+}
+
+.vertical .lista4 {
+    font-size: var(--sm);
+}
+
+.vertical_3 {
+    width: var(--ancho-sub-ul);
+    left: 36rem;
+    /* font-size: 1.2rem; */
+}

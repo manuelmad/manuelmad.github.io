@@ -1,0 +1,560 @@
+* {/* El selector universal que aplica las declaraciones en todo el documento */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en adelante, 1rem = 10px */
+}
+
+:root {
+	--very-light-gray:#C7C7C7;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD982;
+	--very-light-blue:#bad7f1;
+	--white: #FFFFFF;
+	--black: #000000;
+	--ss: 1.2rem;
+	--sm: 1.4rem;
+	--md: 1.5rem;
+	--lg: 1.8rem;
+}
+
+header {
+	background-color: var(--white);
+	position: sticky;
+	top: 0rem;
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--very-light-gray);
+}
+
+.logo-personal {
+    height: 8vh; /*Un poco más pequeño que el header*/
+	margin-left: 2rem;
+}
+
+header nav {
+	height: 100%;
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.icono-menu:hover {
+	cursor: pointer;
+}
+
+.container__icono-menu {
+	position: relative;
+	right: 0;
+}
+
+.icono-menu {
+	position: absolute;
+	margin-top: 0;
+	right: 0rem;
+	top: -2rem;
+	margin-right: 1rem;
+	height: 6vh;
+}
+
+.container__menu-principal, .container__icono-menu, .container__logo-personal {
+	margin: 0;
+}
+
+nav #menu-desplegable {
+    position: absolute;
+	list-style: none;
+    visibility: hidden;
+	font-size: var(--sm);
+	right: 0rem;
+	top: -23rem;
+	border-radius: 0.5rem;
+	border-top: 0.1rem solid var(--hospital-green);
+	border-right: 0.1rem solid var(--hospital-green);
+	border-bottom: 0.1rem solid var(--hospital-green);
+	background-color: var(--white);
+	transition: 0.5s ease all;
+}
+
+.container__icono-menu:hover > #menu-desplegable {
+	visibility: visible;
+	top: 2rem;
+}
+
+nav #menu-desplegable li {
+	line-height: 3rem;
+	margin-bottom: 1rem;
+	box-shadow: 0.3rem 0 var(--hospital-green) inset;
+}
+
+nav #menu-desplegable li:last-child {
+	margin-bottom: 0;
+}
+
+nav #menu-desplegable a {
+	text-decoration: none;
+	display: block;
+	color: gray;
+	padding: 1rem;
+}
+
+nav #menu-desplegable a:active {
+	background-color: var(--hospital-green);
+}
+
+nav #menu-principal {
+	position: absolute;
+	visibility: hidden;
+	right: 0;
+}
+
+main {
+	width: 100%;
+}
+
+section {
+	margin: 0 auto;
+}
+
+p, h2, section, div{
+	margin-top: 1rem;
+}
+
+h1 {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--md);
+}
+
+h2 {
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: var(--sm);
+}
+
+label, p {
+	font-size: var(--ss);
+}
+
+.container-botones-filas {
+	display: flex;
+	width: 30rem;
+	margin: auto;
+	position: relative; /* Para que los elementos dentro de él lo tengan como referencia (y no al body) cuando les aplique position:absolute */
+	z-index: 1;
+}
+
+#eliminar_fila, #agregar_fila {
+	position: absolute;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+}
+
+#eliminar_fila {
+	right: 0rem;
+	top: 1rem;
+}
+
+#agregar_fila {
+	right: 2.6rem;
+	top: 1rem;
+}
+
+#agregar_fila:hover, #eliminar_fila:hover {
+	background-color: var(--hospital-green);
+}
+
+#agregar_fila:active, #eliminar_fila:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+table, th, td, tr {
+	border: 0.1rem solid black;
+	border-collapse: collapse;
+}
+
+input, span {
+	font-size: var(--md);
+}
+
+
+/* CÓDIGO PARA LOS DATOS DE MÁRGENES */
+
+.margenes {
+	margin: 0 auto;
+}
+
+.margenes input {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+.margenes input:hover {
+	border: 1px solid var(--hospital-green);
+}
+
+.margenes p {
+	width: 25rem;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* CÓDIGO PARA LA TABLA DE DATOS */
+
+.tabla_de_valores {
+	text-align: center;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+}
+
+.datos {
+	margin: 0 auto 1rem;
+}
+
+.datos th,td {
+	text-align: center;
+}
+
+.cabecera_tabla th {
+	background: var(--hospital-green);
+	font-weight: normal;
+}
+
+.cabecera_tabla th { /* Le asigno un ancho a todas las columnas del encabezado de la tabla */
+	width: 4.8rem;
+}
+
+.datos td:nth-child(4), th:nth-child(4) {
+	width: 1rem; /* Le asigno un ancho específico a una columna específica (central), superponiendo la orden general anterior */
+	background-color: var(--white);
+	border-top: 0.1rem solid var(--white);
+	border-bottom: 0.1rem solid var(--white);
+}
+
+.cabecera_tabla > tr {
+	line-height: 1.5rem;
+}
+
+#cuerpotabla > tr { /*Para que no se desplace la tabla cone l hover*/
+	height: 2.1rem;
+}
+
+#cuerpotabla {
+	background: var(--text-input-field);
+}
+
+#cuerpotabla input {
+	border: none; /* Quita el borde de todos los inputs del body de la tabla */
+	width: 4.8rem; /* Mismo tamaño de la cabecera*/
+}
+
+#cuerpotabla input:hover {
+	border: 0.1rem solid var(--black);
+}
+
+.grafica {
+	text-align: center;	
+}
+
+.opciones_graf {
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+}
+
+.trazado-lineas {
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+}
+
+.opciones_graf input {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+.opciones_graf input:hover {
+	border: 1px solid var(--hospital-green);
+}
+
+.opciones_graf p {
+	width: 25rem;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.opciones_graf .titulo-opciones-grafica {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.opciones_graf .botones-curvas { /* Puse 2 clases para mayor especificidad que la regla de arriba*/
+	text-align: center;
+}
+
+#botoncito, #borrar_curvas {
+	height: 3rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+#botoncito:hover, #borrar_curvas:hover {
+	background-color: var(--hospital-green);
+}
+
+#botoncito:active, #borrar_curvas:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+canvas {
+	margin-top: 1rem;
+}
+
+#mostrar_ocultar_auto, #mostrar_ocultar_manual {
+	height: 1.5rem;
+	width: 12rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	cursor: pointer;
+}
+
+#mostrar_ocultar_auto:hover, #mostrar_ocultar_manual:hover {
+	background-color: var(--hospital-green);
+}
+
+#mostrar_ocultar_auto:active, #mostrar_ocultar_manual:active { /* active tiene que ir despues del hover para que funcione */
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+.datos_auto {
+	margin: auto auto;
+}
+
+.datos_auto input {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+.datos_auto input:hover {
+	border: 1px solid var(--hospital-green);
+}
+
+.datos_auto p {
+	width: 25rem;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.datos_auto .botones-lineas { /*Apliqué mayor especificida que la regla de arriba*/
+	text-align: center;
+}
+
+#lineas_auto, #deshacer, #deshacer2 {
+	height: 3rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+#lineas_auto:hover, #deshacer:hover, #deshacer2:hover {
+	background-color: var(--hospital-green);
+}
+
+#lineas_auto:active, #deshacer:active, #deshacer2:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+
+/* CÓDIGO PARA LA TABLA DE TRAZAR LÍNEAS (1º PARTE) */
+
+.tabla_rev {
+	margin-top: 1rem;
+}
+
+#tabla_rev{
+	margin: 0 auto;
+}
+
+#tabla_rev td {
+	width: 6rem;
+}
+
+.tabla_rev_fila1 td {
+	background: var(--hospital-green);
+}
+
+
+.div_tablas {
+	/* outline: 1px solid yellow; */
+	margin: auto;
+}
+
+.coord{
+	width: 6rem;
+}
+
+.tabla_lineas_manuales {
+	margin: 1rem auto 1rem;
+}
+
+.tabla_lineas_manuales input {
+	border: none;
+}
+
+.tabla_lineas_manuales input:hover {
+	border: 0.1rem solid var(--black);
+}
+
+.tabla_lineas_manuales tr:first-child,
+.tabla_lineas_manuales tr:nth-child(2) {
+	background: var(--hospital-green);
+}
+
+.tabla_lineas_manuales tr td:last-child {
+	background: var(--white);
+	border: 0.1rem solid var(--white);
+}
+
+#deshacer2 {
+	margin-bottom: 1rem;
+}
+
+/* Código para los botones de trazar líneas manuales */
+.tabla_lineas_manuales button {
+	height: 2rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+	padding: 0.5rem;
+	font-size: 1rem;
+	margin-left: 0.2rem;
+}
+
+.tabla_lineas_manuales button:hover {
+	background-color: var(--hospital-green);
+}
+
+.tabla_lineas_manuales button:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+.ajuste_int, .ajuste_sup {
+	margin-bottom: 1rem;
+	text-align: center;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+}
+
+.ajuste_int1, .ajuste_sup1 {
+	padding-bottom: 1rem;
+}
+
+.ajuste_int1 p:last-child, .ajuste_sup1 p:last-child {
+	text-align: center;
+}
+
+.ajuste_int1 input, .ajuste_sup1 input {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+.ajuste_int1 input:hover, .ajuste_sup1 input:hover {
+	border: 1px solid var(--hospital-green);
+}
+
+.ajuste_int1 p, .ajuste_sup1 p {
+	width: 25rem;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ajuste_int2, .ajuste_sup2 {
+	padding-bottom: 1rem;
+}
+
+#boton_ajuste_int, #boton_ajuste_sup {
+	height: 3rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+#boton_ajuste_int:hover, #boton_ajuste_sup:hover {
+	background-color: var(--hospital-green);
+}
+
+#boton_ajuste_int:active, #boton_ajuste_sup:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+#resultadoI, #resultadoS {
+	display: block;
+	width: 90%;
+	border-radius: 0.8rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	text-align: justify;
+	background-color: var(--text-input-field);
+	min-height: 20rem;
+}
+
+
