@@ -509,7 +509,7 @@ canvas {
 }
 
 .ajuste_int1 input:hover, .ajuste_sup1 input:hover {
-	border: 1px solid var(--hospital-green);
+	border: 0.1rem solid var(--hospital-green);
 }
 
 .ajuste_int1 p, .ajuste_sup1 p {
@@ -517,6 +517,28 @@ canvas {
 	text-align: justify;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.ajuste_int1 div {
+	width: 26rem;
+	text-align: justify;
+	padding: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tituloPMP, #tituloDEMP {
+	text-align: justify;
+	padding-right: 1rem;
+}
+
+.ajuste_int1 .boton_ajuste_int {
+	text-align: center;
+}
+
+.ajuste_int1 div {
+	border-radius: 0.5rem;
+	background-color: #f8edee;
 }
 
 .ajuste_int2, .ajuste_sup2 {
@@ -550,8 +572,7 @@ canvas {
 	border-radius: 0.8rem;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
+	padding: 1rem 0.5rem;
 	text-align: justify;
 	background-color: var(--text-input-field);
 	min-height: 20rem;

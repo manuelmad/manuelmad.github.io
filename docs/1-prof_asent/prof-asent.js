@@ -1186,36 +1186,42 @@ function AnalisisIntermedio()
 		if(Prof_Rev_Int > Prof_Normal_Anormal)
 		{
 			Delta_Presion_Teorico = 3000;
+			console.log("El Delta Presión Teórico es " + Delta_Presion_Teorico + " lpc.");
 			Delta_Presion_Calculado = 0.052 * (Densidad_Zap_Int - 9) * Prof_Normal_Anormal;
+			console.log("El Delta Presión Calculado es " + Delta_Presion_Calculado + " lpc.");
 		}
 		else
 		{
 			Delta_Presion_Teorico = 2000;
-
-			var y = "El revestidor intermedio está siendo asentado a una profundidad menor a " + Prof_Normal_Anormal + " pies. Por lo tanto, el análisis se lleva a cabo con la Profundidad de la formación más propensa a causar pega diferencial durante su corrida, y su correspondiente Densidad de Poro Equivalente.";
+			console.log("El Delta Presión Teórico es " + Delta_Presion_Teorico + " lpc.");
+			var y = "El revestidor intermedio será asentado en la zona de Presión Normal, a una profundidad menor a " + Prof_Normal_Anormal + " pies. Por lo tanto, el análisis se lleva a cabo con la Profundidad de la formación más propensa a causar pega diferencial durante su corrida, y su correspondiente Densidad de Poro Equivalente.";
 			document.getElementById("AvisoPNA").innerHTML = y;
 
-			var Prof_Zona_Propensa = Number(prompt("El revestidor intermedio está siendo asentado a una profundidad menor a " + Prof_Normal_Anormal + " pies." + "\nIntroduzca entonces el valor de la Profundidad de la formación más propensa a causar pega diferencial durante su corrida."));
-			var Densidad_Eq_Zona_Propensa = Number(prompt("Introduzca ahora el valor de Densidad de Poro Equivalente correspondiente a " + Prof_Zona_Propensa + " pies."));
+			var Prof_Zona_Propensa = Number(prompt("El revestidor intermedio será asentado a una profundidad menor a " + Prof_Normal_Anormal + " pies." + "\nIntroduzca entonces el valor de la Profundidad (pies) de la formación más propensa a causar pega diferencial durante su corrida en la zona de Presión Normal."));
+			var Densidad_Eq_Zona_Propensa = Number(prompt("Introduzca el valor de Densidad de Poro Equivalente (lpg.) correspondiente a " + Prof_Zona_Propensa + " pies."));
 			
+			var aviso_int = document.getElementById("container-aviso-int");
+			aviso_int.style.display = "block";
+
 			var tituloPMP = document.getElementById("tituloPMP");
 			tituloPMP.style.display = "block";
-			var u =  Prof_Zona_Propensa;
-			document.getElementById("Valor_tituloPMP").innerHTML = u;
+			
+			document.getElementById("Valor_tituloPMP").innerHTML = Prof_Zona_Propensa;
 			
 
 			var tituloDEMP = document.getElementById("tituloDEMP");
 			tituloDEMP.style.display = "block";
-			var v =  Densidad_Eq_Zona_Propensa;
-			document.getElementById("Valor_tituloDEMP").innerHTML = v;
+			
+			document.getElementById("Valor_tituloDEMP").innerHTML = Densidad_Eq_Zona_Propensa;
 
 			Delta_Presion_Calculado = 0.052 * (Densidad_Zap_Int - Densidad_Eq_Zona_Propensa) * Prof_Zona_Propensa;
+			console.log("El Delta Presión Calculado es " + Delta_Presion_Calculado + " lpc.");
 		}
 
 
 		if(Delta_Presion_Calculado < Delta_Presion_Teorico)
 		{
-			var x = "<br>" + "El revestidor intermedio PUEDE ASENTARSE a la profundidad indicada sin riesgo de pega diferencial." + "<br>";
+			var x = "El revestidor intermedio PUEDE ASENTARSE a la profundidad indicada sin riesgo de pega diferencial.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 
@@ -1260,7 +1266,7 @@ function AnalisisIntermedio()
 				var PreP_1 = celda1_pporo.firstElementChild;
 				var PreP1 = Number(PreP_1.value);
 
-				P_vs_PP.push(PreP1, Prof1);
+				P_vs_PP.push(PreP1, Prof1); // Tengo que condicionar para que no agregue las filas vacias
 
 				// Prof vs DL //
 				var DL = PreP1 + MargenViaje;
@@ -1324,7 +1330,7 @@ function AnalisisIntermedio()
 						interseccion = P_vs_DL[n+3] - (pendiente*P_vs_DL[n+2]);
 						console.log(interseccion);
 						var auto1 = pendiente*w + interseccion;
-						console.log(auto1);
+						console.log("La profundidad de asentameinto corregida del revestidor intermedio por riesgo de pega diferencial es: " + auto1 + " pies.");
 					}
 				}
 			}
@@ -1339,26 +1345,26 @@ function AnalisisIntermedio()
 
 			for(s=0; s<=datosDA-1; s=s+2)
 			{
-				if(auto1 >= P_vs_DA[n+1] && auto1< P_vs_DA[n+3])
+				if(auto1 >= P_vs_DA[s+1] && auto1< P_vs_DA[s+3])
 				{
-					pendienteDA = (P_vs_DA[n+3] - P_vs_DA[n+1]) / (P_vs_DA[n+2] - P_vs_DA[n]);
+					pendienteDA = (P_vs_DA[s+3] - P_vs_DA[s+1]) / (P_vs_DA[s+2] - P_vs_DA[s]);
 					if(pendienteDA == "Infinity") // Solución si la pendiente es infinito
 					{
-						var auto2 = P_vs_DA[n+2];
+						var auto2 = P_vs_DA[s+2];
 					}
 					else
 					{
 						console.log(pendienteDA);
-						interseccionDA = P_vs_DA[n+3] - (pendienteDA*P_vs_DA[n+2]);
+						interseccionDA = P_vs_DA[s+3] - (pendienteDA*P_vs_DA[s+2]);
 						console.log(interseccionDA);
 						var auto2 = (auto1 - interseccionDA)/pendienteDA;
-						console.log(auto2);
+						console.log("La D.A. a la profundidad de " + auto1 + " es: " + auto2);
 					}
 				}
 			}
 
-			dibujarLineaDiseno("black", margen, auto1*factorY + margen, auto2*factorX + margen, auto1*factorY + margen);
-			var x = "<br>" + "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1 + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Para hallar la máxima profundidad de asentamiento de dicho revestidor adicional:" + "<br>" + "a.- Entre en la gráfica con el valor corregido de profundidad de asentamiento del revestidor intermedio: " + auto1 + " pies."+ "<br>" + "b.- Intercepte la curva de Margen de Arremetida." + "<br>" + "c.- Desde ese punto, desplácese verticalmente hacia abajo hasta interceptar la curva de Densidad de Lodo." + "<br>" + "d.- Leer el valor de profundidad para dicho punto." + "<br>" + "<br>" + "Finalmente, elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y la profundidad obtenida en el paso 'd'." + "<br>";
+			dibujarLineaDiseno("pink", margen, auto1*factorY + margen, auto2*factorX + margen, auto1*factorY + margen);
+			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1 + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Para hallar la máxima profundidad de asentamiento de dicho revestidor adicional:" + "<br>" + "a.- Entre en la gráfica con el valor corregido de profundidad de asentamiento del revestidor intermedio: " + auto1 + " pies."+ "<br>" + "b.- Intercepte la curva de Margen de Arremetida." + "<br>" + "c.- Desde ese punto, desplácese verticalmente hacia abajo hasta interceptar la curva de Densidad de Lodo." + "<br>" + "d.- Leer el valor de profundidad para dicho punto." + "<br>" + "<br>" + "Finalmente, elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y la profundidad obtenida en el paso 'd'.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
@@ -1387,13 +1393,13 @@ function AnalisisSuperficial()
 	{
 		if(Densidad_Equiv_Fluido < Densidad_Frac_Equiv_Sup)
 		{
-			var w = "<br>" + "El revestidor superficial PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies sin riesgo de falla por arremetida." + "<br>";
+			var w = "El revestidor superficial PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies sin riesgo de falla por arremetida.";
 			document.getElementById("resultadoS").innerHTML = w;
 		}
 		else
 		{
 			
-			var w = "<br>" + "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente." + "<br>";
+			var w = "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.";
 			document.getElementById("resultadoS").innerHTML = w;
 		}
 	}

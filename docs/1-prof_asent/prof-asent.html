@@ -205,22 +205,25 @@
 					<p>Profundidad donde la presión cambia de normal a anormal (Densidad de Poro = 9 lpg.) (pies):<br>
 					<input type="number" id="PNA"></p>
 
-					<p style="display:none" id="tituloPMP"><strong>Profundidad de la formación más propensa a causar pega diferencial (pies):</strong><br>
-					<span id="Valor_tituloPMP"></span></p>
-
-					<p style="display:none" id="tituloDEMP"><strong>Densidad de Poro Equivalente de la formación más propensa a causar pega diferencial (lpg):</strong><br>
-					<span id="Valor_tituloDEMP"></span></p>
-
 					<p><strong>REVESTIDOR INTERMEDIO (Expuesto a la zona Normal - Anormal):</strong></p>
 
 					<p>Profundidad de Asentamiento (pies):<br>
 					<input type="number" id="PRI"></p>
-					<span id="AvisoPNA"></span>
-
+					
 					<p>Densidad de Lodo en Zapata (lpg):<br>
 					<input type="number" id="DZI"></p>
 				
-					<p><button id="boton_ajuste_int">Realizar Análisis</button></p>
+					<p class="boton_ajuste_int"><button id="boton_ajuste_int">Realizar Análisis</button></p>
+
+					<div style="display:none" id="container-aviso-int">
+						<span id="AvisoPNA"></span>
+
+						<p style="display:none" id="tituloPMP"><strong>Profundidad de la formación más propensa a causar pega diferencial (pies):</strong><br>
+						<span id="Valor_tituloPMP"></span></p>
+		
+						<p style="display:none" id="tituloDEMP"><strong>Densidad de Poro Equivalente a dicha profundidad (lpg):</strong><br>
+						<span id="Valor_tituloDEMP"></span></p>
+					</div>
 				</div>
 				<div class="ajuste_int2">
 					<p><strong>RESULTADO ANÁLISIS REVESTIDOR INTERMEDIO:</strong><span id="resultadoI"></span></p>
