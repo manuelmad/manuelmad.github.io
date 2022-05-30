@@ -495,7 +495,10 @@ function trazarCurva()
 		var PreP_1 = celda1_pporo.firstElementChild;
 		var PreP1 = (PreP_1.value)*factorX;
 
-		P_vs_PP.push(PreP1, Prof1);
+		if(PreP1 != 0) {
+			P_vs_PP.push(PreP1, Prof1);
+		}
+		
 
 		// Prof vs DL //
 		var DL = Number((PreP_1.value)) + MargenViaje;
@@ -511,7 +514,10 @@ function trazarCurva()
 		}
 		var dl1 = DL*factorX;
 
-		P_vs_DL.push(dl1, Prof1);
+		if(DL != MargenViaje) {
+			P_vs_DL.push(dl1, Prof1);
+		}
+		
 
 		// Prof vs PF //
 		var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
@@ -522,7 +528,10 @@ function trazarCurva()
 		var PreF_1 = celda1_pfrac.firstElementChild;
 		var PreF1 = (PreF_1.value)*factorX;
 
-		P_vs_PF.push(PreF1, Prof12);
+		if(PreF1 != 0) {
+			P_vs_PF.push(PreF1, Prof12);
+		}
+		
 
 		// Prof vs DA //
 		var DA = Number((PreF_1.value)) - MargenArremetida;
@@ -538,44 +547,18 @@ function trazarCurva()
 		}
 		var da1 = DA*factorX;
 
-		P_vs_DA.push(da1, Prof12);
-	}
-
-	var datosPP = P_vs_PP.length;
-
-	// CICLO PARA ASIGNAR EL VALOR "UNDEFINED" A CUALQUIER VARIABLE QUE ORIGINALMENTE TENGA VALOR DE CERO, LO CUAL INCLUYE CELDAS VACÍAS //
-	
-	var i = 2; //Con esto permito que los dos primeros elementos del array puedan ser cero, ya que no serán evaluados por el ciclo //
-
-	while(i <= datosPP)
-	{
-		if(P_vs_PP[i] == 0)
-		{
-			P_vs_PP[i] = undefined;
-		}
-
-		if(P_vs_DL[i] ==0)
-		{
-			P_vs_DL[i] = undefined;
-		}
-
-		if(P_vs_PF[i] ==0)
-		{
-			P_vs_PF[i] = undefined;
-		}
-
-		if(P_vs_DA[i] ==0)
-		{
-			P_vs_DA[i] = undefined;
+		if(DA != -MargenArremetida) {
+			P_vs_DA.push(da1, Prof12);
 		}
 		
-		i = i+1;
 	}
 
+	// Tomo en cuenta el array de mayor longitud, que debe ser siempre P_vs_PP
+	var datosPP = P_vs_PP.length;
 
 	// CICLO PARA TRAZAR LA CURVA //
-	var limitePP = datosPP - 4; //Solo puedo dejar que el ciclo llegue a i=76, porque si llega a 78, intentará graficar los elementos 78, 79, 80 y 81 del array, siendo los 2 últimos inexistentes)//
-	var i = 0; // En el ciclo anterior la variable i llegó a tomar el valor de 80, por eso debo hacer que sea 0 de nuevo para el nuevo ciclo //
+	var limitePP = datosPP - 4; //Solo puedo dejar que el ciclo llegue a 4 posiciones antes del final para que no intente luego graficar valores que no existen en el array//
+	var i = 0;
 
 	while(i <= limitePP)
 	{
@@ -685,7 +668,10 @@ function autoLineas()
 		var PreP_1 = celda1_pporo.firstElementChild;
 		var PreP1 = (PreP_1.value)*factorX;
 
-		P_vs_PP.push(PreP1, Prof1);
+		if(PreP1 != 0) {
+			P_vs_PP.push(PreP1, Prof1);
+		}
+		
 
 		// Prof vs DL //
 		var DL = Number((PreP_1.value)) + MargenViaje;
@@ -701,7 +687,10 @@ function autoLineas()
 		}
 		var dl1 = DL*factorX;
 
-		P_vs_DL.push(dl1, Prof1);
+		if(DL != MargenViaje) {
+			P_vs_DL.push(dl1, Prof1);
+		}
+		
 
 		// Prof vs PF //
 		var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
@@ -712,8 +701,7 @@ function autoLineas()
 		var PreF_1 = celda1_pfrac.firstElementChild;
 		var PreF1 = (PreF_1.value)*factorX;
 
-		if(PreF1 !=0)
-		{
+		if(PreF1 !=0) {
 			P_vs_PF.push(PreF1, Prof12);
 		}
 		
@@ -732,11 +720,9 @@ function autoLineas()
 		}
 		var da1 = DA*factorX;
 
-		if(DA != -MargenArremetida) //Si la presión de fractura es 0, que esa línea no se agregue al array
-		{
+		if(DA != -MargenArremetida) {
 			P_vs_DA.push(da1, Prof12);
 		}
-		
 	}
 
 	var x = ultimaDL;
@@ -1358,13 +1344,44 @@ function AnalisisIntermedio()
 						interseccionDA = P_vs_DA[s+3] - (pendienteDA*P_vs_DA[s+2]);
 						console.log(interseccionDA);
 						var auto2 = (auto1 - interseccionDA)/pendienteDA;
-						console.log("La D.A. a la profundidad de " + auto1 + " es: " + auto2);
+						console.log("La D.A. a la profundidad de " + auto1 + " pies es: " + auto2 + " lpg.");
 					}
 				}
 			}
 
 			dibujarLineaDiseno("pink", margen, auto1*factorY + margen, auto2*factorX + margen, auto1*factorY + margen);
-			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1 + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Para hallar la máxima profundidad de asentamiento de dicho revestidor adicional:" + "<br>" + "a.- Entre en la gráfica con el valor corregido de profundidad de asentamiento del revestidor intermedio: " + auto1 + " pies."+ "<br>" + "b.- Intercepte la curva de Margen de Arremetida." + "<br>" + "c.- Desde ese punto, desplácese verticalmente hacia abajo hasta interceptar la curva de Densidad de Lodo." + "<br>" + "d.- Leer el valor de profundidad para dicho punto." + "<br>" + "<br>" + "Finalmente, elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y la profundidad obtenida en el paso 'd'.";
+
+			// CICLO PARA QUE LA LÍNEA VERTICAL DE DA INTERSECTE A LA LÍNEA DE DL
+			var q;
+					
+			var datosDL2 = P_vs_DL.length;
+			var pendienteDL2;
+			var interseccionDL2;
+			//var cuerpotabla_rev = document.getElementById("tabla_rev");
+
+			for(q=0; q<=datosDL2-1; q=q+2)
+			{
+				if(auto2 >= P_vs_DL[q] && auto2< P_vs_DL[q+2])
+				{
+					pendienteDL2 = (P_vs_DL[q+3] - P_vs_DL[q+1]) / (P_vs_DL[q+2] - P_vs_DL[q]);
+					if(pendienteDL2 == "Infinity") // Solución si la pendiente es infinito
+					{
+						var auto3 = P_vs_DL[q+3];
+					}
+					else
+					{
+						console.log(pendienteDL2);
+						interseccionDL2 = P_vs_DL[q+3] - (pendienteDL2*P_vs_DL[q+2]);
+						console.log(interseccionDL2);
+						var auto3 = (pendienteDL2*auto2 + interseccionDL2).toFixed(0);
+						console.log("La máxima profundidad de asentamiento del revestidor adicional es: " + auto3 + " pies");
+					}
+				}
+			}
+			dibujarLineaDiseno("pink", auto2*factorX + margen, auto1*factorY + margen, auto2*factorX + margen, auto3*factorY + margen);
+			dibujarLineaDiseno("pink", auto2*factorX + margen, auto3*factorY + margen,  margen, auto3*factorY + margen);
+			
+			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1 + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + auto3 + " pies.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
