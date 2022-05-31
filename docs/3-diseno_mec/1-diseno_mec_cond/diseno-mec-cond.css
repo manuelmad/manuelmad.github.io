@@ -1,0 +1,619 @@
+*{  /* El selector universal que aplica las declaraciones en todo el documento */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-family: 'Arial Narrow', Verdana, Helvetica,'Times New Roman', Arial;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en
+	adelante, 1rem = 10px */
+}
+
+:root{ /*Define variables generales que usaré varias veces luego*/
+  --ancho-estallido-1: 20rem;
+  --ancho-graficos-estycol: 38rem;
+  --ancho-colapso-1: 21rem;
+  --ancho-elipse: 85rem; /*68.4rem*/
+  --ancho-tension-1: 19rem;
+  --ancho-menu: 15rem;
+  --alto-menu: 1.5rem;
+}
+
+header, main, footer{
+	width: 120rem;
+	margin: 0 auto;
+	outline: 1px solid green;
+	/*text-align: center;*/
+}
+
+header{
+	text-align: center;
+}
+
+table, th, tr, td{
+	border: 0.1rem solid black;
+	border-collapse: collapse;
+	font-weight: normal;
+}
+
+div{
+	font-size: 1.3rem;
+}
+
+p, h2, table, section{
+	margin-top: 1rem;
+}
+
+h2{
+	text-align: center;
+	text-transform: uppercase;
+	outline: 1px solid red;
+}
+
+select{
+	margin-top: 0.2rem;
+}
+
+input{
+	margin-top: 0.2rem;
+}
+
+input:hover{
+	border: 0.2rem solid blue;
+}
+
+
+/***************** Estallido *********************/
+
+
+.seccion_estallido{
+	width: var(--ancho-elipse);
+	text-align: center;
+	outline: 1px solid blue;
+	/*margin-left: 17.5rem;*/
+	/*margin-right: auto;*/
+	display: inline-flex; /* Al usar esto, el margin:auto ya no funciona */;
+	/*background-color: #F8F8E5;*/
+	margin-left: calc((120rem - 85rem)/2);
+}
+
+
+#mostrar_ocultar_SE{
+	width: var(--ancho-menu);
+	height: var(--alto-menu);
+	text-transform: uppercase;
+}
+
+
+/* 1 div */
+
+.tituloE{
+	font-weight: bold;
+	text-transform: uppercase;
+	width: 31rem;
+	text-align: center;
+	/*position: relative; /*Para poder cambiar sus características sin que pierda su posición*/
+	margin-left: -5.5rem; /* (20rem - 31rem)/2 */ /*Calc() parece no funcionar para márgenes negativos*/
+	/*display: block;*/
+}
+
+.datos_estallido{
+	text-align: justify;
+	width: var(--ancho-estallido-1);
+	margin-left: auto;
+	margin-right: auto;
+	outline: 1px solid blue;	
+}
+
+.datos_estallido input, select{
+	width: var(--ancho-estallido-1);
+}
+
+#calculo_tabla_diseno{
+	width: 2.5rem
+}
+
+.disenoE{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disenoE th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.disenoE td{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+#aviso_falla_colapso2{
+	color:red;
+	font-weight: bold;
+}
+
+
+/* 2 div */
+
+.opciones_graf_est{
+	width: 15rem;
+	margin: 0 auto;
+	outline: 1px solid brown;
+}
+
+#max_prof_graf_est, #max_pres_graf_est{
+	width: 14rem;
+}
+
+.parrafo_boton_estallido{
+	text-align: center;
+}
+
+#boton_diseno{
+	height: 2.5rem;
+	width: 2.5rem;
+}
+
+/*
+#boton_diseno span{ /* Hago que el escrito dentro del botón tenga una posición inicial
+	y que dicha posición sea modificable, además la modificación se hará con transición */
+	/*text-transform: uppercase;
+	position: relative;
+	top: -1rem;
+	font-size: 1rem;
+	transition: 0.4s all;
+	display: block; /* Para que no quede lado a lado con el svg */
+/*}
+
+#boton_diseno:hover span{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
+	/*top: -1.3rem;
+}
+
+#boton_diseno img{ /* Hago que el ícono de flecha dentro del botón tenga una posición y opacidad iniciales
+	y que dichas propiedades sean modificables, además la modificación se hará con transición */
+	/*position: relative;
+	opacity: 0;
+	top: -0.5rem;
+	transition: 0.7s all;
+}
+
+
+#boton_diseno:hover img{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
+	/*top: 1.8rem;
+	opacity: 1;
+/*}*/
+
+.graficas_estallido{
+	outline: 1px solid blue;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#conductor_estallido {
+	outline: 1px solid black;
+	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
+}
+
+#boton_borrar_diseno{
+	width: 2.5rem;
+}
+
+#mostrar_ocultar_EC{
+	width: 2.5rem;
+}
+
+/*
+#boton_borrar_diseno span{ /* Hago que el escrito dentro del botón tenga una posición inicial
+	y que dicha posición sea modificable, además la modificación se hará con transición */
+	/*font-size: 1rem;
+	text-transform: uppercase;
+	position: relative;
+	left: 0.8rem;
+	top: -0.2rem;
+	transition: 0.4s all;
+	/*display: block; /* Para que no quede lado a lado con el svg */
+/*}
+
+#boton_borrar_diseno:hover span{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
+	/*left: -0.3rem;
+}
+
+#boton_borrar_diseno img{ /* Hago que el ícono de flecha dentro del botón tenga una posición y opacidad iniciales
+	y que dichas propiedades sean modificable, además la modificación se hará con transición */
+	/*position: relative;
+	opacity: 0;
+	left: -8rem;
+	transition: 0.7s all;
+}
+
+#boton_borrar_diseno:hover img{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
+	/*left: 0.5rem;
+	opacity: 1;
+}*/
+
+
+.disenoEC{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disenoEC th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.disenoEC td{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+
+
+/************ Colapso ***************/
+
+.seccion_colapso{
+	width: var(--ancho-elipse);
+	text-align: center;
+	outline: 1px solid blue;
+	display: inline-flex;
+	margin-left: calc((120rem - 85rem)/2);
+	/*background-color: #CED0FB;*/
+}
+
+#mostrar_ocultar_SC{
+	width: var(--ancho-menu);
+	text-transform: uppercase;
+	height: var(--alto-menu);
+}
+
+
+/* 1 div */
+
+.tituloC{
+	font-weight: bold;
+	text-transform: uppercase;
+	width: 22rem;
+	text-align: center;
+	/*position: relative;*/
+	margin-left: -0.5rem;
+}
+
+.datos_colapso{
+	width: var(--ancho-colapso-1);
+	text-align: justify;
+	outline: 1px solid orange;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#ProfProxHoyo, #DensProxHoyo, #PC_rev_cond{
+	width: var(--ancho-colapso-1);
+}
+
+#TTCCond, #DenCemCond{
+	width: 14rem;
+}
+
+#topeLodo{
+	font-weight: bold;
+}
+
+.parrafo_boton_colapso{
+	text-align: center;
+}
+
+#boton_tablaC{
+	width: 2.5rem;
+}
+
+.disenoC{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disenoC th{
+	padding: 0.2rem 0.1rem;
+	text-align: center;
+}
+
+.disenoC td{
+	padding: 0.2rem 0.1rem;
+	text-align: center;
+}
+
+/* 2 div */
+
+.div_colapso_2{
+	/*width: var(--ancho-graficos-estycol);*/
+	outline: 1px solid orange;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*.parrafo_boton_colapso{
+	text-align: center;
+}*/
+
+.opciones_graf_col{
+	margin: 0 auto;
+	outline: 1px solid brown;
+	width: 15rem;
+}
+
+#max_prof_graf_col, #max_pres_graf_col{
+	width: 14rem;
+}
+
+#boton_grafica_colapso{
+	width: 2.5rem;
+}
+
+#boton_borrar_disenoC{
+	width: 2.5rem;
+}
+
+#mostrar_ocultar_CC{
+	width: 2.5rem;
+}
+
+#conductor_colapso {
+	outline: 1px solid black;
+	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
+}
+
+.avisos_colapso{
+	margin-top: 0;
+	width: var(--ancho-graficos-estycol);
+	/*outline: 1px solid orange;*/
+	text-align: justify;
+	font-weight: bold;
+	min-height: 1rem;
+	margin: 0 auto;
+}
+
+#aviso_apto_colapso{
+	color: green;
+	width: var(--ancho-graficos-estycol);
+	margin: 0 auto;
+}
+
+#aviso_falla_colapso, #aviso_falla_colapsoCorregido{
+	color:red;
+	width: var(--ancho-graficos-estycol);
+	margin: 0 auto;
+}
+
+.disenoCC{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disenoCC th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.disenoCC td{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+/************* Tensión ***************/
+
+.seccion_tension{
+	width: 105rem;
+	text-align: center;
+	outline: 1px solid blue;
+	margin-left: calc((120rem - 105rem)/2);
+	display: inline-flex;
+	/*background-color: #F8D2C5;*/
+}
+
+#mostrar_ocultar_ST{
+	width: var(--ancho-menu);
+	text-transform: uppercase;
+	height: var(--alto-menu);
+}
+
+
+/* 1 div */
+
+.tituloT{
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	width: 31rem;
+	/*position: relative;*/
+	margin-left: -6rem; /* (19rem - 31 rem)/2*/
+}
+
+.datos_tension{
+	text-align: justify;
+	outline: 1px solid orange;
+	width: var(--ancho-tension-1);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.datos_tension input{
+	width: var(--ancho-tension-1);
+}
+
+#letra_grado_cond{
+	width: 3.5rem;
+}
+
+#num_grado_cond{
+	width: 14.55rem;
+}
+
+#resisT{
+	/*outline: 1px solid brown;*/
+	font-weight: bold;
+}
+
+#puntoNeutro{
+	font-weight: bold;
+}
+
+.diseno_grafica_tension{
+	width: 39rem;
+	text-align: center;
+	margin-left: -10rem; /*(19rem - 39 rem)/2*/
+	/*position: relative;*/
+}
+
+#boton_disenoT{
+	width: 2.5rem;
+}
+
+.disenoT{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.disenoT th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.disenoT td{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+
+/* 2 div */
+
+#div2T{
+	outline: 1px solid purple;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#conductor_tension {
+	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
+	outline: 1px solid black;
+}
+
+#grafica_tension_biaxial{
+	width: 2.5rem;
+}
+
+#boton_borrar_disenoT{
+	width: 2.5rem;
+}
+
+
+
+/***************** BIAXIAL *********************/
+
+.seccion_biaxial{
+	text-align: center;
+	outline: 1px solid blue;
+	margin-left: auto;
+	margin-right: auto;
+	width: 105rem;
+	/*background-color: #C8F8C5;*/
+}
+
+#mostrar_ocultar_SCB{
+	width: var(--ancho-menu);
+	text-transform: uppercase;
+	height: var(--alto-menu);
+}
+
+.tensionyesfuerzo{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tensionyesfuerzo th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.tabla_valores_elipse{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tabla_valores_elipse th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+#elipse_plasticidad {
+	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
+	/*outline: 1px solid red;*/
+}
+
+.porcentajesycorrecciones{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.porcentajesycorrecciones th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+.relaciones_y{
+	display: none;
+}
+
+
+
+
+/************ Factores de Diseño *****************/
+
+.subtituloFD{
+	margin-top: 2rem;¨/*Tuve que ponerle más margin a éste por que no supe la razón de que no tomaba
+	el margin que le asigné a todos os h2, section, table*/
+}
+
+.seccion_FD{
+	text-align: center;
+	outline: 1px solid blue;
+	margin-left: auto;
+	margin-right: auto;
+	/*background-color: #CDCFCD;*/
+}
+
+#mostrar_ocultar_SFD{
+	width: var(--ancho-menu);
+	text-transform: uppercase;
+	height: var(--alto-menu);
+}
+
+.parrafo_FD{
+	text-align: center;
+}
+
+#botonFD{
+	width: 2.5rem;
+}
+
+.factoresDiseno{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.factoresDiseno th{
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+}
+
+
+#obsup, #obfon{
+	color:red;
+	text-align: justify;
+}
+
+/************** LINK DE DESCARGA *******************/
+
+.link_informe{
+	font-size: 1.5rem;
+}

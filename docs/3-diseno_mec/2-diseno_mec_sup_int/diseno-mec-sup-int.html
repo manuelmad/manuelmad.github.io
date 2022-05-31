@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DISEÑO MECÁNICO DE: REVESTIDOR SUPERFICIAL-REVESTIDOR INTERMEDIO-CAMISA Y/O TIE BACK INTERMEDIOS.</title>
+	<link href="diseno-mec-sup-int.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<h1>DISEÑO MECÁNICO DE: REVESTIDOR SUPERFICIAL-REVESTIDOR INTERMEDIO-CAMISA Y/O TIE BACK INTERMEDIOS.</h1>
+
+	<h2><strong>a) Máximas cargas de estallido:</strong></h2>
+
+	<h3>Prueba de Presión de la sarta de tubería de revestimiento cementada.</h3>
+
+	<p>Tipo de Pozo: 
+		<select id="tipoDePozo">
+		<option value = "1">Exploratorio</option>
+		<option value = "2">Desarrollo</option>
+		</select>
+	</p>
+
+	<p>Profundidad de asentamiento: <input type="number" id="prof_rev_cond"> pies.</p>
+	<p>Densidad Equivalente de poro a la profundidad de asentamiento: <input type="number" id="Dporo_rev_cond"> lpg.</p>
+	<p>Densidad Equivalente de fractura a la profundidad de asentamiento: <input type="number" id="Dfrac_rev_cond"> lpg.</p>
+	<p>Densidad de lodo para bajar revestidor: <input type="number" id="DL_rev_cond"> lpg.</p>
+	<button id="calculo_tabla_diseno">Calcular Perfil de Diseño</button>
+	<br>
+	<br>
+	<table class="disenoE">
+		<thead>
+			<tr>
+				<th colspan="3">Perfil de Presión de Diseño por Estallido</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Profundidad (pies)</th>
+				<th>Presión (lpc.)</th>
+			</tr>
+			<tr>
+				<th>Superficie</th>
+				<th><label id="profSuperfTablaE"></label></th>
+				<th><label id="presionSuperfTablaE"></label></th>
+			</tr>
+			<tr>
+				<th>Fondo</th>
+				<th><label id="profFondoTablaE"></label></th>
+				<th><label id="presionFondoTablaE"></label></th>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	Resistencia al Estallido del revestidor seleccionado: <input type="number" id="PE_rev_cond"> lpc.
+	<br>
+	<br>
+	Opciones de ejes del gráfico:
+	<br>
+	Máxima Profundidad del gráfico (eje Y): <input type="number" name="" id="max_prof_graf">
+	<br>
+	Máxima Presión del gráfico (eje X): <input type="number" name="" id="max_pres_graf">
+	<br>
+	<br>
+	<button id="boton_diseno">Graficar Resultados</button>
+	<br>
+	<br>
+	<canvas width="420" height="420" id="conductor_estallido"></canvas>
+	<br>
+	<button id="boton_borrar_diseno">Limpiar Gráfica</button>
+	<br>
+	<p>Número de sartas colgadas al revestidor: <input type="number" name="" id="sartas_colgadas">
+	</p>
+	<br>
+	<table class="disenoE">
+		<thead>
+			<tr>
+				<th colspan="3">Resistencia al Estallido Corregida</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Profundidad (pies)</th>
+				<th>Presión (lpc.)</th>
+			</tr>
+			<tr>
+				<th>Superficie</th>
+				<th><label id="profSuperfTablaE2"></label></th>
+				<th><label id="presionCorregSuperfTablaE"></label></th>
+			</tr>
+			<tr>
+				<th>Fondo</th>
+				<th><label id="profFondoTablaE2"></label></th>
+				<th><label id="presionCorregFondoTablaE"></label></th>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<h3>Arremetida de gas.</h3>
+<script type="text/javascript" src="diseno-mec-sup-int.js"></script>
+</body>
+</html>

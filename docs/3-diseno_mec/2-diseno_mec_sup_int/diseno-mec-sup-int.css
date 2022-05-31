@@ -1,0 +1,8 @@
+table, th, tr{
+	border:1px solid black;
+	border-collapse: collapse;
+}
+
+#conductor_estallido{
+	outline: 1px solid red;
+}
