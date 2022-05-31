@@ -15,6 +15,7 @@ function ventanaSecundaria2 (URL)
 var boton = document.getElementById("botoncito");
 boton.addEventListener("click", trazarCurva);
 boton.addEventListener("mouseup", imageSinCurvas);
+boton.addEventListener("click", crearArray);
 
 // ACCEDER AL CANVAS DE HTML Y DARLE CONTEXTO //
 var d = document.getElementById("Prof_vs_Dens");
@@ -245,19 +246,8 @@ else {
 }
 
 var leyenda1_x2 = leyenda1_x1 + ancho_linea;
-
-// var leyenda2_x1 = leyenda1_x2 + separacion_leyendas;
-// var leyenda2_x2 = leyenda2_x1 + ancho_linea;
-
-// var leyenda3_x1 = leyenda2_x2 + separacion_leyendas;
-// var leyenda3_x2 = leyenda3_x1 + ancho_linea;
-
 var leyenda3_x1 = leyenda1_x2 + separacion_leyendas;
 var leyenda3_x2 = leyenda3_x1 + ancho_linea;
-
-// var leyenda4_x1 = leyenda3_x2 + separacion_leyendas;
-// var leyenda4_x2 = leyenda4_x1 + ancho_linea;
-
 
 if(tamano_ventana >= 320 && tamano_ventana < 600) {
 	lienzo.font = '8px "Tahoma"';
@@ -313,7 +303,6 @@ lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO 
 
 
 // EJE X LEYENDA //
-
 var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
 var y = margen/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
 lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
@@ -346,6 +335,98 @@ function CurvaDensidades(color, xinicial, yinicial, xfinal, yfinal)
 function imageSinCurvas()
 {
 	ImageData = lienzo.getImageData(0, 0, ancho_canvas, alto_canvas);
+}
+
+function crearArray() {
+
+	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
+	var max_densidad = document.getElementById("max_den_graf").value;
+	var max_prof = document.getElementById("max_prof_graf").value;
+
+	var factorX = ancho / max_densidad;
+	var factorY = alto / max_prof;
+
+	var tabla = document.getElementById("tabla");
+	var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
+	
+	var P_vs_PP = [];
+
+	var MargenViaje = Number(document.getElementById("margen_viaje").value);
+	var P_vs_DL = [];
+
+	var P_vs_PF = [];
+
+	var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
+	var P_vs_DA = [];
+
+	var m;
+	for(m=0; m<=filas_cuerpotabla-1; m=m+1)
+	{
+		// Prof vs PP //
+		var cuerpo_tabla = document.getElementById("cuerpotabla");
+		var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
+		var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
+		var Prof_1 = celda1_prof.firstElementChild;
+		var Prof1 = (Prof_1.value)*factorY;
+		
+		var celda1_pporo = celda1_prof.nextElementSibling;
+		var PreP_1 = celda1_pporo.firstElementChild;
+		var PreP1 = (PreP_1.value)*factorX;
+
+		if(PreP1 != 0) {
+			P_vs_PP.push(PreP1, Prof1);
+		}
+		
+		// Prof vs DL //
+		var DL = Number((PreP_1.value)) + MargenViaje;
+		var celda1_dl = celda1_pporo.nextElementSibling;
+		var dl_1 = celda1_dl.firstElementChild;
+		if(DL == MargenViaje) { // Si la presión de poro es 0 (o celda vacía) la celda de densidad de lodo no mostrará nada
+			dl_1.innerHTML = "";
+		}
+		else
+		{
+			dl_1.innerHTML = DL;
+		}
+		var dl1 = DL*factorX;
+
+		if(DL != MargenViaje) {
+			P_vs_DL.push(dl1, Prof1);
+		}
+		
+		// Prof vs PF //
+		var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
+		var Prof1_2 = celda1_prof2.firstElementChild;
+		var Prof12 = (Prof1_2.value)*factorY;
+
+		var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
+		var PreF_1 = celda1_pfrac.firstElementChild;
+		var PreF1 = (PreF_1.value)*factorX;
+
+		if(PreF1 != 0) {
+			P_vs_PF.push(PreF1, Prof12);
+		}
+		
+		// Prof vs DA //
+		var DA = Number((PreF_1.value)) - MargenArremetida;
+		var celda1_da = celda1_prof2.nextElementSibling;
+		var da_1 = celda1_da.firstElementChild;
+		if(DA == -MargenArremetida)// Si la presión de fractura es 0 (o celda vacía) la celda de densidad de arremetida no mostrará nada
+		{
+			da_1.innerHTML = "";
+		}
+		else
+		{
+			da_1.innerHTML = DA;
+		}
+		var da1 = DA*factorX;
+
+		if(DA != -MargenArremetida) {
+			P_vs_DA.push(da1, Prof12);
+		}
+	}
+	var arrays = [P_vs_PP, P_vs_DL, P_vs_DA, P_vs_PF];
+	return arrays;
 }
 
 function trazarCurva()
@@ -468,90 +549,12 @@ function trazarCurva()
 
 	
 	// ***GRAFICAR CURVAS*** //
-	var tabla = document.getElementById("tabla");
-	var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
-	
-	var P_vs_PP = [];
+	var arrays_densidades = crearArray();
 
-	var MargenViaje = Number(document.getElementById("margen_viaje").value);
-	var P_vs_DL = [];
-
-	var P_vs_PF = [];
-
-	var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-	var P_vs_DA = [];
-
-	var m;
-	for(m=0; m<=filas_cuerpotabla-1; m=m+1)
-	{
-		// Prof vs PP //
-		var cuerpo_tabla = document.getElementById("cuerpotabla");
-		var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
-		var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
-		var Prof_1 = celda1_prof.firstElementChild;
-		var Prof1 = (Prof_1.value)*factorY;
-		
-		var celda1_pporo = celda1_prof.nextElementSibling;
-		var PreP_1 = celda1_pporo.firstElementChild;
-		var PreP1 = (PreP_1.value)*factorX;
-
-		if(PreP1 != 0) {
-			P_vs_PP.push(PreP1, Prof1);
-		}
-		
-
-		// Prof vs DL //
-		var DL = Number((PreP_1.value)) + MargenViaje;
-		var celda1_dl = celda1_pporo.nextElementSibling;
-		var dl_1 = celda1_dl.firstElementChild;
-		if(DL == MargenViaje) // Si la presión de poro es 0 (o celda vacía) la celda de densidad de lodo no mostrará nada
-		{
-			dl_1.innerHTML = "";
-		}
-		else
-		{
-			dl_1.innerHTML = DL;
-		}
-		var dl1 = DL*factorX;
-
-		if(DL != MargenViaje) {
-			P_vs_DL.push(dl1, Prof1);
-		}
-		
-
-		// Prof vs PF //
-		var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
-		var Prof1_2 = celda1_prof2.firstElementChild;
-		var Prof12 = (Prof1_2.value)*factorY;
-
-		var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
-		var PreF_1 = celda1_pfrac.firstElementChild;
-		var PreF1 = (PreF_1.value)*factorX;
-
-		if(PreF1 != 0) {
-			P_vs_PF.push(PreF1, Prof12);
-		}
-		
-
-		// Prof vs DA //
-		var DA = Number((PreF_1.value)) - MargenArremetida;
-		var celda1_da = celda1_prof2.nextElementSibling;
-		var da_1 = celda1_da.firstElementChild;
-		if(DA == -MargenArremetida)// Si la presión de fractura es 0 (o celda vacía) la celda de densidad de arremetida no mostrará nada
-		{
-			da_1.innerHTML = "";
-		}
-		else
-		{
-			da_1.innerHTML = DA;
-		}
-		var da1 = DA*factorX;
-
-		if(DA != -MargenArremetida) {
-			P_vs_DA.push(da1, Prof12);
-		}
-		
-	}
+	var P_vs_PP = arrays_densidades[0];
+	var P_vs_DL = arrays_densidades[1];
+	var P_vs_DA = arrays_densidades[2];
+	var P_vs_PF = arrays_densidades[3];
 
 	// Tomo en cuenta el array de mayor longitud, que debe ser siempre P_vs_PP
 	var datosPP = P_vs_PP.length;
@@ -569,6 +572,7 @@ function trazarCurva()
 		i = i+2; // Con esto me aseguro de que las coordenadas del próximo punto a graficar sean las mismas del último punto graficado para poder unir las líneas//
 	}
 }
+
 
 // AÑADIR EL EVENTO DE BORRAR EL GRÁFICO AL OTRO BOTÓN DE HTML //
 var boton_borrar = document.getElementById("borrar_curvas");
@@ -639,91 +643,14 @@ function autoLineas()
 	var ultimaProf = (document.getElementById("PT").value) * factorY;
 
 	// ***GRAFICAR LÍNEAS DE DISEÑO*** //
-
-	// CREAR LOS ARRAYS PARA LOS DATOS
-	var tabla = document.getElementById("tabla");
-	var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
-	
-	var P_vs_PP = [];
-
 	var MargenViaje = Number(document.getElementById("margen_viaje").value);
-	var P_vs_DL = [];
-
-	var P_vs_PF = [];
-
 	var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-	var P_vs_DA = [];
-
-	var m;
-	for(m=0; m<=filas_cuerpotabla-1; m=m+1)
-	{
-		// Prof vs PP //
-		var cuerpo_tabla = document.getElementById("cuerpotabla");
-		var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
-		var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
-		var Prof_1 = celda1_prof.firstElementChild;
-		var Prof1 = (Prof_1.value)*factorY;
-		
-		var celda1_pporo = celda1_prof.nextElementSibling;
-		var PreP_1 = celda1_pporo.firstElementChild;
-		var PreP1 = (PreP_1.value)*factorX;
-
-		if(PreP1 != 0) {
-			P_vs_PP.push(PreP1, Prof1);
-		}
-		
-
-		// Prof vs DL //
-		var DL = Number((PreP_1.value)) + MargenViaje;
-		var celda1_dl = celda1_pporo.nextElementSibling;
-		var dl_1 = celda1_dl.firstElementChild;
-		if(DL == MargenViaje) // Si la presión de poro es 0 (o celda vacía) la celda de densidad de lodo no mostrará nada
-		{
-			dl_1.innerHTML = "";
-		}
-		else
-		{
-			dl_1.innerHTML = DL;
-		}
-		var dl1 = DL*factorX;
-
-		if(DL != MargenViaje) {
-			P_vs_DL.push(dl1, Prof1);
-		}
-		
-
-		// Prof vs PF //
-		var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
-		var Prof1_2 = celda1_prof2.firstElementChild;
-		var Prof12 = (Prof1_2.value)*factorY;
-
-		var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
-		var PreF_1 = celda1_pfrac.firstElementChild;
-		var PreF1 = (PreF_1.value)*factorX;
-
-		if(PreF1 !=0) {
-			P_vs_PF.push(PreF1, Prof12);
-		}
-		
-
-		// Prof vs DA //
-		var DA = Number((PreF_1.value)) - MargenArremetida;
-		var celda1_da = celda1_prof2.nextElementSibling;
-		var da_1 = celda1_da.firstElementChild;
-		if(DA == -MargenArremetida)// Si la presión de fractura es 0 (o celda vacía) la celda de densidad de arremetida no mostrará nada
-		{
-			da_1.innerHTML = "";
-		}
-		else
-		{
-			da_1.innerHTML = DA;
-		}
-		var da1 = DA*factorX;
-
-		if(DA != -MargenArremetida) {
-			P_vs_DA.push(da1, Prof12);
-		}
-	}
+	
+	var arrays_densidades = crearArray();
+	var P_vs_PP = arrays_densidades[0];
+	var P_vs_DL = arrays_densidades[1];
+	var P_vs_DA = arrays_densidades[2];
+	var P_vs_PF = arrays_densidades[3];
 
 	var x = ultimaDL;
 	var y = ultimaProf;
@@ -780,7 +707,6 @@ function autoLineas()
 			}
 		}
 
-
 		// CICLO PARA QUE LA LÍNEA HORIZONTAL DE PROFUNDIDAD INTERSECTE A LA LÍNEA DE DENSIDAD DE LODO
 		var p;
 		var datosDL = P_vs_DL.length;
@@ -831,7 +757,6 @@ function autoLineas()
 
 	x = auto2;
 	y = auto1;
-
 	}
 
 	lienzo.fillText(ultimaProf/factorY +"'", ancho + margen + 5, ultimaProf + margen); // Mostrar valor de profundidad final en canvas //
@@ -841,10 +766,6 @@ function autoLineas()
 		auto1 = 0;
 		dibujarLineaDiseno("black", x + margen, y + margen, x + margen, auto1 + margen);
 	}
-
-	// Retornar los arrays para usarlos en otra función
-	var arrays = [P_vs_PP, P_vs_DL, P_vs_DA, P_vs_PF];
-	return arrays;
 }
 
 function image4Curvas() // FUNCIÓN QUE CAPTURA EL CANVAS CON LAS CURVAS DE DENSIDADES //
@@ -1117,31 +1038,16 @@ function lineaDiseno7()
 //PROFUNDIDAD A LA CUAL LA PRESIÓN PASA DE NORMAL A ANORMAL//
 var ProfNormalAnormal = document.getElementById("PNA");
 
-
 //PROFUNDIDADES DE ASENTAMIENTO Y DENSIDADES DE LODO OBSERVADAS EN GRÁFICA//
-
 var ProfRevSup = document.getElementById("PRS");
 var DensidadFracEquivSup = document.getElementById("DFES");
 
 var ProfRevInt = document.getElementById("PRI");
 var DensidadZapInt = document.getElementById("DZI");
 
-
-
-/*
-// CÓDIGO QUE CAUSA QUE AL HACER CLICK AL BOTÓN DE HTML SE ACTIVE LA FUNCIÓN EN JAVASCRIPT //
-var boton = document.getElementById("botoncito");
-boton.addEventListener("click", calculoPorClick);
-*/
-
-// CÓDIGO PARA ACCESAR AL PÁRRAFO DEL RESULTADO DEL ANÁLISIS INTERMEDIO //
-
-
-
 // CÓDIGO QUE CAUSA QUE AL HACER CLICK AL BOTÓN DE HTML SE ACTIVE LA FUNCIÓN EN JAVASCRIPT //
 var boton_ajuste1 = document.getElementById("boton_ajuste_int");
 boton_ajuste1.addEventListener("click", AnalisisIntermedio);
-
 
 // FUNCIÓN QUE EJECUTA LA APARICIÓN DEl INPUT TEXTO //
 function AnalisisIntermedio()
@@ -1156,10 +1062,8 @@ function AnalisisIntermedio()
 	// VARIABLES //
 	var Prof_Normal_Anormal = Number(ProfNormalAnormal.value);
 	
-
 	var Prof_Rev_Int = Number(ProfRevInt.value);
 	var Densidad_Zap_Int = Number(DensidadZapInt.value);
-
 
 	var Delta_Presion_Teorico;
 	var Delta_Presion_Calculado;
@@ -1222,74 +1126,78 @@ function AnalisisIntermedio()
 				var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Zona_Propensa)) + Densidad_Eq_Zona_Propensa).toFixed(2));
 			}
 
-			
 			// CREAR LOS ARRAYS PARA LOS DATOS
-			var tabla = document.getElementById("tabla");
-			var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
+			// var tabla = document.getElementById("tabla");
+			// var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
 			
-			var P_vs_PP = [];
+			// var P_vs_PP = [];
 
-			var MargenViaje = Number(document.getElementById("margen_viaje").value);
-			var P_vs_DL = [];
+			// var MargenViaje = Number(document.getElementById("margen_viaje").value);
+			// var P_vs_DL = [];
 
-			var P_vs_PF = [];
+			// var P_vs_PF = [];
 
-			var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-			var P_vs_DA = [];
+			// var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
+			// var P_vs_DA = [];
 
 
-			var m;
-			for(m=0; m<=filas_cuerpotabla-1; m=m+1)
-			{
-				// Prof vs PP //
-				var cuerpo_tabla = document.getElementById("cuerpotabla");
-				var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
-				var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
-				var Prof_1 = celda1_prof.firstElementChild;
-				var Prof1 = Number(Prof_1.value);
+			// var m;
+			// for(m=0; m<=filas_cuerpotabla-1; m=m+1)
+			// {
+			// 	// Prof vs PP //
+			// 	var cuerpo_tabla = document.getElementById("cuerpotabla");
+			// 	var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
+			// 	var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
+			// 	var Prof_1 = celda1_prof.firstElementChild;
+			// 	var Prof1 = Number(Prof_1.value);
 				
-				var celda1_pporo = celda1_prof.nextElementSibling;
-				var PreP_1 = celda1_pporo.firstElementChild;
-				var PreP1 = Number(PreP_1.value);
+			// 	var celda1_pporo = celda1_prof.nextElementSibling;
+			// 	var PreP_1 = celda1_pporo.firstElementChild;
+			// 	var PreP1 = Number(PreP_1.value);
 
-				P_vs_PP.push(PreP1, Prof1); // Tengo que condicionar para que no agregue las filas vacias
+			// 	P_vs_PP.push(PreP1, Prof1); // Tengo que condicionar para que no agregue las filas vacias
 
-				// Prof vs DL //
-				var DL = PreP1 + MargenViaje;
-				var celda1_dl = celda1_pporo.nextElementSibling;
-				//var dl_1 = celda1_dl.firstElementChild;
+			// 	// Prof vs DL //
+			// 	var DL = PreP1 + MargenViaje;
+			// 	var celda1_dl = celda1_pporo.nextElementSibling;
+			// 	//var dl_1 = celda1_dl.firstElementChild;
 				
-				//var dl1 = DL;
-				P_vs_DL.push(DL, Prof1);
+			// 	//var dl1 = DL;
+			// 	P_vs_DL.push(DL, Prof1);
 
-				// Prof vs PF //
-				var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
-				var Prof1_2 = celda1_prof2.firstElementChild;
-				var Prof12 = (Prof1_2.value);
+			// 	// Prof vs PF //
+			// 	var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
+			// 	var Prof1_2 = celda1_prof2.firstElementChild;
+			// 	var Prof12 = (Prof1_2.value);
 
-				var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
-				var PreF_1 = celda1_pfrac.firstElementChild;
-				var PreF1 = (PreF_1.value);
+			// 	var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
+			// 	var PreF_1 = celda1_pfrac.firstElementChild;
+			// 	var PreF1 = (PreF_1.value);
 
-				if(PreF1 !=0)
-				{
-					P_vs_PF.push(PreF1, Prof12);
-				}
+			// 	if(PreF1 !=0)
+			// 	{
+			// 		P_vs_PF.push(PreF1, Prof12);
+			// 	}
 				
 
-				// Prof vs DA //
-				var DA = PreF1 - MargenArremetida;
-				//var celda1_da = celda1_prof2.nextElementSibling;
-				//var da_1 = celda1_da.firstElementChild;
+			// 	// Prof vs DA //
+			// 	var DA = PreF1 - MargenArremetida;
+			// 	//var celda1_da = celda1_prof2.nextElementSibling;
+			// 	//var da_1 = celda1_da.firstElementChild;
 		
-				//var da1 = DA;
+			// 	//var da1 = DA;
 
-				if(DA != -MargenArremetida) //Si la presión de fractura es 0, que esa línea no se agregue al array
-				{
-					P_vs_DA.push(DA, Prof12);
-				}
-				
-			}
+			// 	if(DA != -MargenArremetida) //Si la presión de fractura es 0, que esa línea no se agregue al array
+			// 	{
+			// 		P_vs_DA.push(DA, Prof12);
+			// 	}
+			// }
+
+			var arrays_densidades = crearArray();
+			var P_vs_PP = arrays_densidades[0];
+			var P_vs_DL = arrays_densidades[1];
+			var P_vs_DA = arrays_densidades[2];
+			var P_vs_PF = arrays_densidades[3];
 			//var w = Densidad_Zap_Int_Correg;
 			var w= 11;
 			
@@ -1303,7 +1211,7 @@ function AnalisisIntermedio()
 
 			for(n=0; n<=datosDL-1; n=n+2)
 			{
-				if(w >= P_vs_DL[n] && w< P_vs_DL[n+2])
+				if(w >= P_vs_DL[n]/factorX && w< P_vs_DL[n+2]/factorX)
 				{
 					pendiente = (P_vs_DL[n+3] - P_vs_DL[n+1]) / (P_vs_DL[n+2] - P_vs_DL[n]);
 					if(pendiente == "Infinity") // Solución si la pendiente es infinito
@@ -1315,8 +1223,8 @@ function AnalisisIntermedio()
 						console.log(pendiente);
 						interseccion = P_vs_DL[n+3] - (pendiente*P_vs_DL[n+2]);
 						console.log(interseccion);
-						var auto1 = pendiente*w + interseccion;
-						console.log("La profundidad de asentameinto corregida del revestidor intermedio por riesgo de pega diferencial es: " + auto1 + " pies.");
+						var auto1 = pendiente*w*factorX + interseccion;
+						console.log("La profundidad de asentameinto corregida del revestidor intermedio por riesgo de pega diferencial es: " + auto1/factorY + " pies.");
 					}
 				}
 			}
@@ -1331,7 +1239,7 @@ function AnalisisIntermedio()
 
 			for(s=0; s<=datosDA-1; s=s+2)
 			{
-				if(auto1 >= P_vs_DA[s+1] && auto1< P_vs_DA[s+3])
+				if(auto1 >= P_vs_DA[s+1] && auto1 < P_vs_DA[s+3])
 				{
 					pendienteDA = (P_vs_DA[s+3] - P_vs_DA[s+1]) / (P_vs_DA[s+2] - P_vs_DA[s]);
 					if(pendienteDA == "Infinity") // Solución si la pendiente es infinito
@@ -1344,12 +1252,12 @@ function AnalisisIntermedio()
 						interseccionDA = P_vs_DA[s+3] - (pendienteDA*P_vs_DA[s+2]);
 						console.log(interseccionDA);
 						var auto2 = (auto1 - interseccionDA)/pendienteDA;
-						console.log("La D.A. a la profundidad de " + auto1 + " pies es: " + auto2 + " lpg.");
+						console.log("La D.A. a la profundidad de " + auto1/factorY + " pies es: " + auto2/factorX + " lpg.");
 					}
 				}
 			}
 
-			dibujarLineaDiseno("pink", margen, auto1*factorY + margen, auto2*factorX + margen, auto1*factorY + margen);
+			dibujarLineaDiseno("pink", margen, auto1 + margen, auto2 + margen, auto1 + margen);
 
 			// CICLO PARA QUE LA LÍNEA VERTICAL DE DA INTERSECTE A LA LÍNEA DE DL
 			var q;
@@ -1361,7 +1269,7 @@ function AnalisisIntermedio()
 
 			for(q=0; q<=datosDL2-1; q=q+2)
 			{
-				if(auto2 >= P_vs_DL[q] && auto2< P_vs_DL[q+2])
+				if(auto2 >= P_vs_DL[q] && auto2 < P_vs_DL[q+2])
 				{
 					pendienteDL2 = (P_vs_DL[q+3] - P_vs_DL[q+1]) / (P_vs_DL[q+2] - P_vs_DL[q]);
 					if(pendienteDL2 == "Infinity") // Solución si la pendiente es infinito
@@ -1373,15 +1281,16 @@ function AnalisisIntermedio()
 						console.log(pendienteDL2);
 						interseccionDL2 = P_vs_DL[q+3] - (pendienteDL2*P_vs_DL[q+2]);
 						console.log(interseccionDL2);
-						var auto3 = (pendienteDL2*auto2 + interseccionDL2).toFixed(0);
-						console.log("La máxima profundidad de asentamiento del revestidor adicional es: " + auto3 + " pies");
+						var auto3 = (pendienteDL2*auto2 + interseccionDL2);
+						console.log(auto3);
+						console.log("La máxima profundidad de asentamiento del revestidor adicional es: " + auto3/factorY + " pies");
 					}
 				}
 			}
-			dibujarLineaDiseno("pink", auto2*factorX + margen, auto1*factorY + margen, auto2*factorX + margen, auto3*factorY + margen);
-			dibujarLineaDiseno("pink", auto2*factorX + margen, auto3*factorY + margen,  margen, auto3*factorY + margen);
+			dibujarLineaDiseno("pink", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
+			dibujarLineaDiseno("pink", auto2 + margen, auto3 + margen, margen, auto3 + margen);
 			
-			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1 + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + auto3 + " pies.";
+			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1/factorY + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + auto3/factorY + " pies.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
