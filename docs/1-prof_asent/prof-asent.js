@@ -24,7 +24,7 @@ var lienzo = d.getContext("2d");
 // Tamaño de canvas responsivo
 var tamano_ventana = window.innerWidth;
 console.log(tamano_ventana);
-if(tamano_ventana >= 320 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	d.setAttribute("width", 280);
 	d.setAttribute("height", 280);
 }
@@ -75,11 +75,8 @@ var medio_margen = margen / 2;
 // 	}
 // }
 
-
-
-
 // CABECERA DE TABLA RESPONSIVA
-if(tamano_ventana >= 0 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	var cabecera_1 = document.getElementById("cabecera1");
 	cabecera_1.innerHTML = "Prof." + "<br>" + "(pies)";
 	var cabecera_2 = document.getElementById("cabecera2");
@@ -228,8 +225,8 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal)
 
 
 // EJES DE COORDENADAS (FUERA DE LA FUNCIÓN DE DIBUJO "trazarCurva" PARA QUE SEA SIEMPRE VISIBLE) //
-dibujarLinea("blue", margen, margen-8, margen, alto + margen + 8); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLinea("blue", margen-8, margen, ancho + margen + 8, margen); // LÍNEA HORIZONTAL SUPERIOR //
+dibujarLinea("black", margen, margen-8, margen, alto + margen + 8); // LÍNEA VERTICAL IZQUIERDA //
+dibujarLinea("black", margen-8, margen, ancho + margen + 8, margen); // LÍNEA HORIZONTAL SUPERIOR //
 
 // LEYENDA DE LÍNEAS DE DENSIDAD //
 var ancho_linea = 0.07*ancho_canvas;
@@ -238,7 +235,7 @@ var separacion_leyendas = 0.3*ancho_canvas;
 var leyendas_y = 0.92*alto_canvas;
 var leyendas_y_abajo = 0.96*alto_canvas;
 
-if(tamano_ventana <= 600) {
+if(tamano_ventana < 600) {
 	var leyenda1_x1 = 0.15*ancho_canvas;
 }
 else {
@@ -249,7 +246,7 @@ var leyenda1_x2 = leyenda1_x1 + ancho_linea;
 var leyenda3_x1 = leyenda1_x2 + separacion_leyendas;
 var leyenda3_x2 = leyenda3_x1 + ancho_linea;
 
-if(tamano_ventana >= 320 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	lienzo.font = '8px "Tahoma"';
 }
 else {
@@ -292,7 +289,7 @@ lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AF
 lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
 lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-if(tamano_ventana >= 320 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
 }
 else {
@@ -308,7 +305,7 @@ var y = margen/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
 lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-if(tamano_ventana >= 320 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
 }
 else {
@@ -425,7 +422,7 @@ function crearArray() {
 			P_vs_DA.push(da1, Prof12);
 		}
 	}
-	var arrays = [P_vs_PP, P_vs_DL, P_vs_DA, P_vs_PF];
+	var arrays = [P_vs_PP, P_vs_DL, P_vs_DA, P_vs_PF, factorX, factorY];
 	return arrays;
 }
 
@@ -456,31 +453,31 @@ function trazarCurva()
 	// EJE Y - GUIONES //
 	for(a = 200; a <= max_prof; a = a+200) // Guión cada 200 pies //
 	{
-		if(tamano_ventana >= 320 && tamano_ventana < 600) {
+		if(tamano_ventana < 600) {
 			if(a % 1000 == 0) // Guión largo cada 1000 pies //
 			{
-				dibujarLinea("blue", margen-4, a*factorY + margen, margen+4, a*factorY + margen);
+				dibujarLinea("black", margen-4, a*factorY + margen, margen+4, a*factorY + margen);
 			}
 			else // Guión corto cada 200 pies //
 			{
-				dibujarLinea("blue", margen-2, a*factorY + margen, margen+2, a*factorY + margen);
+				dibujarLinea("black", margen-2, a*factorY + margen, margen+2, a*factorY + margen);
 			}
 		}
 		else {
 			if(a % 1000 == 0) // Guión largo cada 1000 pies //
 			{
-				dibujarLinea("blue", margen-6, a*factorY + margen, margen+6, a*factorY + margen);
+				dibujarLinea("black", margen-6, a*factorY + margen, margen+6, a*factorY + margen);
 			}
 			else // Guión corto cada 200 pies //
 			{
-				dibujarLinea("blue", margen-4, a*factorY + margen, margen+4, a*factorY + margen);
+				dibujarLinea("black", margen-4, a*factorY + margen, margen+4, a*factorY + margen);
 			}
 		}
 		
 	}
 
 	// EJE Y - VALORES //
-	if(tamano_ventana >= 320 && tamano_ventana < 600){
+	if(tamano_ventana < 600){
 		lienzo.font = '7px "Tahoma"';
 		lienzo.fillStyle = "black";
 	}
@@ -492,7 +489,7 @@ function trazarCurva()
 	for(a = 1000; a <= max_prof; a = a+1000)
 	{
 		lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-		if(tamano_ventana >= 320 && tamano_ventana < 600) {
+		if(tamano_ventana < 600) {
 			lienzo.translate(margen-5,a*factorY+3 + margen); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 		}
 		else {
@@ -506,28 +503,28 @@ function trazarCurva()
 	// EJE X - GUIONES //
 	for(a = 0.5; a <= max_densidad; a = a+0.5)
 	{
-		if(tamano_ventana >= 320 && tamano_ventana < 600) {
+		if(tamano_ventana < 600) {
 			if(a % 2 == 0)
 			{
-				dibujarLinea("blue", a*factorX + margen, margen-4, a*factorX + margen, margen+4); // Guiones largos para valores pares //
+				dibujarLinea("black", a*factorX + margen, margen-4, a*factorX + margen, margen+4); // Guiones largos para valores pares //
 			}
 			else
 			{
-				dibujarLinea("blue", a*factorX + margen, margen-2, a*factorX + margen, margen+2); // Guiones cortos para los demás valores //
+				dibujarLinea("black", a*factorX + margen, margen-2, a*factorX + margen, margen+2); // Guiones cortos para los demás valores //
 			}
 		}
 		else {
 			if(a % 2 == 0) {
-			dibujarLinea("blue", a*factorX + margen, margen-6, a*factorX + margen, margen+6); // Guiones largos para valores pares //
+			dibujarLinea("black", a*factorX + margen, margen-6, a*factorX + margen, margen+6); // Guiones largos para valores pares //
 			}
 			else {
-				dibujarLinea("blue", a*factorX + margen, margen-4, a*factorX + margen, margen+4); // Guiones cortos para los demás valores //
+				dibujarLinea("black", a*factorX + margen, margen-4, a*factorX + margen, margen+4); // Guiones cortos para los demás valores //
 			}
 		}
 	}
 
 	// EJE X - VALORES //
-	if(tamano_ventana >= 320 && tamano_ventana < 600){
+	if(tamano_ventana < 600){
 		lienzo.font = '8px "Tahoma"';
 		lienzo.fillStyle = "black";
 	}
@@ -833,7 +830,7 @@ var boton8 = document.getElementById("botoncito8");
 boton8.addEventListener("click", lineaDiseno7);
 
 // CÓDIGO PARA CAMBIAR EL TEXTO DE LOS BOTONES SI LA VENTANA DEL NAVEGADOR ES PEQUEÑA
-if(tamano_ventana >= 320 && tamano_ventana < 600) {
+if(tamano_ventana < 600) {
 	boton2.innerText = "Trazar";
 	boton3.innerText = "Trazar";
 	boton4.innerText = "Trazar";
@@ -1048,6 +1045,7 @@ var DensidadZapInt = document.getElementById("DZI");
 // CÓDIGO QUE CAUSA QUE AL HACER CLICK AL BOTÓN DE HTML SE ACTIVE LA FUNCIÓN EN JAVASCRIPT //
 var boton_ajuste1 = document.getElementById("boton_ajuste_int");
 boton_ajuste1.addEventListener("click", AnalisisIntermedio);
+boton_ajuste1.addEventListener("click", revestidorAdicional);
 
 // FUNCIÓN QUE EJECUTA LA APARICIÓN DEl INPUT TEXTO //
 function AnalisisIntermedio()
@@ -1126,78 +1124,12 @@ function AnalisisIntermedio()
 				var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Zona_Propensa)) + Densidad_Eq_Zona_Propensa).toFixed(2));
 			}
 
-			// CREAR LOS ARRAYS PARA LOS DATOS
-			// var tabla = document.getElementById("tabla");
-			// var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
-			
-			// var P_vs_PP = [];
-
-			// var MargenViaje = Number(document.getElementById("margen_viaje").value);
-			// var P_vs_DL = [];
-
-			// var P_vs_PF = [];
-
-			// var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-			// var P_vs_DA = [];
-
-
-			// var m;
-			// for(m=0; m<=filas_cuerpotabla-1; m=m+1)
-			// {
-			// 	// Prof vs PP //
-			// 	var cuerpo_tabla = document.getElementById("cuerpotabla");
-			// 	var fila1_cuerpo_tabla = cuerpo_tabla.children[m];
-			// 	var celda1_prof = fila1_cuerpo_tabla.firstElementChild;
-			// 	var Prof_1 = celda1_prof.firstElementChild;
-			// 	var Prof1 = Number(Prof_1.value);
-				
-			// 	var celda1_pporo = celda1_prof.nextElementSibling;
-			// 	var PreP_1 = celda1_pporo.firstElementChild;
-			// 	var PreP1 = Number(PreP_1.value);
-
-			// 	P_vs_PP.push(PreP1, Prof1); // Tengo que condicionar para que no agregue las filas vacias
-
-			// 	// Prof vs DL //
-			// 	var DL = PreP1 + MargenViaje;
-			// 	var celda1_dl = celda1_pporo.nextElementSibling;
-			// 	//var dl_1 = celda1_dl.firstElementChild;
-				
-			// 	//var dl1 = DL;
-			// 	P_vs_DL.push(DL, Prof1);
-
-			// 	// Prof vs PF //
-			// 	var celda1_prof2 = celda1_dl.nextElementSibling.nextElementSibling;
-			// 	var Prof1_2 = celda1_prof2.firstElementChild;
-			// 	var Prof12 = (Prof1_2.value);
-
-			// 	var celda1_pfrac = celda1_prof2.nextElementSibling.nextElementSibling;
-			// 	var PreF_1 = celda1_pfrac.firstElementChild;
-			// 	var PreF1 = (PreF_1.value);
-
-			// 	if(PreF1 !=0)
-			// 	{
-			// 		P_vs_PF.push(PreF1, Prof12);
-			// 	}
-				
-
-			// 	// Prof vs DA //
-			// 	var DA = PreF1 - MargenArremetida;
-			// 	//var celda1_da = celda1_prof2.nextElementSibling;
-			// 	//var da_1 = celda1_da.firstElementChild;
-		
-			// 	//var da1 = DA;
-
-			// 	if(DA != -MargenArremetida) //Si la presión de fractura es 0, que esa línea no se agregue al array
-			// 	{
-			// 		P_vs_DA.push(DA, Prof12);
-			// 	}
-			// }
-
 			var arrays_densidades = crearArray();
 			var P_vs_PP = arrays_densidades[0];
 			var P_vs_DL = arrays_densidades[1];
 			var P_vs_DA = arrays_densidades[2];
 			var P_vs_PF = arrays_densidades[3];
+
 			//var w = Densidad_Zap_Int_Correg;
 			var w= 11;
 			
@@ -1207,7 +1139,6 @@ function AnalisisIntermedio()
 			var datosDL = P_vs_DL.length;
 			var pendiente;
 			var interseccion;
-			//var cuerpotabla_rev = document.getElementById("tabla_rev");
 
 			for(n=0; n<=datosDL-1; n=n+2)
 			{
@@ -1257,7 +1188,7 @@ function AnalisisIntermedio()
 				}
 			}
 
-			dibujarLineaDiseno("pink", margen, auto1 + margen, auto2 + margen, auto1 + margen);
+			// dibujarLineaDiseno("pink", margen, auto1 + margen, auto2 + margen, auto1 + margen);
 
 			// CICLO PARA QUE LA LÍNEA VERTICAL DE DA INTERSECTE A LA LÍNEA DE DL
 			var q;
@@ -1287,10 +1218,10 @@ function AnalisisIntermedio()
 					}
 				}
 			}
-			dibujarLineaDiseno("pink", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
-			dibujarLineaDiseno("pink", auto2 + margen, auto3 + margen, margen, auto3 + margen);
+			// dibujarLineaDiseno("pink", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
+			// dibujarLineaDiseno("pink", auto2 + margen, auto3 + margen, margen, auto3 + margen);
 			
-			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + auto1/factorY + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + auto3/factorY + " pies.";
+			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
@@ -1298,6 +1229,26 @@ function AnalisisIntermedio()
 	{
 		alert("Por favor introduzca los datos requeridos para realizar el análisis:\n\n* Profundidad donde la presión cambia de normal a anormal.\n* Profundidad de Asentamiento del Revestidor Intermedio.\n* Densidad de Lodo en Zapata del Revestidor Intermedio.");
 	}
+
+	var datos = [Densidad_Zap_Int, Prof_Rev_Int, Densidad_Zap_Int_Correg, auto1/factorY, auto2/factorX, auto3/factorY];
+	return datos;
+}
+
+function revestidorAdicional() {
+	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
+	var max_densidad = document.getElementById("max_den_graf").value;
+	var max_prof = document.getElementById("max_prof_graf").value;
+
+	var factorX = ancho / max_densidad;
+	var factorY = alto / max_prof;
+
+	var datos_rev_adicional = AnalisisIntermedio();
+	var auto1 = datos_rev_adicional[3]*factorY;
+	var auto2 = datos_rev_adicional[4]*factorX;
+	var auto3 = datos_rev_adicional[5]*factorY;
+	dibujarLineaDiseno("#9039E3", margen, auto1 + margen, auto2 + margen, auto1 + margen);
+	dibujarLineaDiseno("#9039E3", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
+	dibujarLineaDiseno("#9039E3", auto2 + margen, auto3 + margen, margen, auto3 + margen);
 }
 
 // ANÁLISIS DEL REVESTIDOR SUPERFICIAL //
@@ -1310,10 +1261,22 @@ function AnalisisSuperficial()
 	var Prof_Rev_Sup = Number(ProfRevSup.value);
 	var Densidad_Frac_Equiv_Sup = Number(DensidadFracEquivSup.value);
 
-	var Prof_Rev_Int = Number(ProfRevInt.value);
-	var Densidad_Zap_Int = Number(DensidadZapInt.value);
+	var datos_itermedio = AnalisisIntermedio();
+	var Densidad_Zap_Int = datos_itermedio[0];
+	var Prof_Rev_Int = datos_itermedio[1];
+	var Densidad_Zap_Int_Correg = datos_itermedio[2];
+	var auto1 = datos_itermedio[3];
 
-	var Densidad_Equiv_Fluido = Densidad_Zap_Int + (Prof_Rev_Int / Prof_Rev_Sup) * 0.5;
+	if(Densidad_Zap_Int_Correg == undefined) {
+		var Densidad_Equiv_Fluido = Densidad_Zap_Int + (Prof_Rev_Int / Prof_Rev_Sup) * 0.5;
+		console.log("La profundidad del intermedio no fue corregida");
+		console.log("La densidad eq. del fluido es: " + Densidad_Equiv_Fluido);
+	}
+	else {
+		var Densidad_Equiv_Fluido = Densidad_Zap_Int_Correg + (auto1 / Prof_Rev_Sup) * 0.5;
+		console.log("La profundidad del intermedio sí fue corregida");
+		console.log("La densidad eq. del fluido es: " + Densidad_Equiv_Fluido);
+	}
 
 	if(Prof_Rev_Int != "" && Densidad_Zap_Int != "" && Prof_Rev_Sup != "" && Densidad_Frac_Equiv_Sup != "")
 	{
@@ -1324,7 +1287,6 @@ function AnalisisSuperficial()
 		}
 		else
 		{
-			
 			var w = "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.";
 			document.getElementById("resultadoS").innerHTML = w;
 		}
