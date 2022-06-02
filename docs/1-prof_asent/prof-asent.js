@@ -473,7 +473,6 @@ function trazarCurva()
 				dibujarLinea("black", margen-4, a*factorY + margen, margen+4, a*factorY + margen);
 			}
 		}
-		
 	}
 
 	// EJE Y - VALORES //
@@ -515,7 +514,7 @@ function trazarCurva()
 		}
 		else {
 			if(a % 2 == 0) {
-			dibujarLinea("black", a*factorX + margen, margen-6, a*factorX + margen, margen+6); // Guiones largos para valores pares //
+				dibujarLinea("black", a*factorX + margen, margen-6, a*factorX + margen, margen+6); // Guiones largos para valores pares //
 			}
 			else {
 				dibujarLinea("black", a*factorX + margen, margen-4, a*factorX + margen, margen+4); // Guiones cortos para los demás valores //
@@ -538,7 +537,7 @@ function trazarCurva()
 		lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
 		lienzo.fillText(a, a*factorX + margen, 0.0855*ancho_canvas);
 	}
-	lienzo.fillText(0, margen-5, 0.085*alto_canvas); // Origen de coordenadas //
+	lienzo.fillText(0, margen-5, 0.0855*alto_canvas); // Origen de coordenadas //
 	lienzo.fillStyle = "purple"; // VALOR DE COLOR PÚRPURA //
 	lienzo.textAlign = "center"; 
 	lienzo.fillText(9, 9*factorX + margen, 0.0855*alto_canvas); // Valor de 9 lpg (Presión Normal) //
@@ -859,15 +858,13 @@ function lineaDiseno()
 	dibujarLineaDiseno("black", x1 + margen, y1 + margen, x2 + margen, y2 + margen);
 
 	var mostrar_y1 = (y1/factorY).toFixed(0);
-	if(mostrar_y1 >= 50)
-	{
+	var mostrar_y2 = (y2/factorY).toFixed(0);
+	
+	if(y1 > y2) {
 		lienzo.textAlign = "left";
 		lienzo.fillText(mostrar_y1, ancho+margen+5, y1 + margen);
 	}
-	
-	var mostrar_y2 = (y2/factorY).toFixed(0);
-	if(mostrar_y2 >= 50)
-	{
+	else {
 		lienzo.textAlign = "left";
 		lienzo.fillText(mostrar_y2, ancho+margen+5, y2 + margen);
 	}
@@ -888,6 +885,12 @@ function lineaDiseno2()
 	var y4 = Number(document.getElementById("y4").value)* factorY;
 
 	dibujarLineaDiseno("black", x3 + margen, y3 + margen, x4 + margen, y4 + margen);
+
+	if(y3 == y4) {
+		var mostrar_y = (y3/factorY).toFixed(0);
+		lienzo.textAlign = "left";
+		lienzo.fillText(mostrar_y, ancho+margen+5, y3 + margen);
+	}
 }
 
 function lineaDiseno3()
@@ -906,22 +909,10 @@ function lineaDiseno3()
 
 	dibujarLineaDiseno("black", x5 + margen, y5 + margen, x6 + margen, y6 + margen);
 
-	var y2 = Number(document.getElementById("y2").value) * factorY;
-	if(y2 != y5) // como y2 = y5, debo especificar que no se muestre 2 veces el valor
-	{
-		var mostrar_y5 = (y5/factorY).toFixed(0);
-		if(mostrar_y5 >= 50)
-		{
-			lienzo.textAlign = "left";
-			lienzo.fillText(mostrar_y5, ancho+margen+5, y5 + margen);
-		}
-	}
-	
-	var mostrar_y6 = (y6/factorY).toFixed(0);
-	if(mostrar_y6 >= 50)
-	{
+	if(y5 == y6) {
+		var mostrar_y = (y5/factorY).toFixed(0);
 		lienzo.textAlign = "left";
-		lienzo.fillText(mostrar_y6, ancho+margen+5, y6 + margen);
+		lienzo.fillText(mostrar_y, ancho+margen+5, y5 + margen);
 	}
 }
 
@@ -940,6 +931,12 @@ function lineaDiseno4()
 	var y8 = Number(document.getElementById("y8").value)* factorY;
 
 	dibujarLineaDiseno("black", x7 + margen, y7 + margen, x8 + margen, y8 + margen);
+
+	if(y7 == y8) {
+		var mostrar_y = (y7/factorY).toFixed(0);
+		lienzo.textAlign = "left";
+		lienzo.fillText(mostrar_y, ancho+margen+5, y7 + margen);
+	}
 }
 
 function lineaDiseno5()
@@ -958,22 +955,10 @@ function lineaDiseno5()
 
 	dibujarLineaDiseno("black", x9 + margen, y9 + margen, x10 + margen, y10 + margen);
 
-	var y6 = Number(document.getElementById("y6").value)* factorY;
-	if(y6 != y9) // como y6 = y9, debo especificar que no se muestre 2 veces el valor
-	{
-		var mostrar_y9 = (y9/factorY).toFixed(0);
-		if(mostrar_y9 >= 50)
-		{
-			lienzo.textAlign = "left";
-			lienzo.fillText(mostrar_y9, ancho+margen+5, y9 + margen);
-		}
-	}
-	
-	var mostrar_y10 = (y10/factorY).toFixed(0);
-	if(mostrar_y10 >= 50)
-	{
+	if(y9 == y10) {
+		var mostrar_y = (y9/factorY).toFixed(0);
 		lienzo.textAlign = "left";
-		lienzo.fillText(mostrar_y10, ancho+margen+5, y10 + margen);
+		lienzo.fillText(mostrar_y, ancho+margen+5, y9 + margen);
 	}
 }
 
@@ -992,6 +977,12 @@ function lineaDiseno6()
 	var y12 = Number(document.getElementById("y12").value)* factorY;
 
 	dibujarLineaDiseno("black", x11 + margen, y11 + margen, x12 + margen, y12 + margen);
+
+	if(y11 == y12) {
+		var mostrar_y = (y11/factorY).toFixed(0);
+		lienzo.textAlign = "left";
+		lienzo.fillText(mostrar_y, ancho+margen+5, y11 + margen);
+	}
 }
 
 function lineaDiseno7()
@@ -1010,22 +1001,10 @@ function lineaDiseno7()
 
 	dibujarLineaDiseno("black", x13 + margen, y13 + margen, x14 + margen, y14 + margen);
 
-	var y10 = Number(document.getElementById("y10").value)* factorY;
-	if(y10 != y13)
-	{
-		var mostrar_y13 = (y13/factorY).toFixed(0);
-		if(mostrar_y13 >= 50)
-		{
-			lienzo.textAlign = "left";
-			lienzo.fillText(mostrar_y13, ancho+margen+5, y13 + margen);
-		}
-	}
-	
-	var mostrar_y14 = (y14/factorY).toFixed(0);
-	if(mostrar_y14 >= 50)
-	{
+	if(y13 == y14) {
+		var mostrar_y = (y13/factorY).toFixed(0);
 		lienzo.textAlign = "left";
-		lienzo.fillText(mostrar_y14, ancho+margen+5, y14 + margen);
+		lienzo.fillText(mostrar_y, ancho+margen+5, y13 + margen);
 	}	
 }
 
@@ -1034,6 +1013,10 @@ function lineaDiseno7()
 
 //PROFUNDIDAD A LA CUAL LA PRESIÓN PASA DE NORMAL A ANORMAL//
 var ProfNormalAnormal = document.getElementById("PNA");
+
+//PROFUNDIDADES Y DENSIDADES DE LA FORMACIÓN MÁS PROPENSA A CAUSAR PEGA DIFERENCIAL//
+var ProfZonaPropensa = document.getElementById("Valor_tituloPMP");
+var DensidadEqZonaProp = document.getElementById("Valor_tituloDEMP");
 
 //PROFUNDIDADES DE ASENTAMIENTO Y DENSIDADES DE LODO OBSERVADAS EN GRÁFICA//
 var ProfRevSup = document.getElementById("PRS");
@@ -1045,9 +1028,8 @@ var DensidadZapInt = document.getElementById("DZI");
 // CÓDIGO QUE CAUSA QUE AL HACER CLICK AL BOTÓN DE HTML SE ACTIVE LA FUNCIÓN EN JAVASCRIPT //
 var boton_ajuste1 = document.getElementById("boton_ajuste_int");
 boton_ajuste1.addEventListener("click", AnalisisIntermedio);
-boton_ajuste1.addEventListener("click", revestidorAdicional);
 
-// FUNCIÓN QUE EJECUTA LA APARICIÓN DEl INPUT TEXTO //
+// FUNCIÓN QUE EJECUTA LA APARICIÓN DEl TEXTO DEL SPAN //
 function AnalisisIntermedio()
 {
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
@@ -1059,7 +1041,10 @@ function AnalisisIntermedio()
 
 	// VARIABLES //
 	var Prof_Normal_Anormal = Number(ProfNormalAnormal.value);
-	
+
+	var Prof_Zona_Propensa = Number(ProfZonaPropensa.value);
+	var Densidad_Eq_Zona_Propensa = Number(DensidadEqZonaProp.value);
+
 	var Prof_Rev_Int = Number(ProfRevInt.value);
 	var Densidad_Zap_Int = Number(DensidadZapInt.value);
 
@@ -1069,60 +1054,30 @@ function AnalisisIntermedio()
 	var Prof_Rev_Int_Correg;
 	var Densidad_Zap_Int_Correg;
 
-	if(Prof_Normal_Anormal != "" && Prof_Rev_Int != "" && Densidad_Zap_Int != "")
+	if(Prof_Normal_Anormal != "" && Prof_Rev_Int != "" && Densidad_Zap_Int != "" && Prof_Zona_Propensa != "" && Densidad_Eq_Zona_Propensa != "")
 	{
 		if(Prof_Rev_Int > Prof_Normal_Anormal)
 		{
 			Delta_Presion_Teorico = 3000;
 			console.log("El Delta Presión Teórico es " + Delta_Presion_Teorico + " lpc.");
-			Delta_Presion_Calculado = 0.052 * (Densidad_Zap_Int - 9) * Prof_Normal_Anormal;
-			console.log("El Delta Presión Calculado es " + Delta_Presion_Calculado + " lpc.");
 		}
 		else
 		{
 			Delta_Presion_Teorico = 2000;
 			console.log("El Delta Presión Teórico es " + Delta_Presion_Teorico + " lpc.");
-			var y = "El revestidor intermedio será asentado en la zona de Presión Normal, a una profundidad menor a " + Prof_Normal_Anormal + " pies. Por lo tanto, el análisis se lleva a cabo con la Profundidad de la formación más propensa a causar pega diferencial durante su corrida, y su correspondiente Densidad de Poro Equivalente.";
-			document.getElementById("AvisoPNA").innerHTML = y;
-
-			var Prof_Zona_Propensa = Number(prompt("El revestidor intermedio será asentado a una profundidad menor a " + Prof_Normal_Anormal + " pies." + "\nIntroduzca entonces el valor de la Profundidad (pies) de la formación más propensa a causar pega diferencial durante su corrida en la zona de Presión Normal."));
-			var Densidad_Eq_Zona_Propensa = Number(prompt("Introduzca el valor de Densidad de Poro Equivalente (lpg.) correspondiente a " + Prof_Zona_Propensa + " pies."));
-			
-			var aviso_int = document.getElementById("container-aviso-int");
-			aviso_int.style.display = "block";
-
-			var tituloPMP = document.getElementById("tituloPMP");
-			tituloPMP.style.display = "block";
-			
-			document.getElementById("Valor_tituloPMP").innerHTML = Prof_Zona_Propensa;
-			
-
-			var tituloDEMP = document.getElementById("tituloDEMP");
-			tituloDEMP.style.display = "block";
-			
-			document.getElementById("Valor_tituloDEMP").innerHTML = Densidad_Eq_Zona_Propensa;
-
-			Delta_Presion_Calculado = 0.052 * (Densidad_Zap_Int - Densidad_Eq_Zona_Propensa) * Prof_Zona_Propensa;
-			console.log("El Delta Presión Calculado es " + Delta_Presion_Calculado + " lpc.");
 		}
 
+		Delta_Presion_Calculado = 0.052 * (Densidad_Zap_Int - Densidad_Eq_Zona_Propensa) * Prof_Zona_Propensa;
+		console.log("El Delta Presión Calculado es " + Delta_Presion_Calculado + " lpc.");
 
 		if(Delta_Presion_Calculado < Delta_Presion_Teorico)
 		{
 			var x = "El revestidor intermedio PUEDE ASENTARSE a la profundidad indicada sin riesgo de pega diferencial.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
-
 		else
 		{
-			if(Delta_Presion_Teorico == 3000)
-			{
-				var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Normal_Anormal)) + 9).toFixed(2));
-			}
-			else if(Delta_Presion_Teorico == 2000)
-			{
-				var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Zona_Propensa)) + Densidad_Eq_Zona_Propensa).toFixed(2));
-			}
+			var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Zona_Propensa)) + Densidad_Eq_Zona_Propensa).toFixed(2));
 
 			var arrays_densidades = crearArray();
 			var P_vs_PP = arrays_densidades[0];
@@ -1166,7 +1121,6 @@ function AnalisisIntermedio()
 			var datosDA = P_vs_DA.length;
 			var pendienteDA;
 			var interseccionDA;
-			//var cuerpotabla_rev = document.getElementById("tabla_rev");
 
 			for(s=0; s<=datosDA-1; s=s+2)
 			{
@@ -1188,7 +1142,6 @@ function AnalisisIntermedio()
 				}
 			}
 
-			// dibujarLineaDiseno("pink", margen, auto1 + margen, auto2 + margen, auto1 + margen);
 
 			// CICLO PARA QUE LA LÍNEA VERTICAL DE DA INTERSECTE A LA LÍNEA DE DL
 			var q;
@@ -1196,7 +1149,6 @@ function AnalisisIntermedio()
 			var datosDL2 = P_vs_DL.length;
 			var pendienteDL2;
 			var interseccionDL2;
-			//var cuerpotabla_rev = document.getElementById("tabla_rev");
 
 			for(q=0; q<=datosDL2-1; q=q+2)
 			{
@@ -1218,67 +1170,41 @@ function AnalisisIntermedio()
 					}
 				}
 			}
-			// dibujarLineaDiseno("pink", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
-			// dibujarLineaDiseno("pink", auto2 + margen, auto3 + margen, margen, auto3 + margen);
 			
-			var x = "El revestidor intermedio NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en el hoyo intermedio es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Por lo tanto, la Profundidad de Asentamiento corregida para el Revestidor Intermedio es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo resultante de asentar el revestidor intermedio más arriba de lo planeado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies.";
+			var x = "El revestidor NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, la cual puede estar comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
 	else
 	{
-		alert("Por favor introduzca los datos requeridos para realizar el análisis:\n\n* Profundidad donde la presión cambia de normal a anormal.\n* Profundidad de Asentamiento del Revestidor Intermedio.\n* Densidad de Lodo en Zapata del Revestidor Intermedio.");
+		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningun campo vacío.");
 	}
 
 	var datos = [Densidad_Zap_Int, Prof_Rev_Int, Densidad_Zap_Int_Correg, auto1/factorY, auto2/factorX, auto3/factorY];
 	return datos;
 }
 
-function revestidorAdicional() {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
 
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
-	var datos_rev_adicional = AnalisisIntermedio();
-	var auto1 = datos_rev_adicional[3]*factorY;
-	var auto2 = datos_rev_adicional[4]*factorX;
-	var auto3 = datos_rev_adicional[5]*factorY;
-	dibujarLineaDiseno("#9039E3", margen, auto1 + margen, auto2 + margen, auto1 + margen);
-	dibujarLineaDiseno("#9039E3", auto2 + margen, auto1 + margen, auto2 + margen, auto3 + margen);
-	dibujarLineaDiseno("#9039E3", auto2 + margen, auto3 + margen, margen, auto3 + margen);
-}
-
-// ANÁLISIS DEL REVESTIDOR SUPERFICIAL //
-
+// ANÁLISIS DEL REVESTIDOR SUPERFICIAL (ARREMETIDA) //
 var boton_ajuste2 = document.getElementById("boton_ajuste_sup");
 boton_ajuste2.addEventListener("click", AnalisisSuperficial);
+
+// VARIABLES NECESARIAS
+var ProfProxRev = document.getElementById("PProxR");
+var DenProxRev = document.getElementById("DProxR");
 
 function AnalisisSuperficial()
 {
 	var Prof_Rev_Sup = Number(ProfRevSup.value);
 	var Densidad_Frac_Equiv_Sup = Number(DensidadFracEquivSup.value);
 
-	var datos_itermedio = AnalisisIntermedio();
-	var Densidad_Zap_Int = datos_itermedio[0];
-	var Prof_Rev_Int = datos_itermedio[1];
-	var Densidad_Zap_Int_Correg = datos_itermedio[2];
-	var auto1 = datos_itermedio[3];
+	var Prof_Prox_Rev = Number(ProfProxRev.value);
+	var Den_Prox_Rev = Number(DenProxRev.value);
 
-	if(Densidad_Zap_Int_Correg == undefined) {
-		var Densidad_Equiv_Fluido = Densidad_Zap_Int + (Prof_Rev_Int / Prof_Rev_Sup) * 0.5;
-		console.log("La profundidad del intermedio no fue corregida");
-		console.log("La densidad eq. del fluido es: " + Densidad_Equiv_Fluido);
-	}
-	else {
-		var Densidad_Equiv_Fluido = Densidad_Zap_Int_Correg + (auto1 / Prof_Rev_Sup) * 0.5;
-		console.log("La profundidad del intermedio sí fue corregida");
-		console.log("La densidad eq. del fluido es: " + Densidad_Equiv_Fluido);
-	}
+	var Densidad_Equiv_Fluido = Den_Prox_Rev + (Prof_Prox_Rev / Prof_Rev_Sup) * 0.5;
+	console.log("La densidad eq. del fluido es: " + Densidad_Equiv_Fluido);
 
-	if(Prof_Rev_Int != "" && Densidad_Zap_Int != "" && Prof_Rev_Sup != "" && Densidad_Frac_Equiv_Sup != "")
+	if(Prof_Prox_Rev != "" && Den_Prox_Rev != "" && Prof_Rev_Sup != "" && Densidad_Frac_Equiv_Sup != "")
 	{
 		if(Densidad_Equiv_Fluido < Densidad_Frac_Equiv_Sup)
 		{
@@ -1293,7 +1219,6 @@ function AnalisisSuperficial()
 	}
 	else
 	{
-		alert("Por favor introduzca los datos requeridos para realizar el análisis:\n\n* Profundidad de Asentamiento del Revestidor Intermedio.\n* Densidad de Lodo en Zapata del Revestidor Intermedio.\n* Profundidad de Asentamiento del Revestidor Superficial.\n* Densidad de Fractura Equivalente en Zapata del Revestidor Superficial.");
+		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningun campo vacío.");
 	}
-
 }
