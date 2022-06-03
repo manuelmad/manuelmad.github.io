@@ -49,32 +49,6 @@ var alto = 0.79* alto_canvas;
 var margen = (ancho_canvas-ancho)/2;
 var medio_margen = margen / 2;
 
-// MOSTRAR Y OCULTAR MENÚ
-
-// var icono_menu = document.getElementById("icono-menu");
-// icono_menu.addEventListener("click", mostrarOcultarMenu);
-
-// var menu_principal = document.getElementById("menu-principal");
-// menu_principal.style.display = "none";
-
-// function mostrarOcultarMenu()
-// {
-// 	if(tamano_ventana >= 320 && tamano_ventana < 600) {
-// 		if(menu_principal.style.display == "none")
-// 		{
-// 			menu_principal.style.display = "block";
-// 		}
-// 		else if(menu_principal.style.display == "block")
-// 		{
-// 			menu_principal.style.display = "none";
-// 		}
-// 	}
-// 	else if(tamano_ventana >= 600) {
-// 		menu_principal.style.display = "block";
-// 		menu_principal.style.display = "flex";
-// 	}
-// }
-
 // CABECERA DE TABLA RESPONSIVA
 if(tamano_ventana < 600) {
 	var cabecera_1 = document.getElementById("cabecera1");
@@ -1072,7 +1046,7 @@ function AnalisisIntermedio()
 
 		if(Delta_Presion_Calculado < Delta_Presion_Teorico)
 		{
-			var x = "El revestidor intermedio PUEDE ASENTARSE a la profundidad indicada sin riesgo de pega diferencial.";
+			var x = "Presion Diferencial Teórica = " + Delta_Presion_Teorico + " lpc." + "<br>" + "Presion Diferencial Calculada = " + Delta_Presion_Calculado.toFixed(1) + " lpc." + "<br>" + "Presion Diferencial Calculada < Presion Diferencial Teórica." + "<br>" + "<br>" + "El revestidor PUEDE ASENTARSE a " + Prof_Rev_Int + " pies sin riesgo de pega diferencial.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 		else
@@ -1110,7 +1084,7 @@ function AnalisisIntermedio()
 						interseccion = P_vs_DL[n+3] - (pendiente*P_vs_DL[n+2]);
 						console.log(interseccion);
 						var auto1 = pendiente*w*factorX + interseccion;
-						console.log("La profundidad de asentameinto corregida del revestidor intermedio por riesgo de pega diferencial es: " + auto1/factorY + " pies.");
+						console.log("La profundidad de asentameinto corregida del revestidor por riesgo de pega diferencial es: " + auto1/factorY + " pies.");
 					}
 				}
 			}
@@ -1171,13 +1145,13 @@ function AnalisisIntermedio()
 				}
 			}
 			
-			var x = "El revestidor NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, la cual puede estar comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies.";
+			var x = "Presion Diferencial Teórica = " + Delta_Presion_Teorico + " lpc." + "<br>" + "Presion Diferencial Calculada = " + Delta_Presion_Calculado.toFixed(1) + " lpc." + "<br>" + "Presion Diferencial Calculada > Presion Diferencial Teórica." + "<br>" + "<br>" + "El revestidor NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, la cual puede estar comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies, siendo esta última la máxima profundidad permisible.";
 			document.getElementById("resultadoI").innerHTML = x;
 		}
 	}
 	else
 	{
-		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningun campo vacío.");
+		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningún campo vacío.");
 	}
 
 	var datos = [Densidad_Zap_Int, Prof_Rev_Int, Densidad_Zap_Int_Correg, auto1/factorY, auto2/factorX, auto3/factorY];
@@ -1219,6 +1193,6 @@ function AnalisisSuperficial()
 	}
 	else
 	{
-		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningun campo vacío.");
+		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningún campo vacío.");
 	}
 }

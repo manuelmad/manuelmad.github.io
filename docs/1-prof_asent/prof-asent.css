@@ -23,6 +23,15 @@ html {
 	--lg: 1.8rem;
 }
 
+table, th, td, tr {
+	border: 0.1rem solid black;
+	border-collapse: collapse;
+}
+
+input, span {
+	font-size: var(--md);
+}
+
 header {
 	background-color: var(--white);
 	position: sticky;
@@ -76,23 +85,18 @@ nav #menu-desplegable {
 	font-size: var(--sm);
 	right: 0rem;
 	top: -23rem;
-	border-radius: 0.5rem;
-	border-top: 0.1rem solid var(--hospital-green);
-	border-right: 0.1rem solid var(--hospital-green);
-	border-bottom: 0.1rem solid var(--hospital-green);
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	transition: 0.5s ease all;
 }
 
 .container__icono-menu:hover > #menu-desplegable {
 	visibility: visible;
-	top: 2rem;
+	top: -3rem;
 }
 
 nav #menu-desplegable li {
 	line-height: 3rem;
-	margin-bottom: 1rem;
-	box-shadow: 0.3rem 0 var(--hospital-green) inset;
+	border: 0.1rem solid var(--white);
 }
 
 nav #menu-desplegable li:last-child {
@@ -102,13 +106,13 @@ nav #menu-desplegable li:last-child {
 nav #menu-desplegable a {
 	text-decoration: none;
 	display: block;
-	color: gray;
+	color: white;
 	padding: 1rem;
 }
 
 nav #menu-desplegable a:active {
-	background-color: var(--hospital-green);
-	color: white;
+	background-color: white;
+	color: var(--hospital-green);
 }
 
 nav #menu-principal {
@@ -184,15 +188,6 @@ label, p {
 	color: var(--white);
 	background-color: var(--very-light-gray);
 	border: 0.1rem solid var(--very-light-gray);
-}
-
-table, th, td, tr {
-	border: 0.1rem solid black;
-	border-collapse: collapse;
-}
-
-input, span {
-	font-size: var(--md);
 }
 
 
