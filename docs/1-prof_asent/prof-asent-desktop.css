@@ -24,6 +24,13 @@ section {
 	margin-right: auto;
 }
 
+.ajuste_int1 h2, .ajuste_sup1 h2 {
+	width: 20rem;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+}
+
 .ajuste_int1 input, .ajuste_sup1 input {
 	width: 20rem;
 }

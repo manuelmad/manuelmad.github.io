@@ -492,11 +492,6 @@ canvas {
 	padding-bottom: 1rem;
 }
 
-.ajuste_int1 h2 {
-	width: 25rem;
-	padding: 0 0.05rem;;
-}
-
 .ajuste_int1 p:last-child, .ajuste_sup1 p:last-child {
 	text-align: center;
 }
@@ -520,17 +515,17 @@ canvas {
 	margin-right: auto;
 }
 
-.ajuste_int1 div {
+/* .ajuste_int1 div {
 	width: 26rem;
 	text-align: justify;
 	padding: 1rem;
 	margin-left: auto;
 	margin-right: auto;
-}
+} */
 
 #tituloPMP, #tituloDEMP {
 	text-align: justify;
-	padding-right: 1rem;
+	/* padding-right: 1rem; */
 }
 
 .ajuste_int1 .boton_ajuste_int {

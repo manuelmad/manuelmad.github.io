@@ -1182,12 +1182,12 @@ function AnalisisSuperficial()
 	{
 		if(Densidad_Equiv_Fluido < Densidad_Frac_Equiv_Sup)
 		{
-			var w = "El revestidor superficial PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies sin riesgo de falla por arremetida.";
+			var w = "Densidad Equivalente de Fractura = " + Densidad_Frac_Equiv_Sup + " lpg." + "<br>" + "Densidad Equivalente del Lodo luego del influjo = " + Densidad_Equiv_Fluido + " lpg." + "<br>" + "Densidad Equivalente del Lodo < Densidad Equivalente de Fractura."+ "<br>"+ "<br>" + "El revestidor superficial PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies sin riesgo de falla por arremetida.";
 			document.getElementById("resultadoS").innerHTML = w;
 		}
 		else
 		{
-			var w = "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.";
+			var w = "Densidad Equivalente de Fractura = " + Densidad_Frac_Equiv_Sup + " lpg." + "<br>" + "Densidad Equivalente del Lodo luego del influjo = " + Densidad_Equiv_Fluido + " lpg." + "<br>" + "Densidad Equivalente del Lodo > Densidad Equivalente de Fractura."+ "<br>"+ "<br>" + "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.";
 			document.getElementById("resultadoS").innerHTML = w;
 		}
 	}
