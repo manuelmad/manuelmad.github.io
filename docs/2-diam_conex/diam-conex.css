@@ -1,9 +1,183 @@
-td
-{
-border: 1px solid black; /* Aparecen los bordes de todas las celdas por separado */
+* {/* El selector universal que aplica las declaraciones en todo el documento */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-table
-{
-border-collapse: collapse; /* Los bordes de la tabla aparecen juntos */
+html {
+	font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en adelante, 1rem = 10px */
+}
+
+:root {
+	--very-light-gray:#C7C7C7;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD982;
+	--very-light-blue:#bad7f1;
+	--white: #FFFFFF;
+	--black: #000000;
+	--ss: 1.2rem;
+	--sm: 1.4rem;
+	--md: 1.5rem;
+	--lg: 1.8rem;
+}
+
+header {
+	background-color: var(--white);
+	position: sticky;
+	top: 0rem;
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--very-light-gray);
+}
+
+.logo-personal {
+    height: 8vh; /*Un poco más pequeño que el header*/
+	margin-left: 2rem;
+}
+
+header nav {
+	height: 100%;
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.icono-menu:hover {
+	cursor: pointer;
+}
+
+.container__icono-menu {
+	position: relative;
+	right: 0;
+}
+
+.icono-menu {
+	position: absolute;
+	margin-top: 0;
+	right: 0rem;
+	top: -2rem;
+	margin-right: 1rem;
+	height: 6vh;
+}
+
+.container__menu-principal, .container__icono-menu, .container__logo-personal {
+	margin: 0;
+}
+
+nav #menu-desplegable {
+    position: absolute;
+	list-style: none;
+    visibility: hidden;
+	font-size: var(--sm);
+	right: 0rem;
+	top: -23rem;
+	background-color: var(--hospital-green);
+	transition: 0.5s ease all;
+}
+
+.container__icono-menu:hover > #menu-desplegable {
+	visibility: visible;
+	top: -3rem;
+}
+
+nav #menu-desplegable li {
+	line-height: 3rem;
+	border: 0.1rem solid var(--white);
+}
+
+nav #menu-desplegable li:last-child {
+	margin-bottom: 0;
+}
+
+nav #menu-desplegable a {
+	text-decoration: none;
+	display: block;
+	color: white;
+	padding: 1rem;
+}
+
+nav #menu-desplegable a:active {
+	background-color: white;
+	color: var(--hospital-green);
+}
+
+nav #menu-principal {
+	position: absolute;
+	visibility: hidden;
+	right: 0;
+}
+
+main {
+	width: 100%;
+}
+
+section {
+	margin: 0 auto;
+}
+
+p, h2, section {
+	margin: 1rem auto 0;
+    width: 30rem;
+    text-align: justify;
+}
+
+h1 {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: var(--md);
+}
+
+h2 {
+    margin-top: 2rem;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: var(--sm);
+}
+
+label, p {
+	font-size: var(--ss);
+}
+
+.container-diametros, .container-conexiones {
+    text-align: center;
+}
+
+.img-diametros, .img-conexiones {
+    width: 30rem;
+}
+
+table, th, td, tr {
+	border: 0.1rem solid black;
+	border-collapse: collapse;
+}
+
+table {
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.tabla td {
+    width: 7rem;
+}
+
+/* .tabla {
+    width: 30rem;
+} */
+
+select {
+    width: 7rem;
+}
+
+.tabla tr > td:first-child {
+    width: 10rem;
+    text-align: center;
 }

@@ -1,291 +1,343 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aplicación web útil para seleccionar el diámetro y tipo de conexión de los revestidores de pozos petroleros.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 	<title>Selección de diámetro y tipo de conexión de los revestidores</title>
 	<link href="diam-conex.css" type="text/css" rel="stylesheet" />
+	<link href="diam-conex-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="diam-conex-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
 </head>
 <body>
+	<header>
+		<div class="container__logo-personal">
+            <img class="logo-personal" src="./imagenes/logo.jpg" alt="logo">
+        </div>
+		<nav>
+			<div class="container__menu-principal">
+				<ul id="menu-principal">
+					<li><a class = "home-diseno" href="../index.html">Menú Principal</a></li>
+					<li><a class = "ventana_secundaria" href="javascript:ventanaSecundaria('./instrucciones/instrucciones.html')">Instrucciones</a></li>
+					<li><a class = "ventana_secundaria2" href="javascript:ventanaSecundaria2('./interp-extrap/interp-extrap.html')">Interpolación/Extrapolación</a></li>
+					<li><a class = "documentacion" href="/">Documentación</a></li>
+				</ul>
+			</div>
+			<div class="container__icono-menu">
+				<img id="icono-menu"  class="icono-menu" src="./imagenes/list.svg" alt="Ícono de Menú">
+				<ul id="menu-desplegable">
+					<li><a class = "home-diseno" href="../index.html">Menú Principal</a></li>
+					<li><a class = "ventana_secundaria" href="javascript:ventanaSecundaria('./instrucciones/instrucciones.html')">Instrucciones</a></li>
+					<li><a class = "ventana_secundaria2" href="javascript:ventanaSecundaria2('./interp-extrap/interp-extrap.html')">Interpolación/Extrapolación</a></li>
+					<li><a class = "documentacion" href="/">Documentación</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<h1>SELECCIÓN DE DIÁMETRO Y TIPO DE CONEXIÓN DE LOS REVESTIDORES</h1>
+		<h2>DIÁMETROS</h2>
 
-	<p><strong>SELECCIÓN DE DIÁMETRO Y TIPO DE CONEXIÓN DE LOS REVESTIDORES</strong></p>
+		<p>Una vez escogidas y ajustadas las profundidades de asentamiento de cada una de las sartas de revestimiento, se procede a seleccionar los diámetros de los mismos.</p>
+	
+		<p>En base a la figura abajo mostrada, seleccione inicialmente de la fila superior el diámetro del revestidor de producción y luego en la siguiente fila el diámetro del hoyo donde se correrá dicho revestidor. Repita el proceso fase a fase mientras continúa la secuencia hacia abajo a través del gráfico.</p>
+	
+		<p class="container-diametros"><img class="img-diametros" src="./imagenes/diametros.png" alt="Se muestra el diagrama de selección de diámetros de hoyos y revestidores"></p>
+		
+		<h2>CONEXIONES</h2>
+		<p>Selecione la conexión de cada revestidor en base al árbol de decisión abajo mostrado.</p>
+	
+		<p class="container-conexiones"><img class="img-conexiones" src="./imagenes/conexiones.png" alt="Se muestra el diagrama de selección de conexiones de los revestidores"></p>
+	
+		<h1>TABLA DE SELECCIONES</h1>
+	
+		<table class="tabla">
+			<thead>
+				<tr>
+					<th></th>
+					<th><strong>Nombre</strong></th>
+					<th><strong>Diámetro</strong></th>
+					<th><strong>Conexión</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Revestidor o camisa</td>
+				  <td>
+					  <select id="nombrelinea1">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea1">
+						  <option value = "1">4"</option>
+						  <option value = "2">4 1/2"</option>
+						  <option value = "3">5"</option>
+						  <option value = "4">5 1/2"</option>
+						  <option value = "5" selected>-----</option>
+					  </select></td>
+				  <td>
+					  <select id="conexionlinea1">
+						  <option value = "1">SLX</option>
+						  <option value = "2">NJO</option>
+						  <option value = "3">STL</option>
+						  <option value = "4">511</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+			  </tr>
+			  <tr>
+				  <td>Mecha y hoyo</td>
+				  <td>
+					  <select id="nombrelinea2">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4">Intermedio II</option>
+						  <option value = "5">Intermedio I</option>
+						  <option value = "6">Intermedio</option>
+						  <option value = "7" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea2">
+						  <option value = "1">4 3/4"</option>
+						  <option value = "2">5 7/8"</option>
+						  <option value = "3">6 1/8"</option>
+						  <option value = "4">6 1/2"</option>
+						  <option value = "5">7 7/8"</option>
+						  <option value = "6" selected>-----</option>
+					  </select>
+				  </td>
+				  <td></td>
+			  </tr>
+			  <tr>
+				  <td>Revestidor o camisa</td>
+				  <td>
+					  <select id="nombrelinea3">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4">Intermedio II</option>
+						  <option value = "5">Intermedio I</option>
+						  <option value = "6">Intermedio</option>
+						  <option value = "7" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea3">
+						  <option value = "1">6 5/8"</option>
+						  <option value = "2">7"</option>
+						  <option value = "3">7 5/8" ó 7 3/4"</option>
+						  <option value = "4">8 5/8"</option>
+						  <option value = "5">9 5/8"</option>
+						  <option value = "6" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="conexionlinea3">
+						  <option value = "1">SLX</option>
+						  <option value = "2">NJO</option>
+						  <option value = "3">STL</option>
+						  <option value = "4">511</option>
+						  <option value = "5">Buttress</option>
+						  <option value = "6">NK3SB</option>
+						  <option value = "7">TC-II</option>
+						  <option value = "8" selected>-----</option>
+					  </select>
+				  </td>
+			  </tr>
+			  <tr>
+				  <td>Mecha y hoyo</td>
+				  <td>
+					  <select id="nombrelinea4">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4">Intermedio II</option>
+						  <option value = "5">Intermedio I</option>
+						  <option value = "6">Intermedio</option>
+						  <option value = "7">Superficial II</option>
+						  <option value = "8">Superficial I</option>
+						  <option value = "9">Superficial</option>
+						  <option value = "10" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea4">
+						  <option value = "1">7 7/8"</option>
+						  <option value = "2">8 1/2"</option>
+						  <option value = "3">8 3/4"</option>
+						  <option value = "4">9 1/2"</option>
+						  <option value = "5">10 5/8"</option>
+						  <option value = "6">12 1/4"</option>
+						  <option value = "7" selected>-----</option>
+					  </select>
+				  </td>
+				  <td></td>
+			  </tr>
+			  <tr>
+				  <td>Revestidor</td>
+				  <td>
+					  <select id="nombrelinea5">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4">Intermedio II</option>
+						  <option value = "5">Intermedio I</option>
+						  <option value = "6">Intermedio</option>
+						  <option value = "7">Superficial II</option>
+						  <option value = "8">Superficial I</option>
+						  <option value = "9">Superficial</option>
+						  <option value = "10" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea5">
+						  <option value = "1">8 5/8"</option>
+						  <option value = "2">9 5/8" ó 9 7/8"</option>
+						  <option value = "3">10 3/4"</option>
+						  <option value = "4">11 3/4" u 11 7/8"</option>
+						  <option value = "5">13 3/8" ó 14"</option>
+						  <option value = "6" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="conexionlinea5">
+						  <option value = "1">Buttress</option>
+						  <option value = "2">NK3SB</option>
+						  <option value = "3">TC-II</option>
+						  <option value = "4" selected>-----</option>
+					  </select>
+				  </td>
+			  </tr>
+			  <tr>
+				  <td>Mecha y hoyo</td>
+				  <td>
+					  <select id="nombrelinea6">
+						  <option value = "1">Producción II</option>
+						  <option value = "2">Producción I</option>
+						  <option value = "3">Producción</option>
+						  <option value = "4">Intermedio II</option>
+						  <option value = "5">Intermedio I</option>
+						  <option value = "6">Intermedio</option>
+						  <option value = "7">Superficial II</option>
+						  <option value = "8">Superficial I</option>
+						  <option value = "9">Superficial</option>
+						  <option value = "10" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea6">
+						  <option value = "1">10 5/8"</option>
+						  <option value = "2">12 1/4"</option>
+						  <option value = "3">14 3/4"</option>
+						  <option value = "4">17 1/2"</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td></td>
+			  </tr>
+			  <tr>
+				  <td>Revestidor</td>
+				  <td><select id="nombrelinea7">
+						  <option value = "1">Intermedio II</option>
+						  <option value = "2">Intermedio I</option>
+						  <option value = "3">Intermedio</option>
+						  <option value = "4">Superficial II</option>
+						  <option value = "5">Superficial I</option>
+						  <option value = "6">Superficial</option>
+						  <option value = "7">Conductor</option>
+						  <option value = "8" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea7">
+						  <option value = "1">11 3/4" u 11 7/8"</option>
+						  <option value = "2">13 3/8" ó 14"</option>
+						  <option value = "3">16"</option>
+						  <option value = "4">20"</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="conexionlinea7">
+						  <option value = "1">Buttress</option>
+						  <option value = "2">NK3SB</option>
+						  <option value = "3">TC-II</option>
+						  <option value = "4">Big Omega</option>
+						  <option value = "5">BTB</option>
+						  <option value = "6" selected>-----</option>
+					  </select>
+				  </td>
+			  </tr>
+			  <tr>
+				  <td>Mecha y hoyo</td>
+				  <td>
+					  <select id="nombrelinea8">
+						  <option value = "1">Superficial II</option>
+						  <option value = "2">Superficial I</option>
+						  <option value = "3">Superficial</option>
+						  <option value = "4">Conductor</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea8">
+						  <option value = "1">14 3/4"</option>
+						  <option value = "2">17 1/2"</option>
+						  <option value = "3">20"</option>
+						  <option value = "4">26"</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td></td>
+			  </tr>
+			  <tr>
+				  <td>Revestidor</td>
+				  <td>
+					  <select id="nombrelinea9">
+						  <option value = "1">Superficial II</option>
+						  <option value = "2">Superficial I</option>
+						  <option value = "3">Superficial</option>
+						  <option value = "4">Conductor</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="diametrolinea9">
+						  <option value = "1">16"</option>
+						  <option value = "2">20"</option>
+						  <option value = "3">24"</option>
+						  <option value = "4">30"</option>
+						  <option value = "5" selected>-----</option>
+					  </select>
+				  </td>
+				  <td>
+					  <select id="conexionlinea9">
+						  <option value = "1">Drillequib</option>
+						  <option value = "2">RL-4S</option>
+						  <option value = "3">Big Omega</option>
+						  <option value = "4">BTB</option>
+						  <option value = "5">Buttress</option>
+						  <option value = "6" selected>-----</option>
+					  </select>
+				  </td>
+			  </tr>
+			</tbody>			
+		</table>
+	</main>
+	<footer>
 
-	<p>Una vez escogidas y ajustadas las profundidades de asentamiento de cada una de las sartas de revestimiento, se procede a seleccionar los diámetros de los mismos.</p>
+	</footer>
 
-	<p>La selección del diámetro del revestidor se realiza según el diámetro del hoyo y la holgura entre el hoyo y el tubular, siendo las líneas continuas las opciones más viables de diseño. Así, se selecciona primero el diámetro del revestidor de producción y siguiendo paso a paso hacia abajo, se van seleccionando los diámetros del hoyo y del siguiente revestidor hasta llegar a la superficie.</p>
-
-	<img src="diametros.png" alt="Se muestra el diagrama de selección de diámetros de hoyos y revestidores">
-
-	<p>Con el fin de reducir los costos de adquisición y aumentar la disponibilidad debido a la posibilidad de intercambio, PDVSA decidió normalizar las juntas, así como el proceso de selección a fin de mantener en un mínimo el número de tipos de juntas utilizadas, por lo cual la conexión de cada revestidor se llevará a cabo en base al árbol de decisión abajo mostrado,</p>
-
-	<img src="conexiones.png" alt="Se muestra el diagrama de selección de conexiones de los revestidores">
-
-	<p><strong>VALORES SELECCIONADOS:</strong></p>
-
-	<table>
-	<tr>
-	  <td></td>
-	  <td><strong>Nombre</strong></td>
-	  <td><strong>Diámetro</strong></td>
-	  <td><strong>Conexión</strong></td>
-	</tr>
-
-	<tr>
-	  <td>Revestidor o camisa</td>
-	  <td><select id="nombrelinea1" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea1" onchange="habilitarProfColgiII();">
-		<option value = "1">4"</option>
-		<option value = "2">4 1/2"</option>
-		<option value = "3">5"</option>
-		<option value = "4">5 1/2"</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	<td><select id="conexionlinea1" onchange="habilitarProfColgiII();">
-		<option value = "1">SLX</option>
-		<option value = "2">NJO</option>
-		<option value = "3">STL</option>
-		<option value = "4">511</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	</tr>
-
-	<tr>
-	  <td>Mecha y hoyo</td>
-	  <td><select id="nombrelinea2" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea2" onchange="habilitarProfColgiII();">
-		<option value = "1">4 3/4"</option>
-		<option value = "2">5 7/8"</option>
-		<option value = "3">6 1/8"</option>
-		<option value = "4">6 1/2"</option>
-		<option value = "5">7 7/8"</option>
-		<option value = "6" selected>-----</option>
-		</select></td>
-	  <td></td>
-	</tr>
-
-	<tr>
-	  <td>Revestidor o camisa</td>
-	  <td><select id="nombrelinea3" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea3" onchange="habilitarProfColgiII();">
-		<option value = "1">6 5/8"</option>
-		<option value = "2">7"</option>
-		<option value = "3">7 5/8" ó 7 3/4"</option>
-		<option value = "4">8 5/8"</option>
-		<option value = "5">9 5/8"</option>
-		<option value = "6" selected>-----</option>
-		</select></td>
-	  <td><select id="conexionlinea3" onchange="habilitarProfColgiII();">
-		<option value = "1">SLX</option>
-		<option value = "2">NJO</option>
-		<option value = "3">STL</option>
-		<option value = "4">511</option>
-		<option value = "5">Buttress</option>
-		<option value = "6">NK3SB</option>
-		<option value = "7">TC-II</option>
-		<option value = "8" selected>-----</option>
-		</select></td>
-	</tr>
-	<tr>
-	  <td>Mecha y hoyo</td>
-	  <td><select id="nombrelinea4" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea4" onchange="habilitarProfColgiII();">
-		<option value = "1">7 7/8"</option>
-		<option value = "2">8 1/2"</option>
-		<option value = "3">8 3/4"</option>
-		<option value = "4">9 1/2"</option>
-		<option value = "5">10 5/8"</option>
-		<option value = "6">12 1/4"</option>
-		<option value = "7" selected>-----</option>
-		</select></td>
-	  <td></td>
-	</tr>
-	<tr>
-	  <td>Revestidor</td>
-	  <td><select id="nombrelinea5" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea5" onchange="habilitarProfColgiII();">
-		<option value = "1">8 5/8"</option>
-		<option value = "2">9 5/8" ó 9 7/8"</option>
-		<option value = "3">10 3/4"</option>
-		<option value = "4">11 3/4" u 11 7/8"</option>
-		<option value = "5">13 3/8" ó 14"</option>
-		<option value = "6" selected>-----</option>
-		</select></td>
-	  <td><select id="conexionlinea5" onchange="habilitarProfColgiII();">
-		<option value = "1">Buttress</option>
-		<option value = "2">NK3SB</option>
-		<option value = "3">TC-II</option>
-		<option value = "4" selected>-----</option>
-		</select></td>
-	</tr>
-	<tr>
-	  <td>Mecha y hoyo</td>
-	  <td><select id="nombrelinea6" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea6" onchange="habilitarProfColgiII();">
-		<option value = "1">10 5/8"</option>
-		<option value = "2">12 1/4"</option>
-		<option value = "3">14 3/4"</option>
-		<option value = "4">17 1/2"</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	  <td></td>
-	</tr>
-	<tr>
-	  <td>Revestidor</td>
-	  <td><select id="nombrelinea7" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea7" onchange="habilitarProfColgiII();">
-		<option value = "1">11 3/4" u 11 7/8"</option>
-		<option value = "2">13 3/8" ó 14"</option>
-		<option value = "3">16"</option>
-		<option value = "4">20"</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	  <td><select id="conexionlinea7" onchange="habilitarProfColgiII();">
-		<option value = "1">Buttress</option>
-		<option value = "2">NK3SB</option>
-		<option value = "3">TC-II</option>
-		<option value = "4">Big Omega</option>
-		<option value = "5">BTB</option>
-		<option value = "6" selected>-----</option>
-		</select></td>
-	</tr>
-	<tr>
-	  <td>Mecha y hoyo</td>
-	  <td><select id="nombrelinea8" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea8" onchange="habilitarProfColgiII();">
-		<option value = "1">14 3/4"</option>
-		<option value = "2">17 1/2"</option>
-		<option value = "3">20"</option>
-		<option value = "4">26"</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	  <td></td>
-	</tr>
-	<tr>
-	  <td>Revestidor</td>
-	  <td><select id="nombrelinea9" onchange="habilitarProfColgiII();">
-		<option value = "1">Producción II</option>
-		<option value = "2">Producción I</option>
-		<option value = "3">Producción</option>
-		<option value = "4">Intermedio II</option>
-		<option value = "5">Intermedio I</option>
-		<option value = "6">Intermedio</option>
-		<option value = "7">Superficial II</option>
-		<option value = "8">Superficial I</option>
-		<option value = "9">Superficial</option>
-		<option value = "10">Conductor</option>
-		<option value = "11" selected>-----</option>
-		</select></td>
-	  <td><select id="diametrolinea9" onchange="habilitarProfColgiII();">
-		<option value = "1">16"</option>
-		<option value = "2">20"</option>
-		<option value = "3">24"</option>
-		<option value = "4">30"</option>
-		<option value = "5" selected>-----</option>
-		</select></td>
-	  <td><select id="conexionlinea9" onchange="habilitarProfColgiII();">
-		<option value = "1">Drillequib</option>
-		<option value = "2">RL-4S</option>
-		<option value = "3">Big Omega</option>
-		<option value = "4">BTB</option>
-		<option value = "5">Buttress</option>
-		<option value = "6" selected>-----</option>
-		</select></td>
-	</tr>
-	</table>
 </body>
 </html>

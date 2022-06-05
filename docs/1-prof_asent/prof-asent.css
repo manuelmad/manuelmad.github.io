@@ -252,7 +252,7 @@ label, p {
 	line-height: 1.5rem;
 }
 
-#cuerpotabla > tr { /*Para que no se desplace la tabla cone l hover*/
+#cuerpotabla > tr { /*Para que no se desplace la tabla con el hover*/
 	height: 2.1rem;
 }
 
@@ -269,6 +269,7 @@ label, p {
 	border: 0.1rem solid var(--black);
 }
 
+/* CÓDIGO PARA LA SECCIÓN DE LA GRÁFICA */
 .grafica {
 	text-align: center;	
 }
@@ -402,9 +403,6 @@ canvas {
 	border: 0.1rem solid var(--very-light-gray);
 }
 
-
-/* CÓDIGO PARA LA TABLA DE TRAZAR LÍNEAS (1º PARTE) */
-
 .tabla_rev {
 	margin-top: 1rem;
 }
@@ -420,7 +418,6 @@ canvas {
 .tabla_rev_fila1 td {
 	background: var(--hospital-green);
 }
-
 
 .div_tablas {
 	/* outline: 1px solid yellow; */
@@ -457,7 +454,6 @@ canvas {
 	margin-bottom: 1rem;
 }
 
-/* Código para los botones de trazar líneas manuales */
 .tabla_lineas_manuales button {
 	height: 2rem;
 	background-color: var(--white);
@@ -480,6 +476,8 @@ canvas {
 	background-color: var(--very-light-gray);
 	border: 0.1rem solid var(--very-light-gray);
 }
+
+/* CÓDIGO PARA LAS SECCIONES DE AJUSTES DE PROFUNDIDADES */
 
 .ajuste_int, .ajuste_sup {
 	margin-bottom: 1rem;
@@ -515,17 +513,8 @@ canvas {
 	margin-right: auto;
 }
 
-/* .ajuste_int1 div {
-	width: 26rem;
-	text-align: justify;
-	padding: 1rem;
-	margin-left: auto;
-	margin-right: auto;
-} */
-
 #tituloPMP, #tituloDEMP {
 	text-align: justify;
-	/* padding-right: 1rem; */
 }
 
 .ajuste_int1 .boton_ajuste_int {

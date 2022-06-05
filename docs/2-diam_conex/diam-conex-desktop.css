@@ -1,0 +1,16 @@
+:root {
+	--very-light-gray:#C7C7C7;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD982;
+	--very-light-blue:#bad7f1;
+	--white: #FFFFFF;
+	--black: #000000;
+	--ss: 1.2rem;
+	--sm: 1.4rem;
+	--md: 1.5rem;
+	--lg: 1.8rem;
+}
+
+nav #menu-principal{
+    font-size: var(--lg);
+}
