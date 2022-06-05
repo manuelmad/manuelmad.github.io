@@ -50,6 +50,85 @@
 		<p class="container-diametros"><img class="img-diametros" src="./imagenes/diametros.png" alt="Se muestra el diagrama de selección de diámetros de hoyos y revestidores"></p>
 		
 		<h2>CONEXIONES</h2>
+		<p>
+			Diámetro externo del revestidor (pulg.):<br>
+		</p>
+		<p>
+			<input type="radio" name="rev1" value="4" id = "rev1-linea1">4"
+			<input type="radio" name="rev1" value="4.5" id = "rev2-linea1">4 1/2"
+			<input type="radio" name="rev1" value="5" id = "rev3-linea1">5"
+			<input type="radio" name="rev1" value="5.5" id = "rev4-linea1">5 1/2"
+		</p>
+		<p>
+			Diámetro del hoyo (pulg.):<br>
+		</p>
+		<p>
+			<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2">4 3/4"
+			<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2">5 7/8"
+			<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2">6 1/8"
+			<input type="radio" name="hoyo1" value="6.5" id = "hoyo4-linea2">6 1/2"
+			<input type="radio" name="hoyo1" value="7.875" id = "hoyo5-linea2">7 7/8"
+		</p>
+
+
+		<p>
+			<label for="nombre-rev">Nombre del revestidor:</label><br>
+			<select id="nombre-rev">
+				<option value = "1">Producción II</option>
+				<option value = "2">Producción I</option>
+				<option value = "3">Producción</option>
+				<option value = "4">Intermedio II</option>
+				<option value = "5">Intermedio I</option>
+				<option value = "6">Intermedio</option>
+				<option value = "7">Superficial II</option>
+				<option value = "8">Superficial I</option>
+				<option value = "9">Superficial</option>
+				<option value = "10">Conductor</option>
+				<option value = "11" selected>-----</option>
+			</select>
+		</p>
+
+	
+		<p>
+			<label for="prof-asent">Profundidad de asentamiento del revestidor (pies.):</label><br>
+			<input id="prof-asent" type="number">
+		</p>
+		<p>
+			<label for="den-zap">Densidad de lodo en zapata del revestidor (lpg.):</label><br>
+			<input id="den-zap" type="number">
+		</p>
+		<p>
+			<label for="inclinacion-hoyo">Máxima inclinación del hoyo (°):</label><br>
+			<input id="inclinacion-hoyo" type="number">
+		</p>
+		<p>
+			<label for="DLS-hoyo">Máxima Dog Leg Severity del hoyo (°/100 pies):</label><br>
+			<input id="DLS-hoyo" type="number">
+		</p>
+		<div>
+			<p>Indique el tipo de sarta de revestimiento:</p>
+			<p>
+				<input type="radio" value="1" id = "tipo-revestidor" checked> Revestidor.<br>
+				<input type="radio" value="0" id = "tipo-camisa"> Camisa.
+			</p>
+		</div>
+		<p>
+			Conexión recomendada:<br>
+			<span id="conex-recom"></span>
+		</p>
+		<p>
+			<label for="conex-rev">Seleccione tipo de conexión:</label><br>
+			<select id="conex-rev">
+				<option value = "1">Drillequib</option>
+				<option value = "2">RL-4S</option>
+				<option value = "3">Big Omega</option>
+				<option value = "4">BTB</option>
+				<option value = "5">Buttress</option>
+				<option value = "11" selected>-----</option>
+			</select>
+		</p>
+		
+	
 		<p>Selecione la conexión de cada revestidor en base al árbol de decisión abajo mostrado.</p>
 	
 		<p class="container-conexiones"><img class="img-conexiones" src="./imagenes/conexiones.png" alt="Se muestra el diagrama de selección de conexiones de los revestidores"></p>
@@ -75,16 +154,17 @@
 						  <option value = "3">Producción</option>
 						  <option value = "4" selected>-----</option>
 					  </select>
-				  </td>
-				  <td>
+					</td>
+					<td>
 					  <select id="diametrolinea1">
 						  <option value = "1">4"</option>
 						  <option value = "2">4 1/2"</option>
 						  <option value = "3">5"</option>
 						  <option value = "4">5 1/2"</option>
 						  <option value = "5" selected>-----</option>
-					  </select></td>
-				  <td>
+					  </select>
+					</td>
+					<td>
 					  <select id="conexionlinea1">
 						  <option value = "1">SLX</option>
 						  <option value = "2">NJO</option>
@@ -338,6 +418,6 @@
 	<footer>
 
 	</footer>
-
+	<script src="diam-conex.js"></script>
 </body>
 </html>

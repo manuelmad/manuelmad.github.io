@@ -122,7 +122,7 @@ section {
 
 p, h2, section {
 	margin: 1rem auto 0;
-    width: 30rem;
+    width: 20rem;
     text-align: justify;
 }
 
@@ -147,12 +147,36 @@ label, p {
 	font-size: var(--ss);
 }
 
+/* input {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+#tipo-revestidor, #tipo-camisa {
+	width: 1.5rem;
+	height: 1.5rem;
+} */
+
 .container-diametros, .container-conexiones {
     text-align: center;
 }
 
 .img-diametros, .img-conexiones {
     width: 30rem;
+}
+
+#conex-recom {
+	height: 3rem;
+	width: 20rem;
+	background-color: var(--text-input-field);
+	display: block;
+	border-radius: 0.8rem;
+	margin: 1rem auto 1rem;
+	padding: 1rem 0.5rem;
+	text-align: justify;
 }
 
 table, th, td, tr {
