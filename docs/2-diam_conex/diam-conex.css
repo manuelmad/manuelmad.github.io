@@ -120,7 +120,7 @@ section {
 	margin: 0 auto;
 }
 
-p, h2, section {
+p, h2, section, form {
 	margin: 1rem auto 0;
     width: 20rem;
     text-align: justify;
@@ -143,7 +143,7 @@ h2 {
 	font-size: var(--sm);
 }
 
-label, p {
+label, p, form {
 	font-size: var(--ss);
 }
 

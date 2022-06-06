@@ -51,23 +51,23 @@
 		
 		<h2>CONEXIONES</h2>
 		<p>
-			Diámetro externo del revestidor (pulg.):<br>
+			Diámetro externo del revestidor (pulg.):
+		</p>
+		<form name="diametrosRevestidores">
+			<input type="radio" name="rev1" value="4" id = "rev1-linea1"> 4"
+			<input type="radio" name="rev1" value="4.5" id = "rev2-linea1"> 4 1/2"
+			<input type="radio" name="rev1" value="5" id = "rev3-linea1"> 5"
+			<input type="radio" name="rev1" value="5.5" id = "rev4-linea1"> 5 1/2"
+		</form>
+		<p>
+			Diámetro del hoyo (pulg.):
 		</p>
 		<p>
-			<input type="radio" name="rev1" value="4" id = "rev1-linea1">4"
-			<input type="radio" name="rev1" value="4.5" id = "rev2-linea1">4 1/2"
-			<input type="radio" name="rev1" value="5" id = "rev3-linea1">5"
-			<input type="radio" name="rev1" value="5.5" id = "rev4-linea1">5 1/2"
-		</p>
-		<p>
-			Diámetro del hoyo (pulg.):<br>
-		</p>
-		<p>
-			<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2">4 3/4"
-			<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2">5 7/8"
-			<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2">6 1/8"
-			<input type="radio" name="hoyo1" value="6.5" id = "hoyo4-linea2">6 1/2"
-			<input type="radio" name="hoyo1" value="7.875" id = "hoyo5-linea2">7 7/8"
+			<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2"> 4 3/4"
+			<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2"> 5 7/8"
+			<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2"> 6 1/8"
+			<input type="radio" name="hoyo1" value="6.5" id = "hoyo4-linea2"> 6 1/2"
+			<input type="radio" name="hoyo1" value="7.875" id = "hoyo5-linea2"> 7 7/8"
 		</p>
 
 
@@ -108,12 +108,12 @@
 		<div>
 			<p>Indique el tipo de sarta de revestimiento:</p>
 			<p>
-				<input type="radio" value="1" id = "tipo-revestidor" checked> Revestidor.<br>
-				<input type="radio" value="0" id = "tipo-camisa"> Camisa.
+				<input type="radio" name="tipo1" value="1" id = "tipo-revestidor" checked> Revestidor.<br>
+				<input type="radio" name="tipo1" value="0" id = "tipo-camisa"> Camisa.
 			</p>
 		</div>
 		<p>
-			Conexión recomendada:<br>
+			<button id="recomendar-conexion">Recomendar conexión</button><br>
 			<span id="conex-recom"></span>
 		</p>
 		<p>

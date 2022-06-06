@@ -1,4 +1,6 @@
+/*************** PRIMER REVESTIDOR **************/
 
+// FUNCIONES ARA MANIPULAR LOS INPUT RADIOS
 function hoyoRevestido() {
     hoyo1Linea2.disabled = false;
     hoyo2Linea2.disabled = false;
@@ -31,6 +33,7 @@ function hoyoRevestido_4() {
     hoyo5Linea2.disabled = false;
 }
 
+// VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
 var rev1Linea1 = document.getElementById("rev1-linea1");
 rev1Linea1.addEventListener("click", hoyoRevestido);
 
@@ -49,7 +52,47 @@ var hoyo3Linea2 = document.getElementById("hoyo3-linea2");
 var hoyo4Linea2 = document.getElementById("hoyo4-linea2");
 var hoyo5Linea2 = document.getElementById("hoyo5-linea2");
 
+// CÓDIGO PARA SELECCIONAR CONEXIÓN
 
+// VARIABLES PARA SELECCIONAR CONEXIÓN
+var profAsent = document.getElementById("prof-asent");
+var prof_asent = Number(profAsent.value);
+
+var denZap = document.getElementById("den-zap");
+var den_zap = Number(denZap.value);
+
+var inclinacionHoyo = document.getElementById("inclinacion-hoyo");
+var inclinacion_hoyo = Number(inclinacionHoyo.value);
+
+var DLSHoyo = document.getElementById("DLS-hoyo");
+var DLS_hoyo = Number(DLSHoyo.value);
+
+var tipoRevestidor = document.getElementById("tipo-revestidor");
+var tipoCamisa = document.getElementById("tipo-camisa");
+
+var tipoSarta;
+if(tipoRevestidor.checked == true) {
+    tipoSarta = "Revestidor";
+    console.log("El revestidor va hasta superficie");
+}
+else if(tipoCamisa.checked == true) {
+    tipoSarta = "Camisa";
+    console.log("El revestidor es camisa colgada");
+}
+
+var boton_recomendar_conexion = document.getElementById("recomendar-conexion");
+// boton_recomendar_conexion.addEventListener("click", recomendarConexion);
+
+var diametrosRevestidores = document.diametrosRevestidores.rev1;
+var longitud_array = diametrosRevestidores.length;
+console.log(diametrosRevestidores, longitud_array);
+// PAra continuar con la manipulación dle grupo de radios https://desarrolloweb.com/articulos/1006.php
+
+// function recomendarConexion() {
+//     if()
+// }
+
+/************ SEGUNDO REVESTIDOR *************/
 
 
 
