@@ -41,97 +41,119 @@
 	</header>
 	<main>
 		<h1>SELECCIÓN DE DIÁMETRO Y TIPO DE CONEXIÓN DE LOS REVESTIDORES</h1>
-		<h2>DIÁMETROS</h2>
-
-		<p>Una vez escogidas y ajustadas las profundidades de asentamiento de cada una de las sartas de revestimiento, se procede a seleccionar los diámetros de los mismos.</p>
-	
-		<p>En base a la figura abajo mostrada, seleccione inicialmente de la fila superior el diámetro del revestidor de producción y luego en la siguiente fila el diámetro del hoyo donde se correrá dicho revestidor. Repita el proceso fase a fase mientras continúa la secuencia hacia abajo a través del gráfico.</p>
-	
-		<p class="container-diametros"><img class="img-diametros" src="./imagenes/diametros.png" alt="Se muestra el diagrama de selección de diámetros de hoyos y revestidores"></p>
-		
-		<h2>CONEXIONES</h2>
-		<p>
-			Diámetro externo del revestidor (pulg.):
-		</p>
-		<form name="diametrosRevestidores">
-			<input type="radio" name="rev1" value="4" id = "rev1-linea1"> 4"
-			<input type="radio" name="rev1" value="4.5" id = "rev2-linea1"> 4 1/2"
-			<input type="radio" name="rev1" value="5" id = "rev3-linea1"> 5"
-			<input type="radio" name="rev1" value="5.5" id = "rev4-linea1"> 5 1/2"
-		</form>
-		<p>
-			Diámetro del hoyo (pulg.):
-		</p>
-		<p>
-			<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2"> 4 3/4"
-			<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2"> 5 7/8"
-			<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2"> 6 1/8"
-			<input type="radio" name="hoyo1" value="6.5" id = "hoyo4-linea2"> 6 1/2"
-			<input type="radio" name="hoyo1" value="7.875" id = "hoyo5-linea2"> 7 7/8"
-		</p>
-
-
-		<p>
-			<label for="nombre-rev">Nombre del revestidor:</label><br>
-			<select id="nombre-rev">
-				<option value = "1">Producción II</option>
-				<option value = "2">Producción I</option>
-				<option value = "3">Producción</option>
-				<option value = "4">Intermedio II</option>
-				<option value = "5">Intermedio I</option>
-				<option value = "6">Intermedio</option>
-				<option value = "7">Superficial II</option>
-				<option value = "8">Superficial I</option>
-				<option value = "9">Superficial</option>
-				<option value = "10">Conductor</option>
-				<option value = "11" selected>-----</option>
-			</select>
-		</p>
-
-	
-		<p>
-			<label for="prof-asent">Profundidad de asentamiento del revestidor (pies.):</label><br>
-			<input id="prof-asent" type="number">
-		</p>
-		<p>
-			<label for="den-zap">Densidad de lodo en zapata del revestidor (lpg.):</label><br>
-			<input id="den-zap" type="number">
-		</p>
-		<p>
-			<label for="inclinacion-hoyo">Máxima inclinación del hoyo (°):</label><br>
-			<input id="inclinacion-hoyo" type="number">
-		</p>
-		<p>
-			<label for="DLS-hoyo">Máxima Dog Leg Severity del hoyo (°/100 pies):</label><br>
-			<input id="DLS-hoyo" type="number">
-		</p>
-		<div>
-			<p>Indique el tipo de sarta de revestimiento:</p>
+		<section>
+			<h2>PRIMERA SARTA</h2>
+			<p>Diámetro externo del revestidor (pulg.):</p>
+			<form name="diametrosRevestidores">
+				<input type="radio" name="rev1" value="4" id = "rev1-linea1"> 4"
+				<input type="radio" name="rev1" value="4.5" id = "rev2-linea1"> 4 1/2"
+				<input type="radio" name="rev1" value="5" id = "rev3-linea1"> 5"
+				<input type="radio" name="rev1" value="5.5" id = "rev4-linea1"> 5 1/2"
+			</form>
+			<p>Diámetro del hoyo (pulg.):</p>
+			<form name="diametrosHoyo">
+				<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2"> 4 3/4"
+				<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2"> 5 7/8"
+				<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2"> 6 1/8"
+				<input type="radio" name="hoyo1" value="6.5" id = "hoyo4-linea2"> 6 1/2"
+				<input type="radio" name="hoyo1" value="7.875" id = "hoyo5-linea2"> 7 7/8"
+			</form>
 			<p>
-				<input type="radio" name="tipo1" value="1" id = "tipo-revestidor" checked> Revestidor.<br>
-				<input type="radio" name="tipo1" value="0" id = "tipo-camisa"> Camisa.
+				<label for="nombre-rev">Nombre del revestidor:</label><br>
+				<select id="nombre-rev">
+					<option value = "1">Producción II</option>
+					<option value = "2">Producción I</option>
+					<option value = "3">Producción</option>
+					<option value = "11" selected>-----</option>
+				</select>
 			</p>
-		</div>
-		<p>
-			<button id="recomendar-conexion">Recomendar conexión</button><br>
-			<span id="conex-recom"></span>
-		</p>
-		<p>
-			<label for="conex-rev">Seleccione tipo de conexión:</label><br>
-			<select id="conex-rev">
-				<option value = "1">Drillequib</option>
-				<option value = "2">RL-4S</option>
-				<option value = "3">Big Omega</option>
-				<option value = "4">BTB</option>
-				<option value = "5">Buttress</option>
-				<option value = "11" selected>-----</option>
-			</select>
-		</p>
+			<p>
+				<label for="prof-asent">Profundidad de asentamiento del revestidor (pies.):</label><br>
+				<input id="prof-asent" type="number">
+			</p>
+			<p>
+				<label for="den-zap">Densidad de lodo en zapata del revestidor (lpg.):</label><br>
+				<input id="den-zap" type="number">
+			</p>
+			<p>
+				<label for="inclinacion-hoyo">Máxima inclinación del hoyo (°):</label><br>
+				<input id="inclinacion-hoyo" type="number">
+			</p>
+			<p>
+				<label for="DLS-hoyo">Máxima Dog Leg Severity del hoyo (°/100 pies):</label><br>
+				<input id="DLS-hoyo" type="number">
+			</p>
+			<p>Indique el tipo de sarta de revestimiento:</p>
+			<form class="tipo-rev" name="tipoRevestimiento">
+				<input type="radio" name="tipo1" value="Revestidor" id = "tipo-revestidor"> Revestidor.
+				<input type="radio" name="tipo1" value="Camisa" id = "tipo-camisa" checked> Camisa.
+			</form>
+			<p><button id="recomendar-conexion">Recomendar conexión</button></p>
+			<p>
+				<label for="conexionlinea1">Seleccione tipo de conexión:</label><br>
+				<select id="conexionlinea1"></select>
+			</p>
+		</section>
 		
-	
-		<p>Selecione la conexión de cada revestidor en base al árbol de decisión abajo mostrado.</p>
-	
-		<p class="container-conexiones"><img class="img-conexiones" src="./imagenes/conexiones.png" alt="Se muestra el diagrama de selección de conexiones de los revestidores"></p>
+		<section>
+			<h2>SEGUNDA SARTA</h2>
+			<p>Diámetro externo del revestidor (pulg.):</p>
+			<form name="diametrosRevestidores2">
+				<input type="radio" name="rev2" value="6.625" id = "rev1-linea3"> 6 5/8"
+				<input type="radio" name="rev2" value="7" id = "rev2-linea3"> 7"
+				<input type="radio" name="rev2" value="7.625" id = "rev3-linea3"> 7 5/8"
+				<input type="radio" name="rev2" value="7.75" id = "rev4-linea3"> 7 3/4"
+				<input type="radio" name="rev2" value="8.625" id = "rev5-linea3"> 8 5/8"
+				<input type="radio" name="rev2" value="9.625" id = "rev6-linea3"> 9 5/8"
+			</form>
+			<p>Diámetro del hoyo (pulg.):</p>
+			<form name="diametrosHoyo2">
+				<input type="radio" name="hoyo2" value="7.875" id = "hoyo1-linea4"> 7 7/8"
+				<input type="radio" name="hoyo2" value="8.5" id = "hoyo2-linea4"> 8 1/2"
+				<input type="radio" name="hoyo2" value="8.75" id = "hoyo3-linea4"> 8 3/4"
+				<input type="radio" name="hoyo2" value="9.5" id = "hoyo4-linea4"> 9 1/2"
+				<input type="radio" name="hoyo2" value="10.625" id = "hoyo5-linea4"> 10 5/8"
+				<input type="radio" name="hoyo2" value="12.25" id = "hoyo6-linea4"> 12 1/4"
+			</form>
+			<p>
+				<label for="nombre-rev2">Nombre del revestidor:</label><br>
+				<select id="nombre-rev2">
+					<option value = "1">Producción II</option>
+					<option value = "2">Producción I</option>
+					<option value = "3">Producción</option>
+					<option value = "4">Intermedio II</option>
+					<option value = "5">Intermedio I</option>
+					<option value = "6">Intermedio</option>
+					<option value = "7" selected>-----</option>
+				</select>
+			</p>
+			<p>
+				<label for="prof-asent2">Profundidad de asentamiento del revestidor (pies.):</label><br>
+				<input id="prof-asent2" type="number">
+			</p>
+			<p>
+				<label for="den-zap2">Densidad de lodo en zapata del revestidor (lpg.):</label><br>
+				<input id="den-zap2" type="number">
+			</p>
+			<p>
+				<label for="inclinacion-hoyo2">Máxima inclinación del hoyo (°):</label><br>
+				<input id="inclinacion-hoyo2" type="number">
+			</p>
+			<p>
+				<label for="DLS-hoyo2">Máxima Dog Leg Severity del hoyo (°/100 pies):</label><br>
+				<input id="DLS-hoyo2" type="number">
+			</p>
+			<p>Indique el tipo de sarta de revestimiento:</p>
+			<form class="tipo-rev2" name="tipoRevestimiento2">
+				<input type="radio" name="tipo2" value="Revestidor" id = "tipo-revestidor2" checked> Revestidor.
+				<input type="radio" name="tipo2" value="Camisa" id = "tipo-camisa2"> Camisa.
+			</form>
+			<p><button id="recomendar-conexion2">Recomendar conexión</button></p>
+			<p>
+				<label for="conexionlinea2">Seleccione tipo de conexión:</label><br>
+				<select id="conexionlinea2"></select>
+			</p>
+		</section>
 	
 		<h1>TABLA DE SELECCIONES</h1>
 	

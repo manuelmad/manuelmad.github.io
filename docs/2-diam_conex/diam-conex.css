@@ -117,12 +117,17 @@ main {
 }
 
 section {
-	margin: 0 auto;
+	margin: 1rem 0.1rem;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	max-width: 30rem;
+	padding-bottom: 1rem;
 }
 
-p, h2, section, form {
+p, h2, form {
 	margin: 1rem auto 0;
-    width: 20rem;
+	padding: 0 2rem;
+    max-width: 30rem;
     text-align: justify;
 }
 
@@ -147,6 +152,10 @@ label, p, form {
 	font-size: var(--ss);
 }
 
+form {
+	text-align: center;
+}
+
 /* input {
 	width: 25rem;
 	height: 3.2rem;
@@ -160,15 +169,16 @@ label, p, form {
 	height: 1.5rem;
 } */
 
-.container-diametros, .container-conexiones {
+/* .container-diametros, .container-conexiones {
     text-align: center;
-}
-
+	padding: 0;
+} */
+/* 
 .img-diametros, .img-conexiones {
     width: 30rem;
-}
+} */
 
-#conex-recom {
+/* #conex-recom {
 	height: 3rem;
 	width: 20rem;
 	background-color: var(--text-input-field);
@@ -177,7 +187,7 @@ label, p, form {
 	margin: 1rem auto 1rem;
 	padding: 1rem 0.5rem;
 	text-align: justify;
-}
+} */
 
 table, th, td, tr {
 	border: 0.1rem solid black;
