@@ -812,6 +812,239 @@ function recomendarConexion4() {
                 console.log("La máxima DLS del hoyo es: " + DLS_hoyo);
             }
         }
+    }  
+}
+
+
+/************ QUINTO REVESTIDOR *************/
+
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIOS
+function hoyoRevestido_25() {
+    hoyo1Linea10.disabled = false;
+    hoyo2Linea10.disabled = false;
+    hoyo3Linea10.disabled = false;
+    profAsent5.disabled = false;
+    denZap5.disabled = false;
+    inclinacionHoyo5.disabled = false;
+    DLSHoyo5.disabled = false;
+}
+
+function hoyoRevestido_26() {
+    hoyo1Linea10.disabled = true;
+    hoyo2Linea10.disabled = true;
+    hoyo3Linea10.disabled = false;
+    profAsent5.disabled = false;
+    denZap5.disabled = false;
+    inclinacionHoyo5.disabled = true;
+    DLSHoyo5.disabled = true;
+}
+
+function hoyoRevestido_27() {
+    hoyo1Linea10.disabled = true;
+    hoyo2Linea10.disabled = true;
+    hoyo3Linea10.disabled = true;
+    profAsent5.disabled = true;
+    denZap5.disabled = true;
+    inclinacionHoyo5.disabled =  true;
+    DLSHoyo5.disabled = true;
+}
+
+function hoyoRevestido_28() {
+    hoyo1Linea10.disabled = true;
+    hoyo2Linea10.disabled = true;
+    hoyo3Linea10.disabled = true;
+    profAsent5.disabled = true;
+    denZap5.disabled = true;
+    inclinacionHoyo5.disabled =  true;
+    DLSHoyo5.disabled = true;
+}
+
+// VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+var rev1Linea9 = document.getElementById("rev1-linea9");
+rev1Linea9.addEventListener("click", hoyoRevestido_25);
+
+var rev2Linea9 = document.getElementById("rev2-linea9");
+rev2Linea9.addEventListener("click", hoyoRevestido_26);
+
+var rev3Linea9 = document.getElementById("rev3-linea9");
+rev3Linea9.addEventListener("click", hoyoRevestido_27);
+
+var rev4Linea9 = document.getElementById("rev4-linea9");
+rev4Linea9.addEventListener("click", hoyoRevestido_28);
+
+var hoyo1Linea10 = document.getElementById("hoyo1-linea10");
+var hoyo2Linea10 = document.getElementById("hoyo2-linea10");
+var hoyo3Linea10 = document.getElementById("hoyo3-linea10");
+
+// CÓDIGO PARA SELECCIONAR CONEXIÓN
+
+// VARIABLES PARA SELECCIONAR CONEXIÓN
+var profAsent5 = document.getElementById("prof-asent5");
+
+var denZap5 = document.getElementById("den-zap5");
+
+var inclinacionHoyo5 = document.getElementById("inclinacion-hoyo5");
+
+var DLSHoyo5 = document.getElementById("DLS-hoyo5");
+
+var boton_recomendar_conexion5 = document.getElementById("recomendar-conexion5");
+boton_recomendar_conexion5.addEventListener("click", recomendarConexion5);
+
+var diametros_revestidores5 = document.diametrosRevestidores5.rev5; //Crea un array con los inputs radio (revestidor) que están dentro de la form
+var longitud_array_rev5 = diametros_revestidores5.length;
+
+var diametros_hoyo5 = document.diametrosHoyo5.hoyo5; //Crea un array con los inputs radio (hoyo) que están dentro de la form
+var longitud_array_hoyo5 = diametros_hoyo5.length;
+
+var tipo_revestimiento5 = document.tipoRevestimiento5.tipo5; //Crea un array con los inputs radio (tipo) que están dentro de la form
+var longitud_array_tipo5 = tipo_revestimiento5.length;
+
+function recomendarConexion5() {
+    var diam_rev;
+    var diam_hoyo;
+    var holgura;
+    var tipo_rev;
+
+    var prof_asent = Number(profAsent5.value);
+    var den_zap = Number(denZap5.value);
+    var presion = 0.052*den_zap*prof_asent;
+    var inclinacion_hoyo = Number(inclinacionHoyo5.value);
+    var DLS_hoyo = Number(DLSHoyo5.value);
+
+    for(i=0; i < longitud_array_rev5; i++) {
+        if(diametros_revestidores5[i].checked == true) {
+            break;
+        }
     }
+    var diam_rev = Number(diametros_revestidores5[i].value);
+    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+
+    for(j=0; j < longitud_array_hoyo5; j++) {
+        if(diametros_hoyo5[j].checked == true) {
+            break;
+        }
+    }
+    if(diametros_hoyo5[j] == undefined) {
+        diam_hoyo = 0; // Para que corra el código
+    }
+    else {
+        var diam_hoyo = Number(diametros_hoyo5[j].value);
+    }
+    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
     
+    
+
+    for(k=0; k < longitud_array_tipo5; k++) {
+        if(tipo_revestimiento5[k].checked == true) {
+            break;
+        }
+    }
+    var tipo_rev = tipo_revestimiento5[k].value;
+    console.log("El tipo de revestimiento es " + tipo_rev + ".");
+
+    holgura = (diam_hoyo-diam_rev)/2;
+    console.log("La holgura entre hoyo y revestidor es " + holgura + " pulg.");
+
+    if(diam_rev > 20) {
+        console.log("Es un revestidor conductor hincado.");
+        var lista = document.getElementById("conexionlinea5");
+            for(n = lista.options.length; n >= 0; n--) {
+                lista.remove(n);
+            }
+            var option1 = document.createElement("option");
+            option1.text = "Drillequib";
+            var option2 = document.createElement("option");
+            option2.text = "RL-4S";
+            lista.appendChild(option1);
+            lista.appendChild(option2);
+            console.log("Las conexiones recomendadas son Drillequib y RL-4S");
+    }
+    else {
+        if(diam_rev > 16) {
+            console.log("La presión en fondo es: " + presion + " lpc.");
+            if(prof_asent > 1000 || presion > 2000) {
+                var lista = document.getElementById("conexionlinea5");
+                for(m = lista.options.length; m >= 0; m--) {
+                    lista.remove(m);
+                }
+                var option1 = document.createElement("option");
+                option1.text = "Big Omega";
+                var option2 = document.createElement("option");
+                option2.text = "BTB";
+                lista.appendChild(option1);
+                lista.appendChild(option2);
+                console.log("Las conexiones recomendadas son Big Omega y BTB");
+            }
+            else {
+                var lista = document.getElementById("conexionlinea5");
+                for(m = lista.options.length; m >= 0; m--) {
+                    lista.remove(m);
+                }
+                var option1 = document.createElement("option");
+                option1.text = "Buttress";
+                lista.appendChild(option1);
+                console.log("Las conexión recomendada es Buttress");
+            }
+        }
+        else {
+            if(inclinacion_hoyo > 45 || holgura < 0.75) {
+                if(tipo_rev == "Camisa") {
+                    var lista = document.getElementById("conexionlinea5");
+                    for(l = lista.options.length; l >= 0; l--) {
+                        lista.remove(l);
+                    }
+                    var option1 = document.createElement("option");
+                    option1.text = "STL";
+                    var option2 = document.createElement("option");
+                    option2.text = "511";
+                    lista.appendChild(option1);
+                    lista.appendChild(option2);
+                    console.log("Las conexiones recomendadas son STL y 511");
+                    console.log("La máxima inclinación del hoyo es: " + inclinacion_hoyo);
+                }
+                else {
+                    var lista = document.getElementById("conexionlinea5");
+                    for(l = lista.options.length; l >= 0; l--) {
+                        lista.remove(l);
+                    }
+                    var option1 = document.createElement("option");
+                    option1.text = "SLX";
+                    var option2 = document.createElement("option");
+                    option2.text = "NJO";
+                    lista.appendChild(option1);
+                    lista.appendChild(option2);
+                    console.log("Las conexiones recomendadas son SLX y NJO");
+                    console.log("La máxima inclinación del hoyo es: " + inclinacion_hoyo);
+                }
+            }
+            else {
+                console.log("La presión en fondo es: " + presion + " lpc.");
+                if(presion > 5000 || DLS_hoyo > 10) {
+                    var lista = document.getElementById("conexionlinea5");
+                    for(l = lista.options.length; l >= 0; l--) {
+                        lista.remove(l);
+                    }
+                    var option1 = document.createElement("option");
+                    option1.text = "NK35B";
+                    var option2 = document.createElement("option");
+                    option2.text = "TC-II";
+                    lista.appendChild(option1);
+                    lista.appendChild(option2);
+                    console.log("Las conexiones recomendadas son NK35B y TC-II");
+                    console.log("La máxima DLS del hoyo es: " + DLS_hoyo);
+                }
+                else {
+                    var lista = document.getElementById("conexionlinea5");
+                    for(l = lista.options.length; l >= 0; l--) {
+                        lista.remove(l);
+                    }
+                    var option1 = document.createElement("option");
+                    option1.text = "Buttress";
+                    lista.appendChild(option1);
+                    console.log("Las conexión recomendada es Buttress");
+                    console.log("La máxima DLS del hoyo es: " + DLS_hoyo);
+                }
+            }
+        } 
+    }  
 }
