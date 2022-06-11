@@ -1,8 +1,14 @@
 // Para continuar con la manipulación dle grupo de radios https://desarrolloweb.com/articulos/1006.php
 
+// FUNCIÓN QUE ABRE UNA VENTANA SECUNDARIA PARA MOSTRARA LAS INSTRUCCIONES DE USO DEL PROGRAMA
+function ventanaSecundaria (URL)
+{ 
+   window.open(URL,"INSTRUCCIONES DE USO DE LA APLICACIÓN","width=800,height=400,scrollbars=YES");
+}
+
 /*************** PRIMER REVESTIDOR **************/
 
-// FUNCIONES PARA MANIPULAR LOS INPUT RADIOS
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIOS DE REVESTIDORES
 function hoyoRevestido() {
     hoyo1Linea2.disabled = false;
     hoyo2Linea2.disabled = false;
@@ -49,10 +55,66 @@ var rev4Linea1 = document.getElementById("rev4-linea1");
 rev4Linea1.addEventListener("click", hoyoRevestido_4);
 
 var hoyo1Linea2 = document.getElementById("hoyo1-linea2");
+hoyo1Linea2.addEventListener("click", hoyoDesnudo);
+
 var hoyo2Linea2 = document.getElementById("hoyo2-linea2");
+hoyo2Linea2.addEventListener("click", hoyoDesnudo_2);
+
 var hoyo3Linea2 = document.getElementById("hoyo3-linea2");
+hoyo3Linea2.addEventListener("click", hoyoDesnudo_3);
+
 var hoyo4Linea2 = document.getElementById("hoyo4-linea2");
+hoyo4Linea2.addEventListener("click", hoyoDesnudo_4);
+
 var hoyo5Linea2 = document.getElementById("hoyo5-linea2");
+hoyo5Linea2.addEventListener("click", hoyoDesnudo_5);
+
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
+
+function hoyoDesnudo() {
+    rev1Linea3.disabled = false;
+    rev2Linea3.disabled = true;
+    rev3Linea3.disabled = true;
+    rev4Linea3.disabled = true;
+    rev5Linea3.disabled = true;
+    rev6Linea3.disabled = true;
+}
+
+function hoyoDesnudo_2() {
+    rev1Linea3.disabled = false;
+    rev2Linea3.disabled = false;
+    rev3Linea3.disabled = true;
+    rev4Linea3.disabled = true;
+    rev5Linea3.disabled = true;
+    rev6Linea3.disabled = true;
+}
+
+function hoyoDesnudo_3() {
+    rev1Linea3.disabled = true;
+    rev2Linea3.disabled = false;
+    rev3Linea3.disabled = false;
+    rev4Linea3.disabled = false;
+    rev5Linea3.disabled = true;
+    rev6Linea3.disabled = true;
+}
+
+function hoyoDesnudo_4() {
+    rev1Linea3.disabled = true;
+    rev2Linea3.disabled = true;
+    rev3Linea3.disabled = false;
+    rev4Linea3.disabled = false;
+    rev5Linea3.disabled = false;
+    rev6Linea3.disabled = true;
+}
+
+function hoyoDesnudo_5() {
+    rev1Linea3.disabled = true;
+    rev2Linea3.disabled = true;
+    rev3Linea3.disabled = true;
+    rev4Linea3.disabled = true;
+    rev5Linea3.disabled = false;
+    rev6Linea3.disabled = false;
+}
 
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
@@ -178,7 +240,7 @@ function recomendarConexion() {
 
 /************ SEGUNDO REVESTIDOR *************/
 
-// FUNCIONES PARA MANIPULAR LOS INPUT RADIOS
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIOS DE REVESTIDORES
 function hoyoRevestido_5() {
     hoyo1Linea4.disabled = false;
     hoyo2Linea4.disabled = false;
@@ -254,11 +316,90 @@ rev6Linea3.addEventListener("click", hoyoRevestido_10);
 
 
 var hoyo1Linea4 = document.getElementById("hoyo1-linea4");
+hoyo1Linea4.addEventListener("click", hoyoDesnudo_6);
+
 var hoyo2Linea4 = document.getElementById("hoyo2-linea4");
+hoyo2Linea4.addEventListener("click", hoyoDesnudo_7);
+
 var hoyo3Linea4 = document.getElementById("hoyo3-linea4");
+hoyo3Linea4.addEventListener("click", hoyoDesnudo_8);
+
 var hoyo4Linea4 = document.getElementById("hoyo4-linea4");
+hoyo4Linea4.addEventListener("click", hoyoDesnudo_9);
+
 var hoyo5Linea4 = document.getElementById("hoyo5-linea4");
+hoyo5Linea4.addEventListener("click", hoyoDesnudo_10);
+
 var hoyo6Linea4 = document.getElementById("hoyo6-linea4");
+hoyo6Linea4.addEventListener("click", hoyoDesnudo_11);
+
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
+
+function hoyoDesnudo_6() {
+    rev1Linea5.disabled = false;
+    rev2Linea5.disabled = false;
+    rev3Linea5.disabled = false;
+    rev4Linea5.disabled = true;
+    rev5Linea5.disabled = true;
+    rev6Linea5.disabled = true;
+    rev7Linea5.disabled = true;
+    rev8Linea5.disabled = true;
+}
+
+function hoyoDesnudo_7() {
+    rev1Linea5.disabled = true;
+    rev2Linea5.disabled = false;
+    rev3Linea5.disabled = false;
+    rev4Linea5.disabled = true;
+    rev5Linea5.disabled = true;
+    rev6Linea5.disabled = true;
+    rev7Linea5.disabled = true;
+    rev8Linea5.disabled = true;
+}
+
+function hoyoDesnudo_8() {
+    rev1Linea5.disabled = true;
+    rev2Linea5.disabled = false;
+    rev3Linea5.disabled = false;
+    rev4Linea5.disabled = false;
+    rev5Linea5.disabled = true;
+    rev6Linea5.disabled = true;
+    rev7Linea5.disabled = true;
+    rev8Linea5.disabled = true;
+}
+
+function hoyoDesnudo_9() {
+    rev1Linea5.disabled = true;
+    rev2Linea5.disabled = true;
+    rev3Linea5.disabled = true;
+    rev4Linea5.disabled = false;
+    rev5Linea5.disabled = true;
+    rev6Linea5.disabled = true;
+    rev7Linea5.disabled = true;
+    rev8Linea5.disabled = true;
+}
+
+function hoyoDesnudo_10() {
+    rev1Linea5.disabled = true;
+    rev2Linea5.disabled = true;
+    rev3Linea5.disabled = true;
+    rev4Linea5.disabled = true;
+    rev5Linea5.disabled = false;
+    rev6Linea5.disabled = false;
+    rev7Linea5.disabled = true;
+    rev8Linea5.disabled = true;
+}
+
+function hoyoDesnudo_11() {
+    rev1Linea5.disabled = true;
+    rev2Linea5.disabled = true;
+    rev3Linea5.disabled = true;
+    rev4Linea5.disabled = true;
+    rev5Linea5.disabled = true;
+    rev6Linea5.disabled = true;
+    rev7Linea5.disabled = false;
+    rev8Linea5.disabled = false;
+}
 
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
@@ -468,10 +609,54 @@ rev8Linea5.addEventListener("click", hoyoRevestido_18);
 
 
 var hoyo1Linea6 = document.getElementById("hoyo1-linea6");
-var hoyo2Linea6 = document.getElementById("hoyo2-linea6");
-var hoyo3Linea6 = document.getElementById("hoyo3-linea6");
-var hoyo4Linea6 = document.getElementById("hoyo4-linea6");
+hoyo1Linea6.addEventListener("click", hoyoDesnudo_12);
 
+var hoyo2Linea6 = document.getElementById("hoyo2-linea6");
+hoyo2Linea6.addEventListener("click", hoyoDesnudo_13);
+
+var hoyo3Linea6 = document.getElementById("hoyo3-linea6");
+hoyo3Linea6.addEventListener("click", hoyoDesnudo_14);
+
+var hoyo4Linea6 = document.getElementById("hoyo4-linea6");
+hoyo4Linea6.addEventListener("click", hoyoDesnudo_15);
+
+// FUCIONES PARA MANIPULAR INUTS RADIO DE HOYOS
+
+function hoyoDesnudo_12() {
+    rev1Linea7.disabled = false;
+    rev2Linea7.disabled = false;
+    rev3Linea7.disabled = true;
+    rev4Linea7.disabled = true;
+    rev5Linea7.disabled = true;
+    rev6Linea7.disabled = true;
+}
+
+function hoyoDesnudo_13() {
+    rev1Linea7.disabled = true;
+    rev2Linea7.disabled = true;
+    rev3Linea7.disabled = false;
+    rev4Linea7.disabled = false;
+    rev5Linea7.disabled = true;
+    rev6Linea7.disabled = true;
+}
+
+function hoyoDesnudo_14() {
+    rev1Linea7.disabled = true;
+    rev2Linea7.disabled = true;
+    rev3Linea7.disabled = true;
+    rev4Linea7.disabled = true;
+    rev5Linea7.disabled = false;
+    rev6Linea7.disabled = true;
+}
+
+function hoyoDesnudo_15() {
+    rev1Linea7.disabled = true;
+    rev2Linea7.disabled = true;
+    rev3Linea7.disabled = true;
+    rev4Linea7.disabled = true;
+    rev5Linea7.disabled = true;
+    rev6Linea7.disabled = false;
+}
 
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
@@ -661,11 +846,46 @@ var rev6Linea7 = document.getElementById("rev6-linea7");
 rev6Linea7.addEventListener("click", hoyoRevestido_24);
 
 var hoyo1Linea8 = document.getElementById("hoyo1-linea8");
+hoyo1Linea8.addEventListener("click", hoyoDesnudo_16);
+
 var hoyo2Linea8 = document.getElementById("hoyo2-linea8");
+hoyo2Linea8.addEventListener("click", hoyoDesnudo_17);
+
 var hoyo3Linea8 = document.getElementById("hoyo3-linea8");
+hoyo3Linea8.addEventListener("click", hoyoDesnudo_18);
+
 var hoyo4Linea8 = document.getElementById("hoyo4-linea8");
+hoyo4Linea8.addEventListener("click", hoyoDesnudo_19);
 
+// FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
 
+function hoyoDesnudo_16() {
+    rev1Linea9.disabled = false;
+    rev2Linea9.disabled = true;
+    rev3Linea9.disabled = true;
+    rev4Linea9.disabled = true;
+}
+
+function hoyoDesnudo_17() {
+    rev1Linea9.disabled = true;
+    rev2Linea9.disabled = false;
+    rev3Linea9.disabled = true;
+    rev4Linea9.disabled = true;
+}
+
+function hoyoDesnudo_18() {
+    rev1Linea9.disabled = true;
+    rev2Linea9.disabled = true;
+    rev3Linea9.disabled = false;
+    rev4Linea9.disabled = true;
+}
+
+function hoyoDesnudo_19() {
+    rev1Linea9.disabled = true;
+    rev2Linea9.disabled = true;
+    rev3Linea9.disabled = true;
+    rev4Linea9.disabled = false;
+}
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
 // VARIABLES PARA SELECCIONAR CONEXIÓN

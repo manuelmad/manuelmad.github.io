@@ -156,38 +156,62 @@ form {
 	text-align: center;
 }
 
-/* input {
+form input {
+	margin: 0 0.5rem;
+}
+
+.nombre-rev {
+	/* display: block; */
+	width: 25rem;
+	height: 3.2rem;
+}
+
+.input-number {
 	width: 25rem;
 	height: 3.2rem;
 	border-radius: 0.8rem;
-	background-color: var(--text-input-field);
-	border: none;
+	/* background-color: var(--text-input-field); */
+	/* border: none; */
+	border: 0.1rem solid var(--hospital-green)
 }
 
-#tipo-revestidor, #tipo-camisa {
-	width: 1.5rem;
-	height: 1.5rem;
-} */
+.input-number:hover {
+	border: 1px solid var(--hospital-green);
+}
 
-/* .container-diametros, .container-conexiones {
-    text-align: center;
-	padding: 0;
-} */
-/* 
-.img-diametros, .img-conexiones {
-    width: 30rem;
-} */
-
-/* #conex-recom {
+button {
 	height: 3rem;
-	width: 20rem;
-	background-color: var(--text-input-field);
-	display: block;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
-	margin: 1rem auto 1rem;
-	padding: 1rem 0.5rem;
+	cursor: pointer;
+	color: gray;
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+button:hover {
+	background-color: var(--hospital-green);
+}
+
+button:active {
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+.container-button {
+	text-align: center;
+}
+
+.tipo-rev {
 	text-align: justify;
-} */
+}
+
+.tipo-conexion {
+	height: 3.2rem;
+	width: 25rem;
+}
 
 table, th, td, tr {
 	border: 0.1rem solid black;
