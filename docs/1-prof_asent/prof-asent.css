@@ -127,6 +127,9 @@ main {
 
 section {
 	margin: 0 auto;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
 }
 
 p, h2, section, div{
@@ -157,7 +160,7 @@ label, p {
 	width: 30rem;
 	margin: auto;
 	position: relative; /* Para que los elementos dentro de él lo tengan como referencia (y no al body) cuando les aplique position:absolute */
-	z-index: 1;
+	/* z-index: 1; */
 }
 
 #eliminar_fila, #agregar_fila {

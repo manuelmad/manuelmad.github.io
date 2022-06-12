@@ -37,7 +37,7 @@ section {
 }
 
 .container-botones-filas { /* Hacer el div del mismo ancho que la tabla */
-	width: 55.4rem;
+	width: 54.4rem;
 }
 
 .datos td:nth-child(4), th:nth-child(4){
