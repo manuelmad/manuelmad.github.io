@@ -116,6 +116,25 @@ function hoyoDesnudo_5() {
     rev6Linea3.disabled = false;
 }
 
+// FUNCIÓN PARA LIMPIAR LOS INPUTS
+var boton_limpiar = document.getElementById("limpiar-radios");
+boton_limpiar.addEventListener("click", limpiarInputs);
+
+function limpiarInputs () {
+    var grupo_rev = document.getElementsByName("rev1");
+    var grupo_hoyo = document.getElementsByName("hoyo1");
+
+    for(var p = 0; p < grupo_rev.length; p++) {
+        var rad_rev = grupo_rev[p];
+        rad_rev.checked = false;
+    }
+    for(var q = 0; q < grupo_hoyo.length; q++) {
+        var rad_hoyo = grupo_hoyo[q];
+        rad_hoyo.checked = false;
+        rad_hoyo.disabled = false;
+    }
+}
+
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
 // VARIABLES PARA SELECCIONAR CONEXIÓN
@@ -401,6 +420,26 @@ function hoyoDesnudo_11() {
     rev8Linea5.disabled = false;
 }
 
+// FUNCIÓN PARA LIMPIAR LOS INPUTS
+var boton_limpiar2 = document.getElementById("limpiar-radios2");
+boton_limpiar2.addEventListener("click", limpiarInputs2);
+
+function limpiarInputs2 () {
+    var grupo_rev2 = document.getElementsByName("rev2");
+    var grupo_hoyo2 = document.getElementsByName("hoyo2");
+    
+    for(var r = 0; r < grupo_rev2.length; r++) {
+        var rad_rev2 = grupo_rev2[r];
+        rad_rev2.checked = false;
+        rad_rev2.disabled = false;
+    }
+    for(var s = 0; s < grupo_hoyo2.length; s++) {
+        var rad_hoyo2 = grupo_hoyo2[s];
+        rad_hoyo2.checked = false;
+        rad_hoyo2.disabled = false;
+    }
+}
+
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
 // VARIABLES PARA SELECCIONAR CONEXIÓN
@@ -658,6 +697,26 @@ function hoyoDesnudo_15() {
     rev6Linea7.disabled = false;
 }
 
+// FUNCIÓN PARA LIMPIAR LOS INPUTS
+var boton_limpiar3 = document.getElementById("limpiar-radios3");
+boton_limpiar3.addEventListener("click", limpiarInputs3);
+
+function limpiarInputs3 () {
+    var grupo_rev3 = document.getElementsByName("rev3");
+    var grupo_hoyo3 = document.getElementsByName("hoyo3");
+    
+    for(var t = 0; t < grupo_rev3.length; t++) {
+        var rad_rev3 = grupo_rev3[t];
+        rad_rev3.checked = false;
+        rad_rev3.disabled = false;
+    }
+    for(var u = 0; u < grupo_hoyo3.length; u++) {
+        var rad_hoyo3 = grupo_hoyo3[u];
+        rad_hoyo3.checked = false;
+        rad_hoyo3.disabled = false;
+    }
+}
+
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
 // VARIABLES PARA SELECCIONAR CONEXIÓN
@@ -788,6 +847,8 @@ function hoyoRevestido_19() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+    inclinacionHoyo4.disabled = false;
+    DLSHoyo4.disabled = false;
 }
 
 function hoyoRevestido_20() {
@@ -795,6 +856,8 @@ function hoyoRevestido_20() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+    inclinacionHoyo4.disabled = false;
+    DLSHoyo4.disabled = false;
 }
 
 function hoyoRevestido_21() {
@@ -802,6 +865,8 @@ function hoyoRevestido_21() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+    inclinacionHoyo4.disabled = false;
+    DLSHoyo4.disabled = false;
 }
 
 function hoyoRevestido_22() {
@@ -809,6 +874,8 @@ function hoyoRevestido_22() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+    inclinacionHoyo4.disabled = false;
+    DLSHoyo4.disabled = false;
 }
 
 function hoyoRevestido_23() {
@@ -816,6 +883,8 @@ function hoyoRevestido_23() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = false;
     hoyo4Linea8.disabled = false;
+    inclinacionHoyo4.disabled = false;
+    DLSHoyo4.disabled = false;
 }
 
 function hoyoRevestido_24() {
@@ -823,6 +892,8 @@ function hoyoRevestido_24() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = false;
+    inclinacionHoyo4.disabled = true;
+    DLSHoyo4.disabled = true;
 }
 
 
@@ -886,6 +957,27 @@ function hoyoDesnudo_19() {
     rev3Linea9.disabled = true;
     rev4Linea9.disabled = false;
 }
+
+// FUNCIÓN PARA LIMPIAR LOS INPUTS
+var boton_limpiar4 = document.getElementById("limpiar-radios4");
+boton_limpiar4.addEventListener("click", limpiarInputs4);
+
+function limpiarInputs4 () {
+    var grupo_rev4 = document.getElementsByName("rev4");
+    var grupo_hoyo4 = document.getElementsByName("hoyo4");
+    
+    for(var v = 0; v < grupo_rev4.length; v++) {
+        var rad_rev4 = grupo_rev4[v];
+        rad_rev4.checked = false;
+        rad_rev4.disabled = false;
+    }
+    for(var w = 0; w < grupo_hoyo4.length; w++) {
+        var rad_hoyo4 = grupo_hoyo4[w];
+        rad_hoyo4.checked = false;
+        rad_hoyo4.disabled = false;
+    }
+}
+
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 
 // VARIABLES PARA SELECCIONAR CONEXIÓN
@@ -1095,6 +1187,26 @@ rev4Linea9.addEventListener("click", hoyoRevestido_28);
 var hoyo1Linea10 = document.getElementById("hoyo1-linea10");
 var hoyo2Linea10 = document.getElementById("hoyo2-linea10");
 var hoyo3Linea10 = document.getElementById("hoyo3-linea10");
+
+// FUNCIÓN PARA LIMPIAR LOS INPUTS
+var boton_limpiar5 = document.getElementById("limpiar-radios5");
+boton_limpiar5.addEventListener("click", limpiarInputs5);
+
+function limpiarInputs5 () {
+    var grupo_rev5 = document.getElementsByName("rev5");
+    var grupo_hoyo5 = document.getElementsByName("hoyo5");
+    
+    for(var x = 0; x < grupo_rev5.length; x++) {
+        var rad_rev5 = grupo_rev5[x];
+        rad_rev5.checked = false;
+        rad_rev5.disabled = false;
+    }
+    for(var y = 0; y < grupo_hoyo5.length; y++) {
+        var rad_hoyo5 = grupo_hoyo5[y];
+        rad_hoyo5.checked = false;
+        rad_hoyo5.disabled = false;
+    }
+}
 
 // CÓDIGO PARA SELECCIONAR CONEXIÓN
 

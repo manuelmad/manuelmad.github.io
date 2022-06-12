@@ -162,11 +162,11 @@ label, p {
 
 #eliminar_fila, #agregar_fila {
 	position: absolute;
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.5rem;
 	cursor: pointer;
-	color: gray;
+	color: var(--white);
 	font-weight: bold;
 }
 
@@ -180,13 +180,9 @@ label, p {
 	top: 1rem;
 }
 
-#agregar_fila:hover, #eliminar_fila:hover {
-	background-color: var(--hospital-green);
-}
-
 #agregar_fila:active, #eliminar_fila:active { /* active tiene que ir despues del hover para que funcione */
-	color: var(--white);
-	background-color: var(--very-light-gray);
+	color: gray;
+	background-color: var(--white);
 	border: 0.1rem solid var(--very-light-gray);
 }
 
@@ -314,22 +310,18 @@ label, p {
 
 #botoncito, #borrar_curvas {
 	height: 3rem;
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 	cursor: pointer;
-	color: gray;
+	color: var(--white);
 	font-weight: bold;
 	padding: 0.5rem;
 }
 
-#botoncito:hover, #borrar_curvas:hover {
-	background-color: var(--hospital-green);
-}
-
 #botoncito:active, #borrar_curvas:active { /* active tiene que ir despues del hover para que funcione */
-	color: var(--white);
-	background-color: var(--very-light-gray);
+	color: gray;
+	background-color: var(--white);
 	border: 0.1rem solid var(--very-light-gray);
 }
 
@@ -344,10 +336,6 @@ canvas {
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 	cursor: pointer;
-}
-
-#mostrar_ocultar_auto:hover, #mostrar_ocultar_manual:hover {
-	background-color: var(--hospital-green);
 }
 
 #mostrar_ocultar_auto:active, #mostrar_ocultar_manual:active { /* active tiene que ir despues del hover para que funcione */
@@ -384,22 +372,18 @@ canvas {
 
 #lineas_auto, #deshacer, #deshacer2 {
 	height: 3rem;
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 	cursor: pointer;
-	color: gray;
+	color: var(--white);
 	font-weight: bold;
 	padding: 0.5rem;
 }
 
-#lineas_auto:hover, #deshacer:hover, #deshacer2:hover {
-	background-color: var(--hospital-green);
-}
-
 #lineas_auto:active, #deshacer:active, #deshacer2:active { /* active tiene que ir despues del hover para que funcione */
-	color: var(--white);
-	background-color: var(--very-light-gray);
+	color: gray;
+	background-color: var(--white);
 	border: 0.1rem solid var(--very-light-gray);
 }
 
@@ -467,10 +451,6 @@ canvas {
 	margin-left: 0.2rem;
 }
 
-.tabla_lineas_manuales button:hover {
-	background-color: var(--hospital-green);
-}
-
 .tabla_lineas_manuales button:active { /* active tiene que ir despues del hover para que funcione */
 	color: var(--white);
 	background-color: var(--very-light-gray);
@@ -527,22 +507,18 @@ canvas {
 
 #boton_ajuste_int, #boton_ajuste_sup {
 	height: 3rem;
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 	cursor: pointer;
-	color: gray;
+	color: var(--white);
 	font-weight: bold;
 	padding: 0.5rem;
 }
 
-#boton_ajuste_int:hover, #boton_ajuste_sup:hover {
-	background-color: var(--hospital-green);
-}
-
 #boton_ajuste_int:active, #boton_ajuste_sup:active { /* active tiene que ir despues del hover para que funcione */
-	color: var(--white);
-	background-color: var(--very-light-gray);
+	color: gray;
+	background-color:  var(--white);
 	border: 0.1rem solid var(--very-light-gray);
 }
 

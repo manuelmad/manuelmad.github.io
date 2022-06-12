@@ -14,3 +14,23 @@
 nav #menu-principal{
     font-size: var(--lg);
 }
+
+button {
+	color: gray;
+	background-color: var(--white);
+	border: 0.1rem solid var(--hospital-green);
+}
+
+button:hover {
+	background-color: var(--hospital-green);
+}
+
+button:active {
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+.input-number:hover {
+	border: 0.1rem solid gray;
+}
