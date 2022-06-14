@@ -41,3 +41,31 @@ nav #menu-principal a:hover {
     box-shadow: 0 -0.1875rem var(--hospital-green) inset;
 }
 
+section, h2, form {
+    max-width: 50rem;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+}
+
+section p:nth-child(2), section p:nth-child(4) {
+	text-align:center
+}
+
+.tabla td {
+    width: 10rem;
+}
+
+table select {
+    width: 10rem;
+}
+
+.tabla tr > td:first-child {
+    width: 20rem;
+    text-align: center;
+}
+
+
+

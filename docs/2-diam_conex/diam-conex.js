@@ -15,6 +15,12 @@ function hoyoRevestido() {
     hoyo3Linea2.disabled = true;
     hoyo4Linea2.disabled = true;
     hoyo5Linea2.disabled = true;
+
+    hoyo1Linea2_valor.style.fontWeight = "normal";
+    hoyo2Linea2_valor.style.fontWeight = "bold";
+    hoyo3Linea2_valor.style.fontWeight = "normal";
+    hoyo4Linea2_valor.style.fontWeight = "normal";
+    hoyo5Linea2_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_2() {
@@ -23,6 +29,12 @@ function hoyoRevestido_2() {
     hoyo3Linea2.disabled = false;
     hoyo4Linea2.disabled = true;
     hoyo5Linea2.disabled = true;
+
+    hoyo1Linea2_valor.style.fontWeight = "normal";
+    hoyo2Linea2_valor.style.fontWeight = "normal";
+    hoyo3Linea2_valor.style.fontWeight = "bold";
+    hoyo4Linea2_valor.style.fontWeight = "normal";
+    hoyo5Linea2_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_3() {
@@ -31,6 +43,12 @@ function hoyoRevestido_3() {
     hoyo3Linea2.disabled = false;
     hoyo4Linea2.disabled = false;
     hoyo5Linea2.disabled = true;
+
+    hoyo1Linea2_valor.style.fontWeight = "normal";
+    hoyo2Linea2_valor.style.fontWeight = "normal";
+    hoyo3Linea2_valor.style.fontWeight = "normal";
+    hoyo4Linea2_valor.style.fontWeight = "bold";
+    hoyo5Linea2_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_4() {
@@ -39,9 +57,16 @@ function hoyoRevestido_4() {
     hoyo3Linea2.disabled = true;
     hoyo4Linea2.disabled = false;
     hoyo5Linea2.disabled = false;
+
+    hoyo1Linea2_valor.style.fontWeight = "normal";
+    hoyo2Linea2_valor.style.fontWeight = "normal";
+    hoyo3Linea2_valor.style.fontWeight = "normal";
+    hoyo4Linea2_valor.style.fontWeight = "normal";
+    hoyo5Linea2_valor.style.fontWeight = "bold";
 }
 
 // VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+// Revestidores
 var rev1Linea1 = document.getElementById("rev1-linea1");
 rev1Linea1.addEventListener("click", hoyoRevestido);
 
@@ -54,6 +79,7 @@ rev3Linea1.addEventListener("click", hoyoRevestido_3);
 var rev4Linea1 = document.getElementById("rev4-linea1");
 rev4Linea1.addEventListener("click", hoyoRevestido_4);
 
+// Hoyos
 var hoyo1Linea2 = document.getElementById("hoyo1-linea2");
 hoyo1Linea2.addEventListener("click", hoyoDesnudo);
 
@@ -69,6 +95,13 @@ hoyo4Linea2.addEventListener("click", hoyoDesnudo_4);
 var hoyo5Linea2 = document.getElementById("hoyo5-linea2");
 hoyo5Linea2.addEventListener("click", hoyoDesnudo_5);
 
+// Valores de hoyos
+var hoyo1Linea2_valor = document.getElementById("valor_h1l2");
+var hoyo2Linea2_valor = document.getElementById("valor_h2l2");
+var hoyo3Linea2_valor = document.getElementById("valor_h3l2");
+var hoyo4Linea2_valor = document.getElementById("valor_h4l2");
+var hoyo5Linea2_valor = document.getElementById("valor_h5l2");
+
 // FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
 
 function hoyoDesnudo() {
@@ -78,6 +111,13 @@ function hoyoDesnudo() {
     rev4Linea3.disabled = true;
     rev5Linea3.disabled = true;
     rev6Linea3.disabled = true;
+
+    rev1Linea3_valor.style.fontWeight = "bold";
+    rev2Linea3_valor.style.fontWeight = "normal";
+    rev3Linea3_valor.style.fontWeight = "normal";
+    rev4Linea3_valor.style.fontWeight = "normal";
+    rev5Linea3_valor.style.fontWeight = "normal";
+    rev6Linea3_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_2() {
@@ -87,6 +127,13 @@ function hoyoDesnudo_2() {
     rev4Linea3.disabled = true;
     rev5Linea3.disabled = true;
     rev6Linea3.disabled = true;
+
+    rev1Linea3_valor.style.fontWeight = "normal";
+    rev2Linea3_valor.style.fontWeight = "bold";
+    rev3Linea3_valor.style.fontWeight = "normal";
+    rev4Linea3_valor.style.fontWeight = "normal";
+    rev5Linea3_valor.style.fontWeight = "normal";
+    rev6Linea3_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_3() {
@@ -96,6 +143,13 @@ function hoyoDesnudo_3() {
     rev4Linea3.disabled = false;
     rev5Linea3.disabled = true;
     rev6Linea3.disabled = true;
+
+    rev1Linea3_valor.style.fontWeight = "normal";
+    rev2Linea3_valor.style.fontWeight = "normal";
+    rev3Linea3_valor.style.fontWeight = "bold";
+    rev4Linea3_valor.style.fontWeight = "bold";
+    rev5Linea3_valor.style.fontWeight = "normal";
+    rev6Linea3_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_4() {
@@ -105,6 +159,13 @@ function hoyoDesnudo_4() {
     rev4Linea3.disabled = false;
     rev5Linea3.disabled = false;
     rev6Linea3.disabled = true;
+
+    rev1Linea3_valor.style.fontWeight = "normal";
+    rev2Linea3_valor.style.fontWeight = "normal";
+    rev3Linea3_valor.style.fontWeight = "bold";
+    rev4Linea3_valor.style.fontWeight = "bold";
+    rev5Linea3_valor.style.fontWeight = "bold";
+    rev6Linea3_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_5() {
@@ -114,6 +175,13 @@ function hoyoDesnudo_5() {
     rev4Linea3.disabled = true;
     rev5Linea3.disabled = false;
     rev6Linea3.disabled = false;
+
+    rev1Linea3_valor.style.fontWeight = "normal";
+    rev2Linea3_valor.style.fontWeight = "normal";
+    rev3Linea3_valor.style.fontWeight = "normal";
+    rev4Linea3_valor.style.fontWeight = "normal";
+    rev5Linea3_valor.style.fontWeight = "normal";
+    rev6Linea3_valor.style.fontWeight = "bold";
 }
 
 // FUNCIÓN PARA LIMPIAR LOS INPUTS
@@ -123,6 +191,7 @@ boton_limpiar.addEventListener("click", limpiarInputs);
 function limpiarInputs () {
     var grupo_rev = document.getElementsByName("rev1");
     var grupo_hoyo = document.getElementsByName("hoyo1");
+    var grupo_hoyo_valor = document.getElementsByName("hoyo1-valor");
 
     for(var p = 0; p < grupo_rev.length; p++) {
         var rad_rev = grupo_rev[p];
@@ -132,6 +201,10 @@ function limpiarInputs () {
         var rad_hoyo = grupo_hoyo[q];
         rad_hoyo.checked = false;
         rad_hoyo.disabled = false;
+    }
+    for(var r = 0; r < grupo_hoyo_valor.length; r++) {
+        var span_hoyo = grupo_hoyo_valor[r];
+        span_hoyo.style.fontWeight = "normal";
     }
 }
 
@@ -267,6 +340,13 @@ function hoyoRevestido_5() {
     hoyo4Linea4.disabled = true;
     hoyo5Linea4.disabled = true;
     hoyo6Linea4.disabled = true;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "bold";
+    hoyo3Linea4_valor.style.fontWeight = "normal";
+    hoyo4Linea4_valor.style.fontWeight = "normal";
+    hoyo5Linea4_valor.style.fontWeight = "normal";
+    hoyo6Linea4_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_6() {
@@ -276,6 +356,13 @@ function hoyoRevestido_6() {
     hoyo4Linea4.disabled = true;
     hoyo5Linea4.disabled = true;
     hoyo6Linea4.disabled = true;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "bold";
+    hoyo3Linea4_valor.style.fontWeight = "bold";
+    hoyo4Linea4_valor.style.fontWeight = "normal";
+    hoyo5Linea4_valor.style.fontWeight = "normal";
+    hoyo6Linea4_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_7() {
@@ -285,6 +372,13 @@ function hoyoRevestido_7() {
     hoyo4Linea4.disabled = false;
     hoyo5Linea4.disabled = true;
     hoyo6Linea4.disabled = true;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "normal";
+    hoyo3Linea4_valor.style.fontWeight = "normal";
+    hoyo4Linea4_valor.style.fontWeight = "bold";
+    hoyo5Linea4_valor.style.fontWeight = "normal";
+    hoyo6Linea4_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_8() {
@@ -294,6 +388,13 @@ function hoyoRevestido_8() {
     hoyo4Linea4.disabled = false;
     hoyo5Linea4.disabled = true;
     hoyo6Linea4.disabled = true;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "normal";
+    hoyo3Linea4_valor.style.fontWeight = "normal";
+    hoyo4Linea4_valor.style.fontWeight = "bold";
+    hoyo5Linea4_valor.style.fontWeight = "normal";
+    hoyo6Linea4_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_9() {
@@ -303,6 +404,13 @@ function hoyoRevestido_9() {
     hoyo4Linea4.disabled = false;
     hoyo5Linea4.disabled = false;
     hoyo6Linea4.disabled = true;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "normal";
+    hoyo3Linea4_valor.style.fontWeight = "normal";
+    hoyo4Linea4_valor.style.fontWeight = "normal";
+    hoyo5Linea4_valor.style.fontWeight = "bold";
+    hoyo6Linea4_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_10() {
@@ -312,9 +420,17 @@ function hoyoRevestido_10() {
     hoyo4Linea4.disabled = true;
     hoyo5Linea4.disabled = false;
     hoyo6Linea4.disabled = false;
+
+    hoyo1Linea4_valor.style.fontWeight = "normal";
+    hoyo2Linea4_valor.style.fontWeight = "normal";
+    hoyo3Linea4_valor.style.fontWeight = "normal";
+    hoyo4Linea4_valor.style.fontWeight = "normal";
+    hoyo5Linea4_valor.style.fontWeight = "normal";
+    hoyo6Linea4_valor.style.fontWeight = "bold";
 }
 
 // VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+// Revestidores
 var rev1Linea3 = document.getElementById("rev1-linea3");
 rev1Linea3.addEventListener("click", hoyoRevestido_5);
 
@@ -333,7 +449,7 @@ rev5Linea3.addEventListener("click", hoyoRevestido_9);
 var rev6Linea3 = document.getElementById("rev6-linea3");
 rev6Linea3.addEventListener("click", hoyoRevestido_10);
 
-
+// Hoyos
 var hoyo1Linea4 = document.getElementById("hoyo1-linea4");
 hoyo1Linea4.addEventListener("click", hoyoDesnudo_6);
 
@@ -352,6 +468,22 @@ hoyo5Linea4.addEventListener("click", hoyoDesnudo_10);
 var hoyo6Linea4 = document.getElementById("hoyo6-linea4");
 hoyo6Linea4.addEventListener("click", hoyoDesnudo_11);
 
+// Valores de Revestidores
+var rev1Linea3_valor = document.getElementById("valor_r1l3");
+var rev2Linea3_valor = document.getElementById("valor_r2l3");
+var rev3Linea3_valor = document.getElementById("valor_r3l3");
+var rev4Linea3_valor = document.getElementById("valor_r4l3");
+var rev5Linea3_valor = document.getElementById("valor_r5l3");
+var rev6Linea3_valor = document.getElementById("valor_r6l3");
+
+// Valores de Hoyos
+var hoyo1Linea4_valor = document.getElementById("valor_h1l4");
+var hoyo2Linea4_valor = document.getElementById("valor_h2l4");
+var hoyo3Linea4_valor = document.getElementById("valor_h3l4");
+var hoyo4Linea4_valor = document.getElementById("valor_h4l4");
+var hoyo5Linea4_valor = document.getElementById("valor_h5l4");
+var hoyo6Linea4_valor = document.getElementById("valor_h6l4");
+
 // FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
 
 function hoyoDesnudo_6() {
@@ -363,6 +495,15 @@ function hoyoDesnudo_6() {
     rev6Linea5.disabled = true;
     rev7Linea5.disabled = true;
     rev8Linea5.disabled = true;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "bold";
+    rev3Linea5_valor.style.fontWeight = "bold";
+    rev4Linea5_valor.style.fontWeight = "normal";
+    rev5Linea5_valor.style.fontWeight = "normal";
+    rev6Linea5_valor.style.fontWeight = "normal";
+    rev7Linea5_valor.style.fontWeight = "normal";
+    rev8Linea5_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_7() {
@@ -374,6 +515,15 @@ function hoyoDesnudo_7() {
     rev6Linea5.disabled = true;
     rev7Linea5.disabled = true;
     rev8Linea5.disabled = true;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "bold";
+    rev3Linea5_valor.style.fontWeight = "bold";
+    rev4Linea5_valor.style.fontWeight = "normal";
+    rev5Linea5_valor.style.fontWeight = "normal";
+    rev6Linea5_valor.style.fontWeight = "normal";
+    rev7Linea5_valor.style.fontWeight = "normal";
+    rev8Linea5_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_8() {
@@ -385,6 +535,15 @@ function hoyoDesnudo_8() {
     rev6Linea5.disabled = true;
     rev7Linea5.disabled = true;
     rev8Linea5.disabled = true;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "normal";
+    rev3Linea5_valor.style.fontWeight = "normal";
+    rev4Linea5_valor.style.fontWeight = "bold";
+    rev5Linea5_valor.style.fontWeight = "normal";
+    rev6Linea5_valor.style.fontWeight = "normal";
+    rev7Linea5_valor.style.fontWeight = "normal";
+    rev8Linea5_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_9() {
@@ -396,6 +555,15 @@ function hoyoDesnudo_9() {
     rev6Linea5.disabled = true;
     rev7Linea5.disabled = true;
     rev8Linea5.disabled = true;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "normal";
+    rev3Linea5_valor.style.fontWeight = "normal";
+    rev4Linea5_valor.style.fontWeight = "bold";
+    rev5Linea5_valor.style.fontWeight = "normal";
+    rev6Linea5_valor.style.fontWeight = "normal";
+    rev7Linea5_valor.style.fontWeight = "normal";
+    rev8Linea5_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_10() {
@@ -407,6 +575,15 @@ function hoyoDesnudo_10() {
     rev6Linea5.disabled = false;
     rev7Linea5.disabled = true;
     rev8Linea5.disabled = true;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "normal";
+    rev3Linea5_valor.style.fontWeight = "normal";
+    rev4Linea5_valor.style.fontWeight = "normal";
+    rev5Linea5_valor.style.fontWeight = "bold";
+    rev6Linea5_valor.style.fontWeight = "bold";
+    rev7Linea5_valor.style.fontWeight = "normal";
+    rev8Linea5_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_11() {
@@ -418,6 +595,15 @@ function hoyoDesnudo_11() {
     rev6Linea5.disabled = true;
     rev7Linea5.disabled = false;
     rev8Linea5.disabled = false;
+
+    rev1Linea5_valor.style.fontWeight = "normal";
+    rev2Linea5_valor.style.fontWeight = "normal";
+    rev3Linea5_valor.style.fontWeight = "normal";
+    rev4Linea5_valor.style.fontWeight = "normal";
+    rev5Linea5_valor.style.fontWeight = "normal";
+    rev6Linea5_valor.style.fontWeight = "normal";
+    rev7Linea5_valor.style.fontWeight = "bold";
+    rev8Linea5_valor.style.fontWeight = "bold";
 }
 
 // FUNCIÓN PARA LIMPIAR LOS INPUTS
@@ -427,16 +613,22 @@ boton_limpiar2.addEventListener("click", limpiarInputs2);
 function limpiarInputs2 () {
     var grupo_rev2 = document.getElementsByName("rev2");
     var grupo_hoyo2 = document.getElementsByName("hoyo2");
+    var grupo_rev2_valor = document.getElementsByName("rev2-valor");
+    var grupo_hoyo2_valor = document.getElementsByName("hoyo2-valor");
     
     for(var r = 0; r < grupo_rev2.length; r++) {
         var rad_rev2 = grupo_rev2[r];
         rad_rev2.checked = false;
         rad_rev2.disabled = false;
+        var span_rev = grupo_rev2_valor[r];
+        span_rev.style.fontWeight = "normal";
     }
     for(var s = 0; s < grupo_hoyo2.length; s++) {
         var rad_hoyo2 = grupo_hoyo2[s];
         rad_hoyo2.checked = false;
         rad_hoyo2.disabled = false;
+        var span_hoyo = grupo_hoyo2_valor[s];
+        span_hoyo.style.fontWeight = "normal";
     }
 }
 
@@ -567,44 +759,80 @@ function recomendarConexion2() {
 // FUNCIONES PARA MANIPULAR LOS INPUT RADIOS
 function hoyoRevestido_11() {
     hoyo1Linea6.disabled = false;
+    // hoyo1Linea6_valor.style.fontWeight = "bold";
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "bold";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "normal";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_12() {
     hoyo1Linea6.disabled = false;
     hoyo2Linea6.disabled = false;
+    // hoyo2Linea6_valor.style.fontWeight = "bold";
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "bold";
+    hoyo3Linea6_valor.style.fontWeight = "normal";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_13() {
     hoyo1Linea6.disabled = false;
     hoyo2Linea6.disabled = false;
+    // hoyo2Linea6_valor.style.fontWeight = "bold";
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "bold";
+    hoyo3Linea6_valor.style.fontWeight = "normal";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_14() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = false;
     hoyo3Linea6.disabled = false;
+    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "bold";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_15() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
+    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "bold";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_16() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
+    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "bold";
+    hoyo4Linea6_valor.style.fontWeight = "normal";
 }
 
 function hoyoRevestido_17() {
@@ -612,6 +840,12 @@ function hoyoRevestido_17() {
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
     hoyo4Linea6.disabled = false;
+    // hoyo4Linea6_valor.style.fontWeight = "bold";
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "normal";
+    hoyo4Linea6_valor.style.fontWeight = "bold";
 }
 
 function hoyoRevestido_18() {
@@ -619,9 +853,16 @@ function hoyoRevestido_18() {
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
     hoyo4Linea6.disabled = false;
+    // hoyo4Linea6_valor.style.fontWeight = "bold";
+
+    hoyo1Linea6_valor.style.fontWeight = "normal";
+    hoyo2Linea6_valor.style.fontWeight = "normal";
+    hoyo3Linea6_valor.style.fontWeight = "normal";
+    hoyo4Linea6_valor.style.fontWeight = "bold";
 }
 
 // VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+// Revestidores
 var rev1Linea5 = document.getElementById("rev1-linea5");
 rev1Linea5.addEventListener("click", hoyoRevestido_11);
 
@@ -646,7 +887,7 @@ rev7Linea5.addEventListener("click", hoyoRevestido_17);
 var rev8Linea5 = document.getElementById("rev8-linea5");
 rev8Linea5.addEventListener("click", hoyoRevestido_18);
 
-
+// Hoyos
 var hoyo1Linea6 = document.getElementById("hoyo1-linea6");
 hoyo1Linea6.addEventListener("click", hoyoDesnudo_12);
 
@@ -659,6 +900,22 @@ hoyo3Linea6.addEventListener("click", hoyoDesnudo_14);
 var hoyo4Linea6 = document.getElementById("hoyo4-linea6");
 hoyo4Linea6.addEventListener("click", hoyoDesnudo_15);
 
+// Valores de Revestidores
+var rev1Linea5_valor = document.getElementById("valor_r1l5");
+var rev2Linea5_valor = document.getElementById("valor_r2l5");
+var rev3Linea5_valor = document.getElementById("valor_r3l5");
+var rev4Linea5_valor = document.getElementById("valor_r4l5");
+var rev5Linea5_valor = document.getElementById("valor_r5l5");
+var rev6Linea5_valor = document.getElementById("valor_r6l5");
+var rev7Linea5_valor = document.getElementById("valor_r7l5");
+var rev8Linea5_valor = document.getElementById("valor_r8l5");
+
+// Valores de Hoyos
+var hoyo1Linea6_valor = document.getElementById("valor_h1l6");
+var hoyo2Linea6_valor = document.getElementById("valor_h2l6");
+var hoyo3Linea6_valor = document.getElementById("valor_h3l6");
+var hoyo4Linea6_valor = document.getElementById("valor_h4l6");
+
 // FUCIONES PARA MANIPULAR INUTS RADIO DE HOYOS
 
 function hoyoDesnudo_12() {
@@ -668,6 +925,13 @@ function hoyoDesnudo_12() {
     rev4Linea7.disabled = true;
     rev5Linea7.disabled = true;
     rev6Linea7.disabled = true;
+
+    rev1Linea7_valor.style.fontWeight = "bold";
+    rev2Linea7_valor.style.fontWeight = "bold";
+    rev3Linea7_valor.style.fontWeight = "normal";
+    rev4Linea7_valor.style.fontWeight = "normal";
+    rev5Linea7_valor.style.fontWeight = "normal";
+    rev6Linea7_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_13() {
@@ -677,6 +941,13 @@ function hoyoDesnudo_13() {
     rev4Linea7.disabled = false;
     rev5Linea7.disabled = true;
     rev6Linea7.disabled = true;
+
+    rev1Linea7_valor.style.fontWeight = "normal";
+    rev2Linea7_valor.style.fontWeight = "normal";
+    rev3Linea7_valor.style.fontWeight = "bold";
+    rev4Linea7_valor.style.fontWeight = "bold";
+    rev5Linea7_valor.style.fontWeight = "normal";
+    rev6Linea7_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_14() {
@@ -686,6 +957,13 @@ function hoyoDesnudo_14() {
     rev4Linea7.disabled = true;
     rev5Linea7.disabled = false;
     rev6Linea7.disabled = true;
+
+    rev1Linea7_valor.style.fontWeight = "normal";
+    rev2Linea7_valor.style.fontWeight = "normal";
+    rev3Linea7_valor.style.fontWeight = "normal";
+    rev4Linea7_valor.style.fontWeight = "normal";
+    rev5Linea7_valor.style.fontWeight = "bold";
+    rev6Linea7_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_15() {
@@ -695,6 +973,13 @@ function hoyoDesnudo_15() {
     rev4Linea7.disabled = true;
     rev5Linea7.disabled = true;
     rev6Linea7.disabled = false;
+
+    rev1Linea7_valor.style.fontWeight = "normal";
+    rev2Linea7_valor.style.fontWeight = "normal";
+    rev3Linea7_valor.style.fontWeight = "normal";
+    rev4Linea7_valor.style.fontWeight = "normal";
+    rev5Linea7_valor.style.fontWeight = "normal";
+    rev6Linea7_valor.style.fontWeight = "bold";
 }
 
 // FUNCIÓN PARA LIMPIAR LOS INPUTS
@@ -704,16 +989,22 @@ boton_limpiar3.addEventListener("click", limpiarInputs3);
 function limpiarInputs3 () {
     var grupo_rev3 = document.getElementsByName("rev3");
     var grupo_hoyo3 = document.getElementsByName("hoyo3");
+    var grupo_rev3_valor = document.getElementsByName("rev3-valor");
+    var grupo_hoyo3_valor = document.getElementsByName("hoyo3-valor");
     
     for(var t = 0; t < grupo_rev3.length; t++) {
         var rad_rev3 = grupo_rev3[t];
         rad_rev3.checked = false;
         rad_rev3.disabled = false;
+        var span_rev = grupo_rev3_valor[t];
+        span_rev.style.fontWeight = "normal";
     }
     for(var u = 0; u < grupo_hoyo3.length; u++) {
         var rad_hoyo3 = grupo_hoyo3[u];
         rad_hoyo3.checked = false;
         rad_hoyo3.disabled = false;
+        var span_hoyo = grupo_hoyo3_valor[u];
+        span_hoyo.style.fontWeight = "normal";
     }
 }
 
@@ -847,6 +1138,12 @@ function hoyoRevestido_19() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+
+    hoyo1Linea8_valor.style.fontWeight = "bold";
+    hoyo2Linea8_valor.style.fontWeight = "normal";
+    hoyo3Linea8_valor.style.fontWeight = "normal";
+    hoyo4Linea8_valor.style.fontWeight = "normal";
+
     inclinacionHoyo4.disabled = false;
     DLSHoyo4.disabled = false;
 }
@@ -856,6 +1153,12 @@ function hoyoRevestido_20() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+
+    hoyo1Linea8_valor.style.fontWeight = "bold";
+    hoyo2Linea8_valor.style.fontWeight = "normal";
+    hoyo3Linea8_valor.style.fontWeight = "normal";
+    hoyo4Linea8_valor.style.fontWeight = "normal";
+
     inclinacionHoyo4.disabled = false;
     DLSHoyo4.disabled = false;
 }
@@ -865,6 +1168,12 @@ function hoyoRevestido_21() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+
+    hoyo1Linea8_valor.style.fontWeight = "normal";
+    hoyo2Linea8_valor.style.fontWeight = "bold";
+    hoyo3Linea8_valor.style.fontWeight = "normal";
+    hoyo4Linea8_valor.style.fontWeight = "normal";
+
     inclinacionHoyo4.disabled = false;
     DLSHoyo4.disabled = false;
 }
@@ -874,6 +1183,12 @@ function hoyoRevestido_22() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = true;
+
+    hoyo1Linea8_valor.style.fontWeight = "normal";
+    hoyo2Linea8_valor.style.fontWeight = "bold";
+    hoyo3Linea8_valor.style.fontWeight = "normal";
+    hoyo4Linea8_valor.style.fontWeight = "normal";
+
     inclinacionHoyo4.disabled = false;
     DLSHoyo4.disabled = false;
 }
@@ -883,6 +1198,12 @@ function hoyoRevestido_23() {
     hoyo2Linea8.disabled = false;
     hoyo3Linea8.disabled = false;
     hoyo4Linea8.disabled = false;
+
+    hoyo1Linea8_valor.style.fontWeight = "normal";
+    hoyo2Linea8_valor.style.fontWeight = "normal";
+    hoyo3Linea8_valor.style.fontWeight = "bold";
+    hoyo4Linea8_valor.style.fontWeight = "bold";
+
     inclinacionHoyo4.disabled = false;
     DLSHoyo4.disabled = false;
 }
@@ -892,12 +1213,19 @@ function hoyoRevestido_24() {
     hoyo2Linea8.disabled = true;
     hoyo3Linea8.disabled = true;
     hoyo4Linea8.disabled = false;
+
+    hoyo1Linea8_valor.style.fontWeight = "normal";
+    hoyo2Linea8_valor.style.fontWeight = "normal";
+    hoyo3Linea8_valor.style.fontWeight = "normal";
+    hoyo4Linea8_valor.style.fontWeight = "bold";
+
     inclinacionHoyo4.disabled = true;
     DLSHoyo4.disabled = true;
 }
 
 
 // VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+// Revestidores
 var rev1Linea7 = document.getElementById("rev1-linea7");
 rev1Linea7.addEventListener("click", hoyoRevestido_19);
 
@@ -916,6 +1244,7 @@ rev5Linea7.addEventListener("click", hoyoRevestido_23);
 var rev6Linea7 = document.getElementById("rev6-linea7");
 rev6Linea7.addEventListener("click", hoyoRevestido_24);
 
+// Hoyos
 var hoyo1Linea8 = document.getElementById("hoyo1-linea8");
 hoyo1Linea8.addEventListener("click", hoyoDesnudo_16);
 
@@ -928,6 +1257,20 @@ hoyo3Linea8.addEventListener("click", hoyoDesnudo_18);
 var hoyo4Linea8 = document.getElementById("hoyo4-linea8");
 hoyo4Linea8.addEventListener("click", hoyoDesnudo_19);
 
+// Valores de Revestidores (spans)
+var rev1Linea7_valor = document.getElementById("valor_r1l7");
+var rev2Linea7_valor = document.getElementById("valor_r2l7");
+var rev3Linea7_valor = document.getElementById("valor_r3l7");
+var rev4Linea7_valor = document.getElementById("valor_r4l7");
+var rev5Linea7_valor = document.getElementById("valor_r5l7");
+var rev6Linea7_valor = document.getElementById("valor_r6l7");
+
+// Valores de Hoyos (spans)
+var hoyo1Linea8_valor = document.getElementById("valor_h1l8");
+var hoyo2Linea8_valor = document.getElementById("valor_h2l8");
+var hoyo3Linea8_valor = document.getElementById("valor_h3l8");
+var hoyo4Linea8_valor = document.getElementById("valor_h4l8");
+
 // FUNCIONES PARA MANIPULAR LOS INPUT RADIO DE HOYOS
 
 function hoyoDesnudo_16() {
@@ -935,6 +1278,11 @@ function hoyoDesnudo_16() {
     rev2Linea9.disabled = true;
     rev3Linea9.disabled = true;
     rev4Linea9.disabled = true;
+
+    rev1Linea9_valor.style.fontWeight = "bold";
+    rev2Linea9_valor.style.fontWeight = "normal";
+    rev3Linea9_valor.style.fontWeight = "normal";
+    rev4Linea9_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_17() {
@@ -942,6 +1290,11 @@ function hoyoDesnudo_17() {
     rev2Linea9.disabled = false;
     rev3Linea9.disabled = true;
     rev4Linea9.disabled = true;
+
+    rev1Linea9_valor.style.fontWeight = "normal";
+    rev2Linea9_valor.style.fontWeight = "bold";
+    rev3Linea9_valor.style.fontWeight = "normal";
+    rev4Linea9_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_18() {
@@ -949,6 +1302,11 @@ function hoyoDesnudo_18() {
     rev2Linea9.disabled = true;
     rev3Linea9.disabled = false;
     rev4Linea9.disabled = true;
+
+    rev1Linea9_valor.style.fontWeight = "normal";
+    rev2Linea9_valor.style.fontWeight = "normal";
+    rev3Linea9_valor.style.fontWeight = "bold";
+    rev4Linea9_valor.style.fontWeight = "normal";
 }
 
 function hoyoDesnudo_19() {
@@ -956,6 +1314,11 @@ function hoyoDesnudo_19() {
     rev2Linea9.disabled = true;
     rev3Linea9.disabled = true;
     rev4Linea9.disabled = false;
+
+    rev1Linea9_valor.style.fontWeight = "normal";
+    rev2Linea9_valor.style.fontWeight = "normal";
+    rev3Linea9_valor.style.fontWeight = "normal";
+    rev4Linea9_valor.style.fontWeight = "bold";
 }
 
 // FUNCIÓN PARA LIMPIAR LOS INPUTS
@@ -965,16 +1328,22 @@ boton_limpiar4.addEventListener("click", limpiarInputs4);
 function limpiarInputs4 () {
     var grupo_rev4 = document.getElementsByName("rev4");
     var grupo_hoyo4 = document.getElementsByName("hoyo4");
+    var grupo_rev4_valor = document.getElementsByName("rev4-valor");
+    var grupo_hoyo4_valor = document.getElementsByName("hoyo4-valor");
     
     for(var v = 0; v < grupo_rev4.length; v++) {
         var rad_rev4 = grupo_rev4[v];
         rad_rev4.checked = false;
         rad_rev4.disabled = false;
+        var span_rev = grupo_rev4_valor[v];
+        span_rev.style.fontWeight = "normal";
     }
     for(var w = 0; w < grupo_hoyo4.length; w++) {
         var rad_hoyo4 = grupo_hoyo4[w];
         rad_hoyo4.checked = false;
         rad_hoyo4.disabled = false;
+        var span_hoyo = grupo_hoyo4_valor[w];
+        span_hoyo. style.fontWeight = "normal";
     }
 }
 
@@ -1135,6 +1504,11 @@ function hoyoRevestido_25() {
     hoyo1Linea10.disabled = false;
     hoyo2Linea10.disabled = false;
     hoyo3Linea10.disabled = false;
+
+    hoyo1Linea10_valor.style.fontWeight = "normal";
+    hoyo2Linea10_valor.style.fontWeight = "bold";
+    hoyo3Linea10_valor.style.fontWeight = "bold";
+
     profAsent5.disabled = false;
     denZap5.disabled = false;
     inclinacionHoyo5.disabled = false;
@@ -1145,6 +1519,11 @@ function hoyoRevestido_26() {
     hoyo1Linea10.disabled = true;
     hoyo2Linea10.disabled = true;
     hoyo3Linea10.disabled = false;
+
+    hoyo1Linea10_valor.style.fontWeight = "normal";
+    hoyo2Linea10_valor.style.fontWeight = "normal";
+    hoyo3Linea10_valor.style.fontWeight = "bold";
+
     profAsent5.disabled = false;
     denZap5.disabled = false;
     inclinacionHoyo5.disabled = true;
@@ -1155,6 +1534,11 @@ function hoyoRevestido_27() {
     hoyo1Linea10.disabled = true;
     hoyo2Linea10.disabled = true;
     hoyo3Linea10.disabled = true;
+
+    hoyo1Linea10_valor.style.fontWeight = "normal";
+    hoyo2Linea10_valor.style.fontWeight = "normal";
+    hoyo3Linea10_valor.style.fontWeight = "normal";
+
     profAsent5.disabled = true;
     denZap5.disabled = true;
     inclinacionHoyo5.disabled =  true;
@@ -1165,6 +1549,11 @@ function hoyoRevestido_28() {
     hoyo1Linea10.disabled = true;
     hoyo2Linea10.disabled = true;
     hoyo3Linea10.disabled = true;
+
+    hoyo1Linea10_valor.style.fontWeight = "normal";
+    hoyo2Linea10_valor.style.fontWeight = "normal";
+    hoyo3Linea10_valor.style.fontWeight = "normal";
+
     profAsent5.disabled = true;
     denZap5.disabled = true;
     inclinacionHoyo5.disabled =  true;
@@ -1172,6 +1561,7 @@ function hoyoRevestido_28() {
 }
 
 // VARIABLES Y EVENTOS PARA MANIPULAR LOS INPUT RADIOS
+// Revestidores
 var rev1Linea9 = document.getElementById("rev1-linea9");
 rev1Linea9.addEventListener("click", hoyoRevestido_25);
 
@@ -1184,9 +1574,21 @@ rev3Linea9.addEventListener("click", hoyoRevestido_27);
 var rev4Linea9 = document.getElementById("rev4-linea9");
 rev4Linea9.addEventListener("click", hoyoRevestido_28);
 
+// Hoyos
 var hoyo1Linea10 = document.getElementById("hoyo1-linea10");
 var hoyo2Linea10 = document.getElementById("hoyo2-linea10");
 var hoyo3Linea10 = document.getElementById("hoyo3-linea10");
+
+// Valores de Revestidores (span)
+rev1Linea9_valor = document.getElementById("valor_r1l9");
+rev2Linea9_valor = document.getElementById("valor_r2l9");
+rev3Linea9_valor = document.getElementById("valor_r3l9");
+rev4Linea9_valor = document.getElementById("valor_r4l9");
+
+// Valores de hoyos (span)
+var hoyo1Linea10_valor = document.getElementById("valor_h1l10");
+var hoyo2Linea10_valor = document.getElementById("valor_h2l10");
+var hoyo3Linea10_valor = document.getElementById("valor_h3l10");
 
 // FUNCIÓN PARA LIMPIAR LOS INPUTS
 var boton_limpiar5 = document.getElementById("limpiar-radios5");
@@ -1195,16 +1597,22 @@ boton_limpiar5.addEventListener("click", limpiarInputs5);
 function limpiarInputs5 () {
     var grupo_rev5 = document.getElementsByName("rev5");
     var grupo_hoyo5 = document.getElementsByName("hoyo5");
+    var grupo_rev5_valor = document.getElementsByName("rev5-valor");
+    var grupo_hoyo5_valor = document.getElementsByName("hoyo5-valor");
     
     for(var x = 0; x < grupo_rev5.length; x++) {
         var rad_rev5 = grupo_rev5[x];
         rad_rev5.checked = false;
         rad_rev5.disabled = false;
+        var span_rev = grupo_rev5_valor[x];
+        span_rev.style.fontWeight = "normal";
     }
     for(var y = 0; y < grupo_hoyo5.length; y++) {
         var rad_hoyo5 = grupo_hoyo5[y];
         rad_hoyo5.checked = false;
         rad_hoyo5.disabled = false;
+        var span_hoyo = grupo_hoyo5_valor[y];
+        span_hoyo.style.fontWeight = "normal";
     }
 }
 

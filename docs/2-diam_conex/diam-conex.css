@@ -161,7 +161,6 @@ form input {
 }
 
 .nombre-rev {
-	/* display: block; */
 	width: 25rem;
 	height: 3.2rem;
 }
@@ -170,8 +169,6 @@ form input {
 	width: 25rem;
 	height: 3.2rem;
 	border-radius: 0.8rem;
-	/* background-color: var(--text-input-field); */
-	/* border: none; */
 	border: 0.1rem solid var(--hospital-green)
 }
 
@@ -190,6 +187,14 @@ button:active {
 	color: gray;
 	background-color: var(--white);
 	border: 0.1rem solid var(--very-light-gray);
+}
+
+.limpiar-radios {
+	background-color: var(--white);
+}
+
+.limpiar-radios:active {
+	background-color: var(--hospital-green);
 }
 
 .container-button {
@@ -211,19 +216,14 @@ table, th, td, tr {
 }
 
 table {
-    margin: 0 auto;
-    margin-top: 1rem;
+    margin: 1rem auto 2rem;
 }
 
 .tabla td {
     width: 7rem;
 }
 
-/* .tabla {
-    width: 30rem;
-} */
-
-select {
+table select {
     width: 7rem;
 }
 
