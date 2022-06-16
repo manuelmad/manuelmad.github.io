@@ -26,35 +26,36 @@ function interpolar()
 
 	var resultado;
 
+	// ALGORITMO
 	if(prof_1 == "")
 	{
 		resultado = prof3 - ((prof3-prof2)*(den3-den1)/(den3-den2));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(0);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(0) + " pies.";
 	}
 	else if(den_1 == "")
 	{
 		resultado = den3 - ((prof3-prof1)*(den3-den2)/(prof3-prof2));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(1);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(1) + " lpg.";
 	}
 	else if(prof_2 == "")
 	{
 		resultado = prof3 - ((prof3-prof1)*(den3-den2)/(den3-den1));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(0);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(0) + " pies.";
 	}
 	else if(den_2 == "")
 	{
 		resultado = den3 - ((prof3-prof2)*(den3-den1)/(prof3-prof1));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(1);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(1) + " lpg.";
 	}
 	else if(prof_3 == "")
 	{
 		resultado = prof1 - ((prof1-prof2)*(den1-den3)/(den1-den2));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(0);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(0) + " pies.";
 	}
 	else if(den_3 == "")
 	{
 		resultado = den1 - ((prof1-prof3)*(den1-den2)/(prof1-prof2));
-		document.getElementById("resultado").innerHTML = resultado.toFixed(1);
+		document.getElementById("resultado").innerHTML = resultado.toFixed(1) + " lpg.";
 	}
 }
 

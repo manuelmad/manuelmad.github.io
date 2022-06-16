@@ -4,8 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="instrucciones.css" type="text/css" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 	<title>INSTRUCCIONES DE USO DE LA APLICACIÓN</title>
+	<link href="instrucciones.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<header>
@@ -26,7 +29,7 @@
 					<ul>
 						<li>Al seleccionar uno, se desactivarán los diámetros de revestidor de la siguiente fase (HOJA DE DATOS) que no son posibles para el diámetro de hoyo elegido, manteniendo activos el resto.</li>
 						<li>También en la siguiente fase, se mostrará en negritas el(los) diámetro(s) de revestidor recomendados para el tamaño de hoyo elegido.</li>
-						<li>Si desea deshacer las selecciones de diámetros de revestidor y hoyo de la fase actual, presione el botón <i>Limpiar selecciones</i>.</li>
+						<li>Si desea deshacer las selecciones de diámetros de revestidor y hoyo de la fase actual, presione el botón <i>Limpiar selecciones</i> <button class="limpiar-radios" id="limpiar-radios" title="Limpiar selecciones"><img src="../imagenes/arrow-clockwise.svg" alt=""></button>.</li>
 					</ul>
 				</li>
 				<li>Escoja un nombre para el revestidor, según su función en el pozo.</li>
@@ -42,7 +45,7 @@
 				<li>Ingrese el máximo valor de DLS (Dog Leg Serverity) del hoyo en grados por cada 100 pies.
 				</li>
 				<li>Elija el tipo de sarta, dependiendo si llegará hasta superficie (Revestidor) o si será colgado del revestidor anterior (Camisa).</li>
-				<li>Inicialmente, la lista desplegable de conexiones estará vacía. Para que ésta muestre las conexiones recomendadas según todas las condiciones establecidas en la HOJA DE DATOS, solo hay que hacer clic en el botón <i>Recomendar conexión</i>.</li>
+				<li>Inicialmente, la lista desplegable de conexiones estará vacía. Para que ésta muestre las conexiones recomendadas según todas las condiciones establecidas en la HOJA DE DATOS, solo hay que hacer clic en el botón <button id="recomendar-conexion">Recomendar conexión</button>.</li>
 				<li>Finalmente, puede llenar la tabla definitiva siguiendo lo recomendado por la aplicación para cada fase de la perforación o puede llenarla obedeciendo un criterio distinto sin limitarse a lo anterior.</li>
 			</ol>
 		</section>
