@@ -661,7 +661,8 @@ function autoLineas()
 				{
 					console.log("La pendiente de la recta de DA interceptada es: " + pendiente);
 					interseccion = P_vs_DA[n+3] - (pendiente*P_vs_DA[n+2]);
-					console.log("La intersección con el eje Y de la recta de DA interceptada es: " + interseccion + " px.");
+					// console.log("La intersección con el eje Y de la recta de DA interceptada es: " + interseccion + " px.");
+					console.log(`La intersección con el eje Y de la recta de DA interceptada es: ${interseccion} px.`);
 					var auto1 = pendiente*x + interseccion;
 					console.log("La profundidad de asentamiento para " + x/factorX + " lpg. es: " + auto1 + " px. ó " + auto1/factorY + " pies.");
 				}
@@ -1046,8 +1047,12 @@ function AnalisisIntermedio()
 
 		if(Delta_Presion_Calculado < Delta_Presion_Teorico)
 		{
-			var x = "Presion Diferencial Teórica = " + Delta_Presion_Teorico + " lpc." + "<br>" + "Presion Diferencial Calculada = " + Delta_Presion_Calculado.toFixed(1) + " lpc." + "<br>" + "Presion Diferencial Calculada < Presion Diferencial Teórica." + "<br>" + "<br>" + "El revestidor PUEDE ASENTARSE a " + Prof_Rev_Int + " pies sin riesgo de pega diferencial.";
-			document.getElementById("resultadoI").innerHTML = x;
+			var x = `Presion Diferencial Teórica = ${Delta_Presion_Teorico} lpc.
+			Presion Diferencial Calculada = ${Delta_Presion_Calculado.toFixed(1)} lpc.
+			Presion Diferencial Calculada < Presion Diferencial Teórica.
+
+			El revestidor PUEDE ASENTARSE a ${Prof_Rev_Int} pies sin riesgo de pega diferencial.`;
+			document.getElementById("resultadoI").innerText = x;
 		}
 		else
 		{
@@ -1060,7 +1065,7 @@ function AnalisisIntermedio()
 			var P_vs_PF = arrays_densidades[3];
 
 			//var w = Densidad_Zap_Int_Correg;
-			var w= 11;
+			var w= 11; // Eliminar cuando la app salga a producción
 			
 			// CICLO PARA QUE LA LÍNEA VERTICAL DE MÁXIMA DENSIDAD DE LODO PERMITIDA INTERSECTE A LA LÍNEA DE DL
 			var n;
@@ -1145,8 +1150,21 @@ function AnalisisIntermedio()
 				}
 			}
 			
-			var x = "Presion Diferencial Teórica = " + Delta_Presion_Teorico + " lpc." + "<br>" + "Presion Diferencial Calculada = " + Delta_Presion_Calculado.toFixed(1) + " lpc." + "<br>" + "Presion Diferencial Calculada > Presion Diferencial Teórica." + "<br>" + "<br>" + "El revestidor NO PUEDE ASENTARSE a " + Prof_Rev_Int + " pies por riesgo de pega diferencial." + "<br>" + "<br>" + "Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es " + Densidad_Zap_Int_Correg + " lpg." + "<br>" + "<br>" + "Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: " + (auto1/factorY).toFixed(0) + " pies." + "<br>" + "<br>" + "IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado." + "<br>" + "<br>" + "Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, la cual puede estar comprendida entre " + Prof_Rev_Int + " pies y " + (auto3/factorY).toFixed(0) + " pies, siendo esta última la máxima profundidad permisible.";
-			document.getElementById("resultadoI").innerHTML = x;
+			var x = `Presion Diferencial Teórica = ${Delta_Presion_Teorico} lpc.
+			Presion Diferencial Calculada = ${Delta_Presion_Calculado.toFixed(1)} lpc.
+			Presion Diferencial Calculada > Presion Diferencial Teórica.
+			
+			El revestidor NO PUEDE ASENTARSE a ${Prof_Rev_Int} pies por riesgo de pega diferencial.
+			
+			Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es ${Densidad_Zap_Int_Correg} lpg.
+			
+			Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: ${(auto1/factorY).toFixed(0)} pies.
+			
+			IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado.
+			
+			Elija la Profundidad de Asentamiento de la sarta de revestimiento adicional, la cual puede estar comprendida entre ${Prof_Rev_Int} pies y ${(auto3/factorY).toFixed(0)} pies, siendo esta última la máxima profundidad permisible.`;
+			
+			document.getElementById("resultadoI").innerText = x;
 		}
 	}
 	else
@@ -1182,13 +1200,23 @@ function AnalisisSuperficial()
 	{
 		if(Densidad_Equiv_Fluido < Densidad_Frac_Equiv_Sup)
 		{
-			var w = "Densidad Equivalente de Fractura = " + Densidad_Frac_Equiv_Sup + " lpg." + "<br>" + "Densidad Equivalente del Lodo luego del influjo = " + Densidad_Equiv_Fluido + " lpg." + "<br>" + "Densidad Equivalente del Lodo < Densidad Equivalente de Fractura."+ "<br>"+ "<br>" + "El revestidor superficial PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies sin riesgo de falla por arremetida.";
-			document.getElementById("resultadoS").innerHTML = w;
+			var w = `Densidad Equivalente de Fractura = ${Densidad_Frac_Equiv_Sup} lpg.
+			Densidad Equivalente del Lodo luego del influjo = ${Densidad_Equiv_Fluido.toFixed(1)} lpg.
+			Densidad Equivalente del Lodo < Densidad Equivalente de Fractura.
+			
+			El revestidor superficial PUEDE ASENTARSE a ${Prof_Rev_Sup} pies sin riesgo de falla por arremetida.`;
+	
+			document.getElementById("resultadoS").innerText = w;
 		}
 		else
 		{
-			var w = "Densidad Equivalente de Fractura = " + Densidad_Frac_Equiv_Sup + " lpg." + "<br>" + "Densidad Equivalente del Lodo luego del influjo = " + Densidad_Equiv_Fluido + " lpg." + "<br>" + "Densidad Equivalente del Lodo > Densidad Equivalente de Fractura."+ "<br>"+ "<br>" + "El revestidor superficial NO PUEDE ASENTARSE a " + Prof_Rev_Sup + " pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.";
-			document.getElementById("resultadoS").innerHTML = w;
+			var w = `Densidad Equivalente de Fractura = ${Densidad_Frac_Equiv_Sup} lpg.
+			Densidad Equivalente del Lodo luego del influjo = ${Densidad_Equiv_Fluido.toFixed(1)} lpg.
+			Densidad Equivalente del Lodo > Densidad Equivalente de Fractura.
+			
+			El revestidor superficial NO PUEDE ASENTARSE a ${Prof_Rev_Sup} pies por riesgo de falla por arremetida. Introduzca una profundidad de asentamiento mayor y su correspondiente Densidad de Fractura Equivalente.`;
+			
+			document.getElementById("resultadoS").innerText = w;
 		}
 	}
 	else
