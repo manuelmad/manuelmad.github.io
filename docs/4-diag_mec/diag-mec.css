@@ -1,3 +1,28 @@
+* {/* El selector universal que aplica las declaraciones en todo el documento */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en adelante, 1rem = 10px */
+}
+
+:root {
+	--very-light-gray:#C7C7C7;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD982;
+	--very-light-blue:#bad7f1;
+	--white: #FFFFFF;
+	--black: #000000;
+	--ss: 1.2rem;
+	--sm: 1.4rem;
+	--md: 1.5rem;
+	--lg: 1.8rem;
+}
+
 /* REDUCCIÓN DE LONGITUD DE LOS INPUT NUMBER */
   /* CONDUCTOR */
   #PRC {

@@ -1,121 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aplicación web útil para elaborar diagramas mecánicos de pozos petroleros verticales.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 	<title>Elaboración de Diagramas Mecánicos de Pozos Verticales</title>
 	<link href="diag-mec.css" type="text/css" rel="stylesheet"/>
+	<link href="diag-mec-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="diag-mec-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<p>Para la costrucción del diagrama mecánico del pozo, indique la existencia o no de los siguientes revestidores y/o liners, así como sus características y las profundidades requeridas según su elección.</p>
-	<br>
-	<p><strong>REVESTIDOR CONDUCTOR:</strong></p>
-	<input type="radio" name="conductor" value="0" id = "conductorsi" checked>Sí, asentado a
-	<input type="number" id="PRC"> pies.
-	<br>
-	<input type="radio" name="conductor" value="1" id = "conductorno">No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR SUPERFICIAL:</strong></p>
-	<input type="radio" name="superficial" value="2" id = "superficialsi" checked>Sí, asentado a
-	<input type="number" id="PRS"> pies.
-	<br>
-	<input type="radio" name="superficial" value="3" id = "superficialno">No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR SUPERFICIAL II:</strong></p>
-	<input type="radio" name="superficialII" value="4" id = "superficialIIsi">Sí, asentado a
-	<input type="number" id="PRSII" disabled ="true"> pies.
-	<br>
-	<input type="radio" name="superficialII" value="5" id = "superficialIIno" checked>No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR INTERMEDIO:</strong></p>
-	<input type="radio" name="intermedio" value="6" id = intermediosi checked>Sí, asentado a
-	<input type="number" id="PRi"> pies.
-	<br>
-	<input type="radio" name="intermedio" value="7" id = intermediono>No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR O LINER INTERMEDIO II:</strong></p>
-	<input type="radio" name="intermedioII" value="8" id = intermedioIIsi>Sí, asentado a
-	<input type="number" id="PRiII" disabled ="true"> pies. Va
+	<main>
+		<p>Para la costrucción del diagrama mecánico del pozo, indique la existencia o no de los siguientes revestidores y/o liners, así como sus características y las profundidades requeridas según su elección.</p>
+		<br>
+		<p><strong>REVESTIDOR CONDUCTOR:</strong></p>
+		<input type="radio" name="conductor" value="0" id = "conductorsi" checked>Sí, asentado a
+		<input type="number" id="PRC"> pies.
+		<br>
+		<input type="radio" name="conductor" value="1" id = "conductorno">No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR SUPERFICIAL:</strong></p>
+		<input type="radio" name="superficial" value="2" id = "superficialsi" checked>Sí, asentado a
+		<input type="number" id="PRS"> pies.
+		<br>
+		<input type="radio" name="superficial" value="3" id = "superficialno">No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR SUPERFICIAL II:</strong></p>
+		<input type="radio" name="superficialII" value="4" id = "superficialIIsi">Sí, asentado a
+		<input type="number" id="PRSII" disabled ="true"> pies.
+		<br>
+		<input type="radio" name="superficialII" value="5" id = "superficialIIno" checked>No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR INTERMEDIO:</strong></p>
+		<input type="radio" name="intermedio" value="6" id = intermediosi checked>Sí, asentado a
+		<input type="number" id="PRi"> pies.
+		<br>
+		<input type="radio" name="intermedio" value="7" id = intermediono>No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR O LINER INTERMEDIO II:</strong></p>
+		<input type="radio" name="intermedioII" value="8" id = intermedioIIsi>Sí, asentado a
+		<input type="number" id="PRiII" disabled ="true"> pies. Va
+		
+		<select id="tipoDeRiII" disabled ="true" onchange="habilitarProfColgiII();">
+		<option value = "1">Hasta Superficie</option>
+		<option value = "2">Colgado a</option>
+		</select>
+
+		<input type="number" id="PColgiII" disabled ="true"> pies.
+
+		<select id="reqTieBackiII" disabled ="true" onchange="habilitarProfColgiII();">
+		<option value = "1">No Requiere</option>
+		<option value = "2">Requiere</option>
+		</select> tieback liner.
+
+		<br>
+		<input type="radio" name="intermedioII" value="9" id = intermedioIIno checked>No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR O LINER DE PRODUCCIÓN:</strong></p>
+		<input type="radio" name="produccion" value="10" id = produccionsi checked>Sí, asentado a
+		<input type="number" id="PRP"> pies. Va
+
+		<select id="tipoDeRP" onchange="habilitarProfColgP();">
+		<option value = "1">Hasta Superficie</option>
+		<option value = "2">Colgado a</option>
+		</select>
+
+		<input type="number" id="PColgP" disabled ="true"> pies.
+
+		Tipo de Liner: 
+		<select id="tipoDeLinerP" disabled ="true" onchange="habilitarProfColgP();">
+		<option value = "1">Liso</option>
+		<option value = "2">Ranurado</option>
+		</select>.
+
+		<select id="reqTieBackP" disabled ="true" onchange="habilitarProfColgP();">
+		<option value = "1">No Requiere</option>
+		<option value = "2">Requiere</option>
+		</select> tieback liner.
+
+		<br>
+		<input type="radio" name="produccion" value="11" id = produccionno>No.
+		<br>
+		<br>
+		<p><strong>REVESTIDOR O LINER DE PRODUCCIÓN II:</strong></p>
+		<input type="radio" name="produccionII" value="12" id = produccionIIsi>Sí, asentado a
+		<input type="number" id="PRPII" disabled ="true"> pies. Va
+
+		<select id="tipoDeRPII" disabled ="true" onchange="habilitarProfColgPII();">
+		<option value = "1">Hasta Superficie</option>
+		<option value = "2">Colgado a</option>
+		</select>
+
+		<input type="number" id="PColgPII" disabled ="true"> pies.
+
+		Tipo de Liner: 
+		<select id="tipoDeLinerPII" disabled ="true" onchange="habilitarProfColgPII();">
+		<option value = "1">Liso</option>
+		<option value = "2">Ranurado</option>
+		</select>.
+
+		<select id="reqTieBackPII" disabled ="true" onchange="habilitarProfColgPII();">
+		<option value = "1">No Requiere</option>
+		<option value = "2">Requiere</option>
+		</select> tieback liner.
+
+		<br>
+		<input type="radio" name="produccionII" value="13" id = produccionIIno checked>No.
+		<br>
+		<br>
+
+		<input type="button" value = "DIBUJAR DIAGRAMA MECÁNICO" id="boton_diagrama">
+		<br>
+		<br>
+		<canvas width="600" height="600" id="diag_mec"></canvas>
+		<br>
+		<br>
+		<input type="button" value = "BORRAR DIAGRAMA MECÁNICO" id="borrar_diagrama">
+	</main>
 	
-	<select id="tipoDeRiII" disabled ="true" onchange="habilitarProfColgiII();">
-	<option value = "1">Hasta Superficie</option>
-	<option value = "2">Colgado a</option>
-	</select>
-
-	<input type="number" id="PColgiII" disabled ="true"> pies.
-
-	<select id="reqTieBackiII" disabled ="true" onchange="habilitarProfColgiII();">
-	<option value = "1">No Requiere</option>
-	<option value = "2">Requiere</option>
-	</select> tieback liner.
-
-	<br>
-	<input type="radio" name="intermedioII" value="9" id = intermedioIIno checked>No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR O LINER DE PRODUCCIÓN:</strong></p>
-	<input type="radio" name="produccion" value="10" id = produccionsi checked>Sí, asentado a
-	<input type="number" id="PRP"> pies. Va
-
-	<select id="tipoDeRP" onchange="habilitarProfColgP();">
-	<option value = "1">Hasta Superficie</option>
-	<option value = "2">Colgado a</option>
-	</select>
-
-	<input type="number" id="PColgP" disabled ="true"> pies.
-
-	Tipo de Liner: 
-	<select id="tipoDeLinerP" disabled ="true" onchange="habilitarProfColgP();">
-	<option value = "1">Liso</option>
-	<option value = "2">Ranurado</option>
-	</select>.
-
-	<select id="reqTieBackP" disabled ="true" onchange="habilitarProfColgP();">
-	<option value = "1">No Requiere</option>
-	<option value = "2">Requiere</option>
-	</select> tieback liner.
-
-	<br>
-	<input type="radio" name="produccion" value="11" id = produccionno>No.
-	<br>
-	<br>
-	<p><strong>REVESTIDOR O LINER DE PRODUCCIÓN II:</strong></p>
-	<input type="radio" name="produccionII" value="12" id = produccionIIsi>Sí, asentado a
-	<input type="number" id="PRPII" disabled ="true"> pies. Va
-
-	<select id="tipoDeRPII" disabled ="true" onchange="habilitarProfColgPII();">
-	<option value = "1">Hasta Superficie</option>
-	<option value = "2">Colgado a</option>
-	</select>
-
-	<input type="number" id="PColgPII" disabled ="true"> pies.
-
-	Tipo de Liner: 
-	<select id="tipoDeLinerPII" disabled ="true" onchange="habilitarProfColgPII();">
-	<option value = "1">Liso</option>
-	<option value = "2">Ranurado</option>
-	</select>.
-
-	<select id="reqTieBackPII" disabled ="true" onchange="habilitarProfColgPII();">
-	<option value = "1">No Requiere</option>
-	<option value = "2">Requiere</option>
-	</select> tieback liner.
-
-	<br>
-	<input type="radio" name="produccionII" value="13" id = produccionIIno checked>No.
-	<br>
-	<br>
-
-	<input type="button" value = "DIBUJAR DIAGRAMA MECÁNICO" id="boton_diagrama">
-	<br>
-	<br>
-	<canvas width="600" height="600" id="diag_mec"></canvas>
-	<br>
-	<br>
-	<input type="button" value = "BORRAR DIAGRAMA MECÁNICO" id="borrar_diagrama">
 	
 	<script type="text/javascript" src = "diag-mec.js"></script>
 </body>
