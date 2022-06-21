@@ -357,7 +357,7 @@ function crearArray() {
 		}
 		else
 		{
-			dl_1.innerHTML = DL;
+			dl_1.innerHTML = DL.toFixed(1);
 		}
 		var dl1 = DL*factorX;
 
@@ -388,7 +388,7 @@ function crearArray() {
 		}
 		else
 		{
-			da_1.innerHTML = DA;
+			da_1.innerHTML = DA.toFixed(1);
 		}
 		var da1 = DA*factorX;
 
@@ -583,6 +583,7 @@ auto.addEventListener("mouseup", image4Curvas);
 // ACCEDER AL BOTÓN "deshacer" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN deshacerLineaDiseno AL DARLE CLICK //
 var deshace_linea = document.getElementById("deshacer");
 deshace_linea.addEventListener("click", deshacerLineaDiseno);
+deshace_linea.addEventListener("click", eliminarTablaRev);
 
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS PUNTEADAS (2 PUNTOS) //
@@ -647,7 +648,7 @@ function autoLineas()
 		var pendiente;
 		var interseccion;
 		var cuerpotabla_rev = document.getElementById("tabla_rev");
-
+		
 		for(n=0; n<=datosDA-1; n=n+2)
 		{
 			if(x >= P_vs_DA[n] && x< P_vs_DA[n+2])
@@ -661,7 +662,6 @@ function autoLineas()
 				{
 					console.log("La pendiente de la recta de DA interceptada es: " + pendiente);
 					interseccion = P_vs_DA[n+3] - (pendiente*P_vs_DA[n+2]);
-					// console.log("La intersección con el eje Y de la recta de DA interceptada es: " + interseccion + " px.");
 					console.log(`La intersección con el eje Y de la recta de DA interceptada es: ${interseccion} px.`);
 					var auto1 = pendiente*x + interseccion;
 					console.log("La profundidad de asentamiento para " + x/factorX + " lpg. es: " + auto1 + " px. ó " + auto1/factorY + " pies.");
@@ -721,32 +721,47 @@ function autoLineas()
 		var cell4 = fila_nueva.insertCell(3);
 		var cell5 = fila_nueva.insertCell(4);
 		cell1.innerHTML = mostrar_y;
-  		cell2.innerHTML = (auto2/factorX-MargenViaje).toFixed(1);
-  		cell3.innerHTML = (auto2/factorX).toFixed(1);
-  		cell4.innerHTML = (x/factorX).toFixed(1);
-  		cell5.innerHTML = (x/factorX+MargenArremetida).toFixed(1);
+		cell2.innerHTML = (auto2/factorX-MargenViaje).toFixed(1);
+		cell3.innerHTML = (auto2/factorX).toFixed(1);
+		cell4.innerHTML = (x/factorX).toFixed(1);
+		cell5.innerHTML = (x/factorX+MargenArremetida).toFixed(1);
 
-	x = auto2;
-	y = auto1;
+		var fila_tabla_rev = cuerpotabla_rev.getElementsByTagName("tr");
+		var numero_de_filas = fila_tabla_rev.length;
+
+		x = auto2;
+		y = auto1;
 	}
 
 	lienzo.fillText(ultimaProf/factorY +"'", ancho + margen + 5, ultimaProf + margen); // Mostrar valor de profundidad final en canvas //
 	
-	if(x < P_vs_DA[0]) // Código para que se trace la última línea vertical
+	if(x < P_vs_DA[0] || numero_de_filas == 6) // Código para que se trace la última línea vertical
 	{
 		auto1 = 0;
 		dibujarLineaDiseno("black", x + margen, y + margen, x + margen, auto1 + margen);
 	}
+
+	return numero_de_filas;
 }
 
-function image4Curvas() // FUNCIÓN QUE CAPTURA EL CANVAS CON LAS CURVAS DE DENSIDADES //
-{
+// FUNCIÓN QUE CAPTURA EL CANVAS CON LAS CURVAS DE DENSIDADES //
+function image4Curvas() {
 	ImageData2 = lienzo.getImageData(0, 0, ancho_canvas, alto_canvas);
 }
 
-function deshacerLineaDiseno() // FUNCIÓN QUE ELIMINA LAS CURVAS DE DISEÑO HORIZONTALES Y/O VERTICALES, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
-{
+// FUNCIÓN QUE ELIMINA LAS CURVAS DE DISEÑO HORIZONTALES Y/O VERTICALES, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
+function deshacerLineaDiseno() {
 	lienzo.putImageData(ImageData2, 0, 0);
+}
+
+function eliminarTablaRev() {
+	var cuerpotabla_rev = document.getElementById("tabla_rev");
+	var fila_tabla_rev = cuerpotabla_rev.getElementsByTagName("tr");
+	var numero_de_filas = fila_tabla_rev.length;
+	 
+	for(i = 1; i < numero_de_filas; i++) {
+		cuerpotabla_rev.deleteRow(1);
+	}
 }
 
 /******* LÍNEAS DE DISEÑO MANUALES ********/
