@@ -1,4 +1,4 @@
-// HABILITACIÓN-DESHABILITACIÓN DE INPUTS NUMBER DE PROFUNIDAD //
+// HABILITAR-DESHABILITAR INPUTS NUMBER DE PROFUNIDAD //
 
 // ** CONDUCTOR ** //
 
@@ -43,7 +43,7 @@ var superficialsi = document.getElementById("superficialsi");
 superficialsi.addEventListener("click", habilitarNumber2);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRs" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRS" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber3 () {
 	console.log('Vamos a deshabilitar el input text');
 	PRS.disabled = true;
@@ -283,9 +283,25 @@ function habilitarProfColgPII(){
 // ******************************************************************************* //
 
 // DEFINIR EL CONTEXTO DE CANVAS //
-
 var d = document.getElementById("diag_mec");
 var lienzo = d.getContext("2d");
+
+// Tamaño de canvas responsivo
+var tamano_ventana = window.innerWidth;
+console.log(tamano_ventana);
+if(tamano_ventana < 600) {
+	d.setAttribute("width", 280);
+	d.setAttribute("height", 280);
+}
+else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
+	d.setAttribute("width", 550);
+	d.setAttribute("height", 550);
+}
+else if(tamano_ventana >= 1024) {
+	d.setAttribute("width", 720);
+	d.setAttribute("height", 720);
+}
+
 var ancho = d.width;
 var centro = ancho / 2;
 var alto = d.height;
@@ -293,7 +309,13 @@ var alto = d.height;
 // AÑADIR EL EVENTO DE ELABORAR EL GRÁFICO AL BOTÓN DE HTML //
 var boton = document.getElementById("boton_diagrama");
 boton.addEventListener("click", diagramaMecanico);
+boton.addEventListener("mouseup", imageSinCurvas);
 
+// FUNCIÓN QUE CAPTURA EL CANVAS SIN LOS REVESTIDORES //
+function imageSinCurvas()
+{
+	ImageData = lienzo.getImageData(0, 0, ancho, alto);
+}
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS (2 PUNTOS) //
 function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal)
@@ -303,7 +325,6 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal)
 	lienzo.moveTo(xinicial,yinicial);
 	lienzo.lineTo(xfinal,yfinal);
 	lienzo.stroke();
-	
 }
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS Y RELLENAR EL ÁREA (3 PUNTOS) DELIMITADA POR ELLAS //
@@ -331,16 +352,13 @@ function dibujarLinerRanurado(color, xinicial, yinicial, xfinal, yfinal){
 }
 
 // MARCO (FUERA DE LA FUNCIÓN DE DIBUJO "diagramaMecanico" PARA QUE SEA SIEMPRE VISIBLE) //
+	dibujarLinea("black", 1, 1, 1, alto - 1); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLinea("black", 1, alto - 1, ancho - 1, alto - 1); // LÍNEA HORIZONTAL INFERIOR //
+	dibujarLinea("black", 1, 1, ancho - 1, 1); // LÍNEA HORIZONTAL SUPERIOR //
+	dibujarLinea("black", ancho - 1, 1, ancho - 1, alto - 1); // ´LÍNEA VERTICAL DERECHA //
 
-	dibujarLinea("blue", 1, 1, 1, alto - 1); // LÍNEA VERTICAL IZQUIERDA //
-	dibujarLinea("blue", 1, alto - 1, ancho - 1, alto - 1); // LÍNEA HORIZONTAL INFERIOR //
-	dibujarLinea("blue", 1, 1, ancho - 1, 1); // LÍNEA HORIZONTAL SUPERIOR //
-	dibujarLinea("blue", ancho - 1, 1, ancho - 1, alto - 1); // ´LÍNEA VERTICAL DERECHA //
-
-// FUNCIÓN PARA ELABORACIÓN DEL DIAGRAMA MECÁNICO RESULTANTE AL HACER CLICK EN EL BOTÓN DE HTML //
-
+// FUNCIÓN PARA ELABORACIÓN DEL DIAGRAMA MECÁNICO RESULTANTE AL HACER CLICK EN EL BOTÓN DE HTML
 function diagramaMecanico(){
-
 	// DEFINIR LAS VARIABLES FALTANTES QUE SE UTILIZARÁN PARA EL DIBUJO //
 	var Prof_Rev_Cond = PRC.value;
 	var Prof_Rev_Sup = PRS.value;
@@ -364,8 +382,6 @@ function diagramaMecanico(){
 	var YRevProd = (12/15)*alto;
 
 	
-
-
 	// REVESTIDOR CONDUCTOR //
 	if(Prof_Rev_Cond != "" && PRC.disabled == false){
 	dibujarLinea("black", centro - (ancho/8), 0, centro - (ancho/8), (YRevProd*(Prof_Rev_Sup/3))/Prof_Rev_Prod);
@@ -419,7 +435,6 @@ function diagramaMecanico(){
 
 
 	// REVESTIDOR DE PRODUCCIÓN //
-
 	if(tipo_de_rev == "1" && PRP.disabled == false)
 	{
 		dibujarLinea("black", centro - (ancho/30), 0, centro - (ancho/30), (YRevProd)*(Prof_Rev_Prod/Prof_Rev_Prod));
@@ -501,7 +516,6 @@ function diagramaMecanico(){
 
 
 	// REVESTIDOR DE PRODUCCIÓN II //
-
 	if(Prof_Rev_ProdII != "" && PRPII.disabled == false){
 
 		if(tipo_de_rev_ProdII == "1"){
@@ -548,7 +562,6 @@ function diagramaMecanico(){
 
 	// ZAPATAS //
 
-
 	// CONDUCTOR //
 	if(Prof_Rev_Cond != "" && PRC.disabled == false)
 	{
@@ -594,7 +607,6 @@ function diagramaMecanico(){
 
 
 	// TEXTOS EN EL DIAGRAMA //
-
 	lienzo.font = '11px "Tahoma"';
 	lienzo.fillStyle = "black";
 
@@ -672,5 +684,5 @@ boton2.addEventListener("click", borrarDiagramaMecanico);
 
 function borrarDiagramaMecanico ()
 {
-	lienzo.clearRect(2, 2, ancho-4, alto-4);
+	lienzo.putImageData(ImageData, 0, 0);
 }

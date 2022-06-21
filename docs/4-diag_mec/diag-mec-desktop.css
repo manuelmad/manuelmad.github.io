@@ -1,0 +1,25 @@
+nav #menu-principal{
+    font-size: var(--lg);
+}
+
+section {
+    max-width: 80rem;
+}
+
+.input-number {
+	border: 0.1rem solid var(--very-light-gray);
+}
+
+.input-number:hover {
+	border: 0.1rem solid var(--hospital-green);
+}
+
+button:hover {
+	background-color: var(--hospital-green);
+}
+
+button:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}

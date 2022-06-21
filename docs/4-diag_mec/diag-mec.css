@@ -23,41 +23,176 @@ html {
 	--lg: 1.8rem;
 }
 
-/* REDUCCIÓN DE LONGITUD DE LOS INPUT NUMBER */
-  /* CONDUCTOR */
-  #PRC {
-    width: 5em;
-    }
-    /* SUPERFICIAL */
-  #PRS {
-    width: 5em;
-    }
-    /* SUPERFICIAL II */
-  #PRSII {
-    width: 5em;
-    }
-    /* INTERMEDIO */
-  #PRi {
-    width: 5em;
-    }
-    /* INTERMEDIO II */
-  #PRiII {
-    width: 5em;
-    }
-    #PColgiII {
-    width: 5em;
-    }
-    /* PRODUCCIÓN */
-  #PRP {
-    width: 5em;
-    }
-    #PColgP {
-    width: 5em;
-    }
-    /* PRODUCCIÓN II */
-  #PRPII {
-    width: 5em;
-    }
-    #PColgPII {
-    width: 5em;
-    }
+header {
+	background-color: var(--white);
+	position: sticky;
+	top: 0rem;
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--very-light-gray);
+}
+
+.logo-personal {
+  height: 8vh; /*Un poco más pequeño que el header*/
+  margin-left: 2rem;
+}
+
+header nav {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icono-menu:hover {
+  cursor: pointer;
+}
+
+.container__icono-menu {
+  position: relative;
+  right: 0;
+}
+
+.icono-menu {
+  position: absolute;
+  margin-top: 0;
+  right: 0rem;
+  top: -2rem;
+  margin-right: 1rem;
+  height: 6vh;
+}
+
+.container__menu-principal, .container__icono-menu, .container__logo-personal {
+  margin: 0;
+}
+
+nav #menu-desplegable {
+  position: absolute;
+  list-style: none;
+  visibility: hidden;
+  font-size: var(--sm);
+  right: 0rem;
+  top: -23rem;
+  background-color: var(--hospital-green);
+  transition: 0.5s ease all;
+}
+
+.container__icono-menu:hover > #menu-desplegable {
+  visibility: visible;
+  top: -3rem;
+}
+
+nav #menu-desplegable li {
+  line-height: 3rem;
+  border: 0.1rem solid var(--white);
+}
+
+nav #menu-desplegable li:last-child {
+  margin-bottom: 0;
+}
+
+nav #menu-desplegable a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  padding: 1rem;
+  width: 11rem;
+}
+
+nav #menu-desplegable a:active {
+  background-color: white;
+  color: var(--hospital-green);
+}
+
+nav #menu-principal {
+  position: absolute;
+  visibility: hidden;
+  right: 0;
+}
+
+main {
+	width: 100%;
+}
+
+section {
+	margin: 0 auto;
+  min-width: 31rem;
+	max-width: 50rem;
+  border: 0.1rem solid var(--hospital-green);
+  border-radius: 0.8rem;
+}
+
+main div {
+  width: 27rem;
+  margin: 2rem auto;
+}
+
+.container-rev div {
+  border: 0.1rem solid #252c5a;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  margin: 2rem auto;
+}
+
+.container-grafica div {
+  text-align: center;
+  margin: 1rem auto 0;
+}
+
+p, section, form, canvas {
+	margin-top: 1rem;
+}
+
+canvas {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--md);
+}
+
+h2 {
+  width: 30rem;
+  margin: 1rem auto 0;
+	text-align: justify;
+	font-size: var(--sm);
+  font-weight: normal;
+}
+
+label, p, form {
+  font-size: var(--ss);
+}
+
+.input-number {
+	width: 25rem;
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	border: 0.1rem solid var(--hospital-green);
+}
+
+form input {
+  margin-top: 0.5rem;
+}
+
+span {
+  margin-right: 0.5rem;
+}
+
+.container-grafica {
+  margin: 1rem auto 1rem;
+  text-align: center;
+}
+
+button {
+  background-color: white;
+  border: 0.1rem solid var(--hospital-green);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
