@@ -52,6 +52,10 @@ section {
     width: 7rem;
 }
 
+.container-aviso-num-rev {
+	width: 35rem;
+}
+
 .coord{
 	width: 10rem;
 }

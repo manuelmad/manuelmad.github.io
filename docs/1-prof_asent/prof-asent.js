@@ -726,22 +726,29 @@ function autoLineas()
 		cell4.innerHTML = (x/factorX).toFixed(1);
 		cell5.innerHTML = (x/factorX+MargenArremetida).toFixed(1);
 
+		x = auto2;
+		y = auto1;
+
 		var fila_tabla_rev = cuerpotabla_rev.getElementsByTagName("tr");
 		var numero_de_filas = fila_tabla_rev.length;
 
-		x = auto2;
-		y = auto1;
+		// Código para que el ciclo pare luego de 8 revestidores
+		// var numero_rev = document.getElementById("aviso-num-rev");
+		var r = "La cantidad de revestidores obtenidos en el proceso de diseño es alta, verifique los valores de la tabla.";
+		if(numero_de_filas == 9) {
+			document.getElementById("aviso-num-rev").innerText = r;
+			break;
+		}
 	}
 
 	lienzo.fillText(ultimaProf/factorY +"'", ancho + margen + 5, ultimaProf + margen); // Mostrar valor de profundidad final en canvas //
 	
-	if(x < P_vs_DA[0] || numero_de_filas == 6) // Código para que se trace la última línea vertical
+	// Código para que se trace la última línea vertical
+	if(x < P_vs_DA[0] || numero_de_filas == 9)
 	{
 		auto1 = 0;
 		dibujarLineaDiseno("black", x + margen, y + margen, x + margen, auto1 + margen);
 	}
-
-	return numero_de_filas;
 }
 
 // FUNCIÓN QUE CAPTURA EL CANVAS CON LAS CURVAS DE DENSIDADES //

@@ -406,6 +406,13 @@ canvas {
 	background: var(--hospital-green);
 }
 
+.container-aviso-num-rev {
+	color: red;
+	width: 30rem;
+	margin: auto;
+	text-align: justify;
+}
+
 .div_tablas {
 	/* outline: 1px solid yellow; */
 	margin: auto;
