@@ -6,12 +6,16 @@ section {
     max-width: 80rem;
 }
 
-.input-number {
+.input-number, .input-text {
 	border: 0.1rem solid var(--very-light-gray);
 }
 
-.input-number:hover {
-	border: 0.1rem solid var(--hospital-green);
+.input-number:hover, .input-text:hover  {
+	border: 0.2rem solid var(--hospital-green);
+}
+
+button, form input {
+	cursor: pointer;
 }
 
 button:hover {

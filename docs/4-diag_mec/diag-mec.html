@@ -37,7 +37,7 @@
 	</header>
 	<main>
 		<h1>DIAGRAMA MECÁNICO DE POZOS PETROLEROS</h1>
-		<h2>Indique cuáles revestidores formarán parte de la configuración del pozo y sus correspondientes profundidades de asentamiento</h2>
+		<h2>Para cada revestidor, marque "Sí" si desea que aparezca en el diagrama. En caso contrario, marque "No".</h2>
 		<section class="container-rev">
 			<div>
 				<form>
@@ -46,9 +46,9 @@
 					<input type="radio" name="conductor" value="1" id = "conductorno">No.
 				</form>
 				<p><label for="PRC">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRC" class="input-number"></p>
-				<p><label for="DRC">Diámetro externo (pulg.):</label><br><input type="number" id="DRC" class="input-number"></p>
+				<p><label for="DRC">Diámetro externo (pulg.):</label><br><input type="text" id="DRC" class="input-text"></p>
 				<p><label for="WRC">Peso nominal (lbf/pie):</label><br><input type="number" id="WRC" class="input-number"></p>
-				<p><label for="GRC">Grado del acero:</label><br><input type="text" id="GRC" class="input-number"></p>
+				<p><label for="GRC">Grado del acero:</label><br><input type="text" id="GRC" class="input-text"></p>
 			</div>
 			<div>
 				<form>
@@ -57,6 +57,9 @@
 					<input type="radio" name="superficial" value="3" id = "superficialno">No.
 				</form>
 				<p><label for="PRS">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRS" class="input-number"></p>
+				<p><label for="DRS">Diámetro externo (pulg.):</label><br><input type="text" id="DRS" class="input-number"></p>
+				<p><label for="WRS">Peso nominal (lbf/pie):</label><br><input type="number" id="WRS" class="input-number"></p>
+				<p><label for="GRS">Grado del acero:</label><br><input type="text" id="GRS" class="input-number"></p>
 			</div>
 			<div>
 				<form>
@@ -65,6 +68,9 @@
 					<input type="radio" name="superficialII" value="5" id = "superficialIIno" checked>No.
 				</form>
 				<p><label for="PRSII">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRSII" disabled ="true" class="input-number"></p>
+				<p><label for="DRSII">Diámetro externo (pulg.):</label><br><input type="text" id="DRSII" class="input-number"></p>
+				<p><label for="WRSII">Peso nominal (lbf/pie):</label><br><input type="number" id="WRSII" class="input-number"></p>
+				<p><label for="GRSII">Grado del acero:</label><br><input type="text" id="GRSII" class="input-number"></p>
 			</div>
 			<div>
 				<form>
@@ -73,6 +79,9 @@
 					<input type="radio" name="intermedio" value="7" id = intermediono>No.
 				</form>
 				<p><label for="PRi">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRi" class="input-number"></p>
+				<p><label for="DRi">Diámetro externo (pulg.):</label><br><input type="text" id="DRi" class="input-number"></p>
+				<p><label for="WRi">Peso nominal (lbf/pie):</label><br><input type="number" id="WRi" class="input-number"></p>
+				<p><label for="GRi">Grado del acero:</label><br><input type="text" id="GRi" class="input-number"></p>
 			</div>
 			<div>
 				<form>
@@ -81,6 +90,9 @@
 					<input type="radio" name="intermedioII" value="9" id = intermedioIIno checked>No.
 				</form>
 				<p><label for="PRiII">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRiII" disabled ="true" class="input-number"></p>
+				<p><label for="DRiII">Diámetro externo (pulg.):</label><br><input type="text" id="DRiII" class="input-number"></p>
+				<p><label for="WRiII">Peso nominal (lbf/pie):</label><br><input type="number" id="WRiII" class="input-number"></p>
+				<p><label for="GRiII">Grado del acero:</label><br><input type="text" id="GRiII" class="input-number"></p>
 				<p>Indique el tipo de revestidor:</p>
 				<select id="tipoDeRiII" disabled ="true" onchange="habilitarProfColgiII();">
 					<option value = "1">Hasta Superficie</option>
@@ -100,6 +112,9 @@
 					<input type="radio" name="produccion" value="11" id = produccionno>No.
 				</form>
 				<p><label for="PRP">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRP" class="input-number"></p>
+				<p><label for="DRP">Diámetro externo (pulg.):</label><br><input type="text" id="DRP" class="input-number"></p>
+				<p><label for="WRP">Peso nominal (lbf/pie):</label><br><input type="number" id="WRP" class="input-number"></p>
+				<p><label for="GRP">Grado del acero:</label><br><input type="text" id="GRP" class="input-number"></p>
 				<p>Indique el tipo de revestidor:</p>
 				<select id="tipoDeRP" onchange="habilitarProfColgP();">
 					<option value = "1">Hasta Superficie</option>
@@ -124,6 +139,9 @@
 					<input type="radio" name="produccionII" value="13" id = produccionIIno checked>No.
 				</form>
 				<p><label for="PRPII">Profundidad de asentamiento (pies):</label><br><input type="number" id="PRPII" disabled ="true" class="input-number"></p>
+				<p><label for="DRPII">Diámetro externo (pulg.):</label><br><input type="text" id="DRPII" class="input-number"></p>
+				<p><label for="WRPII">Peso nominal (lbf/pie):</label><br><input type="number" id="WRPII" class="input-number"></p>
+				<p><label for="GRPII">Grado del acero:</label><br><input type="text" id="GRPII" class="input-number"></p>
 				<p>Indique el tipo de revestidor:</p>
 				<select id="tipoDeRPII" disabled ="true" onchange="habilitarProfColgPII();">
 					<option value = "1">Hasta Superficie</option>

@@ -12,7 +12,6 @@ var PRC = document.getElementById("PRC");
 
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRC" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber0 () {
-	console.log('Vamos a habilitar el input text');
 	PRC.disabled = false;
 }
 
@@ -23,7 +22,6 @@ conductorsi.addEventListener("click", habilitarNumber0);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRC" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber1 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRC.disabled = true;
 }
 
@@ -39,7 +37,6 @@ var PRS = document.getElementById("PRS");
 
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRS" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber2 () {
-	console.log('Vamos a habilitar el input text');
 	PRS.disabled = false;
 }
 
@@ -50,7 +47,6 @@ superficialsi.addEventListener("click", habilitarNumber2);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRS" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber3 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRS.disabled = true;
 }
 
@@ -66,7 +62,6 @@ var PRSII = document.getElementById("PRSII");
 
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRSII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber4 () {
-	console.log('Vamos a habilitar el input text');
 	PRSII.disabled = false;
 }
 
@@ -77,7 +72,6 @@ superficialIIsi.addEventListener("click", habilitarNumber4);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRSII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber5 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRSII.disabled = true;
 }
 
@@ -93,7 +87,6 @@ var PRi = document.getElementById("PRi");
 
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRi" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber6 () {
-	console.log('Vamos a habilitar el input text');
 	PRi.disabled = false;
 }
 
@@ -104,7 +97,6 @@ intermediosi.addEventListener("click", habilitarNumber6);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRi" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber7 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRi.disabled = true;
 }
 
@@ -124,7 +116,6 @@ var reqTieBackiII = document.getElementById("reqTieBackiII");
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRiII" Y A LA LISTA DE OPCIONES "tipoDeRiII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRiII", HABILITA TAMBIÉN AL INPUT NUMBER "PColgiII" Y A LA LISTA DE OPCIONES "reqTieBackiII" //
 function habilitarNumber8 () {
-	console.log('Vamos a habilitar el input text');
 	PRiII.disabled = false;
 	tipoDeRiII.disabled = false;
 	if(tipoDeRiII.value == "2"){
@@ -140,7 +131,6 @@ intermedioIIsi.addEventListener("click", habilitarNumber8);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRiII", A LA LISTA DE OPCIONES "tipoDeRiII", AL INPUT NUMBER "PColgiII" Y A LA LISTA DE OPCIONES "reqTieBackiII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber9 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRiII.disabled = true;
 	tipoDeRiII.disabled = true;
 	PColgiII.disabled = true;
@@ -180,7 +170,6 @@ var tipoDeLinerP = document.getElementById("tipoDeLinerP");
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRP" Y A LA LISTA DE OPCIONES "tipoDeRP" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRP", HABILITA TAMBIÉN AL INPUT NUMBER "PColgP" Y A LAS LISTAS DE OPCIONES "reqTieBackP" Y "tipoDeLinerP" //
 function habilitarNumber10 () {
-	console.log('Vamos a habilitar el input text');
 	PRP.disabled = false;
 	tipoDeRP.disabled = false;
 	if(tipoDeRP.value == "2"){
@@ -197,7 +186,6 @@ produccionsi.addEventListener("click", habilitarNumber10);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRP", A LA LISTA DE OPCIONES "tipoDeRP", AL INPUT NUMBER "PColgP" Y LAS LISTAS DE OPCIONES "reqTieBackP" Y "tipoDeLinerP" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber11 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRP.disabled = true;
 	tipoDeRP.disabled = true;
 	PColgP.disabled = true;
@@ -238,7 +226,6 @@ var tipoDeLinerPII = document.getElementById("tipoDeLinerPII");
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRiII" Y A LA LISTA DE OPCIONES "tipoDeRPII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRPII", HABILITA TAMBIÉN AL INPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" //
 function habilitarNumber12 () {
-	console.log('Vamos a habilitar el input text');
 	PRPII.disabled = false;
 	tipoDeRPII.disabled = false;
 	if(tipoDeRPII.value == "2"){
@@ -255,7 +242,6 @@ produccionIIsi.addEventListener("click", habilitarNumber12);
 
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRiII", A LA LISTA DE OPCIONES "tipoDeRPII", AL UNPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber13 () {
-	console.log('Vamos a deshabilitar el input text');
 	PRPII.disabled = true;
 	tipoDeRPII.disabled = true;
 	PColgPII.disabled = true;
@@ -397,16 +383,17 @@ function diagramaMecanico(){
 	// Los inputs y valores están ordenados obligatoriamente de menor a mayor en la aplicación. Por eso el mayor valor es simplemente el último elemento del array
 	var rev_mas_prof = array_rev[array_rev.length-1];
 
-	var YRevProd = (12/15)*alto;
+	var YRevCond = (8/225)*alto; // Profundidad en px fija para el conductor
+	var YRevProd = (12/15)*alto; // Profundidad en px fija para el más profundo
 
 	
 	// REVESTIDOR CONDUCTOR //
 	if(Prof_Rev_Cond != "" && PRC.disabled == false){
-	dibujarLinea("black", centro - (ancho/8), 0, centro - (ancho/8), (YRevProd*(Prof_Rev_Sup/3))/rev_mas_prof);
-	dibujarLinea("black", centro + (ancho/8), 0, centro + (ancho/8), (YRevProd*(Prof_Rev_Sup/3))/rev_mas_prof);
+	dibujarLinea("black", centro - (ancho/8), 0, centro - (ancho/8), YRevCond);
+	dibujarLinea("black", centro + (ancho/8), 0, centro + (ancho/8), YRevCond);
 	}
 	// REVESTIDOR SUPERFICIAL //
-	if(PRS.disabled == false){
+	if(Prof_Rev_Sup!= "" && PRS.disabled == false){
 	dibujarLinea("black", centro - (ancho/10), 0, centro - (ancho/10), (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
 	dibujarLinea("black", centro + (ancho/10), 0, centro + (ancho/10), (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
 	}
@@ -476,8 +463,8 @@ function diagramaMecanico(){
 				console.log("El liner de producción es liso");
 				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea vertical izquierda
 				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea vertical derecha
-				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior izquierda
-				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior derecha
+				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior izquierda
+				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior derecha
 			}
 			else if(Tipo_de_Liner_Prod =="2")
 			{
@@ -491,12 +478,12 @@ function diagramaMecanico(){
 			// COLGADOR (IZQUIERDA) //
 			dibujarLinea("black", centro - (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL ASCENDENTE //
 			dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL DESCENDENTE //
-			dibujarLinea("black", centro - (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL INFERIOR //
+			dibujarLinea("black", centro - (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL SUPERIOR //
 			dibujarLinea("black", centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof); // LÍNEA VERTICAL DERECHA //
 			// COLGADOR (DERECHA) //
 			dibujarLinea("black", centro + (ancho/15), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL DESCENDENTE //
 			dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL ASCENDENTE //
-			dibujarLinea("black", centro + (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro + (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL INFERIOR //
+			dibujarLinea("black", centro + (ancho/15), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro + (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL SUPERIOR //
 			dibujarLinea("black", centro + (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof); // LÍNEA VERTICAL IZQUIERDA //
 		}
 		// Colgado al Intermedio II
@@ -507,14 +494,14 @@ function diagramaMecanico(){
 				console.log("El Liner de Producción es liso");
 				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea izquierda
 				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea derecha
-				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior izquierda
-				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior derecha
+				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior izquierda
+				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior derecha
 			}
 			else if(Tipo_de_Liner_Prod =="2")
 			{
 				console.log("El liner de producción es ranurado");
-				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior izquierda
-				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal superior derecha
+				dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior izquierda
+				dibujarLinea("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof); // Línea horizontal inferior derecha
 				dibujarLinerRanurado("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea vertical izquierda
 				dibujarLinerRanurado("black", centro + (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/30), (YRevProd)*(Prof_Rev_Prod/rev_mas_prof)); // Línea vertical derecha
 			}
@@ -522,7 +509,7 @@ function diagramaMecanico(){
 			// COLGADOR (IZQUIERDA) //
 			dibujarLinea("black", centro - (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL ASCENDENTE //
 			dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof, centro - (ancho/20), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL DESCENDENTE //
-			dibujarLinea("black", centro - (ancho/20), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL INFERIOR //
+			dibujarLinea("black", centro - (ancho/20), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA HORIZONTAL SUPERIOR //
 			dibujarLinea("black", centro - (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5, centro - (ancho/30), (YRevProd)*Prof_Colg/rev_mas_prof); // LÍNEA VERTICAL DERECHA //
 			// COLGADOR (DERECHA) //
 			dibujarLinea("black", centro + (ancho/20), (YRevProd)*Prof_Colg/rev_mas_prof, centro + (ancho/30), ((YRevProd)*Prof_Colg/rev_mas_prof)-5); // LÍNEA DIAGONAL DESCENDENTE //
@@ -535,18 +522,19 @@ function diagramaMecanico(){
 
 	// REVESTIDOR DE PRODUCCIÓN II //
 	if(Prof_Rev_ProdII != "" && PRPII.disabled == false){
-
+		// Hasta superficie
 		if(tipo_de_rev_ProdII == "1"){
 			dibujarLinea("black", centro - (ancho/60), 0, centro - (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
 			dibujarLinea("black", centro + (ancho/60), 0, centro + (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
 		}
+		// Colgado
 		else if(tipo_de_rev_ProdII == "2" && PColgPII.disabled == false)
 		{		
 			if (Tipo_de_Liner_ProdII == "1")
 			{
 				console.log("El liner de producción II es liso");
-				dibujarLinea("black", centro - (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro - (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
-				dibujarLinea("black", centro + (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
+				dibujarLinea("black", centro - (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro - (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd)); // Línea vertical izquierda
+				dibujarLinea("black", centro + (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/60), ((Prof_Rev_ProdII/rev_mas_prof)*YRevProd)); // Línea vertical derecha
 				dibujarLinea("black", centro - (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro - (ancho/30), ((Prof_Colg_ProdII/rev_mas_prof)*YRevProd)); // LÍNEA HORIZONTAL INFERIOR DEL COLGADOR IZQ. //
 				dibujarLinea("black", centro + (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/30), ((Prof_Colg_ProdII/rev_mas_prof)*YRevProd)); // LÍNEA HORIZONTAL INFERIOR DEL COLGADOR DER. //
 			}
@@ -555,8 +543,8 @@ function diagramaMecanico(){
 				console.log("El liner de producción II es ranurado");
 				dibujarLinea("black", centro - (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro - (ancho/30), ((Prof_Colg_ProdII/rev_mas_prof)*YRevProd)); // LÍNEA HORIZONTAL INFERIOR DEL COLGADOR IZQ. //
 				dibujarLinea("black", centro + (ancho/60), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/30), ((Prof_Colg_ProdII/rev_mas_prof)*YRevProd)); // LÍNEA HORIZONTAL INFERIOR DEL COLGADOR DER. //
-				dibujarLinerRanurado("black",centro - (ancho/60),(YRevProd)*Prof_Colg_ProdII/rev_mas_prof,centro - (ancho/60),((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
-				dibujarLinerRanurado("black", centro + (ancho/60),(YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/60),((Prof_Rev_ProdII/rev_mas_prof)*YRevProd));
+				dibujarLinerRanurado("black",centro - (ancho/60),(YRevProd)*Prof_Colg_ProdII/rev_mas_prof,centro - (ancho/60),((Prof_Rev_ProdII/rev_mas_prof)*YRevProd)); // Línea vertical izquierda
+				dibujarLinerRanurado("black", centro + (ancho/60),(YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro + (ancho/60),((Prof_Rev_ProdII/rev_mas_prof)*YRevProd)); // Línea vertical derecha
 			}
 			// COLGADOR (IZQUIERDA) //
 			dibujarLinea("black", centro - (ancho/30), (YRevProd)*Prof_Colg_ProdII/rev_mas_prof, centro - (ancho/60), ((YRevProd)*Prof_Colg_ProdII/rev_mas_prof)-5); // LÍNEA DIAGONAL ASCENDENTE //
@@ -583,8 +571,8 @@ function diagramaMecanico(){
 	// CONDUCTOR //
 	if(Prof_Rev_Cond != "" && PRC.disabled == false)
 	{
-		zapatas("blue", centro - (ancho/8), (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof, (centro - (ancho/8)) - (ancho/60), (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof, centro - (ancho/8), ((YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof)-(alto/60));
-		zapatas("blue", centro + (ancho/8), (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof, (centro + (ancho/8)) + (ancho/60), (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof, centro + (ancho/8), ((YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof)-(alto/60));
+		zapatas("blue", centro - (ancho/8), YRevCond, (centro - (ancho/8)) - (ancho/60), YRevCond, centro - (ancho/8), YRevCond-(alto/60));
+		zapatas("blue", centro + (ancho/8), YRevCond, (centro + (ancho/8)) + (ancho/60), YRevCond, centro + (ancho/8), YRevCond-(alto/60));
 	}
 
 	// SUPERFICIAL //
@@ -643,82 +631,342 @@ function diagramaMecanico(){
 	var diam_cond = document.getElementById("DRC").value;
 	var peso_cond = document.getElementById("WRC").value;
 	var grado_cond = document.getElementById("GRC").value;
-	var texto_cond = `${diam_cond}", ${peso_cond} lbs/pie, ${grado_cond}.`
+
+	var array_carac_cond = [diam_cond, peso_cond, grado_cond];
+	var texto_cond;
+	for(i=0; i < array_carac_cond.length; i++) {
+		if(array_carac_cond[i] != "") {
+			if(i == 0) {
+				texto_cond = array_carac_cond[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_cond != undefined) {
+					texto_cond = texto_cond + ", " + array_carac_cond[i] + " lbs/pie";
+				}
+				else {
+					texto_cond = array_carac_cond[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_cond != undefined) {
+					texto_cond = texto_cond + ", " + array_carac_cond[i];
+				}
+				else {
+					texto_cond = array_carac_cond[i];
+				}
+			}
+		}
+	}
 
 	if(Prof_Rev_Cond != "" && PRC.disabled == false)
 	{
 		lienzo.textAlign = 'right';
-		lienzo.fillText(Prof_Rev_Cond+"'", ((centro - (ancho/8)) - (ancho/60))-5, (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof);
+		lienzo.fillText(Prof_Rev_Cond+"'", ((centro - (ancho/8)) - (ancho/60))-5, YRevCond);
 		lienzo.textAlign = 'left';
-		lienzo.fillText("Rev. Conductor", ((centro + (ancho/8)) + (ancho/60))+5, (YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof);
+		lienzo.fillText("Rev. Conductor", ((centro + (ancho/8)) + (ancho/60))+5, YRevCond);
 		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof)+8);
+			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+8);
 		}
 		else {
-			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup/3)/rev_mas_prof)+11);
+			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+11);
 		}
 	}
 
 	// SUPERFICIAL //
+	var diam_sup = document.getElementById("DRS").value;
+	var peso_sup = document.getElementById("WRS").value;
+	var grado_sup = document.getElementById("GRS").value;
+
+	var array_carac_sup = [diam_sup, peso_sup, grado_sup];
+	var texto_sup;
+	for(i=0; i < array_carac_sup.length; i++) {
+		if(array_carac_sup[i] != "") {
+			if(i == 0) {
+				texto_sup = array_carac_sup[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_sup != undefined) {
+					texto_sup = texto_sup + ", " + array_carac_sup[i] + " lbs/pie";
+				}
+				else {
+					texto_sup = array_carac_sup[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_sup != undefined) {
+					texto_sup = texto_sup + ", " + array_carac_sup[i];
+				}
+				else {
+					texto_sup = array_carac_sup[i];
+				}
+			}
+		}
+	}
+
 	if(PRS.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_Sup+"'", ((centro - (ancho/10)) - (ancho/60))-35, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
-		lienzo.fillText("Rev. Superficial", ((centro + (ancho/10)) + (ancho/60))+10, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_Sup+"'", ((centro - (ancho/10)) - (ancho/60))-5, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
+		lienzo.textAlign = 'left';
+		lienzo.fillText("Rev. Superficial", ((centro + (ancho/10)) + (ancho/60))+5, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+11);
+		}
 	}
 
 	// SUPERFICIAL II //
+	var diam_supII = document.getElementById("DRSII").value;
+	var peso_supII = document.getElementById("WRSII").value;
+	var grado_supII = document.getElementById("GRSII").value;
+
+	var array_carac_supII = [diam_supII, peso_supII, grado_supII];
+	var texto_supII;
+	for(i=0; i < array_carac_supII.length; i++) {
+		if(array_carac_supII[i] != "") {
+			if(i == 0) {
+				texto_supII = array_carac_supII[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_supII != undefined) {
+					texto_supII = texto_supII + ", " + array_carac_supII[i] + " lbs/pie";
+				}
+				else {
+					texto_supII = array_carac_supII[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_supII != undefined) {
+					texto_supII = texto_supII + ", " + array_carac_supII[i];
+				}
+				else {
+					texto_supII = array_carac_supII[i];
+				}
+			}
+		}
+	}
+
 	if(PRSII.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_SupII+"'", ((centro - (ancho/12)) - (ancho/60))-35, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
-		lienzo.fillText("Rev. Superficial II", ((centro + (ancho/12)) + (ancho/60))+10, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_SupII+"'", ((centro - (ancho/12)) - (ancho/60))-5, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
+		lienzo.textAlign = 'left';
+		lienzo.fillText("Rev. Superficial II", ((centro + (ancho/12)) + (ancho/60))+5, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+11);
+		}
 	}
 
 	// INTERMEDIO //
+	var diam_int = document.getElementById("DRi").value;
+	var peso_int = document.getElementById("WRi").value;
+	var grado_int = document.getElementById("GRi").value;
+
+	var array_carac_int = [diam_int, peso_int, grado_int];
+	var texto_int;
+	for(i=0; i < array_carac_int.length; i++) {
+		if(array_carac_int[i] != "") {
+			if(i == 0) {
+				texto_int = array_carac_int[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_int != undefined) {
+					texto_int = texto_int + ", " + array_carac_int[i] + " lbs/pie";
+				}
+				else {
+					texto_int = array_carac_int[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_int != undefined) {
+					texto_int = texto_int + ", " + array_carac_int[i];
+				}
+				else {
+					texto_int = array_carac_int[i];
+				}
+			}
+		}
+	}
+
 	if(PRi.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_Int+"'", ((centro - (ancho/15)) - (ancho/60))-35, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
-		lienzo.fillText("Rev. Intermedio", ((centro + (ancho/15)) + (ancho/60))+10, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_Int+"'", ((centro - (ancho/15)) - (ancho/60))-5, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
+		lienzo.textAlign = 'left';
+		lienzo.fillText("Rev. Intermedio", ((centro + (ancho/15)) + (ancho/60))+5, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+11);
+		}
 	}
 
 	// INTERMEDIO II //
+	var diam_intII = document.getElementById("DRiII").value;
+	var peso_intII = document.getElementById("WRiII").value;
+	var grado_intII = document.getElementById("GRiII").value;
+
+	var array_carac_intII = [diam_intII, peso_intII, grado_intII];
+	var texto_intII;
+	for(i=0; i < array_carac_intII.length; i++) {
+		if(array_carac_intII[i] != "") {
+			if(i == 0) {
+				texto_intII = array_carac_intII[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_intII != undefined) {
+					texto_intII = texto_intII + ", " + array_carac_intII[i] + " lbs/pie";
+				}
+				else {
+					texto_intII = array_carac_intII[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_intII != undefined) {
+					texto_intII = texto_intII + ", " + array_carac_intII[i];
+				}
+				else {
+					texto_intII = array_carac_intII[i];
+				}
+			}
+		}
+	}
+
 	if(PRiII.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_IntII+"'", ((centro - (ancho/20)) - (ancho/60))-35, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_IntII+"'", ((centro - (ancho/20)) - (ancho/60))-5, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
+		lienzo.textAlign = 'left';
 		if(Prof_Colg_IntII == "")
 		{
-			lienzo.fillText("Rev. Intermedio II", ((centro + (ancho/20)) + (ancho/60))+10, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
+			lienzo.fillText("Rev. Intermedio II", ((centro + (ancho/20)) + (ancho/60))+5, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
 		}
 		else
 		{
-			lienzo.fillText("Liner Intermedio II", ((centro + (ancho/20)) + (ancho/60))+10, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
+			lienzo.fillText("Liner Intermedio II", ((centro + (ancho/20)) + (ancho/60))+5, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
+		}
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+11);
 		}
 	}
 
 	// PRODUCCIÓN //
+	var diam_prod = document.getElementById("DRP").value;
+	var peso_prod = document.getElementById("WRP").value;
+	var grado_prod = document.getElementById("GRP").value;
+
+	var array_carac_prod = [diam_prod, peso_prod, grado_prod];
+	var texto_prod;
+	for(i=0; i < array_carac_prod.length; i++) {
+		if(array_carac_prod[i] != "") {
+			if(i == 0) {
+				texto_prod = array_carac_prod[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_prod != undefined) {
+					texto_prod = texto_prod + ", " + array_carac_prod[i] + " lbs/pie";
+				}
+				else {
+					texto_prod = array_carac_prod[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_prod != undefined) {
+					texto_prod = texto_prod + ", " + array_carac_prod[i];
+				}
+				else {
+					texto_prod = array_carac_prod[i];
+				}
+			}
+		}
+	}
+
 	if(PRP.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_Prod+"'", ((centro - (ancho/30)) - (ancho/60))-35, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_Prod+"'", ((centro - (ancho/30)) - (ancho/60))-5, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
+		lienzo.textAlign = 'left';
 		if(Prof_Colg == "")
 		{
-			lienzo.fillText("Rev. de Prod.", ((centro + (ancho/30)) + (ancho/60))+10, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
+			lienzo.fillText("Rev. de Producción", ((centro + (ancho/30)) + (ancho/60))+5, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
 		}
 		else
 		{
-			lienzo.fillText("Liner de Prod.", ((centro + (ancho/30)) + (ancho/60))+10, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
+			lienzo.fillText("Liner de Producción", ((centro + (ancho/30)) + (ancho/60))+5, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
+		}
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+11);
 		}
 	}
 
 	// PRODUCCIÓN II //
+	var diam_prodII = document.getElementById("DRPII").value;
+	var peso_prodII = document.getElementById("WRPII").value;
+	var grado_prodII = document.getElementById("GRPII").value;
+
+	var array_carac_prodII = [diam_prodII, peso_prodII, grado_prodII];
+	var texto_prodII;
+	for(i=0; i < array_carac_prodII.length; i++) {
+		if(array_carac_prodII[i] != "") {
+			if(i == 0) {
+				texto_prodII = array_carac_prodII[i] + '"';
+			}
+			else if(i == 1) {
+				if(texto_prodII != undefined) {
+					texto_prodII = texto_prodII + ", " + array_carac_prodII[i] + " lbs/pie";
+				}
+				else {
+					texto_prodII = array_carac_prodII[i] + " lbs/pie";
+				}
+				
+			}
+			else if(i == 2) {
+				if(texto_prodII != undefined) {
+					texto_prodII = texto_prodII + ", " + array_carac_prodII[i];
+				}
+				else {
+					texto_prodII = array_carac_prodII[i];
+				}
+			}
+		}
+	}
+
 	if(PRPII.disabled == false)
 	{
-		lienzo.fillText(Prof_Rev_ProdII+"'", ((centro - (ancho/60)) - (ancho/60))-35, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
+		lienzo.textAlign = 'right';
+		lienzo.fillText(Prof_Rev_ProdII+"'", ((centro - (ancho/60)) - (ancho/60))-5, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
+		lienzo.textAlign = 'left';
 		if(Prof_Colg_ProdII == "")
 		{
-			lienzo.fillText("Rev. de Prod. II", ((centro + (ancho/60)) + (ancho/60))+10, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
+			lienzo.fillText("Rev. de Producción II", ((centro + (ancho/60)) + (ancho/60))+5, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
 		}
 		else
 		{
-			lienzo.fillText("Liner de Prod. II", ((centro + (ancho/60)) + (ancho/60))+10, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
+			lienzo.fillText("Liner de Producción II", ((centro + (ancho/60)) + (ancho/60))+5, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
+		}
+		if(tamano_ventana < 600) {
+			lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+8);
+		}
+		else {
+			lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+11);
 		}
 	}
 }

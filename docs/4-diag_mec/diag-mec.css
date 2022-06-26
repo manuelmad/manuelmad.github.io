@@ -170,7 +170,7 @@ label, p, form {
   font-size: var(--ss);
 }
 
-.input-number {
+.input-number, .input-text {
 	width: 25rem;
 	height: 3.2rem;
 	border-radius: 0.8rem;

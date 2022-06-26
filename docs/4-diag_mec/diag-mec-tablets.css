@@ -31,3 +31,7 @@ nav #menu-principal a:hover {
 section {
     max-width: 65rem;
 }
+
+h2 {
+    width: 60rem;
+}
