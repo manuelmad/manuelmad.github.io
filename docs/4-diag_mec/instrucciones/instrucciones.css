@@ -50,24 +50,11 @@ ol ul li {
 	list-style: disc;
 }
 
-.sub-bullet li {
-	list-style:circle;
-}
-
 button {
-	height: 3rem;
-	background-color: var(--hospital-green);
+	background-color: white;
 	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.8rem;
-	cursor: pointer;
-	color: white;
-	font-weight: bold;
+	border-radius: 0.5rem;
 	padding: 0.5rem;
-}
-
-.limpiar-radios {
-	background-color: var(--white);
-	margin-left: 0.5rem;
-}
+  }
 
 

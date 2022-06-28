@@ -1,28 +1,37 @@
+// FUNCIÓN PARA QUE LAS INSTRUCCIONES SE ABRAN EN UNA VENTANA DE TAMAÑO REDUCIDO
 function ventanaSecundaria (URL)
 { 
    window.open(URL,"INSTRUCCIONES DE USO DE LA APLICACIÓN","width=800,height=400,scrollbars=YES");
 }
 
-// HABILITAR-DESHABILITAR INPUTS NUMBER DE PROFUNIDAD //
+// HABILITAR-DESHABILITAR INPUTS //
 
 // ** CONDUCTOR ** //
 
-// ACCESO AL INPUT NUMBER DE PROFUNDIDAD //
+// ACCESO A LOS INPUT //
 var PRC = document.getElementById("PRC");
+var DRC = document.getElementById("DRC");
+var WRC = document.getElementById("WRC");
+var GRC = document.getElementById("GRC");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRC" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA TODOS LOS INPUT CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber0 () {
 	PRC.disabled = false;
+	DRC.disabled = false;
+	WRC.disabled = false;
+	GRC.disabled = false;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "SÍ" LLAME A LA FUNCIÓN "habilitarNumber0" //
 var conductorsi = document.getElementById("conductorsi");
 conductorsi.addEventListener("click", habilitarNumber0);
 
-
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRC" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA TODOS LOS INPUT CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber1 () {
 	PRC.disabled = true;
+	DRC.disabled = true;
+	WRC.disabled = true;
+	GRC.disabled = true;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "NO" LLAME A LA FUNCIÓN "habilitarNumber1" //
@@ -32,12 +41,18 @@ conductorno.addEventListener("click", habilitarNumber1);
 
 // ** SUPERFICIAL ** //
 
-// ACCESO AL INPUT NUMBER DE PROFUNDIDAD //
+// ACCESO A LOS INPUT //
 var PRS = document.getElementById("PRS");
+var DRS = document.getElementById("DRS");
+var WRS = document.getElementById("WRS");
+var GRS = document.getElementById("GRS");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRS" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA LOS INPUT CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber2 () {
 	PRS.disabled = false;
+	DRS.disabled = false;
+	WRS.disabled = false;
+	GRS.disabled = false;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "SÍ" LLAME A LA FUNCIÓN "habilitarNumber2" //
@@ -45,9 +60,12 @@ var superficialsi = document.getElementById("superficialsi");
 superficialsi.addEventListener("click", habilitarNumber2);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRS" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA LOS INPUT CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber3 () {
 	PRS.disabled = true;
+	DRS.disabled = true;
+	WRS.disabled = true;
+	GRS.disabled = true;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "NO" LLAME A LA FUNCIÓN "habilitarNumber3" //
@@ -59,10 +77,16 @@ superficialno.addEventListener("click", habilitarNumber3);
 
 // ACCESO AL INPUT NUMBER DE PROFUNDIDAD //
 var PRSII = document.getElementById("PRSII");
+var DRSII = document.getElementById("DRSII");
+var WRSII = document.getElementById("WRSII");
+var GRSII = document.getElementById("GRSII");
 
 // FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRSII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber4 () {
 	PRSII.disabled = false;
+	DRSII.disabled = false;
+	WRSII.disabled = false;
+	GRSII.disabled = false;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "SÍ" LLAME A LA FUNCIÓN "habilitarNumber4" //
@@ -73,6 +97,9 @@ superficialIIsi.addEventListener("click", habilitarNumber4);
 // FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRSII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber5 () {
 	PRSII.disabled = true;
+	DRSII.disabled = true;
+	WRSII.disabled = true;
+	GRSII.disabled = true;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "NO" LLAME A LA FUNCIÓN "habilitarNumber5" //
@@ -82,12 +109,18 @@ superficialIIno.addEventListener("click", habilitarNumber5);
 
 // ** INTERMEDIO ** //
 
-// ACCESO AL INPUT NUMBER DE PROFUNDIDAD //
+// ACCESO A LOS INPUT //
 var PRi = document.getElementById("PRi");
+var DRi = document.getElementById("DRi");
+var WRi = document.getElementById("WRi");
+var GRi = document.getElementById("GRi");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRi" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA LOS INPUT CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 function habilitarNumber6 () {
 	PRi.disabled = false;
+	DRi.disabled = false;
+	WRi.disabled = false;
+	GRi.disabled = false;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "SÍ" LLAME A LA FUNCIÓN "habilitarNumber6" //
@@ -95,9 +128,12 @@ var intermediosi = document.getElementById("intermediosi");
 intermediosi.addEventListener("click", habilitarNumber6);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRi" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA LOS INPUT CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber7 () {
 	PRi.disabled = true;
+	DRi.disabled = true;
+	WRi.disabled = true;
+	GRi.disabled = true;
 }
 
 // EVENTO PARA QUE EL INPUT RADIO "NO" LLAME A LA FUNCIÓN "habilitarNumber7" //
@@ -107,16 +143,24 @@ intermediono.addEventListener("click", habilitarNumber7);
 
 // ** INTERMEDIO II ** //
 
-// ACCESO AL INPUT NUMBER DE PROFUNDIDAD "PRiII", A LA LISTA DE OPCIONES "tipoDeRiII", AL INPUT NUMBER DE PROFUNDIDAD DE COLGADOR "PColgiII" Y A LA LISTA DE OPCIONES TIEBACK "reqTieBackiII" //
+// ACCESO A LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRiII", AL INPUT NUMBER DE PROFUNDIDAD DE COLGADOR "PColgiII" Y A LA LISTA DE OPCIONES TIEBACK "reqTieBackiII" //
 var PRiII = document.getElementById("PRiII");
+var DRiII = document.getElementById("DRiII");
+var WRiII = document.getElementById("WRiII");
+var GRiII = document.getElementById("GRiII");
+
 var tipoDeRiII = document.getElementById("tipoDeRiII");
 var PColgiII = document.getElementById("PColgiII");
 var reqTieBackiII = document.getElementById("reqTieBackiII");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRiII" Y A LA LISTA DE OPCIONES "tipoDeRiII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA LOS INPUT Y LA LISTA DE OPCIONES "tipoDeRiII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRiII", HABILITA TAMBIÉN AL INPUT NUMBER "PColgiII" Y A LA LISTA DE OPCIONES "reqTieBackiII" //
 function habilitarNumber8 () {
 	PRiII.disabled = false;
+	DRiII.disabled = false;
+	WRiII.disabled = false;
+	GRiII.disabled = false;
+
 	tipoDeRiII.disabled = false;
 	if(tipoDeRiII.value == "2"){
 		PColgiII.disabled = false;
@@ -129,9 +173,13 @@ var intermedioIIsi = document.getElementById("intermedioIIsi");
 intermedioIIsi.addEventListener("click", habilitarNumber8);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRiII", A LA LISTA DE OPCIONES "tipoDeRiII", AL INPUT NUMBER "PColgiII" Y A LA LISTA DE OPCIONES "reqTieBackiII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRiII", AL INPUT NUMBER "PColgiII" Y A LA LISTA DE OPCIONES "reqTieBackiII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber9 () {
 	PRiII.disabled = true;
+	DRiII.disabled = true;
+	WRiII.disabled = true;
+	GRiII.disabled = true;
+	
 	tipoDeRiII.disabled = true;
 	PColgiII.disabled = true;
 	reqTieBackiII.disabled = true;
@@ -160,17 +208,25 @@ function habilitarProfColgiII(){
 
 // ** PRODUCCIÓN ** //
 
-// ACCESO AL INPUT NUMBER DE PROFUNDIDAD "PRP, A LA LISTA DE OPCIONES "tipoDeRP", AL INPUT NUMBER "PColgP", Y LA LISTA DE OPCIONES "reqTieBackP" //
+// ACCESO A LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRP", AL INPUT NUMBER "PColgP", Y LA LISTA DE OPCIONES "reqTieBackP" //
 var PRP = document.getElementById("PRP");
+var DRP = document.getElementById("DRP");
+var WRP = document.getElementById("WRP");
+var GRP = document.getElementById("GRP");
+
 var tipoDeRP = document.getElementById("tipoDeRP");
 var PColgP = document.getElementById("PColgP");
 var reqTieBackP = document.getElementById("reqTieBackP");
 var tipoDeLinerP = document.getElementById("tipoDeLinerP");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRP" Y A LA LISTA DE OPCIONES "tipoDeRP" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA LOS INPUT Y A LA LISTA DE OPCIONES "tipoDeRP" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRP", HABILITA TAMBIÉN AL INPUT NUMBER "PColgP" Y A LAS LISTAS DE OPCIONES "reqTieBackP" Y "tipoDeLinerP" //
 function habilitarNumber10 () {
 	PRP.disabled = false;
+	DRP.disabled = false;
+	WRP.disabled = false;
+	GRP.disabled = false;
+
 	tipoDeRP.disabled = false;
 	if(tipoDeRP.value == "2"){
 		PColgP.disabled = false;
@@ -184,9 +240,13 @@ var produccionsi = document.getElementById("produccionsi");
 produccionsi.addEventListener("click", habilitarNumber10);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRP", A LA LISTA DE OPCIONES "tipoDeRP", AL INPUT NUMBER "PColgP" Y LAS LISTAS DE OPCIONES "reqTieBackP" Y "tipoDeLinerP" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA A LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRP", AL INPUT NUMBER "PColgP" Y LAS LISTAS DE OPCIONES "reqTieBackP" Y "tipoDeLinerP" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber11 () {
 	PRP.disabled = true;
+	DRP.disabled = true;
+	WRP.disabled = true;
+	GRP.disabled = true;
+
 	tipoDeRP.disabled = true;
 	PColgP.disabled = true;
 	reqTieBackP.disabled = true;
@@ -216,17 +276,25 @@ function habilitarProfColgP(){
 
 // ** PRODUCCIÓN II ** //
 
-// ACCESO AL INPUT NUMBER "PRPII", A LA LISTA DE OPCIONES "tipoDeRPII", AL INPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" //
+// ACCESO A LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRPII", AL INPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" //
 var PRPII = document.getElementById("PRPII");
+var DRPII = document.getElementById("DRPII");
+var WRPII = document.getElementById("WRPII");
+var GRPII = document.getElementById("GRPII");
+
 var tipoDeRPII = document.getElementById("tipoDeRPII");
 var PColgPII = document.getElementById("PColgPII");
 var reqTieBackPII = document.getElementById("reqTieBackPII");
 var tipoDeLinerPII = document.getElementById("tipoDeLinerPII");
 
-// FUNCIÓN QUE HABILITA EL INPUT NUMBER "PRiII" Y A LA LISTA DE OPCIONES "tipoDeRPII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
+// FUNCIÓN QUE HABILITA A LOS INPUT Y A LA LISTA DE OPCIONES "tipoDeRPII" CUANDO EL INPUT RADIO "SÍ" ES ELEGIDO //
 // ADEMÁS, SI LA OPCIÓN "2" ESTÁ ELEGIDA EN "tipoDeRPII", HABILITA TAMBIÉN AL INPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" //
 function habilitarNumber12 () {
 	PRPII.disabled = false;
+	DRPII.disabled = false;
+	WRPII.disabled = false;
+	GRPII.disabled = false;
+
 	tipoDeRPII.disabled = false;
 	if(tipoDeRPII.value == "2"){
 		PColgPII.disabled = false;
@@ -240,9 +308,13 @@ var produccionIIsi = document.getElementById("produccionIIsi");
 produccionIIsi.addEventListener("click", habilitarNumber12);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "PRiII", A LA LISTA DE OPCIONES "tipoDeRPII", AL UNPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA LOS INPUT, A LA LISTA DE OPCIONES "tipoDeRPII", AL UNPUT NUMBER "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber13 () {
 	PRPII.disabled = true;
+	DRPII.disabled = true;
+	WRPII.disabled = true;
+	GRPII.disabled = true;
+
 	tipoDeRPII.disabled = true;
 	PColgPII.disabled = true;
 	reqTieBackPII.disabled = true;
@@ -256,7 +328,6 @@ produccionIIno.addEventListener("click", habilitarNumber13);
 
 // FUNCIÓN PARA QUE LA OPCIÓN "Colgado a" HABILITE EL INPUT NUMBER DE PROFUNDIDAD DE COLGADOR "PColgPII" Y A LA LISTA DE OPCIONES "reqTieBackPII" //
 // ADEMÁS, LA OPCIÓN "Hasta superficie" DESHABILITA TODO LO ANTES DICHO //
-
 function habilitarProfColgPII(){
 	var tipoDeRPII_value = tipoDeRPII.value;
 	if(tipoDeRPII_value == "1"){
@@ -633,6 +704,7 @@ function diagramaMecanico(){
 	var grado_cond = document.getElementById("GRC").value;
 
 	var array_carac_cond = [diam_cond, peso_cond, grado_cond];
+	
 	var texto_cond;
 	for(i=0; i < array_carac_cond.length; i++) {
 		if(array_carac_cond[i] != "") {
@@ -665,11 +737,13 @@ function diagramaMecanico(){
 		lienzo.fillText(Prof_Rev_Cond+"'", ((centro - (ancho/8)) - (ancho/60))-5, YRevCond);
 		lienzo.textAlign = 'left';
 		lienzo.fillText("Rev. Conductor", ((centro + (ancho/8)) + (ancho/60))+5, YRevCond);
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+8);
-		}
-		else {
-			lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+11);
+		if(texto_cond != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+8);
+			}
+			else {
+				lienzo.fillText(texto_cond, ((centro + (ancho/8)) + (ancho/60))+5, YRevCond+11);
+			}
 		}
 	}
 
@@ -711,11 +785,13 @@ function diagramaMecanico(){
 		lienzo.fillText(Prof_Rev_Sup+"'", ((centro - (ancho/10)) - (ancho/60))-5, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
 		lienzo.textAlign = 'left';
 		lienzo.fillText("Rev. Superficial", ((centro + (ancho/10)) + (ancho/60))+5, (YRevProd)*Prof_Rev_Sup/rev_mas_prof);
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+11);
+		if(texto_sup != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_sup, ((centro + (ancho/10)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Sup)/rev_mas_prof)+11);
+			}
 		}
 	}
 
@@ -757,11 +833,13 @@ function diagramaMecanico(){
 		lienzo.fillText(Prof_Rev_SupII+"'", ((centro - (ancho/12)) - (ancho/60))-5, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
 		lienzo.textAlign = 'left';
 		lienzo.fillText("Rev. Superficial II", ((centro + (ancho/12)) + (ancho/60))+5, (YRevProd)*Prof_Rev_SupII/rev_mas_prof);
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+11);
+		if(texto_supII != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_supII, ((centro + (ancho/12)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_SupII)/rev_mas_prof)+11);
+			}
 		}
 	}
 
@@ -803,11 +881,13 @@ function diagramaMecanico(){
 		lienzo.fillText(Prof_Rev_Int+"'", ((centro - (ancho/15)) - (ancho/60))-5, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
 		lienzo.textAlign = 'left';
 		lienzo.fillText("Rev. Intermedio", ((centro + (ancho/15)) + (ancho/60))+5, (YRevProd)*Prof_Rev_Int/rev_mas_prof);
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+11);
+		if(texto_int != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_int, ((centro + (ancho/15)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Int)/rev_mas_prof)+11);
+			}
 		}
 	}
 
@@ -856,11 +936,13 @@ function diagramaMecanico(){
 		{
 			lienzo.fillText("Liner Intermedio II", ((centro + (ancho/20)) + (ancho/60))+5, (YRevProd)*Prof_Rev_IntII/rev_mas_prof);
 		}
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+11);
+		if(texto_intII != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_intII, ((centro + (ancho/20)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_IntII)/rev_mas_prof)+11);
+			}
 		}
 	}
 
@@ -909,11 +991,13 @@ function diagramaMecanico(){
 		{
 			lienzo.fillText("Liner de Producción", ((centro + (ancho/30)) + (ancho/60))+5, YRevProd*(Prof_Rev_Prod/rev_mas_prof));
 		}
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+11);
+		if(texto_prod != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_prod, ((centro + (ancho/30)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_Prod)/rev_mas_prof)+11);
+			}
 		}
 	}
 
@@ -962,11 +1046,13 @@ function diagramaMecanico(){
 		{
 			lienzo.fillText("Liner de Producción II", ((centro + (ancho/60)) + (ancho/60))+5, YRevProd*(Prof_Rev_ProdII/rev_mas_prof));
 		}
-		if(tamano_ventana < 600) {
-			lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+8);
-		}
-		else {
-			lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+11);
+		if(texto_prodII != undefined) {
+			if(tamano_ventana < 600) {
+				lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+8);
+			}
+			else {
+				lienzo.fillText(texto_prodII, ((centro + (ancho/60)) + (ancho/60))+5, ((YRevProd)*(Prof_Rev_ProdII)/rev_mas_prof)+11);
+			}
 		}
 	}
 }

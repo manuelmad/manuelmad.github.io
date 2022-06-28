@@ -196,3 +196,9 @@ button {
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
+
+button:active { /* active tiene que ir despues del hover para que funcione */
+	color: var(--white);
+	background-color: var(--very-light-gray);
+	border: 0.1rem solid var(--very-light-gray);
+}
