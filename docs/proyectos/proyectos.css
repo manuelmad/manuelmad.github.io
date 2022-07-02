@@ -149,14 +149,9 @@ p, ul {
 }
 
 .introduction-left h1 {
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 2rem;
     font-family: 'Work Sans', sans-serif;
-}
-
-.introduction-left h2 {
-    font-family: 'Nothing You Could Do', cursive;
-    color: var(--hospital-green);
 }
 
 .introduction-left h2, .introduction-left p {
@@ -164,7 +159,7 @@ p, ul {
     margin-top: 1rem;
 }
 
-.introduction-left p:nth-child(3) {
+.introduction-left p:nth-child(2), .introduction-left p:nth-child(3) {
     visibility: hidden;
     position: absolute;
 }
@@ -197,92 +192,68 @@ p, ul {
 
 .personal-info {
     width: 100%;
-}
-
-.personal-info__left {
-    text-align: center;
-    width: 100%;
-}
-
-.personal-info__left img{
-    width: 40%;
-    margin-left: 3rem;
-    margin-top: 1rem;
-    float: left;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-}
-
-.personal-info__left h1 {
-    margin-top: 1rem;
-    font-size: 2.5rem;
-}
-
-.personal-info__left p {
-    margin-top: 1rem;
     padding-left: 3rem;
+    padding-right: 3rem;
 }
 
-.personal-info__left p, .personal-info__left h1 {
-    text-align: left;
-}
-
-.personal-info__right h1{
-    margin-left: 2rem;
+.personal-info__right h1 {
     font-size: 2.5rem;
     margin-top: 3.4rem;
 }
 
-.personal-info__right p{
-    padding: 1rem 3rem;
+.personal-info__right p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.personal-info__right {
-    visibility: hidden;
-    position: absolute;
+.personal-info__right a {
+    color: var(--dark-blue);
+    font-weight: bold;
 }
 
 .curriculum {
+    background-color: #F7F7F7;
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 2rem;
+    padding: 2rem 0;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    text-align: right;
 }
 
-.curriculum-left, .curriculum-right {
-    width: 100%;
-}
-
-.curriculum-left h1{
-    margin-left: 3rem;
+.curriculum-right h1 {
     font-size: 2.5rem;
-}
-
-.curriculum-left h2 {
-    font-family: 'Nothing You Could Do', cursive;
-    color: var(--hospital-green);
-}
-
-.curriculum-left h2, .curriculum-left p, .curriculum-left ul{
-    margin-left: 3rem;
-}
-
-.curriculum-left ul li {
-    margin-left: 2rem;
-}
-
-.curriculum-left h2, .curriculum-left ul {
-    margin-top: 1rem;
-}
-
-.curriculum-right h1{
-    font-size: 2.5rem;
-    margin-left: 3rem;
-    margin-top: 2rem;
 }
 
 .curriculum-right p {
-    margin-left: 3rem;
     margin-top: 1rem;
+}
+
+.curriculum-right a {
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+
+.calculos-salud {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.calculos-salud h1 {
+    font-size: 2.5rem;
+}
+
+.calculos-salud p {
+    margin-top: 1rem;
+}
+
+.calculos-salud a {
+    color: var(--dark-blue);
+    font-weight: bold;
 }
 
 footer {

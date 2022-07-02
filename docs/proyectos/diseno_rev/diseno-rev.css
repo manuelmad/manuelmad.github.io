@@ -1,0 +1,141 @@
+* {/* El selector universal que aplica las declaraciones en todo el documento */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+	font-size: 62.5%; /* Con esto asigno al tamaño de fuente del html el valor de 10px, por lo que de ahora en adelante, 1rem = 10px */
+}
+
+:root {
+	--very-light-gray:#C7C7C7;
+	--text-input-field: #F7F7F7;
+	--hospital-green: #ACD982;
+	--very-light-blue:#bad7f1;
+	--white: #FFFFFF;
+	--black: #000000;
+  --gray: gray;
+	--ss: 1.2rem;
+	--sm: 1.4rem;
+	--md: 1.5rem;
+	--lg: 1.8rem;
+}
+
+header {
+	background-color: var(--white);
+	position: sticky;
+	top: 0rem;
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--very-light-gray);
+}
+
+.logo-personal {
+  height: 8vh; /*Un poco más pequeño que el header*/
+  margin-left: 2rem;
+}
+
+header nav {
+	height: 100%;
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+nav #menu-principal {
+  margin-right: 1rem;
+  display: flex;
+  font-size: var(--md);
+  justify-content: space-between;
+  list-style: none;
+  align-items: center;
+}
+
+nav #menu-principal li{
+  padding: 0.8rem;
+}
+
+nav #menu-principal a{
+  text-decoration: none;
+  color: var(--very-light-gray);
+  transition: 0.1s all;
+}
+
+nav #menu-principal a:hover {
+  color: var(--hospital-green);
+  box-shadow: 0 -0.3rem var(--hospital-green) inset;
+}
+
+main nav {
+	width: 60%;
+  margin: auto;
+}
+
+section {
+	margin: 0 auto;
+}
+
+h1 {
+  margin-top: 3rem;
+  font-size: var(--lg);
+  color:var(--gray);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vertical {
+  list-style: none;
+  line-height: 7rem;
+  /* margin: 2rem 2rem; */
+  margin-top: 2rem;
+  /* padding-left: 1rem; */
+  color: var(--gray);
+  text-transform: uppercase;
+  min-width: 25rem;
+  /* transition: all 0.1s; */
+}
+
+.vertical a {
+  color: var(--gray);
+  text-decoration: none;
+  display: block;
+  padding-left: 1rem;
+}
+
+.vertical .lista4, .vertical_3 a {
+  padding-left: 1rem;
+}
+
+.vertical a:active, .vertical_3 a:active {
+  color: white;
+  background-color: var(--hospital-green);
+}
+
+.vertical li {
+  box-shadow: 0.3rem 0 var(--hospital-green) inset;
+  margin-bottom: 0.5rem;
+}
+
+.lista4 {
+  position: relative;
+}
+
+.vertical_3 {
+  display:none;
+  position: relative;
+  list-style: none;
+  line-height: 3rem;
+  width: 25rem;
+  top:0rem;
+  left:0rem;
+}
+
+.lista4:hover > ul {
+  display:block;
+}

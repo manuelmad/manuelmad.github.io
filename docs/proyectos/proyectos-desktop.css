@@ -1,0 +1,127 @@
+header > div {
+margin-left: 5rem;
+}
+
+nav #menu-principal {
+    font-size: var(--md);
+    margin-right: 10rem;
+}
+
+nav #menu-principal a:hover {
+	color: var(--very-light-gray);
+}
+
+.introduction-left h1 {
+    margin-top: 8rem;
+}
+
+.introduction-left button {
+    font-weight: 700;
+}
+
+.introduction-right img {
+    width: 50%;
+    margin-top: 4rem;
+}
+
+.personal-info {
+    padding-left: 8rem;
+    padding-right: 50rem;
+}
+
+.personal-info__right h1 {
+    font-size: 3rem;
+    margin-top: 3.4rem;
+}
+
+.curriculum {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding-right: 8rem;
+    padding-left: 50rem;
+}
+
+.curriculum-right h1 {
+    font-size: 3rem;
+    /* margin-left: 3rem; */
+    /* margin-top: 10.6rem; */
+}
+
+.curriculum-right p {
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+.calculos-salud {
+    padding-left: 8rem;
+    padding-right: 50rem;
+}
+
+.calculos-salud h1 {
+    font-size: 3rem;
+    /* margin-left: 3rem; */
+    /* margin-top: 10.6rem; */
+}
+
+footer {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    background-color: var(--dark-blue);
+    padding-bottom: 0;
+}
+
+.contact {
+    visibility: visible;
+    position: static;
+}
+
+.contact, .contact-info, .personal-logo {
+    width: 33.3%;
+}
+
+.contact h1 {
+    margin-top: 2rem;
+    font-size: 3rem;
+    color: var(--white);
+    margin-left: 8rem;
+}
+
+.contact p {
+    margin-top: 1rem;
+    color: var(--white);
+    margin-left: 8rem;
+}
+
+.contact button {
+    background-color: var(--hospital-green);
+    border: 0.1rem solid  var(--hospital-green);
+    color: var(--dark-blue);
+    font-size: 1rem;
+    font-weight: 900;
+    height: 4rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.contact button:active {
+    background-color: var(--white);
+}
+
+.contact-info h2 {
+    color: var(--hospital-green);
+    margin-left: 12rem;
+    margin-top: 3rem;
+}
+
+.contact-info p {
+    margin-left: 12rem;
+    color: var(--white);
+}
+
+.personal-logo img {
+    margin: 5.8rem 25%;
+}

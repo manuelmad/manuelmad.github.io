@@ -1,51 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8"> <!-- Muestra los caracteres especiales correctamente -->
-	<meta name="description" content="Procedimiento para diseñar revestidores para pozos petroleros.">
-	<meta name="robots" content="index,follow">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manuel Araujo Web Page">
+    <meta name= "robots" content= "index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-	<title>Diseño de Revestidores</title>
-	<link href="index.css" type="text/css" rel="stylesheet" />
-	<link href="diseno-rev-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
-	<link href="diseno-rev-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <title>Manuel Araujo Web Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="index-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+    <link href="index-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<header>
-		<div class="container__logo-personal">
-            <img class="logo-personal" src="./imagenes/logo.jpg" alt="logo">
+    <header>
+        <div>
+            <img src="./imagenes/logo.png" alt="logo">
         </div>
-		<nav>
-			<div class="container__menu-principal">
-				<ul id="menu-principal">
-					<li><a class = "home" href="../proyectos.html">Ir a Proyectos</a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
-	<main>
-		<h1>Diseño de Revestidores</h1>
-		<nav id = "menu">
-			<ul class = "vertical">
-				<li class = "lista"><a href="./1-prof_asent/prof-asent.html" target="_blank">Profundidades de Asentamiento</a>
-				</li>
-				<li class = "lista2"><a href="./1-prof_asent/prof-asent.html#titulo-ajuste" target="_blank">Ajuste de Profundidades de Asentamiento</a></li>
-				<li class = "lista3"><a href="./2-diam_conex/diam-conex.html" target="_blank">Selección de diámetros y tipos de conexión</a></li>
-				<li class = "lista4">Diseño Mecánico
-					<ul class = "vertical_3">
-						<li><a href="./3-diseno_mec/1-diseno_mec_cond/diseno-mec-cond.html" target="_blank">Revestidor Conductor</a></li>
-						<li><a class="rev-int" href="./3-diseno_mec/2-diseno_mec_sup_int/diseno-mec-sup-int.html" target="_blank">Revestidor Superficial e Intermedio</a></li>
-						<li><a href="./3-diseno_mec/3-diseno_mec_prod/diseno-mec-prod.html" target="_blank">Revestidor, Camisa o Tieback de Producción</a></li>
-					</ul>
-				</li>
-				<li class = "lista5"><a href="./4-diag_mec/diag-mec.html" target="_blank">Diagrama Mecánico</a></li>
-			</ul>
-		</nav>
-	</main>
-	
+        <nav>
+            <div class="container__menu-principal">
+                <ul id="menu-principal">
+                    <li><a href="./proyectos/proyectos.html">PROYECTOS</a></li>
+                    <li><a href="#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+            <div class="container__icono-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <ul id="menu-desplegable">
+                    <li><a href="./proyectos/proyectos.html">PROYECTOS</a></li>
+                    <li><a href="#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="introduction">
+            <div class="introduction-left">
+                <h1>Hola, soy<br>Manuel Araujo</h1>
+                <h2>Developer en formación</h2>
+                <p>Ingeniero de Petróleo, Licenciado en Educación y actualmente adquieriendo nuevos conocimientos en el área de la tecnología, específicamente formándome como Desarrollador Web.</p>
+                <p><button onclick="location.href='./proyectos/proyectos.html'">MIS PROYECTOS</button></p>
+            </div>
+            <div class="introduction-right">
+                <img src="./imagenes/manuel-araujo-picture.png">
+            </div>   
+        </section>
+        <section id="personal-info" class="personal-info">
+            <div class="personal-info__left">
+                <img src="./imagenes/about-me.png"><h1>Sobre mí</h1><p>La primera carrera universitaria que emprendí fue la Ingeniería de Petróleo, profesión que me encuentro ejerciendo actualmente.
+                <p>Un poco antes de trabajar en la industria petrolera, tuve la oportunidad de completar otra carrera universitaria y de hecho ejercer la profesión por un tiempo, esta vez Licenciatura en Educación, mención Matemática y Física.</p>  <p>En este momento quiero incursionar seriamente en una nueva industria, una que me garantize estar siempre a la vanguardia y que suponga nuevos retos, nuevas experiencias, donde pueda utilizar los recursos que poseo y los que estoy por obtener para crear, innovar y crecer de forma explosiva tanto personal como profesionalmente. Es por ello que doy estos primeros pasos en la industria de la tecnología, empezando por el Desarrollo web.</p>
+            </div>
+            <div class="personal-info__right">
+                <h1>Sobre mí</h1>
+                <p>La primera carrera universitaria que emprendí fue la Ingeniería de Petróleo, profesión que me encuentro ejerciendo actualmente. Durante esta experiencia educativa y laboral he podido obtener habilidades principalmente matemáticas, de lógica, resolución de problemas teóricos y prácticos, entre otras por el estilo.</p>
+                <p>Un poco antes de trabajar en la industria petrolera, tuve la oportunidad de completar otra carrera universitaria y de hecho ejercer la profesión por un tiempo, esta vez Licenciatura en Educación, mención Matemática y Física. En esta nueva experiencia pude aprender un nuevo enfoque, con nuevos propósitos al momento de aplicar los conocimientos adquiridos.</p>
+                <p>En este momento quiero incursionar seriamente en una nueva industria, una que me garantize estar siempre a la vanguardia y que suponga nuevos retos, nuevas experiencias, donde pueda utilizar los recursos que poseo y los que estoy por obtener para crear, innovar y crecer de forma explosiva tanto personal como profesionalmente. Es por ello que doy estos primeros pasos en la industria de la tecnología, empezando por el Desarrollo web.</p>
+            </div>
+        </section>
+        <section id="curriculum" class="curriculum">
+            <div class="curriculum-left">
+                <h1>Currículum</h1>
+                <h2><u>2008</u></h2>
+                <p>La Universidad del Zulia (L.U.Z.), Maracaibo, Venezuela.<br>Título obtenido: Ingeniero de Petróleo.</p>
+                <h2><u>2013</u></h2>
+                <p>La Universidad del Zulia (L.U.Z.), Maracaibo, Venezuela.<br>Título obtenido: Licenciado en Educación. Mención: Matemática y Física.</p>
+                <h2><u>2022</u></h2>
+                <p>Platzi.</p>
+                <ul>Escuela de Desarrollo Web.
+                    <li>Curso de Computación Básica.</li>
+                    <li>Curso de Programación Básica.</li>
+                    <li>Curso Básico de Algoritmos y Pensamiento Lógico.</li>
+                    <li>Curso de Introducción a la Web.</li>
+                    <li>Fundamentos de Ingeniería de Software.</li>
+                    <li>Curso de Introducción a la Terminal y Línea de Comandos.</li>
+                    <li>Curso Profesional de Git y GitHub.</li>
+                    <li>Curso de Frontend Developer.</li>
+                    <li>Curso Definitivo de HTML y CSS.</li>
+                </ul>
+                <ul>Escuela de JavaScript.
+                    <li>Cursos Básico y Práctico de Javascript.</li>
+                    <li>Curso de ECMAScript 6+</li>
+                    <li>Curso de Asincronismo con JavaScript.</li>
+                    <li>Curso de Gestión de Dependencias y Paquetes con NPM.</li>
+                </ul> 
+            </div>
+            <div class="curriculum-right">
+                <h1>Habilidades</h1>
+                <p>Alto sentido de la responsabilidad y la puntualidad.</p>
+                <p>Buena capacidad de organización y planificación.</p>
+                <p>Expresión de respeto hacia los compañeros de trabajo.</p>
+                <p>Alto nivel de análisis y solución de problemas.</p>
+                <p>Buen dominio del idioma Inglés.</p>
+            </div>
+        </section>
+
+    </main>
+    <footer id="contacto">
+        <section class="contact">
+            <h1>Contáctame</h1>
+            <p>Si deseas ponerte en contacto conmigo para conocer un poco más acerca de mis proyectos, que colabore en alguno de los tuyos o para ofertas de trabajo, aquí te dejo la infomación que necesitas.</p>
+            <p><button onclick="location.href='./proyectos/proyectos.html'">MIS PROYECTOS</button></p>
+        </section>
+        <section class="contact-info">
+            <h2>WhatsApp</h2>
+            <p>+58 412 1716953</p>
+            <h2>Correo electrónico</h2>
+            <p>manuelmad1981@gmail.com</p>
+            <h2>GitHub</h2>
+            <p><a href="https://github.com/manuelmad" target="_blank">manuelmad</a></p>
+        </section>
+        <section class="personal-logo">
+            <img src="./imagenes/logo-footer.png" alt="logo"> 
+        </section>
+    </footer>
 </body>
 </html>
