@@ -37,15 +37,6 @@ nav #menu-principal li{
     position: static;
 }
 
-.introduction-right img {
-    width: 50%;
-    margin-top: 6.5rem;
-}
-
-.personal-info__right {
-    margin-bottom: 15rem;
-}
-
 .curriculum {
     width: 80%;
     margin-left: auto;
@@ -68,25 +59,6 @@ nav #menu-principal li{
 
 .personal-info__left h1 {
     padding-left: 3rem;
-}
-
-/* .personal-info__right {
-    visibility: visible;
-    position: static;
-} */
-
-/* .personal-info__right h1{
-    margin-left: 3rem;
-    margin-top: 9.2rem;
-}
-
-.contact {
-    visibility: visible;
-    position: static;
-} */
-
-.contact-info h2:first-child {
-    margin-top: 6.5rem;
 }
 
 .contact-info h2 {

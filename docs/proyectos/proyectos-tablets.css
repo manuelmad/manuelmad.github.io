@@ -36,11 +36,6 @@ nav #menu-principal li{
     position: static;
 }
 
-.introduction-right img {
-    width: 50%;
-    margin-top: 6.5rem;
-}
-
 .personal-info {
     padding-right: 30rem;
 }
@@ -53,16 +48,12 @@ nav #menu-principal li{
     padding-right: 30rem;
 }
 
-.contact-info h2:first-child {
-    margin-top: 6.5rem;
-}
-
 .contact-info h2 {
-    margin-left: 9rem;
+    margin-left: 8rem;
 }
 
 .contact-info p {
-    margin-left: 9rem;
+    margin-left: 8rem;
 }
 
 
