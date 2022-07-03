@@ -15,7 +15,7 @@ nav #menu-principal li{
 }
 
 .introduction {
-    height: 40rem;
+    height: 30rem;
     background-size: 90% 90%;
 }
 
@@ -37,6 +37,11 @@ nav #menu-principal li{
     position: static;
 }
 
+.introduction-right img{
+    width: 16.3rem;
+    height: 20rem;
+}
+
 .curriculum {
     width: 80%;
     margin-left: auto;
@@ -55,6 +60,9 @@ nav #menu-principal li{
 
 .personal-info__left img{
     float: none;
+    width: 20rem;
+    height: 17.9rem;
+    margin: 0;
 }
 
 .personal-info__left h1 {
@@ -67,6 +75,11 @@ nav #menu-principal li{
 
 .contact-info p {
     margin-left: 9rem;
+}
+
+.personal-logo img {
+    width: 15rem;
+    height: 15rem;
 }
 
 
