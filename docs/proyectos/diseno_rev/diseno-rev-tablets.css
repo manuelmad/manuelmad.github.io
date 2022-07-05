@@ -1,14 +1,30 @@
-:root {
-    --ancho-ul: 25rem;
-    --ancho-sub-ul: 30rem;
+.container__icono-menu {
+    display: none;
 }
 
-h1 {
+nav #menu-principal {
+    position: static;
+    justify-content: space-between;
+    visibility: visible;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+nav #menu-principal li{
+	padding: 0.8rem;
+}
+
+/* h1 {
     font-size: 2.5rem;
+} */
+
+main {
+    height: 55rem
 }
 
 main nav {
-    width: 70%;
+    width: 35rem;
+    padding-left: 4rem;
 }
 
 .vertical {
@@ -16,11 +32,10 @@ main nav {
     /* margin: 2rem 1rem; */
     margin-top: 2rem;
     /* padding-left: 1rem; */
-    width: var(--ancho-ul);
+    /* width: var(--ancho-ul); */
 }
 
-.vertical a {
-    /* font-size: var(--sm); */
+/* .vertical a {
     transition: all 0.4s;
 }
 
@@ -30,32 +45,26 @@ main nav {
 }
 
 .vertical li {
-    /* padding-left: 1.5rem; */
     transition: all 0.4s;
-}
-
-.vertical .lista4 {
-    /* font-size: var(--sm); */
-    padding-left: 1rem;
-}
+} */
 
 .vertical_3 {
     position: absolute;
-    min-width: var(--ancho-sub-ul);
+    /* min-width: var(--ancho-sub-ul); */
     left: 25rem;
     top: 0rem;
     line-height: 7rem;
-    font-size: 0.8rem;
+    /* font-size: 2rem; */
     /* padding-left: 1rem; */
 }
 
-.vertical_3 li a {
-    /* font-size: 1.1rem; */
-}
+/* .vertical_3 li a {
+    font-size: var(--ss);
+} */
 
-.vertical li:hover {
+/* .vertical li:hover {
     box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-}
+} */
 
 /* .lista:hover {
     box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
@@ -69,18 +78,27 @@ main nav {
     box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
 } */
   
-#menu .lista4:hover {
+/* #menu .lista4:hover {
     box-shadow: var(--ancho-ul) 0 rgba(172,217,130, 0.2) inset;
-}
+} */
 /*   
 .lista5:hover {
     box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
 } */
 
-.vertical_3 li:hover {
+/* .vertical_3 li:hover {
     box-shadow: var(--ancho-sub-ul) 0 var(--hospital-green) inset;
+} */
+
+.contact-info h2 {
+    margin-left: 9rem;
 }
 
-.rev-int::after {
-    content: " / Camisa y Tieback Intermedios";
+.contact-info p {
+    margin-left: 9rem;
+}
+
+.personal-logo img {
+    width: 15rem;
+    height: 15rem;
 }

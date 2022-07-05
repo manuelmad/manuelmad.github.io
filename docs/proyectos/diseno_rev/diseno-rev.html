@@ -16,16 +16,30 @@
 </head>
 <body>
 	<header>
-		<div class="container__logo-personal">
-            <img class="logo-personal" src="./imagenes/logo.jpg" alt="logo">
+		<div>
+            <a href="./index.html"><img src="./imagenes/logo.png" alt="logo"></a>
         </div>
-		<nav>
-			<div class="container__menu-principal">
-				<ul id="menu-principal">
-					<li><a class = "home" href="../proyectos.html">Ir a Proyectos</a></li>
-				</ul>
-			</div>
-		</nav>
+        <nav>
+            <div class="container__menu-principal">
+                <ul id="menu-principal">
+                    <li><a href="./proyectos/proyectos.html">PROYECTOS</a></li>
+                    <li><a href="#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+            <div class="container__icono-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <ul id="menu-desplegable">
+                    <li><a href="./proyectos/proyectos.html">PROYECTOS</a></li>
+                    <li><a href="#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+        </nav>
 	</header>
 	<main>
 		<h1>Diseño de Revestidores</h1>
@@ -46,5 +60,27 @@
 			</ul>
 		</nav>
 	</main>
+	<footer id="contacto">
+        <section class="contact">
+            <div>
+                <h1>Contáctame</h1>
+                <p>Si deseas ponerte en contacto conmigo para conocer un poco más acerca de mis proyectos, que colabore en alguno de los tuyos o para ofertas de trabajo, aquí te dejo la infomación que necesitas.</p>
+                <p><button onclick="location.href='./proyectos/proyectos.html'">MIS PROYECTOS</button></p>
+            </div>
+        </section>
+        <section class="contact-info">
+            <div>
+                <h2>WhatsApp</h2>
+                <p>+58 412 1716953</p>
+                <h2>Correo electrónico</h2>
+                <p>manuelmad1981@gmail.com</p>
+                <h2>GitHub</h2>
+                <p><a href="https://github.com/manuelmad" target="_blank">manuelmad</a></p>
+            </div>
+        </section>
+        <section class="personal-logo">
+            <img src="./imagenes/logo-footer.png" alt="logo"> 
+        </section>
+    </footer>
 </body>
 </html>
