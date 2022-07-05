@@ -15,7 +15,8 @@ nav #menu-principal li{
 }
 
 .introduction {
-    height: 48rem;
+    /* height: 48rem; */
+    height: auto;
     background-size: 90% 90%;
 }
 

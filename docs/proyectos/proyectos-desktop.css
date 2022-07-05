@@ -11,12 +11,12 @@ nav #menu-principal a:hover {
 	color: var(--very-light-gray);
 }
 
-.introduction {
-    height: 40rem;
+p {
+    font-size: 1.6rem;
 }
 
-.introduction-left h1 {
-    margin-top: 5rem;
+.introduction {
+    height: 40rem;
 }
 
 .introduction-left button {
@@ -30,7 +30,7 @@ nav #menu-principal a:hover {
 
 .personal-info {
     padding-left: 8rem;
-    padding-right: 50rem;
+    padding-right: 45rem;
 }
 
 .personal-info__right h1 {
@@ -41,7 +41,7 @@ nav #menu-principal a:hover {
     display: flex;
     width: 100%;
     padding-right: 8rem;
-    padding-left: 50rem;
+    padding-left: 45rem;
 }
 
 .curriculum-right h1 {
@@ -50,7 +50,7 @@ nav #menu-principal a:hover {
 
 .calculos-salud {
     padding-left: 8rem;
-    padding-right: 50rem;
+    padding-right: 45rem;
 }
 
 .calculos-salud h1 {
