@@ -141,7 +141,8 @@ ul li ul li {
 
 main nav {
 	width: 30rem;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
+  margin-left: calc((100% - 280px) / 2);
 }
 
 main h1 {
@@ -155,14 +156,12 @@ main h1 {
   list-style: none;
   line-height: 7rem;
   margin-top: 2rem;
-  color: var(--very-light-gray);
+  color: var(--black);
   text-transform: uppercase;
-  /* min-width: 25rem; */
-  /* transition: all 0.1s; */
 }
 
 .vertical a {
-  color: var(--very-light-gray);
+  color: var(--black);
   text-decoration: none;
   display: block;
   padding-left: 1rem;
