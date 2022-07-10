@@ -20,73 +20,21 @@ main {
 
 main nav {
     width: 35rem;
-    /* padding-left: 4rem; */
     padding-left: 0;
     margin-left: calc((100% - 560px) / 2);
 }
 
 .vertical {
     line-height: 7rem;
-    /* margin: 2rem 1rem; */
     margin-top: 2rem;
-    /* padding-left: 1rem; */
-    /* width: var(--ancho-ul); */
 }
-
-/* .vertical a {
-    transition: all 0.4s;
-}
-
-.vertical a:hover {
-    margin-left: 1rem;
-    color: white;
-}
-
-.vertical li {
-    transition: all 0.4s;
-} */
 
 .vertical_3 {
     position: absolute;
-    /* min-width: var(--ancho-sub-ul); */
     left: 25rem;
     top: 0rem;
     line-height: 7rem;
-    /* font-size: 2rem; */
-    /* padding-left: 1rem; */
 }
-
-/* .vertical_3 li a {
-    font-size: var(--ss);
-} */
-
-/* .vertical li:hover {
-    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-} */
-
-/* .lista:hover {
-    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-}
-  
-.lista2:hover {
-    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-}
-  
-.lista3:hover {
-    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-} */
-  
-/* #menu .lista4:hover {
-    box-shadow: var(--ancho-ul) 0 rgba(172,217,130, 0.2) inset;
-} */
-/*   
-.lista5:hover {
-    box-shadow: var(--ancho-ul) 0 var(--hospital-green) inset;
-} */
-
-/* .vertical_3 li:hover {
-    box-shadow: var(--ancho-sub-ul) 0 var(--hospital-green) inset;
-} */
 
 .contact-info h2 {
     margin-left: 9rem;

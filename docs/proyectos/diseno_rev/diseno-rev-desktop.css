@@ -21,7 +21,6 @@ main h1 {
 }
 
 #menu {
-    /* margin-left: 22rem; */
     margin-left: calc((100% - 950px) / 2);
     padding-left: 0;
     width: 36rem;
@@ -30,10 +29,6 @@ main h1 {
 p {
     font-size: 1.6rem;
 }
-
-/* ul {
-    font-size: 1.6rem;
-} */
 
 .vertical, .vertical li {
     width: var(--ancho-ul);
@@ -58,7 +53,6 @@ p {
 }
 
 .vertical a:hover {
-    /* margin-left: 1rem; */
     color: white;
 }
 
@@ -83,7 +77,6 @@ p {
 .vertical_3 li:hover {
     box-shadow: var(--ancho-sub-ul) 0 var(--hospital-green) inset;
 }
-
 
 footer {
     height: 25rem;
