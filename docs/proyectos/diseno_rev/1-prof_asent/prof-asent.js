@@ -670,7 +670,7 @@ function autoLineas()
 				dibujarLineaDiseno("black", x + margen, y + margen, x + margen, auto1 + margen);
 
 				var mostrar_y = (auto1/factorY).toFixed(0);
-				if (mostrar_y >= 50) // Para que solo muestre valores de profundidad >= a 50 
+				if (mostrar_y >= 50) // Para que solo muestre valores de profundidad >= a 50 pies
 				{
 					lienzo.textAlign ="left";
 					lienzo.fillText(mostrar_y + "'", ancho + margen + 5, auto1 + margen); // Mostrar en canvas los valores de profundidad calculados
@@ -706,7 +706,7 @@ function autoLineas()
 				}
 				console.log("La densidad de lodo para " + auto1/factorY + " pies. es " + auto2 + " px. ó " + auto2/factorX + "lpg.");
 
-				if(auto1/factorY >= 50) // Para que solo dibuje líneas horizontales cuando la profunidad sea >= 50
+				if(auto1/factorY >= 50) // Para que solo dibuje líneas horizontales cuando la profunidad sea >= 50 pies
 				{
 					dibujarLineaDiseno("black", x + margen, auto1 + margen, auto2 + margen, auto1 + margen);
 				}
@@ -714,17 +714,20 @@ function autoLineas()
 		}
 
 		// Insertar las demás filas de la tabla de prof vs densidades, siempre debajo de la primera fila (posición 0)
-		var fila_nueva = cuerpotabla_rev.insertRow(1);
-		var cell1 = fila_nueva.insertCell(0);
-		var cell2 = fila_nueva.insertCell(1);
-		var cell3 = fila_nueva.insertCell(2);
-		var cell4 = fila_nueva.insertCell(3);
-		var cell5 = fila_nueva.insertCell(4);
-		cell1.innerHTML = mostrar_y;
-		cell2.innerHTML = (auto2/factorX-MargenViaje).toFixed(1);
-		cell3.innerHTML = (auto2/factorX).toFixed(1);
-		cell4.innerHTML = (x/factorX).toFixed(1);
-		cell5.innerHTML = (x/factorX+MargenArremetida).toFixed(1);
+		// Solo si la profundidad obtenida es >= 50 pies
+		if(auto1/factorY >= 50) {
+			var fila_nueva = cuerpotabla_rev.insertRow(1);
+			var cell1 = fila_nueva.insertCell(0);
+			var cell2 = fila_nueva.insertCell(1);
+			var cell3 = fila_nueva.insertCell(2);
+			var cell4 = fila_nueva.insertCell(3);
+			var cell5 = fila_nueva.insertCell(4);
+			cell1.innerHTML = mostrar_y;
+			cell2.innerHTML = (auto2/factorX-MargenViaje).toFixed(1);
+			cell3.innerHTML = (auto2/factorX).toFixed(1);
+			cell4.innerHTML = (x/factorX).toFixed(1);
+			cell5.innerHTML = (x/factorX+MargenArremetida).toFixed(1);
+		}
 
 		x = auto2;
 		y = auto1;
@@ -733,8 +736,7 @@ function autoLineas()
 		var numero_de_filas = fila_tabla_rev.length;
 
 		// Código para que el ciclo pare luego de 8 revestidores
-		// var numero_rev = document.getElementById("aviso-num-rev");
-		var r = "La cantidad de revestidores obtenidos en el proceso de diseño es alta, verifique los valores de la tabla.";
+		var r = "La cantidad de revestidores obtenidos en el proceso de diseño es muy alta, verifique los valores de la tabla de densidades y repita el procedimiento si es necsario.";
 		if(numero_de_filas == 9) {
 			document.getElementById("aviso-num-rev").innerText = r;
 			break;
