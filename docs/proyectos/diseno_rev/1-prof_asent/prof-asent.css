@@ -29,54 +29,54 @@ header {
 	height: 6.2rem;
 	display: flex;
 	background-color: var(--dark-blue);
-  }
+}
   
-  header > div {
+header > div {
 	width: 20rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
+}
   
-  header > div a {
+header > div a {
 	width: 14rem;
 	height: 4.7rem;
-  }
+}
   
-  header > div img {
+header > div img {
 	width: 100%;
 	height: 100%;
-  }
+}
   
-  header nav {
+header nav {
 	display: flex;
 	flex-grow: 1;
 	justify-content: flex-end;
 	align-items: center;
-  }
+}
   
-  .container__icono-menu {
+.container__icono-menu {
 	position: relative;
 	right: 0;
-  }
+}
   
-  .bi-list {
+.bi-list {
 	position: absolute;
 	margin-top: 0;
 	right: 0rem;
 	top: -2rem;
 	margin-right: 1rem;
-  }
+}
   
-  .bi-list:hover {
+.bi-list:hover {
 	cursor: pointer;
-  }
+}
   
-  .container__menu-principal, .container__icono-menu, .container__logo-personal {
+.container__menu-principal, .container__icono-menu, .container__logo-personal {
 	margin: 0;
-  }
+}
   
-  nav #menu-desplegable {
+nav #menu-desplegable {
 	position: absolute;
 	list-style: none;
 	visibility: hidden;
@@ -86,50 +86,50 @@ header {
 	background-color: var(--dark-blue);
 	border: 0.1rem solid var(--white);
 	transition: 0.5s ease all;
-  }
+}
   
-  .container__icono-menu:hover > #menu-desplegable {
+.container__icono-menu:hover > #menu-desplegable {
 	visibility: visible;
 	top: -4rem;
-  }
+}
   
-  nav #menu-desplegable li {
+nav #menu-desplegable li {
 	line-height: 3rem;
 	border: 0.05rem solid var(--white);
 	display: block;
 	width: 15rem;
-  }
+}
   
   nav #menu-desplegable li:last-child {
 	margin-bottom: 0;
   }
   
-  nav #menu-desplegable a {
+nav #menu-desplegable a {
 	text-decoration: none;
 	display: block;
 	color: white;
 	padding: 1rem;
-  }
+}
   
-  nav #menu-desplegable a:active {
+nav #menu-desplegable a:active {
 	background-color: white;
 	color: var(--dark-blue);
-  }
+}
   
-  nav #menu-principal {
+nav #menu-principal {
 	position: absolute;
 	visibility: hidden;
 	display: flex;
 	right: 0;
 	list-style: none;
-  }
+}
   
-  nav #menu-principal a {
+nav #menu-principal a {
 	color: var(--white);
 	text-decoration: none;
 	font-weight: bold;
 	font-size: var(--ss);
-  }
+}
 
 .container__menu-secundario {
 	margin: 0;
@@ -267,7 +267,7 @@ label, p {
 
 .tabla_de_valores {
 	text-align: center;
-	border: 0.1rem solid var(--hospital-green);
+	border: 0.3rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 }
 
@@ -322,12 +322,12 @@ label, p {
 }
 
 .opciones_graf {
-	border: 0.1rem solid var(--hospital-green);
+	border: 0.3rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 }
 
 .trazado-lineas {
-	border: 0.1rem solid var(--hospital-green);
+	border: 0.3rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 }
 
@@ -462,7 +462,6 @@ canvas {
 }
 
 .div_tablas {
-	/* outline: 1px solid yellow; */
 	margin: auto;
 }
 
@@ -520,7 +519,7 @@ canvas {
 .ajuste_int, .ajuste_sup {
 	margin-bottom: 1rem;
 	text-align: center;
-	border: 0.1rem solid var(--hospital-green);
+	border: 0.3rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 }
 

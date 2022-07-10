@@ -4,34 +4,37 @@
 
 nav #menu-principal {
     position: static;
-    display: flex;
-    font-size: var(--md);
     justify-content: space-between;
-    list-style: none;
     visibility: visible;
     align-items: center;
+    margin-right: 3rem;
 }
 
 nav #menu-principal li{
 	padding: 0.8rem;
 }
 
-nav #menu-principal a{
-	text-decoration: none;
-	color: var(--very-light-gray);
-	border: 1px solid var(--white);
-    transition: 0.1s all;
+#menu-secundario {
+	margin-right: 3rem;
 }
 
-nav #menu-principal a:hover {
-	color: var(--hospital-green);
-    box-shadow: 0 -0.1875rem var(--hospital-green) inset;
+.container-rev, .container-grafica {
+    width: 65rem;
 }
 
-section {
-    max-width: 65rem;
-}
-
-h2 {
+main h2 {
     width: 60rem;
+}
+
+.contact-info h2 {
+    margin-left: 9rem;
+}
+
+.contact-info p {
+    margin-left: 9rem;
+}
+
+.personal-logo img {
+    width: 15rem;
+    height: 15rem;
 }
