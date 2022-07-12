@@ -1,25 +1,25 @@
 // FACTORES DE DISEÑO  PDVSA //
 
 // CONDUCTOR //
-var FDcolapsoCond = 1.0;
+const FDcolapsoCond = 1.0;
 
 // SUPERFICIAL //
-var FDcolapsoSup = 1.0;
-var FDestallidoSup = 1.1;
-var FDtensionSup = 1.6;
+const FDcolapsoSup = 1.0;
+const FDestallidoSup = 1.1;
+const FDtensionSup = 1.6;
 
 // INTERMEDIO //
-var FDcolapsoInt = 1.0;
-var FDestallidoInt = 1.1;
-var FDtensionInt = 1.6;
+const FDcolapsoInt = 1.0;
+const FDestallidoInt = 1.1;
+const FDtensionInt = 1.6;
 
 // PRODUCCIÓN //
-var FDcolapsoProd = 1.1;
-var FDestallidoProd = 1.1;
-var FDtensionProd = 1.6;
+const FDcolapsoProd = 1.1;
+const FDestallidoProd = 1.1;
+const FDtensionProd = 1.6;
 
 
-// ****************************** ESTALLIDO ***************************** //
+// ******* ESTALLIDO ******* //
 
 // MOSTRAR Y OCULTAR A PLACER LA SECCIÓN DE ESTALLIDO //
 var mostrar_ocultar_SE = document.getElementById("mostrar_ocultar_SE");
@@ -57,14 +57,45 @@ function mostrarOcultarSE()
 var e = document.getElementById("conductor_estallido");
 var papel = e.getContext("2d");
 
+/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN
+QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
+var h = document.getElementById("conductor_estallido2");
+var contexto = h.getContext("2d");
+h.style.display = "none";
+
+// Tamaño de canvas responsivo
+var tamano_ventana = window.innerWidth;
+console.log(tamano_ventana);
+if(tamano_ventana < 600) {
+	e.setAttribute("width", 280);
+	e.setAttribute("height", 280);
+
+	h.setAttribute("width", 280);
+	h.setAttribute("height", 280);
+}
+else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
+	e.setAttribute("width", 550);
+	e.setAttribute("height", 550);
+
+	h.setAttribute("width", 550);
+	h.setAttribute("height", 550);
+}
+else if(tamano_ventana >= 1024) {
+	e.setAttribute("width", 720);
+	e.setAttribute("height", 720);
+
+	h.setAttribute("width", 720);
+	h.setAttribute("height", 720);
+}
+
 // DIMENSIONES DEL CANVAS //
 var ancho_canvas = e.width;
 var alto_canvas = e.height;
 
-// DIMENSIONES DEL GRÁFICO //
-var ancho = 0.78*ancho_canvas;
+// DIMENSIONES DEL ÁREA DE GRÁFICO //
+var ancho = 0.7*ancho_canvas;
 var centro = ancho / 2;
-var alto = 0.78*alto_canvas;
+var alto = 0.7*alto_canvas;
 
 // MÁRGENES DEL GRÁFICO (EL MISMO PARA LOS 4 LADOS) //
 var margen = (ancho_canvas-ancho)/2;
@@ -113,18 +144,22 @@ dibujarLineaPapel("blue", margen-5, margen, ancho+margen+5, margen); // LÍNEA H
 
 
 // LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
-dibujarLineaPapel("black", 40, 360, 70, 360);
+// dibujarLineaPapel("black", 40, 360, 70, 360);
+dibujarLineaPapel("black", 0.1*ancho_canvas, 0.95*alto_canvas, 0.19*ancho_canvas, 0.95*alto_canvas);
 papel.font = '1rem "Tahoma"';
 papel.fillStyle = "black";
-papel.fillText("Línea de Diseño", 75, 363);
+// papel.fillText("Línea de Diseño", 75, 363);
+papel.fillText("Línea de Diseño", 0.2*ancho_canvas, 0.9553*alto_canvas);
 
-dibujarLineaSeleccionPapel("green", 200, 360, 240, 360);
-papel.fillText("Línea de Revestidor", 245, 363);
+// dibujarLineaSeleccionPapel("green", 200, 360, 240, 360);
+dibujarLineaSeleccionPapel("green", 0.53*ancho_canvas, 0.95*alto_canvas, 0.63*ancho_canvas, 0.95*alto_canvas);
+// papel.fillText("Línea de Revestidor", 245, 363);
+papel.fillText("Línea de Revestidor", 0.645*ancho_canvas, 0.9553*alto_canvas);
 
 
 // LEYENDA DEL EJE Y (ROTADA) //
-var x = 13; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var y = 190; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+var x = 0.05*ancho_canvas; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+var y = alto_canvas/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
 papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 papel.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
@@ -136,8 +171,8 @@ papel.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO C
 
 
 // EJE X LEYENDA //
-var x = 190; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var y = 13; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
+var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
+var y = 0.05*alto_canvas; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
 papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 papel.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
@@ -173,7 +208,6 @@ var boton = document.getElementById("boton_diseno");
 boton.addEventListener("click", disenoConductorEstallido);
 // AÑADIR EL EVENTO PARA CAPTURAR IMAGEN DEL CANVAS SIN LA LÍNEA DE DISEÑO NI DE REV. //
 boton.addEventListener("mouseup", imageSinLineaDiseno);
-
 
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR ESTALLIDO //
@@ -276,11 +310,10 @@ function disenoConductorEstallido()
 	papel.fillStyle = "black";
 	papel.textAlign = "right";
 
-	papel.fillText(0, 34, 30); // Número cero (0)//
+	papel.fillText(0, 0.12*ancho_canvas, 0.11*alto_canvas); // Número cero (0)//
 	for(a = 100; a <= max_prof; a = a+100)
 	{
-		papel.fillText(a, 34, (a*factorY+3)+margen);
-
+		papel.fillText(a, 0.12*ancho_canvas, (a*factorY+3)+margen);
 	}
 
 	// EJE X - GUIONES //
@@ -288,7 +321,7 @@ function disenoConductorEstallido()
 	{
 		if(a % 200 == 0)
 		{
-			dibujarLineaPapel("blue", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 500 //
+			dibujarLineaPapel("blue", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
 		}
 		else
 		{
@@ -304,7 +337,7 @@ function disenoConductorEstallido()
 
 	for(a = 200; a <= max_presion; a = a+200)
 	{
-		papel.fillText(a, (a*factorX)+margen, 30);
+		papel.fillText(a, (a*factorX)+margen, 0.11*alto_canvas);
 	}
 
 
@@ -350,15 +383,8 @@ function mostrarOcultarEC()
 	}
 }
 
-/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN
-QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
-var h = document.getElementById("conductor_estallido2");
-var contexto = h.getContext("2d");
 
-h.style.display = "none";
-
-
-// ****************************** COLAPSO ***************************** //
+// ***************** COLAPSO ****************** //
 
 // MOSTRAR Y OCULTAR A PLACER LA SECCIÓN DE COLAPSO //
 var mostrar_ocultar_SC = document.getElementById("mostrar_ocultar_SC");
@@ -1191,7 +1217,7 @@ function disenoConductorTension()
 
 	
 
-	// ****************************** CORRECCIÓN BIAXIAL ***************************** //
+	// **************** CORRECCIÓN BIAXIAL **************** //
 
 	var esfuerzo_sup = fuerza_axial_sup / (area_ext_cond - area_int_cond);
 	console.log(esfuerzo_sup);
@@ -1550,7 +1576,7 @@ function graficaTensionyBiaxial()
 	dibujarLineaSeleccionHoja("green", (anchoT-((max_tension- resistencia_tesion_cond/1000)*factorXT))+margenT, (prof_cond_sup*factorYT)+margenT, (anchoT-((max_tension- resistencia_tesion_cond/1000)*factorXT))+margenT, (prof_asent_cond*factorYT)+margenT);
 	
 
-	/******************CORRECCIÓN BIAXIAL*****************************/
+	/******************CORRECCIÓN BIAXIAL**********************/
 
 	var rel_esf_sup = document.getElementById("rel_esf_sup");
 	var rel_esfuerzo_fluen_sup = rel_esf_sup.innerHTML;
@@ -1624,7 +1650,7 @@ function graficaTensionyBiaxial()
 
 
 
-// ************************** FACTORES DE DISEÑO ******************************* //
+// ***************** FACTORES DE DISEÑO ******************** //
 
 // MOSTRAR Y OCULTAR A PLACER LA SECCIÓN DE FACTORES DE DISEÑO //
 var mostrar_ocultar_SFD = document.getElementById("mostrar_ocultar_SFD");
@@ -1826,7 +1852,6 @@ img.onload = function(){ // FUNCIÓN PARA QUE LA IMAGEN CARGUE JUNTO CON LA PAGI
 // CREAR PDF //
 
 // Default export is a4 paper, portrait, using millimeters for units //
-
 function crearPDF()
 {
 	var doc = new jsPDF();

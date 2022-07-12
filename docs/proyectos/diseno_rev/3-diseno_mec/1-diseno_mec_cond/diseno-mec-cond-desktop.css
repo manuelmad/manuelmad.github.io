@@ -1,0 +1,87 @@
+header > div {
+    margin-left: 5rem;
+}
+    
+nav #menu-principal {
+    margin-right: 10rem;
+}
+
+nav #menu-principal a {
+	font-size: var(--md);
+}
+    
+nav #menu-principal a:hover, #menu-secundario a:hover {
+    color: var(--very-light-gray);
+}
+
+#menu-secundario {
+	margin-right: 10rem;
+}
+
+#menu-secundario a {
+	font-size: var(--md);
+}
+
+
+
+footer {
+    height: 25rem;
+}
+
+footer p {
+	font-size: 1.6rem;
+}
+
+.contact {
+    visibility: visible;
+    position: static;
+    display: flex;
+    align-items: center;
+}
+
+.contact, .contact-info, .personal-logo {
+    width: 33.3%;
+}
+
+.contact h1 {
+    font-size: 3rem;
+    color: var(--white);
+    margin-left: 8rem;
+}
+
+.contact p {
+    margin-top: 1rem;
+    color: var(--white);
+    margin-left: 8rem;
+}
+
+.contact button {
+    background-color: var(--hospital-green);
+    border: 0.1rem solid  var(--hospital-green);
+    color: var(--dark-blue);
+    font-size: 1rem;
+    font-weight: 900;
+    height: 4rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.contact button:active {
+    background-color: var(--white);
+}
+
+.contact-info h2 {
+    color: var(--hospital-green);
+    margin-left: 12rem;
+}
+
+.contact-info p {
+    margin-left: 12rem;
+    color: var(--white);
+}
+
+.personal-logo img {
+    width: 18rem;
+    height: 18rem;
+}
