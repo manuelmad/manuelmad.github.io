@@ -11,7 +11,7 @@ html {
 }
 
 :root {
-  --ancho-estallido-1: 20rem;
+  --ancho-estallido-1: 25rem;
   --ancho-graficos-estycol: 38rem;
   --ancho-colapso-1: 21rem;
   --ancho-elipse: 85rem; /*68.4rem*/
@@ -216,12 +216,14 @@ input:hover {
 
 /***************** Estallido *********************/
 
-.seccion_estallido {
-	width: 31rem;
+.seccion_estallido > div {
 	text-align: center;
-	outline: 1px solid blue;
-	margin: 0 auto;
-	/* display: inline-flex; */
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
 #mostrar_ocultar_SE {
@@ -240,25 +242,32 @@ input:hover {
 
 /* 1 div */
 
-.tituloE {
+.datos_estallido .tituloE {
 	font-weight: bold;
 	text-transform: uppercase;
-	width: 31rem;
+	width: 80%;
 	text-align: center;
-	/*position: relative; /*Para poder cambiar sus características sin que pierda su posición*/
-	margin-left: -5.5rem; /* (20rem - 31rem)/2 */ /*Calc() parece no funcionar para márgenes negativos*/
-	/*display: block;*/
 }
 
-.datos_estallido{
+.datos_estallido p {
+	width: 25rem;
+	margin: 1rem auto 0;
 	text-align: justify;
-	width: var(--ancho-estallido-1);
-	margin-left: auto;
-	margin-right: auto;
-	outline: 1px solid blue;	
 }
 
-.datos_estallido input, select{
+.datos_estallido p:nth-child(7) {
+	text-align: center;
+}
+
+.datos_estallido input {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+.datos_estallido select {
 	width: var(--ancho-estallido-1);
 }
 
@@ -266,22 +275,31 @@ input:hover {
 	width: 2.5rem
 }
 
-.disenoE{
+.disenoE {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.disenoE th{
+.disenoE th {
+	padding: 0.2rem 0.2rem;
+	text-align: center;
+	background: var(--hospital-green);
+}
+
+.disenoE tbody tr:first-child {
+	background: var(--hospital-green);
+}
+
+.disenoE td {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
 }
 
-.disenoE td{
-	padding: 0.2rem 0.2rem;
-	text-align: center;
+.datos_estallido p:nth-child(9) {
+	margin-bottom: 1rem;
 }
 
-#aviso_falla_colapso2{
+#aviso_falla_colapso2 {
 	color:red;
 	font-weight: bold;
 }
@@ -289,14 +307,24 @@ input:hover {
 
 /* 2 div */
 
-.opciones_graf_est{
-	width: 15rem;
-	margin: 0 auto;
-	outline: 1px solid brown;
+.opciones_graf_est p {
+	width: 25rem;
+	margin: 1rem auto 0;
+	text-align: justify;
 }
 
-#max_prof_graf_est, #max_pres_graf_est{
-	width: 14rem;
+.opciones_graf_est p:first-child {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.opciones_graf_est p input {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
 }
 
 .parrafo_boton_estallido{
@@ -306,41 +334,6 @@ input:hover {
 #boton_diseno{
 	height: 2.5rem;
 	width: 2.5rem;
-}
-
-/*
-#boton_diseno span{ /* Hago que el escrito dentro del botón tenga una posición inicial
-	y que dicha posición sea modificable, además la modificación se hará con transición */
-	/*text-transform: uppercase;
-	position: relative;
-	top: -1rem;
-	font-size: 1rem;
-	transition: 0.4s all;
-	display: block; /* Para que no quede lado a lado con el svg */
-/*}
-
-#boton_diseno:hover span{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
-	/*top: -1.3rem;
-}
-
-#boton_diseno img{ /* Hago que el ícono de flecha dentro del botón tenga una posición y opacidad iniciales
-	y que dichas propiedades sean modificables, además la modificación se hará con transición */
-	/*position: relative;
-	opacity: 0;
-	top: -0.5rem;
-	transition: 0.7s all;
-}
-
-
-#boton_diseno:hover img{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
-	/*top: 1.8rem;
-	opacity: 1;
-/*}*/
-
-.graficas_estallido{
-	outline: 1px solid blue;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 #conductor_estallido {
@@ -386,9 +379,10 @@ input:hover {
 }*/
 
 
-.disenoEC{
+.disenoEC {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 1rem;
 }
 
 .disenoEC th{

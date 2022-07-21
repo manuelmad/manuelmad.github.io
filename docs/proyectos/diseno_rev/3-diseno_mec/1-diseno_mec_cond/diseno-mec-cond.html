@@ -53,7 +53,7 @@
 		</section>
 		<h1>DISEÑO MECÁNICO DE REVESTIDOR CONDUCTOR</h1>
 		<h2>PRIMER PASO</h2>
-		<p><br>Diseño por Estallido<br><button id="mostrar_ocultar_SE"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<p>Diseño por Estallido<br><button id="mostrar_ocultar_SE"><img src="./imagenes/caret-down-fill.svg"></button></p>
 		<section class="seccion_estallido">
 			<div class = "datos_estallido"  id="div1E">
 				<p class="tituloE">Máxima carga de estallido: Prueba de Presión de la sarta de tubería de revestimiento cementada</p>
@@ -68,7 +68,7 @@
 				<p><label for="Dporo_rev_cond">Densidad equivalente de poro a la profundidad de asentamiento (lpg.):</label><br><input type="number" id="Dporo_rev_cond"></p>
 				<p><label for="Dfrac_rev_cond">Densidad equivalente de fractura a la profundidad de asentamiento (lpg.):</label><br><input type="number" id="Dfrac_rev_cond"></p>
 				<p><label for="DL_rev_cond">Densidad de lodo para bajar y asentar revestidor (lpg.):</label><br><input type="number" id="DL_rev_cond"></p>
-				<p class="parrafo_boton_estallido"><button id="calculo_tabla_diseno" title="Calcular perfil de diseño"><img src="./imagenes/calculator.svg"></button></p>
+				<p class="parrafo_boton_estallido"><button id="calculo_tabla_diseno" title="Calcular perfil de diseño por estallido"><img src="./imagenes/calculator.svg"></button></p>
 				<table class="disenoE" id="tabla_disenoE">
 					<thead>
 						<tr>
@@ -78,7 +78,7 @@
 					<tbody>
 						<tr>
 							<td></td>
-							<td>Profund. (pies)</td>
+							<td>Profundidad (pies)</td>
 							<td>Presión (lpc.)</td>
 						</tr>
 						<tr>
@@ -99,14 +99,15 @@
 			
 			<div class = "graficas_estallido" id="div2E">
 				<div class="opciones_graf_est">
+					<p>TRAZADO DE LÍNEAS DE DISEÑO Y RESISTENCIA AL ESTALLIDO</p>
 					<p>Opciones de ejes del gráfico:</p>
 					<p>Máximo valor del eje X (lpc.):<br><input type="number" name="" id="max_pres_graf_est"></p>
 					<p>Máximo valor del eje Y (pies):<br><input type="number" name="" id="max_prof_graf_est"></p>
 				</div>
 				<p class ="btn_est">
-					<button id="boton_diseno" title="Graficar líneas de perfil de diseño y resistencia al estallido"><img src="graph-down.svg"></button>
-					<button id="boton_borrar_diseno" title="Borrar gráfica"><img src="eraser-fill.svg"></button>
-					<button id="mostrar_ocultar_EC" title="Mostrar/Ocultar tabla de resistencia al estallido corregida"><img src="eye.svg"></button>
+					<button id="boton_diseno" title="Graficar líneas de perfil de diseño y resistencia al estallido"><img src="./imagenes/graph-down.svg"></button>
+					<button id="boton_borrar_diseno" title="Borrar gráfica"><img src="./imagenes/eraser-fill.svg"></button>
+					<button id="mostrar_ocultar_EC" title="Mostrar/Ocultar tabla de resistencia al estallido corregida"><img src="./imagenes/eye.svg"></button>
 				</p>
 				<p><canvas id="conductor_estallido"></canvas></p>
 				<p><canvas id="conductor_estallido2"></canvas></p><!--solo para el informe .pdf-->
@@ -119,7 +120,7 @@
 					<tbody>
 						<tr>
 							<td></td>
-							<td>Profund. (pies)</td>
+							<td>Profundidad (pies)</td>
 							<td>Presión (lpc.)</td>
 						</tr>
 						<tr>
