@@ -216,16 +216,6 @@ input:hover {
 
 /***************** Estallido *********************/
 
-.seccion_estallido > div {
-	text-align: center;
-	margin: 1rem auto 0;
-	width: 97%;
-	min-width: 31rem;
-	max-width: 50rem;
-	border: 0.3rem solid var(--hospital-green);
-	border-radius: 0.8rem;
-}
-
 #mostrar_ocultar_SE {
 	width: var(--ancho-menu);
 	height: var(--alto-menu);
@@ -237,6 +227,16 @@ input:hover {
 
 #mostrar_ocultar_SE:active {
 	background-color: var(--very-light-gray);
+}
+
+.seccion_estallido > div {
+	text-align: center;
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
 
@@ -269,6 +269,7 @@ input:hover {
 
 .datos_estallido select {
 	width: var(--ancho-estallido-1);
+	height: 3.2rem;
 }
 
 #calculo_tabla_diseno{
@@ -336,11 +337,6 @@ input:hover {
 	width: 2.5rem;
 }
 
-#conductor_estallido {
-	outline: 1px solid black;
-	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
-}
-
 #boton_borrar_diseno{
 	width: 2.5rem;
 }
@@ -385,12 +381,17 @@ input:hover {
 	margin-bottom: 1rem;
 }
 
-.disenoEC th{
+.disenoEC th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.disenoEC td{
+.disenoEC tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.disenoEC td {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
 }
@@ -399,72 +400,116 @@ input:hover {
 
 /************ Colapso ***************/
 
-.seccion_colapso{
-	width: var(--ancho-elipse);
-	text-align: center;
-	outline: 1px solid blue;
-	display: inline-flex;
-	margin-left: calc((120rem - 85rem)/2);
-	/*background-color: #CED0FB;*/
+#mostrar_ocultar_SC {
+	width: var(--ancho-menu);
+	height: var(--alto-menu);
+	text-transform: uppercase;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	background-color: var(--hospital-green);
 }
 
-#mostrar_ocultar_SC{
-	width: var(--ancho-menu);
-	text-transform: uppercase;
-	height: var(--alto-menu);
+#mostrar_ocultar_SC:active {
+	background-color: var(--very-light-gray);
+}
+
+.seccion_colapso > div {
+	text-align: center;
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
 
 /* 1 div */
 
-.tituloC{
+.datos_colapso .tituloC {
 	font-weight: bold;
 	text-transform: uppercase;
-	width: 22rem;
+	width: 80%;
 	text-align: center;
-	/*position: relative;*/
-	margin-left: -0.5rem;
 }
 
-.datos_colapso{
+.datos_colapso p {
+	width: 25rem;
+	margin: 1rem auto 0;
+	text-align: justify;
+}
+
+/* .datos_colapso {
 	width: var(--ancho-colapso-1);
 	text-align: justify;
-	outline: 1px solid orange;
 	margin-left: auto;
 	margin-right: auto;
-}
+} */
 
-#ProfProxHoyo, #DensProxHoyo, #PC_rev_cond{
+/* #ProfProxHoyo, #DensProxHoyo, #PC_rev_cond{
 	width: var(--ancho-colapso-1);
-}
+} */
 
-#TTCCond, #DenCemCond{
+/* #TTCCond, #DenCemCond{
 	width: 14rem;
+} */
+
+.datos_colapso input[type="number"] {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+	/* border: 0.1rem solid var(--hospital-green); */
 }
 
-#topeLodo{
-	font-weight: bold;
+.datos_colapso input[type="number"]:disabled {
+	/* background: rgb(238, 235, 235); */
+	background: white;
 }
 
-.parrafo_boton_colapso{
-	text-align: center;
+
+/* #conductorCementono, #conductorCementosi {
+	width: 1.3rem;
+	height: 1.3rem;
+} */
+#topeLodo {
+	background-color: var(--white);
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	display: flex;
+	align-items: center;
+	padding-left: 0.5rem;
+	font-size: 1.4rem;
 }
 
-#boton_tablaC{
+.parrafo_boton_colapso {
+	display: flex;
+	justify-content: center;
+}
+
+#boton_tablaC {
 	width: 2.5rem;
 }
 
-.disenoC{
+.disenoC {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 1rem;
 }
 
-.disenoC th{
+.disenoC th {
 	padding: 0.2rem 0.1rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.disenoC td{
+.disenoC tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.disenoC td {
 	padding: 0.2rem 0.1rem;
 	text-align: center;
 }
@@ -473,7 +518,6 @@ input:hover {
 
 .div_colapso_2{
 	/*width: var(--ancho-graficos-estycol);*/
-	outline: 1px solid orange;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -504,11 +548,6 @@ input:hover {
 	width: 2.5rem;
 }
 
-#conductor_colapso {
-	outline: 1px solid black;
-	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
-}
-
 .avisos_colapso{
 	margin-top: 0;
 	width: var(--ancho-graficos-estycol);
@@ -531,17 +570,23 @@ input:hover {
 	margin: 0 auto;
 }
 
-.disenoCC{
+.disenoCC {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 1rem;
 }
 
-.disenoCC th{
+.disenoCC th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.disenoCC td{
+.disenoCC tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.disenoCC td {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
 }

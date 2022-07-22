@@ -139,8 +139,8 @@ function dibujarLineaTrans(xinicial, yinicial, xfinal, yfinal)
 
 
 // EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA DE 300X300) CON ORIGEN EN (40,40) //
-dibujarLineaPapel("blue", margen, margen-5, margen, alto+margen+5); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLineaPapel("blue", margen-5, margen, ancho+margen+5, margen); // LÍNEA HORIZONTAL SUPERIOR //
+dibujarLineaPapel("black", margen, margen-5, margen, alto+margen+5); // LÍNEA VERTICAL IZQUIERDA //
+dibujarLineaPapel("black", margen-5, margen, ancho+margen+5, margen); // LÍNEA HORIZONTAL SUPERIOR //
 
 
 // LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
@@ -422,14 +422,46 @@ function mostrarOcultarSC()
 var d = document.getElementById("conductor_colapso");
 var lienzo = d.getContext("2d");
 
+/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN
+QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
+var m = document.getElementById("conductor_colapso2");
+var tapiz = m.getContext("2d");
+
+m.style.display = "none";
+
+// Tamaño de canvas responsivo
+var tamano_ventana = window.innerWidth;
+console.log(tamano_ventana);
+if(tamano_ventana < 600) {
+	d.setAttribute("width", 280);
+	d.setAttribute("height", 280);
+
+	m.setAttribute("width", 280);
+	m.setAttribute("height", 280);
+}
+else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
+	d.setAttribute("width", 550);
+	d.setAttribute("height", 550);
+
+	m.setAttribute("width", 550);
+	m.setAttribute("height", 550);
+}
+else if(tamano_ventana >= 1024) {
+	d.setAttribute("width", 720);
+	d.setAttribute("height", 720);
+
+	m.setAttribute("width", 720);
+	m.setAttribute("height", 720);
+}
+
 // DIMENSIONES DEL CANVAS //
 var ancho_canvasC = d.width;
 var alto_canvasC = d.height;
 
 // DIMESIONES DEL GRÁFICO //
-var anchoC = 0.78*ancho_canvasC;
+var anchoC = 0.7*ancho_canvasC;
 var centroC = anchoC / 2;
-var altoC = 0.78*alto_canvasC;
+var altoC = 0.7*alto_canvasC;
 
 
 // MÁRGENES DEL GRÁFICO (EL MISMO PARA LOS 4 LADOS)//
@@ -473,17 +505,17 @@ function dibujarLineaSeleccion(color, xinicial, yinicial, xfinal, yfinal)
 
 
 // EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA DE 300X300) CON ORIGEN EN (40,40) //
-dibujarLinea("blue", margenC, margenC-5, margenC, altoC+margenC+5); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLinea("blue", margenC-5, margenC, anchoC+margenC+5, margenC); // LÍNEA HORIZONTAL SUPERIOR //
+dibujarLinea("black", margenC, margenC-5, margenC, altoC+margenC+5); // LÍNEA VERTICAL IZQUIERDA //
+dibujarLinea("black", margenC-5, margenC, anchoC+margenC+5, margenC); // LÍNEA HORIZONTAL SUPERIOR //
 
 // LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
-dibujarLinea("black", 40, 360, 70, 360);
+dibujarLinea("black", 0.1*ancho_canvasC, 0.95*alto_canvasC, 0.19*ancho_canvasC, 0.95*alto_canvasC);
 lienzo.font = '10px "Tahoma"';
 lienzo.fillStyle = "black";
-lienzo.fillText("Línea de Diseño", 75, 363);
+lienzo.fillText("Línea de Diseño", 0.2*ancho_canvasC, 0.9553*alto_canvasC);
 
-dibujarLineaSeleccion("green", 200, 360, 240, 360);
-lienzo.fillText("Línea de Revestidor", 245, 363);
+dibujarLineaSeleccion("green", 0.53*ancho_canvasC, 0.95*alto_canvasC, 0.63*ancho_canvasC, 0.95*alto_canvasC);
+lienzo.fillText("Línea de Revestidor", 0.645*ancho_canvasC, 0.9553*alto_canvasC);
 /*
 dibujarLineaSeleccion("red", 200, 370, 240, 370);
 lienzo.fillText("Línea de Rev. Corregida", 245, 373);
@@ -700,7 +732,7 @@ function graficarColapso()
 	var factorYC = altoC / max_profC;
 
 	// ACCEDER A VARIABLES DESDE LA TABLA//
-	var presionSuperfTablacC = document.getElementById("presionSuperfTablaC");
+	var presionSuperfTablaC = document.getElementById("presionSuperfTablaC");
 	var pres_D_sup_cond = presionSuperfTablaC.innerHTML;
 
 	var profSuperfTablaC = document.getElementById("profSuperfTablaC");
@@ -856,15 +888,6 @@ function ocultarStatusC()
 	apto_c.style.display = "none";
 	no_apto_c.style.display = "none";
 }
-
-
-/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN
-QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
-var m = document.getElementById("conductor_colapso2");
-var tapiz = m.getContext("2d");
-
-m.style.display = "none";
-
 
 
 // ****************************** TENSIÓN ***************************** //
