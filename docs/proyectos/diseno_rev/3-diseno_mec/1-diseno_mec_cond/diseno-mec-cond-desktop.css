@@ -22,7 +22,23 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
+.disenoT td {
+	width: 13rem;
+}
 
+#div2T p:nth-child(6) {
+	width: 80rem;
+    text-align: center;
+}
+
+#div1CB p:nth-child(3) {
+    display: flex;
+    justify-content: center;
+}
+
+#elipse_plasticidad {
+    display: block;
+}
 
 footer {
     height: 25rem;

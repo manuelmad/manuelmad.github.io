@@ -10,7 +10,7 @@ nav #menu-principal {
     margin-right: 3rem;
 }
 
-nav #menu-principal li{
+nav #menu-principal li {
 	padding: 0.8rem;
 }
 
@@ -18,7 +18,38 @@ nav #menu-principal li{
 	margin-right: 3rem;
 }
 
+.seccion_estallido > div,
+.seccion_colapso > div,
+.seccion_tension > div,
+.seccion_biaxial > div,
+.seccion_FD > div {
+	max-width: 80rem;
+}
 
+.disenoT td {
+	width: 11rem;
+}
+
+#div2T p:nth-child(6) {
+	width: 60rem;
+    text-align: center;
+}
+
+.tensionyesfuerzo td {
+	width: 11rem;
+}
+
+.tabla_valores_elipse td {
+	width: 14rem;
+}
+
+.porcentajesycorrecciones td {
+	width: 11rem;
+}
+
+.factoresDiseno td {
+	width: 9rem;
+}
 
 .contact-info h2 {
     margin-left: 9rem;

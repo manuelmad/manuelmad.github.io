@@ -295,12 +295,11 @@ function disenoConductorEstallido()
 	{
 		if(a % 100 == 0)
 		{
-			dibujarLineaPapel("blue", margen-4, (a*factorY)+margen, margen+4, (a*factorY)+margen); // Guiones largos para múltiplos de 100 //
-			
+			dibujarLineaPapel("black", margen-4, (a*factorY)+margen, margen+4, (a*factorY)+margen); // Guiones largos para múltiplos de 100 //
 		}
 		else
 		{
-			dibujarLineaPapel("blue", margen-2, (a*factorY)+margen, margen+2, (a*factorY)+margen); // Guiones cortos para los demás valores //
+			dibujarLineaPapel("black", margen-2, (a*factorY)+margen, margen+2, (a*factorY)+margen); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -321,11 +320,11 @@ function disenoConductorEstallido()
 	{
 		if(a % 200 == 0)
 		{
-			dibujarLineaPapel("blue", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
+			dibujarLineaPapel("black", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
 		}
 		else
 		{
-			dibujarLineaPapel("blue", (a*factorX)+margen, margen-2, (a*factorX)+margen, margen+2); // Guiones cortos para los demás valores //
+			dibujarLineaPapel("black", (a*factorX)+margen, margen-2, (a*factorX)+margen, margen+2); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -522,8 +521,8 @@ lienzo.fillText("Línea de Rev. Corregida", 245, 373);
 */
 
 // LEYENDA DEL EJE Y (ROTADA) //
-var xC = 13; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var yC = 190; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+var xC = 0.05*ancho_canvasC; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+var yC = alto_canvasC/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
 lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
@@ -534,8 +533,8 @@ lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO 
 
 
 // EJE X LEYENDA //
-var xC = 190; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var yC = 13; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
+var xC = ancho_canvasC/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
+var yC = 0.05*alto_canvasC; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
 lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
@@ -559,6 +558,18 @@ function borrarLineaC()
 // AÑADIR EL EVENTO DE BORRAR EL GRÁFICO AL OTRO BOTÓN DE HTML //
 var boton_borrar_disenoC = document.getElementById("boton_borrar_disenoC");
 boton_borrar_disenoC.addEventListener("click", borrarLineaC);
+boton_borrar_disenoC.addEventListener("click", ocultarStatusC); // Que el botón también borre los avisos
+
+var apto_c = document.getElementById("aviso_apto_colapso");
+var no_apto_c = document.getElementById("aviso_falla_colapso");
+var no_apto_e = document.getElementById("aviso_falla_colapso2");
+
+function ocultarStatusC()
+{
+	apto_c.style.display = "none";
+	no_apto_c.style.display = "none";
+	no_apto_e.style.display = "none";
+}
 
 // AÑADIR EL EVENTO DE GRAFICAR LÍNEAS AL BOTÓN DE HTML //
 var boton_grafica_colapso = document.getElementById("boton_grafica_colapso");
@@ -598,7 +609,6 @@ var boton_tablaC = document.getElementById("boton_tablaC");
 boton_tablaC.addEventListener("click", calcularTablaC);
 // EVENTO PARA CAPTURAR IMAGEN DEL CANVAS SIN LAS LÍNEAS DE DISEÑO //
 boton_tablaC.addEventListener("mouseup", imageSinLineaDisenoC);
-
 
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR COLAPSO //
@@ -754,7 +764,6 @@ function graficarColapso()
 	var TTCCond = document.getElementById("TTCCond");
 
 
-
 	// GRAFICAR LÍNEAS TRANSPARENTES DE REFERENCIA DENTRO DEL GRÁFICO //
 	// EJE Y //
 	for(a = 50; a <= max_profC; a = a+50) // Línea cada 50 pies //
@@ -774,12 +783,11 @@ function graficarColapso()
 	{
 		if(a % 100 == 0)
 		{
-			dibujarLinea("blue", margenC-4, (a*factorYC)+margenC, margenC+4, (a*factorYC)+margenC); // Guiones largos para múltiplos de 100 //
-			
+			dibujarLinea("black", margenC-4, (a*factorYC)+margenC, margenC+4, (a*factorYC)+margenC); // Guiones largos para múltiplos de 100 //
 		}
 		else
 		{
-			dibujarLinea("blue", margenC-2, (a*factorYC)+margenC, margenC+2, (a*factorYC)+margenC); // Guiones cortos para los demás valores //
+			dibujarLinea("black", margenC-2, (a*factorYC)+margenC, margenC+2, (a*factorYC)+margenC); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -789,7 +797,7 @@ function graficarColapso()
 	lienzo.fillStyle = "black";
 	lienzo.textAlign = "right";
 
-	lienzo.fillText(0, 34, 30); // Número cero (0)//
+	lienzo.fillText(0, 0.12*ancho_canvasC, 0.11*alto_canvasC); // Número cero (0)//
 	for(a = 100; a <= max_profC; a = a+100)
 	{
 		lienzo.fillText(a, 34, (a*factorYC+3)+margenC);
@@ -800,11 +808,11 @@ function graficarColapso()
 	{
 		if(a % 200 == 0)
 		{
-			dibujarLinea("blue", (a*factorXC)+margenC, margenC-4, (a*factorXC)+margenC, margenC+4); // Guiones largos para valores múltiplos de 500 //
+			dibujarLinea("black", (a*factorXC)+margenC, margenC-4, (a*factorXC)+margenC, margenC+4); // Guiones largos para valores múltiplos de 500 //
 		}
 		else
 		{
-			dibujarLinea("blue", (a*factorXC)+margenC, margenC-2, (a*factorXC)+margenC, margenC+2); // Guiones cortos para los demás valores //
+			dibujarLinea("black", (a*factorXC)+margenC, margenC-2, (a*factorXC)+margenC, margenC+2); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -816,7 +824,7 @@ function graficarColapso()
 
 	for(a = 200; a <= max_presionC; a = a+200)
 	{
-		lienzo.fillText(a, (a*factorXC)+margenC, 30);
+		lienzo.fillText(a, (a*factorXC)+margenC, 0.11*alto_canvasC);
 	}
 
 	// GRAFICAR LÍNEA DE DISEÑO//
@@ -842,9 +850,11 @@ function graficarColapso()
 	{
 		var no_apto_c = document.getElementById("aviso_falla_colapso");
 		no_apto_c.style.display = "block";
+		var no_apto_e = document.getElementById("aviso_falla_colapso2");
+		no_apto_e.style.display = "block";
 		document.getElementById("aviso_apto_colapso").innerHTML = "";
 		document.getElementById("aviso_falla_colapso").innerHTML = "<strong>AVISO:</strong> El revestidor falla por colapso. Elegir un peso nominal mayor y reiniciar el estudio.";
-		document.getElementById("aviso_falla_colapso2").innerHTML = "Cambiar resistencia al estallido según nuevo peso nominal.";
+		document.getElementById("aviso_falla_colapso2").innerHTML = "Cambiar resistencia al estallido según nuevo peso nominal debido a falla por colapso.";
 	}
 	else
 	{
@@ -876,21 +886,8 @@ function mostrarOcultarCC()
 	}
 }
 
-// BOTÓN BORRAR LÍNEAS TAMBIÉN BORRE ESTATUS //
-var borrar_status = document.getElementById("boton_borrar_disenoC");
-borrar_status.addEventListener("click", ocultarStatusC);
 
-var apto_c = document.getElementById("aviso_apto_colapso");
-var no_apto_c = document.getElementById("aviso_falla_colapso");
-
-function ocultarStatusC()
-{
-	apto_c.style.display = "none";
-	no_apto_c.style.display = "none";
-}
-
-
-// ****************************** TENSIÓN ***************************** //
+// ****************** TENSIÓN ******************* //
 
 // MOSTRAR Y OCULTAR A PLACER LA SECCIÓN DE TENSIÓN //
 var mostrar_ocultar_ST = document.getElementById("mostrar_ocultar_ST");
@@ -946,15 +943,31 @@ function mostrarOcultarSCB()
 }
 
 // DEFINIR EL CONTEXTO DE CANVAS "conductor_tension" //
-
 var f = document.getElementById("conductor_tension");
 var hoja = f.getContext("2d");
+
+// Tamaño de canvas responsivo
+var tamano_ventana = window.innerWidth;
+console.log(tamano_ventana);
+if(tamano_ventana < 600) {
+	f.setAttribute("width", 300);
+	f.setAttribute("height", 300);
+}
+else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
+	f.setAttribute("width", 550);
+	f.setAttribute("height", 550);
+}
+else if(tamano_ventana >= 1024) {
+	f.setAttribute("width", 720);
+	f.setAttribute("height", 720);
+}
+
 var ancho_canvasT = f.width;
 var alto_canvasT = f.height;
 
-var anchoT = 0.71*ancho_canvasT;
+var anchoT = 0.7*ancho_canvasT;
 var centroT = anchoT / 2;
-var altoT = 0.71*alto_canvasT;
+var altoT = 0.7*alto_canvasT;
 
 // MÁRGENES DEL GRÁFICO //
 var margenT = (ancho_canvasT - anchoT)/2;
@@ -996,22 +1009,28 @@ function dibujarLineaSeleccionHoja(color, xinicial, yinicial, xfinal, yfinal)
 
 // LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
 
-dibujarLineaHoja("black", 40, altoT+1.5*margenT, 70, altoT+1.5*margenT);
+dibujarLineaHoja("black", 0.095*ancho_canvasT, altoT+1.5*margenT, 0.167*ancho_canvasT, altoT+1.5*margenT);
+// dibujarLineaHoja("black", 40, altoT+1.5*margenT, 70, altoT+1.5*margenT);
 hoja.font = '10px "Tahoma"';
 hoja.fillStyle = "black";
-hoja.fillText("Línea de Tensión Real", 75, altoT+1.5*margenT+3);
+// hoja.fillText("Línea de Tensión Real", 75, altoT+1.5*margenT+3);
+hoja.fillText("Línea de Tensión Real", 0.18*ancho_canvasT, altoT+1.5*margenT+3);
 
-dibujarLineaHoja("red", 40, altoT+1.75*margenT, 70, altoT+1.75*margenT);
-hoja.fillText("Línea de Diseño por Overpull", 75, altoT+1.75*margenT+3);
+// dibujarLineaHoja("red", 40, altoT+1.75*margenT, 70, altoT+1.75*margenT);
+dibujarLineaHoja("red", 0.095*ancho_canvasT, altoT+1.75*margenT, 0.167*ancho_canvasT, altoT+1.75*margenT);
+// hoja.fillText("Línea de Diseño por Overpull", 75, altoT+1.75*margenT+3);
+hoja.fillText("Línea de Diseño por Overpull", 0.18*ancho_canvasT, altoT+1.75*margenT+3);
 
 
-dibujarLineaSeleccionHoja("green", 230, altoT+1.5*margenT, 270, altoT+1.5*margenT);
-hoja.fillText("Línea de Revestidor", 275, altoT+1.5*margenT+3);
+// dibujarLineaSeleccionHoja("green", 230, altoT+1.5*margenT, 270, altoT+1.5*margenT);
+dibujarLineaSeleccionHoja("green", 0.55*ancho_canvasT, altoT+1.5*margenT, 0.64*ancho_canvasT, altoT+1.5*margenT);
+// hoja.fillText("Línea de Revestidor", 275, altoT+1.5*margenT+3);
+hoja.fillText("Línea de Revestidor", 0.65*ancho_canvasT, altoT+1.5*margenT+3);
 
 
 // LEYENDA DEL EJE Y (ROTADA) //
-var xT = margenT-35; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var yT = 210; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+var xT = margenT-0.083*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+var yT = 0.5*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
 hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 hoja.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
@@ -1022,8 +1041,8 @@ hoja.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CO
 
 
 // EJE X LEYENDA //
-var xT = 210; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var yT = margenT-30; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
+var xT = 0.5*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO //
+var yT = margenT-0.07*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
 hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
 hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
 hoja.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
@@ -1072,8 +1091,6 @@ function borrarLineaT ()
 	sheet.fillText("Intersección de la elipse para condición en fondo", 403, 437);
 }
 
-
-
 // AÑADIR EL EVENTO DE MOSTRAR LÍNEA DE DISEÑO AL BOTÓN DE HTML //
 var grafica_tension_biaxial = document.getElementById("grafica_tension_biaxial");
 grafica_tension_biaxial.addEventListener("click", graficaTensionyBiaxial);
@@ -1112,7 +1129,6 @@ function insertarIMG2 () // INSERTAR LA IMAGEN EN EL CANVAS OCULTO DE COLAPSO
 var linkPDF = document.getElementById("link_pdf");
 linkPDF.addEventListener("click", insertarIMG);
 linkPDF.addEventListener("click", insertarIMG2);
-
 
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR TENSIÓN //
@@ -1449,9 +1465,9 @@ function graficaTensionyBiaxial()
 	coord_X = anchoT-((max_tension - "valor de tensión")*factorXT)*/
 	var factorYT = altoT / max_profT;
 		
-	// EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA DE 300X300 Y ORIGEN VARIABLE) CON ORIGEN EN (60,60) //
-	dibujarLineaHoja("blue", (anchoT-((max_tension- 0)*factorXT))+margenT, margenT, (anchoT-((max_tension- 0)*factorXT))+margenT, altoT+margenT+5); // LÍNEA VERTICAL IZQUIERDA //
-	dibujarLineaHoja("blue", margenT, margenT, anchoT+margenT+5, margenT); // LÍNEA HORIZONTAL SUPERIOR //
+	// EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA Y ORIGEN VARIABLE) //
+	dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT, margenT, (anchoT-((max_tension- 0)*factorXT))+margenT, altoT+margenT+5); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLineaHoja("black", margenT, margenT, anchoT+margenT+5, margenT); // LÍNEA HORIZONTAL SUPERIOR //
 
 	// LÍNEAS TRANSPARENTES DE REFERENCIA DENTRO DEL GRÁFICO //
 	// EJE Y //
@@ -1472,18 +1488,18 @@ function graficaTensionyBiaxial()
 		dibujarLineaTransT((anchoT-((max_tension- a)*factorXT)) + margenT, margenT, (anchoT-((max_tension- a)*factorXT)) + margenT, altoT + margenT);
 	}
 
-	// EJES DE COORDENADAS A ESCALA 300X300  //
+	// EJES DE COORDENADAS A ESCALA  //
 	// EJE Y - GUIONES //
 	for(a = 50; a <= max_profT; a = a+50) // Guión cada 50 pies //
 	{
 		if(a % 100 == 0)
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- 0)*factorXT))+margenT-4, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+4, (a*factorYT)+margenT); // Guiones largos para múltiplos de 100 //
+			dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-4, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+4, (a*factorYT)+margenT); // Guiones largos para múltiplos de 100 //
 			
 		}
 		else
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- 0)*factorXT))+margenT-2, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+2, (a*factorYT)+margenT); // Guiones cortos para los demás valores //
+			dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-2, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+2, (a*factorYT)+margenT); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -1502,11 +1518,11 @@ function graficaTensionyBiaxial()
 	{
 		if(a % 500 == 0)
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-4, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+4); // Guiones largos para valores múltiplos de 500 //
+			dibujarLineaHoja("black", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-4, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+4); // Guiones largos para valores múltiplos de 500 //
 		}
 		else
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-2, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+2); // Guiones cortos para los demás valores //
+			dibujarLineaHoja("black", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-2, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+2); // Guiones cortos para los demás valores //
 		}
 	}
 	// A LA IZQUIERDA DEL CERO
@@ -1514,11 +1530,11 @@ function graficaTensionyBiaxial()
 	{
 		if(a % 500 == 0)
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-4, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+4); // Guiones largos para valores múltiplos de 500 //
+			dibujarLineaHoja("black", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-4, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+4); // Guiones largos para valores múltiplos de 500 //
 		}
 		else
 		{
-			dibujarLineaHoja("blue", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-2, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+2); // Guiones cortos para los demás valores //
+			dibujarLineaHoja("black", (anchoT-((max_tension- a)*factorXT))+margenT, margenT-2, (anchoT-((max_tension- a)*factorXT))+margenT, margenT+2); // Guiones cortos para los demás valores //
 		}
 	}
 
@@ -1550,7 +1566,6 @@ function graficaTensionyBiaxial()
 	}
 
 	// GRAFICAR LÍNEAS DE DISEÑO//
-
 	var overpull = 100000;
 
 	// ACCEDER A VALORES DE TABLA PARA GRAFICAR LAS LÍNEAS EN EL CANVAS //
@@ -1615,7 +1630,7 @@ function graficaTensionyBiaxial()
 	var rel_esfuerzo_fluen_fondo = rel_esf_fondo.innerHTML;
 
 	var y_fondo = document.getElementById("y_fondo");
-	var y2_fondo = y_sup.innerHTML;
+	var y2_fondo = y_fondo.innerHTML;
 
 	var y_izq_fondo = document.getElementById("y_izq_fondo");
 	var y2_iz_fondo = y_izq_fondo.innerHTML;
@@ -1647,9 +1662,11 @@ function graficaTensionyBiaxial()
 	dibujarLineaSeleccionPapel("red", (correccion_estallido_sup*factorX)+margen, (prof_cond_sup*factorY)+margen, (correccion_estallido_fondo*factorX)+margen, (prof_asent_cond*factorY)+margen);
 	
 	// LEYENDA DE LÍNEA CORREGIDA //
-	dibujarLineaSeleccionPapel("red", 200, 370, 240, 370);
+	// dibujarLineaSeleccionPapel("red", 200, 370, 240, 370);
+	dibujarLineaSeleccionPapel("red", 0.53*ancho_canvas, 0.97*alto_canvas, 0.63*ancho_canvas, 0.97*alto_canvas);
 	papel.textAlign = 'left';
-	papel.fillText("Línea de Rev. Corregida", 245, 373);
+	// papel.fillText("Línea de Rev. Corregida", 245, 373);
+	papel.fillText("Línea de Rev. Corregida", 0.645*ancho_canvas, 0.97*alto_canvas+3);
 
 	// Corrección de la gráfica de Colapso //
 	var resisColCorregSuperfTablaB2 = document.getElementById("resisColCorregSuperfTablaB2");
@@ -1666,9 +1683,9 @@ function graficaTensionyBiaxial()
 	dibujarLineaSeleccion("red", (correccion_colapso_sup*factorXC)+margenC, (prof_cond_sup*factorYC)+margenC, (correccion_colapso_fondo*factorXC)+margenC, (prof_asent_cond*factorYC)+margenC);
 
 	// LEYENDA DE LÍNEA CORREGIDA //
-	dibujarLineaSeleccion("red", 200, 370, 240, 370);
+	dibujarLineaSeleccion("red", 0.53*ancho_canvasC, 0.97*alto_canvasC, 0.63*ancho_canvasC, 0.97*alto_canvasC);
 	lienzo.textAlign = 'left';
-	lienzo.fillText("Línea de Rev. Corregida", 245, 373);
+	lienzo.fillText("Línea de Rev. Corregida", 0.645*ancho_canvasC, 0.97*alto_canvasC+3);
 }
 
 
@@ -1693,7 +1710,6 @@ function mostrarOcultarSFD()
 		div1FD.style.display = "none";
 	}
 }
-
 
 var boton_FD = document.getElementById("botonFD"); // ACCESO AL BOTÓN DE CÁLCULO DE FACTORES DE DISEÑO //
 boton_FD.addEventListener("click", calculoFactores); // OTORGO AL BOTÓN EL EVENTO DE EFECTUAR LA FUNCION calculoFactores AL DARLE CLICK //
@@ -1759,7 +1775,7 @@ function calculoFactores()
 
 	if(FDC_S < 1.0) // DENOTAR QUE EL REVESTIDOR FALLA EN SUPERFICIE //
 	{
-		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "AVISO:El revestidor falla por colapso en superficie luego de la corrección por tensión. Elegir nuevo peso nominal y reiniciar el estudio.";
+		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "AVISO: El revestidor falla por colapso en superficie luego de la corrección por tensión. Elegir nuevo peso nominal y reiniciar el estudio.";
 		document.getElementById("OBSuperfTablaF").innerHTML = "El revestidor falla por colapso en superficie luego de la corrección por tensión.<br>Elegir nuevo peso nominal y reiniciar el estudio.";
 	}
 	else
@@ -1821,7 +1837,7 @@ function calculoFactores()
 }
 
 
-// *************************** ELIPSE DE PLASTICIDAD ***************************************//
+// *************** ELIPSE DE PLASTICIDAD ******************//
 
 // DEFINIR EL CONTEXTO DE CANVAS "elipse_plasticidad" //
 var g = document.getElementById("elipse_plasticidad");
@@ -1847,7 +1863,7 @@ function dibujarLineaSheet(color, xinicial, yinicial, xfinal, yfinal)
 
 // CREAR VARIABLE QUE CONTENGA IMAGEN A SER INSERTADA EN CANVAS //
 var img = new Image();
-img.src = "./imagenes/elipse de plasticidad.png";
+img.src = "./imagenes/elipse-de-plasticidad.png";
 
 img.onload = function(){ // FUNCIÓN PARA QUE LA IMAGEN CARGUE JUNTO CON LA PAGINA //
   	sheet.drawImage(img, 0, 0); // INSERTAR LA IMAGEN EN CANVAS //
@@ -1869,7 +1885,6 @@ img.onload = function(){ // FUNCIÓN PARA QUE LA IMAGEN CARGUE JUNTO CON LA PAGI
 	sheet.fillStyle = "black";
 	sheet.fillText("Intersección de la elipse para condición en fondo", 403, 437);
 }
-
 
 
 // CREAR PDF //

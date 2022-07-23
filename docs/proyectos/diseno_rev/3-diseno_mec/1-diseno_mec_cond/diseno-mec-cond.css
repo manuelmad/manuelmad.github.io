@@ -13,7 +13,7 @@ html {
 :root {
   --ancho-estallido-1: 25rem;
   --ancho-graficos-estycol: 38rem;
-  --ancho-colapso-1: 21rem;
+  --ancho-colapso-1: 25rem;
   --ancho-elipse: 85rem; /*68.4rem*/
   --ancho-tension-1: 19rem;
   --ancho-menu: 15rem;
@@ -209,10 +209,6 @@ input {
 	margin-top: 0.2rem;
 }
 
-input:hover {
-	border: 0.2rem solid blue;
-}
-
 
 /***************** Estallido *********************/
 
@@ -272,7 +268,7 @@ input:hover {
 	height: 3.2rem;
 }
 
-#calculo_tabla_diseno{
+#calculo_tabla_diseno {
 	width: 2.5rem
 }
 
@@ -328,52 +324,22 @@ input:hover {
 	border: none;
 }
 
-.parrafo_boton_estallido{
+.parrafo_boton_estallido {
 	text-align: center;
 }
 
-#boton_diseno{
+#boton_diseno {
 	height: 2.5rem;
 	width: 2.5rem;
 }
 
-#boton_borrar_diseno{
+#boton_borrar_diseno {
 	width: 2.5rem;
 }
 
-#mostrar_ocultar_EC{
+#mostrar_ocultar_EC {
 	width: 2.5rem;
 }
-
-/*
-#boton_borrar_diseno span{ /* Hago que el escrito dentro del botón tenga una posición inicial
-	y que dicha posición sea modificable, además la modificación se hará con transición */
-	/*font-size: 1rem;
-	text-transform: uppercase;
-	position: relative;
-	left: 0.8rem;
-	top: -0.2rem;
-	transition: 0.4s all;
-	/*display: block; /* Para que no quede lado a lado con el svg */
-/*}
-
-#boton_borrar_diseno:hover span{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
-	/*left: -0.3rem;
-}
-
-#boton_borrar_diseno img{ /* Hago que el ícono de flecha dentro del botón tenga una posición y opacidad iniciales
-	y que dichas propiedades sean modificable, además la modificación se hará con transición */
-	/*position: relative;
-	opacity: 0;
-	left: -8rem;
-	transition: 0.7s all;
-}
-
-#boton_borrar_diseno:hover img{ /* Indico cuál acción ejecuta la modificación y cuál propiedad quiero modificar */
-	/*left: 0.5rem;
-	opacity: 1;
-}*/
-
 
 .disenoEC {
 	margin-left: auto;
@@ -439,20 +405,9 @@ input:hover {
 	text-align: justify;
 }
 
-/* .datos_colapso {
-	width: var(--ancho-colapso-1);
-	text-align: justify;
-	margin-left: auto;
-	margin-right: auto;
-} */
-
-/* #ProfProxHoyo, #DensProxHoyo, #PC_rev_cond{
-	width: var(--ancho-colapso-1);
-} */
-
-/* #TTCCond, #DenCemCond{
-	width: 14rem;
-} */
+.datos_colapso p:nth-child(11) {
+	margin-bottom: 1rem;
+}
 
 .datos_colapso input[type="number"] {
 	width: var(--ancho-estallido-1);
@@ -460,7 +415,6 @@ input:hover {
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
-	/* border: 0.1rem solid var(--hospital-green); */
 }
 
 .datos_colapso input[type="number"]:disabled {
@@ -468,11 +422,6 @@ input:hover {
 	background: white;
 }
 
-
-/* #conductorCementono, #conductorCementosi {
-	width: 1.3rem;
-	height: 1.3rem;
-} */
 #topeLodo {
 	background-color: var(--white);
 	width: var(--ancho-estallido-1);
@@ -516,58 +465,44 @@ input:hover {
 
 /* 2 div */
 
-.div_colapso_2{
-	/*width: var(--ancho-graficos-estycol);*/
-	margin-left: auto;
-	margin-right: auto;
-}
-
-/*.parrafo_boton_colapso{
-	text-align: center;
-}*/
-
-.opciones_graf_col{
-	margin: 0 auto;
-	outline: 1px solid brown;
-	width: 15rem;
-}
-
-#max_prof_graf_col, #max_pres_graf_col{
-	width: 14rem;
-}
-
-#boton_grafica_colapso{
-	width: 2.5rem;
-}
-
-#boton_borrar_disenoC{
-	width: 2.5rem;
-}
-
-#mostrar_ocultar_CC{
-	width: 2.5rem;
-}
-
-.avisos_colapso{
-	margin-top: 0;
-	width: var(--ancho-graficos-estycol);
-	/*outline: 1px solid orange;*/
+.opciones_graf_col p {
+	width: 25rem;
+	margin: 1rem auto 0;
 	text-align: justify;
+}
+
+.opciones_graf_col input {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+#boton_grafica_colapso, #boton_borrar_disenoC, #mostrar_ocultar_CC {
+	width: 2.5rem;
+}
+
+.avisos_colapso {
+	margin: 0 auto 1rem;
+	text-align: left;
 	font-weight: bold;
 	min-height: 1rem;
-	margin: 0 auto;
+	width: var(--ancho-estallido-1);
 }
 
-#aviso_apto_colapso{
+#aviso_apto_colapso {
 	color: green;
-	width: var(--ancho-graficos-estycol);
-	margin: 0 auto;
+	width: 100%;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
 }
 
-#aviso_falla_colapso, #aviso_falla_colapsoCorregido{
+#aviso_falla_colapso, #aviso_falla_colapsoCorregido {
 	color:red;
-	width: var(--ancho-graficos-estycol);
-	margin: 0 auto;
+	width: 100%;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
 }
 
 .disenoCC {
@@ -591,220 +526,317 @@ input:hover {
 	text-align: center;
 }
 
+
 /************* Tensión ***************/
 
-.seccion_tension{
-	width: 105rem;
+.seccion_tension > div {
 	text-align: center;
-	outline: 1px solid blue;
-	margin-left: calc((120rem - 105rem)/2);
-	display: inline-flex;
-	/*background-color: #F8D2C5;*/
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
-#mostrar_ocultar_ST{
+.datos_tension input[type="number"] {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+#mostrar_ocultar_ST {
 	width: var(--ancho-menu);
-	text-transform: uppercase;
 	height: var(--alto-menu);
+	text-transform: uppercase;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	background-color: var(--hospital-green);
+}
+
+#mostrar_ocultar_ST:active {
+	background-color: var(--very-light-gray);
 }
 
 
 /* 1 div */
 
-.tituloT{
+.datos_tension .tituloT {
 	font-weight: bold;
 	text-transform: uppercase;
+	width: 80%;
 	text-align: center;
-	width: 31rem;
-	/*position: relative;*/
-	margin-left: -6rem; /* (19rem - 31 rem)/2*/
 }
 
-.datos_tension{
+.datos_tension p {
+	width: 25rem;
+	margin: 1rem auto 0;
 	text-align: justify;
-	outline: 1px solid orange;
-	width: var(--ancho-tension-1);
-	margin-left: auto;
-	margin-right: auto;
 }
 
-.datos_tension input{
-	width: var(--ancho-tension-1);
-}
-
-#letra_grado_cond{
+#letra_grado_cond {
 	width: 3.5rem;
+	height: 3.2rem;
 }
 
-#num_grado_cond{
-	width: 14.55rem;
+#num_grado_cond {
+	width: 20.58rem;
 }
 
-#resisT{
-	/*outline: 1px solid brown;*/
-	font-weight: bold;
+#puntoNeutro, #resisT {
+	background-color: var(--white);
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	display: flex;
+	align-items: center;
+	padding-left: 0.5rem;
+	font-size: 1.4rem;
 }
 
-#puntoNeutro{
-	font-weight: bold;
-}
-
-.diseno_grafica_tension{
-	width: 39rem;
+.diseno_grafica_tension {
 	text-align: center;
-	margin-left: -10rem; /*(19rem - 39 rem)/2*/
-	/*position: relative;*/
 }
 
-#boton_disenoT{
+.diseno_grafica_tension p {
+	text-align: center;
+}
+
+.diseno_grafica_tension p:nth-child(3) {
+	text-align: justify;
+	margin-top: 2rem;
+}
+
+.diseno_grafica_tension p:nth-child(4) {
+	text-align: justify;
+	margin-bottom: 1rem;
+}
+
+#boton_disenoT {
 	width: 2.5rem;
 }
 
-.disenoT{
-	margin-left: auto;
-	margin-right: auto;
+.disenoT {
+	margin: 1rem auto;
 }
 
-.disenoT th{
+.disenoT th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.disenoT td{
+.disenoT tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.disenoT td {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	width: 7.5rem;
 }
 
 
 /* 2 div */
 
-#div2T{
-	outline: 1px solid purple;
-	margin-left: auto;
-	margin-right: auto;
+#div2T p {
+	width: 25rem;
+	margin: 1rem auto 0;
+	text-align: justify;
+}
+
+#div2T input {
+	width: var(--ancho-estallido-1);
+	height: 3.2rem;
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	border: none;
+}
+
+#div2T p:nth-child(5) {
+	text-align: center;
+}
+
+#div2T p:nth-child(6) {
+	width: 30rem;
 }
 
 #conductor_tension {
-	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
-	outline: 1px solid black;
+	margin-bottom: 1rem;
 }
 
-#grafica_tension_biaxial{
+#grafica_tension_biaxial, #boton_borrar_disenoT {
 	width: 2.5rem;
 }
-
-#boton_borrar_disenoT{
-	width: 2.5rem;
-}
-
 
 
 /***************** BIAXIAL *********************/
 
-.seccion_biaxial{
+.seccion_biaxial > div {
 	text-align: center;
-	outline: 1px solid blue;
-	margin-left: auto;
-	margin-right: auto;
-	width: 105rem;
-	/*background-color: #C8F8C5;*/
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
-#mostrar_ocultar_SCB{
+#div1CB {
+	padding-bottom: 1rem;
+}
+
+#mostrar_ocultar_SCB {
 	width: var(--ancho-menu);
-	text-transform: uppercase;
 	height: var(--alto-menu);
+	text-transform: uppercase;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	background-color: var(--hospital-green);
 }
 
-.tensionyesfuerzo{
+#mostrar_ocultar_SCB:active {
+	background-color: var(--very-light-gray);
+}
+
+.tensionyesfuerzo {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.tensionyesfuerzo th{
+.tensionyesfuerzo th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.tabla_valores_elipse{
+.tensionyesfuerzo tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.tensionyesfuerzo td {
+	width: 6rem;
+}
+
+.tabla_valores_elipse {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.tabla_valores_elipse th{
+.tabla_valores_elipse th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
+}
+
+.tabla_valores_elipse tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.tabla_valores_elipse td {
+	width: 8rem;
 }
 
 #elipse_plasticidad {
-	box-shadow: 0px 0px 5px black; /* Los valores en px representan offset-x, offset-y, blur-radius, spread radius */
-	/*outline: 1px solid red;*/
+	display: none;
 }
 
-.porcentajesycorrecciones{
+.porcentajesycorrecciones {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.porcentajesycorrecciones th{
+.porcentajesycorrecciones th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
-.relaciones_y{
+.porcentajesycorrecciones tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
+
+.porcentajesycorrecciones td {
+	width: 6rem;
+}
+
+.relaciones_y {
 	display: none;
 }
 
 
-/************ Factores de Diseño *****************/
+/************ Factores de Diseño *************/
 
-.subtituloFD{
-	margin-top: 2rem;¨/*Tuve que ponerle más margin a éste por que no supe la razón de que no tomaba
-	el margin que le asigné a todos os h2, section, table*/
-}
 
-.seccion_FD{
+.seccion_FD > div {
 	text-align: center;
-	outline: 1px solid blue;
-	margin-left: auto;
-	margin-right: auto;
-	/*background-color: #CDCFCD;*/
+	margin: 1rem auto 0;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
 }
 
-#mostrar_ocultar_SFD{
+#mostrar_ocultar_SFD {
 	width: var(--ancho-menu);
-	text-transform: uppercase;
 	height: var(--alto-menu);
+	text-transform: uppercase;
+	border: 0.1rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+	background-color: var(--hospital-green);
 }
 
-.parrafo_FD{
+#mostrar_ocultar_SFD:active {
+	background-color: var(--very-light-gray);
+}
+
+.parrafo_FD {
 	text-align: center;
 }
 
-#botonFD{
+#botonFD {
 	width: 2.5rem;
 }
 
-.factoresDiseno{
+.factoresDiseno {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 1rem;
 }
 
-.factoresDiseno th{
+.factoresDiseno th {
 	padding: 0.2rem 0.2rem;
 	text-align: center;
+	background-color: var(--hospital-green);
 }
 
+.factoresDiseno tbody tr:first-child {
+	background-color: var(--hospital-green);
+}
 
-#obsup, #obfon{
+.factoresDiseno td {
+	width: 5rem;
+}
+
+#obsup, #obfon {
 	color:red;
 	text-align: justify;
 }
 
 /************** LINK DE DESCARGA *******************/
+.link-descarga {
+	text-align: center;
+	margin-top: 2rem;
+}
 
-.link_informe{
-	font-size: 1.5rem;
+.link_informe {
+	font-size: 1.2rem;
+	display: block;
+	height: 100%;
+	text-decoration: none;
 }
 
 footer {
@@ -820,6 +852,7 @@ footer {
 footer p {
 	margin-top: 0;
 	line-height: 2rem;
+	font-size: 1.2rem;
 }
 
 footer div, footer section {
