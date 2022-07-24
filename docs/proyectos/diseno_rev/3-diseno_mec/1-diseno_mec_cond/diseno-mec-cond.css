@@ -818,12 +818,12 @@ input {
 }
 
 .factoresDiseno td {
-	width: 5rem;
+	min-width: 5rem;
 }
 
 #obsup, #obfon {
 	color:red;
-	text-align: justify;
+	text-align: left;
 }
 
 /************** LINK DE DESCARGA *******************/

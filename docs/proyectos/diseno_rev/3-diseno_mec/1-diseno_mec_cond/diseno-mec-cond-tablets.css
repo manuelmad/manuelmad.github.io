@@ -26,6 +26,10 @@ nav #menu-principal li {
 	max-width: 80rem;
 }
 
+.avisos_colapso {
+	width: 55rem;
+}
+
 .disenoT td {
 	width: 11rem;
 }
@@ -48,7 +52,7 @@ nav #menu-principal li {
 }
 
 .factoresDiseno td {
-	width: 9rem;
+	min-width: 9rem;
 }
 
 .contact-info h2 {

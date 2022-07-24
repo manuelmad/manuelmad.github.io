@@ -22,6 +22,10 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
+.avisos_colapso {
+	width: 72rem;
+}
+
 .disenoT td {
 	width: 13rem;
 }
