@@ -1,0 +1,30 @@
+.menu-desktop {
+    font-size: var(--xxlarge-font);
+}
+
+.menu-desktop a:hover {
+    color: var(--color-fuente-icono);
+}
+
+#menu, #eventos, #empaques {
+    width: 70%;
+}
+
+.container-caja-transparente h2 {
+    width: 25rem;
+}
+
+footer p {
+    font-size: var(--medium-font);
+    margin-top: 2rem;
+}
+
+.icono-ig {
+    top: 0;
+    left: 7rem;
+}
+
+.icono-wa {
+    top: 0;
+    left: 7rem;
+}
