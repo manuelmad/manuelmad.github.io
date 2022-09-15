@@ -5,19 +5,16 @@
 }
 
 html {
-	font-family: 'Quicksand', sans-serif;
+	/*font-family: 'Quicksand', sans-serif;*/
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 62.5%;
 }
 
 :root {
-  --ancho-estallido-1: 25rem;
-  --ancho-graficos-estycol: 38rem;
-  --ancho-colapso-1: 25rem;
-  --ancho-elipse: 85rem; /*68.4rem*/
-  --ancho-tension-1: 19rem;
-  --ancho-menu: 15rem;
-  --alto-menu: 1.5rem;
+  --ancho-inputs-number: 25rem;
+  --ancho-boton-desplegable: 15rem;
+  --alto-boton-desplegable: 1.5rem;
+
   --very-light-gray:#C7C7C7;
   --text-input-field: #F7F7F7;
   --hospital-green: #ACD982;
@@ -25,6 +22,7 @@ html {
   --dark-blue: #252C5A;
   --white: #FFFFFF;
   --black: #000000;
+
   --ss: 1.2rem;
   --sm: 1.4rem;
   --md: 1.5rem;
@@ -164,7 +162,7 @@ nav #menu-principal a {
 	list-style: none;
 	margin-right: 1rem;
 	display: block;
-	color: var(--hospital-green);
+	color: var(--dark-blue);
 	font-size: var(--ss);
 }
 
@@ -210,11 +208,11 @@ input {
 }
 
 
-/***************** Estallido *********************/
+/******** Estallido *********/
 
 #mostrar_ocultar_SE {
-	width: var(--ancho-menu);
-	height: var(--alto-menu);
+	width: var(--ancho-boton-desplegable);
+	height: var(--alto-boton-desplegable);
 	text-transform: uppercase;
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
@@ -256,7 +254,7 @@ input {
 }
 
 .datos_estallido input {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
@@ -264,12 +262,8 @@ input {
 }
 
 .datos_estallido select {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
-}
-
-#calculo_tabla_diseno {
-	width: 2.5rem
 }
 
 .disenoE {
@@ -296,10 +290,7 @@ input {
 	margin-bottom: 1rem;
 }
 
-#aviso_falla_colapso2 {
-	color:red;
-	font-weight: bold;
-}
+
 
 
 /* 2 div */
@@ -316,8 +307,13 @@ input {
 	font-weight: bold;
 }
 
+.opciones_graf_est p:nth-child(2) {
+	text-align: center;
+	text-transform: uppercase;
+}
+
 .opciones_graf_est p input {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
@@ -328,17 +324,30 @@ input {
 	text-align: center;
 }
 
-#boton_diseno {
-	height: 2.5rem;
-	width: 2.5rem;
+#boton_diseno, #boton_borrar_diseno {
+	width: 10rem;
 }
 
-#boton_borrar_diseno {
-	width: 2.5rem;
+.avisos_estallido {
+	margin: 0 auto 1rem;
+	text-align: left;
+	font-weight: bold;
+	min-height: 1rem;
+	width: var(--ancho-inputs-number);
+}
+
+#aviso_falla_estallidoCorregidoS, #aviso_falla_estallidoCorregidoF {
+	color: red;
+	width: 100%;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
+	display: block;
+	text-align: justify;
 }
 
 #mostrar_ocultar_EC {
-	width: 2.5rem;
+	width: var(--ancho-inputs-number);
+	margin-bottom: 1rem;
 }
 
 .disenoEC {
@@ -367,8 +376,8 @@ input {
 /************ Colapso ***************/
 
 #mostrar_ocultar_SC {
-	width: var(--ancho-menu);
-	height: var(--alto-menu);
+	width: var(--ancho-boton-desplegable);
+	height: var(--alto-boton-desplegable);
 	text-transform: uppercase;
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
@@ -410,7 +419,7 @@ input {
 }
 
 .datos_colapso input[type="number"] {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
@@ -418,13 +427,12 @@ input {
 }
 
 .datos_colapso input[type="number"]:disabled {
-	/* background: rgb(238, 235, 235); */
 	background: white;
 }
 
 #topeLodo {
 	background-color: var(--white);
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	display: flex;
@@ -436,10 +444,6 @@ input {
 .parrafo_boton_colapso {
 	display: flex;
 	justify-content: center;
-}
-
-#boton_tablaC {
-	width: 2.5rem;
 }
 
 .disenoC {
@@ -471,16 +475,32 @@ input {
 	text-align: justify;
 }
 
+.opciones_graf_col p:first-child {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.opciones_graf_col p:nth-child(2) {
+	text-align: center;
+	text-transform: uppercase;
+}
+
 .opciones_graf_col input {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
 }
 
-#boton_grafica_colapso, #boton_borrar_disenoC, #mostrar_ocultar_CC {
-	width: 2.5rem;
+#boton_grafica_colapso, #boton_borrar_disenoC {
+	width: 10rem;
+}
+
+#mostrar_ocultar_CC {
+	width: var(--ancho-inputs-number);
+	margin-bottom: 1rem;
 }
 
 .avisos_colapso {
@@ -488,18 +508,11 @@ input {
 	text-align: left;
 	font-weight: bold;
 	min-height: 1rem;
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 }
 
-#aviso_apto_colapso {
-	color: green;
-	width: 100%;
-	padding-left: 0.2rem;
-	padding-right: 0.2rem;
-}
-
-#aviso_falla_colapso, #aviso_falla_colapsoCorregido {
-	color:red;
+#aviso_falla_colapso, #aviso_falla_colapsoCorregidoS, #aviso_falla_colapsoCorregidoF {
+	color: red;
 	width: 100%;
 	padding-left: 0.2rem;
 	padding-right: 0.2rem;
@@ -540,7 +553,7 @@ input {
 }
 
 .datos_tension input[type="number"] {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
@@ -548,8 +561,8 @@ input {
 }
 
 #mostrar_ocultar_ST {
-	width: var(--ancho-menu);
-	height: var(--alto-menu);
+	width: var(--ancho-boton-desplegable);
+	height: var(--alto-boton-desplegable);
 	text-transform: uppercase;
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
@@ -582,12 +595,12 @@ input {
 }
 
 #num_grado_cond {
-	width: 20.58rem;
+	width: 19.58rem;
 }
 
 #puntoNeutro, #resisT {
 	background-color: var(--white);
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	display: flex;
@@ -612,10 +625,6 @@ input {
 .diseno_grafica_tension p:nth-child(4) {
 	text-align: justify;
 	margin-bottom: 1rem;
-}
-
-#boton_disenoT {
-	width: 2.5rem;
 }
 
 .disenoT {
@@ -648,18 +657,29 @@ input {
 }
 
 #div2T input {
-	width: var(--ancho-estallido-1);
+	width: var(--ancho-inputs-number);
 	height: 3.2rem;
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
 }
 
-#div2T p:nth-child(5) {
+#div2T p:first-child {
 	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#div2T p:nth-child(2) {
+	text-align: center;
+	text-transform: uppercase;
 }
 
 #div2T p:nth-child(6) {
+	text-align: center;
+}
+
+#div2T p:nth-child(7) {
 	width: 30rem;
 }
 
@@ -667,12 +687,28 @@ input {
 	margin-bottom: 1rem;
 }
 
+#div2T #avisos_tension {
+	margin: 0 auto 1rem;
+	text-align: left;
+	font-weight: bold;
+	min-height: 1rem;
+	width: var(--ancho-inputs-number);
+}
+
+#aviso_falla_tension, #aviso_falla_tensionCorregidoS, #aviso_falla_tensionCorregidoF {
+	color: red;
+	width: 100%;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
+	text-align: justify;
+}
+
 #grafica_tension_biaxial, #boton_borrar_disenoT {
-	width: 2.5rem;
+	width: 10rem;
 }
 
 
-/***************** BIAXIAL *********************/
+/******** BIAXIAL *********/
 
 .seccion_biaxial > div {
 	text-align: center;
@@ -689,8 +725,8 @@ input {
 }
 
 #mostrar_ocultar_SCB {
-	width: var(--ancho-menu);
-	height: var(--alto-menu);
+	width: var(--ancho-boton-desplegable);
+	height: var(--alto-boton-desplegable);
 	text-transform: uppercase;
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
@@ -766,6 +802,10 @@ input {
 	display: none;
 }
 
+#graficas_biaxial, #borrar_biaxial {
+	width: var(--ancho-inputs-number);
+}
+
 
 /************ Factores de Diseño *************/
 
@@ -781,8 +821,8 @@ input {
 }
 
 #mostrar_ocultar_SFD {
-	width: var(--ancho-menu);
-	height: var(--alto-menu);
+	width: var(--ancho-boton-desplegable);
+	height: var(--alto-boton-desplegable);
 	text-transform: uppercase;
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
@@ -795,10 +835,6 @@ input {
 
 .parrafo_FD {
 	text-align: center;
-}
-
-#botonFD {
-	width: 2.5rem;
 }
 
 .factoresDiseno {
@@ -822,22 +858,27 @@ input {
 }
 
 #obsup, #obfon {
+	margin: 0 auto;
 	color:red;
 	text-align: left;
+	width: 25rem;
 }
 
-/************** LINK DE DESCARGA *******************/
-.link-descarga {
+#obs_apto {
+	margin: 0 auto;
+	color:green;
+	text-align: left;
+	width: 25rem;
+}
+
+.seccion_limpiar_campos {
 	text-align: center;
 	margin-top: 2rem;
 }
 
-.link_informe {
-	font-size: 1.2rem;
-	display: block;
-	height: 100%;
-	text-decoration: none;
-}
+
+
+/******* FOOTER ********/
 
 footer {
 	width: 100%;

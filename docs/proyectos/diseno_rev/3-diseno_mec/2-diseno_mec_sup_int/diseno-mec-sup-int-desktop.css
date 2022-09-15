@@ -22,45 +22,33 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
-.calculos {
-    max-width: 80rem;
+.avisos_estallido {
+    width: 72rem;
 }
 
-#mostrar_ocultar_auto:hover, #mostrar_ocultar_manual:hover {
-	background-color: var(--hospital-green);
+.avisos_colapso {
+	width: 72rem;
 }
 
-.ajuste_int, .ajuste_sup {
-	display: flex;
+#div2T #avisos_tension {
+    width: 72rem;
 }
 
-.ajuste_int1, .ajuste_sup1 {
-	width: 30%;
+.disenoT td {
+	width: 13rem;
 }
 
-.ajuste_int2, .ajuste_sup2 {
-    flex-grow: 1;
+#div2T p:nth-child(8) {
+	width: 80rem;
 }
 
-.ajuste_int1 p, .ajuste_sup1 p {
-	width: 20rem;
-	margin-left: auto;
-	margin-right: auto;
+#div1CB p:nth-child(3) {
+    display: flex;
+    justify-content: center;
 }
 
-.ajuste_int1 h2, .ajuste_sup1 h2 {
-	width: 20rem;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: justify;
-}
-
-.ajuste_int1 input, .ajuste_sup1 input {
-	width: 20rem;
-}
-
-#resultadoI, #resultadoS {
-	max-width: 50rem;
+#elipse_plasticidad {
+    display: block;
 }
 
 footer {
@@ -124,7 +112,3 @@ footer p {
     width: 18rem;
     height: 18rem;
 }
-
-
-
-

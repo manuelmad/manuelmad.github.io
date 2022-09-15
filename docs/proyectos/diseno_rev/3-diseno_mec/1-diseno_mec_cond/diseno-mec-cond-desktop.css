@@ -22,15 +22,23 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
+.avisos_estallido {
+    width: 72rem;
+}
+
 .avisos_colapso {
-	width: 72rem;
+    width: 72rem;
+}
+
+#div2T #avisos_tension {
+    width: 72rem;
 }
 
 .disenoT td {
 	width: 13rem;
 }
 
-#div2T p:nth-child(6) {
+#div2T p:nth-child(7) {
 	width: 80rem;
     text-align: center;
 }

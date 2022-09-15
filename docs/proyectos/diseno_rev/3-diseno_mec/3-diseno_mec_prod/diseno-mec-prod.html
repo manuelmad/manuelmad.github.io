@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Aplicación web para diseñar revestidores de producción para pozos petroleros.">
+	<meta name="robots" content="index,follow">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<title>DISEÑO MECÁNICO DE REVESTIDOR, CAMISA Y/O TIE BACK DE PRODUCCIÓN.</title>
+	<link href="diseno-mec-prod.css" type="text/css" rel="stylesheet" />
+	<link href="diseno-mec-prod-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="diseno-mec-prod-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div>
+            <a href="../../../../index.html"><img src="./imagenes/logo.png" alt="logo"></a>
+        </div>
+        <nav>
+            <div class="container__menu-principal">
+                <ul id="menu-principal">
+                    <li><a href="../../../proyectos.html">PROYECTOS</a></li>
+                    <li><a href="../../../../index.html#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="../../../../index.html#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+            <div class="container__icono-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <ul id="menu-desplegable">
+                    <li><a href="../../../proyectos.html">PROYECTOS</a></li>
+                    <li><a href="../../../../index.html#personal-info">SOBRE MÍ</a></li>
+                    <li><a href="../../../../index.html#curriculum">CURRÍCULUM</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </div>
+        </nav>
+	</header>
+	<main>
+		<section class="container__menu-secundario">
+			<nav>
+				<ul id="menu-secundario">
+					<li><a class = "ventana_secundaria" href="javascript:ventanaSecundaria('./instrucciones/instrucciones.html')">Instrucciones</a></li>
+					<li><a class = "ventana_secundaria2" href="javascript:ventanaSecundaria2('./interp-extrap/interp-extrap.html')">Interpolación/Extrapolación</a></li>
+					<li><a class = "documentacion" href="./diseno-mec-cond.html">Documentación</a></li>
+				</ul>	
+			</nav>
+		</section>
+		<h1>DISEÑO MECÁNICO DE REVESTIDOR, CAMISA Y/O TIE BACK DE PRODUCCIÓN.</h1>
+		<h2>PRIMER PASO</h2>
+		<p>Diseño por Estallido<br><button id="mostrar_ocultar_SE"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<section class="seccion_estallido">
+			<div class = "datos_estallido"  id="div1E">
+				<p class="tituloE">Máxima carga de estallido: Fuga de la tubería de producción cerca de la superficie.</p>
+				<p>
+					<label for="prof_rev_tvd">Profundidad de asentamiento (pies):</label><br>
+					<input type="number" id="prof_rev_tvd"> TVD.<br>
+					<input type="number" id="prof_rev_md"> MD.
+				</p>
+				<form id="tipo-sarta">Indique el tipo de sarta:<br>
+					<input type="radio" name="a" id="tipo-sarta__rev"> Revestidor.
+					<input type="radio" name="a" id="tipo-sarta__cam" checked> Camisa.
+				</form>
+				<div id="sarta_colgada">
+					<p><label for="prof_colg_tvd">Profundidad de asentamiento del colgador (pies):</label><br>
+					<input type="number" id="prof_colg_tvd"> TVD.<br>
+					<input type="number" id="prof_colg_md"> MD.</p>
+					<p><label for="Dporo_colg">Densidad Equivalente de poro a la profundidad del colgador (lpg.):</label><br><input type="number" id="Dporo_colg"></p>
+				</div>
+				<p><label for="Dporo_rev">Densidad Equivalente de poro a la profundidad de asentamiento (lpg.):</label><br><input type="number" id="Dporo_rev"></p>
+				<p><label for="DL_comp">Densidad del fluido de completación (lpg.):</label><br><input type="number" id="DL_comp"></p>
+				<p><label for="pres_sup_intE">Presión de fondo del pozo o Presión de cierre de cabezal (lpc.):</label><br><input type="number" id="pres_sup_intE"></p>
+				<p><button id="calculo_tabla_diseno">Calcular Perfil de Diseño por Fuga de la Tubería de Producción</button></p>
+				<table class="disenoE">
+					<thead>
+						<tr>
+							<th colspan="3">Perfil de Presión de Diseño por Fuga en Tubería de Producción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Presión (lpc.)</td>
+						</tr>
+						<tr>
+							<td>Superficie</td>
+							<td><span id="profSuperfTablaE"></span></td>
+							<td><span id="presionSuperfTablaE"></span></td>
+						</tr>
+						<tr>
+							<td>Colgador</td>
+							<td><span id="profColgTablaE"></span></td>
+							<td><span id="presionColgTablaE"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><span id="profFondoTablaE"></span></td>
+							<td><span id="presionFondoTablaE"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<p><label for="RE_rev">Resistencia al Estallido del revestidor seleccionado (lpc.):</label><br><input type="number" id="RE_rev"></p>
+			</div>
+			<div class = "graficas_estallido" id="div2E">
+				<div class="opciones_graf_est">
+					<p>TRAZADO DE LÍNEAS DE DISEÑO Y RESISTENCIA AL ESTALLIDO</p>
+					<p>Opciones de ejes del gráfico:</p>
+					<p id="parrafo_min_prof_graf"><label for="min_prof_graf">Mínimo valor del eje Y (pies):</label><br><input type="number" id="min_prof_graf"></p>
+					<p><label for="max_prof_graf">Máximo valor del eje Y (pies):</label><br><input type="number" id="max_prof_graf"></p>
+					<p><label for="max_pres_graf">Máximo valor del eje X (lpc.):</label><br><input type="number" id="max_pres_graf"></p>
+				</div>
+				<p class ="btn_est">
+					<button id="boton_diseno" title="Graficar líneas de perfil de diseño y resistencia al estallido">Graficar Líneas</button>
+					<button id="boton_borrar_diseno" title="Borrar gráfica">Borrar Líneas</button>
+				</p>
+				<p><canvas id="revestidor_estallido"></canvas></p>
+				<p class = "avisos_estallido">
+					<span id="aviso_falla_estallidoCorregidoS"></span>
+					<span id="aviso_falla_estallidoCorregidoF"></span>
+				</p>
+				<p><button id="mostrar_ocultar_EC" title="Mostrar/Ocultar tabla de resistencia al estallido corregida">Resistencia al Estallido Corregida (Ver después del paso 4)</button></p>
+				<table class="disenoEC" id="tablaEC">
+					<thead>
+						<tr>
+							<th colspan="3">Resistencia al Estallido Corregida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Presión (lpc.)</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_estallido_correg">Colgador</td>
+							<td><label id="profSuperfTablaE2"></label></td>
+							<td><label id="presionCorregSuperfTablaE"></label></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><label id="profFondoTablaE2"></label></td>
+							<td><label id="presionCorregFondoTablaE"></label></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
+		</section>
+
+		<h2>SEGUNDO PASO</h2>
+		<p>Diseño por Colapso<br><button id="mostrar_ocultar_SC"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<section class="seccion_colapso">
+			<div class="datos_colapso" id="div1C">
+				<p class="tituloC">Máxima carga de colapso: Vacío total</p>
+				<p><label for="DL_rev">Densidad de lodo para bajar revestidor (lpg.):</label><br><input type="number" id="DL_rev"></p>
+				<div id="info-cem-container">
+					<p><label for="den_lech_unica">Densidad del cemento (lpg.):</label><br><input type="number" id="den_lech_unica"></p>
+				</div>
+				<div id="info-lech-container">
+					<p><label for="den_lech_llen">Densidad de la lechada de llenado (lpg.):</label><br><input type="number" id="den_lech_llen" placeholder="0, si es lechada única"></p>
+					<p><label for="den_lech_cola">Densidad de la lechada de cola (lpg.):</label><br><input type="number" id="den_lech_cola"></p>
+					<p><label for="ttc_tvd">Tope teórico de cemento (pies):</label></p>
+					<p><input type="number" id="ttc_tvd" placeholder="0, si está cementado hasta superficie."> TVD.<br>
+					<input type="number" id="ttc_md" placeholder="0, si está cementado hasta superficie."> MD.</p>
+					<p>Longitud de la columna de cemento:</p>
+					<p>Lechada de llenado (pies):<br>
+						<div class="lech-llen-grid">
+							<span id="long_lech_llen"></span><span>MD.</span>
+						</div>
+					</p>
+					<p class="lech-cola-grid"><span><label for="long_lech_cola">Lechada de cola (pies):</label><br><input type="number" id="long_lech_cola"></span><span>MD.</span></p>
+					<p class="parrafo_boton_lechadas"><button id="calcular_interfase_cemento">Calcular interfase entre lechadas</button></p>
+					<p><label for="interf_lech_tvd">Interfase entre lechadas:</label></p>
+					<p class="interf-lech-grid">
+						<span id="interf_lech_md"></span><span>MD.</span>
+						<input type="number" id="interf_lech_tvd" placeholder="Ver survey"><span>TVD.</span>
+					</p>
+				</div>
+				<p class="parrafo_boton_colapso"><button id="calculo_tabla_disenoC">Calcular Perfil de Diseño</button></p>
+				<table class="disenoC">
+					<thead>
+						<tr>
+							<th colspan="3">Perfil de Presión de Diseño</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Presión (lpc.)</td>
+						</tr>
+						<tr>
+							<td>Superficie</th>
+							<td><span id="profSuperfTablaC"></span></td>
+							<td><span id="presionSuperfTablaC"></span></td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_colapso">Colgador</td>
+							<td><span id="profTTCTablaC"></span></td>
+							<td><span id="presionTTCTablaC"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><span id="profFondoTablaC"></span></td>
+							<td><span id="presionFondoTablaC"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<p><label for="RC_rev">Resistencia al Colapso del revestidor seleccionado (lpc.):</label><br><input type="number" id="RC_rev"></p>
+			</div>
+			<div class="div_colapso_2" id="div2C">
+				<div class="opciones_graf_col">
+					<p>TRAZADO DE LÍNEA DE DISEÑO Y RESISTENCIA AL COLAPSO</p>
+					<p>Opciones de ejes del gráfico:</p>
+					<p id="parrafo_min_prof_grafC"><label for="min_prof_grafC">Mínimo valor del eje Y (pies):</label><br><input type="number" id="min_prof_grafC"></p>
+					<p><label for="max_prof_grafC">Máximo valor del eje Y (pies):</label><br><input type="number" id="max_prof_grafC"></p>
+					<p><label for="max_pres_grafC">Máximo valor del eje X (lpc.):</label><br><input type="number" id="max_pres_grafC"></p>
+				</div>
+				<p id="parrafo_boton_borrarC">
+					<button id="boton_disenoC" title="Graficar líneas de perfil de diseño y resistencia al colapso">Graficar Líneas</button>
+					<button id="boton_borrar_disenoC" title="Borrar gráfica">Borrar Líneas</button>
+				</p>
+				<p><canvas id="revestidor_colapso"></canvas></p>
+				<p class = "avisos_colapso">
+					<span id="aviso_falla_colapso"></span>
+					<span id="aviso_falla_colapsoCorregidoF"></span>
+					<span id="aviso_falla_colapsoCorregidoS"></span>
+				</p>
+				<p><button id="mostrar_ocultar_CC" title="Mostrar/Ocultar tabla de resistencia al colapso corregida">Resistencia al Colapso Corregida (Ver después del paso 4)</button></p>
+				<table class="disenoCC" id="tablaCC">
+					<thead>
+						<tr>
+							<th colspan="3">Resistencia al Colapso Corregida</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Presión (lpc.)</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_colapso_correg">Colgador</td>
+							<td><label id="profSuperfTablaC2"></label></td>
+							<td><label id="presionCorregSuperfTablaC"></label></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><label id="profFondoTablaC2"></label></td>
+							<td><label id="presionCorregFondoTablaC"></label></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<h2>TERCER PASO</h2>
+		<p>Diseño por Tensión<br><button id="mostrar_ocultar_ST"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<section class="seccion_tension">
+			<div class="datos_tension" id="div1T">
+				<p class="tituloT">Máxima carga de tensión: 100,000 lbf. de Overpull</p>
+				<p><label for="peso_nom">Peso nominal del revestidor seleccionado (lbf./pie):</label><br><input type="number" id="peso_nom"></p>
+				<p><label for="diam_ext">Diámetro externo del revestidor seleccionado (pulg.):</label><br><input type="number" id="diam_ext"></p>
+				<p><label for="diam_int">Diámetro interno del revestidor seleccionado (pulg.):</label><br><input type="number" id="diam_int"></p>
+				<p><label for="num_grado">Grado del revestidor seleccionado:</label><br>
+					<select id="letra_grado">
+						<option value = "H">H</option>
+						<option value = "J">J</option>
+						<option value = "K">K</option>
+						<option value = "L">L</option>
+						<option value = "M">M</option>
+						<option value = "N">N</option>
+						<option value = "C">C</option>
+						<option value = "T">T</option>
+						<option value = "P">P</option>
+						<option value = "HC">HC</option>
+						<option value = "Q">Q</option>
+					</select> - <input type="number" id="num_grado">
+				</p>
+				<p>Profundidad del punto neutro de la sarta (pies):<br>
+					<span id="puntoNeutro"></span></p>
+				<div class="diseno_grafica_tension">
+					<p><button id="boton_disenoT" title="Calcular perfil de diseño">Calcular Perfiles de Diseño</button>
+					</p>
+					<table class="disenoT">
+						<thead>
+							<tr>
+								<th colspan="5">Perfil de Tensión de Diseño</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td>Profundidad (pies)</td>
+								<td>Tensión Real (lbf.)</td>
+								<td>Tensión + overpull (lbf.)</td>
+								<td>Tensión + F.D. (lbf.)</td>
+							</tr>
+							<tr>
+								<td>Superficie</td>
+								<td><span id="profSuperfTablaT">N/A</span></td>
+								<td><span id="tensionRealSuperfTablaT">N/A</span></td>
+								<td><span id="tensionOverpullSuperfTablaT">N/A</span></td>
+								<td><span id="tensionFactorSuperfTablaT">N/A</span></td>
+							</tr>
+							<tr>
+								<td id="segunda_fila_tension">Colgador</td>
+								<td><span id="profTTCTablaT"></span></td>
+								<td><span id="tensionRealTTCTablaT"></span></td>
+								<td><span id="tensionOverpullTTCTablaT"></span></td>
+								<td><span id="tensionFactorTTCTablaT"></span></td>
+							</tr>
+							<tr>
+								<td>Fondo</td>
+								<td><span id="profFondoTablaT"></span></td>
+								<td><span id="tensionRealFondoTablaT"></span></td>
+								<td><span id="tensionOverpullFondoTablaT"></span></td>
+								<td><span id="tensionFactorFondoTablaT"></span></td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Resistencia a la tensión del cuerpo del revestidor (Calculada, lbf.):<br><span id="resisT"></span></p>
+					<p><label for="RT_rev">Resistencia a la tensión del cuerpo del revestidor seleccionado (lbf.):</label><br><input type="number" id="RT_rev"></p>	
+				</div>
+			</div>
+			<div id="div2T">
+				<p>TRAZADO DE LÍNEA DE DISEÑO Y RESISTENCIA A LA TENSIÓN</p>
+				<p>Opciones de ejes del gráfico:</p>
+				<p><label for="min_ten_graf_ten">Mínimo valor del eje X (lbf. x 1000):</label><br><input type="number" id="min_ten_graf_ten" placeholder="Puede ser negativo"></p>
+				<p><label for="max_ten_graf_ten">Máximo valor del eje X (lbf. x 1000):</label><br><input type="number" id="max_ten_graf_ten"></p>
+				<p id="parrafo_min_prof_graf_ten"><label for="min_prof_graf_ten">Mínimo valor del eje Y (pies):</label><br><input type="number" id="min_prof_graf_ten"></p>
+				<p><label for="max_prof_graf_ten">Máximo valor del eje Y (pies):</label><br><input type="number" id="max_prof_graf_ten"></p>
+				<p><button id="grafica_tension_biaxial" title="Graficar líneas de perfil de diseño y resistencia a la tensión del revestidor">Graficar Líneas</button> <button id="boton_borrar_disenoT" title="Borrar gráfica">Borrar Líneas</button></p>
+				<p><canvas id="revestidor_tension"></canvas></p>
+				<p class = "avisos_tension">
+					<span id="aviso_falla_tension"></span>
+					<span id="aviso_falla_tensionCorregidoS"></span>
+					<span id="aviso_falla_tensionCorregidoF"></span>
+				</p>
+			</div>
+		</section>
+
+		<h2>CUARTO PASO</h2>
+		<p>Corrección Biaxial<br><button id="mostrar_ocultar_SCB"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<section class="seccion_biaxial">
+			<div id="div1CB">
+				<table class="tensionyesfuerzo">
+					<thead>
+						<tr>
+							<th colspan="5">Perfiles de Tensión y Esfuerzo Reales</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Tensión Real (lbf.)</td>
+							<td>Esfuerzo (lpc.)</td>
+							<td>Condición</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_tye">Colgador</td>
+							<td><span id="profSuperfTablaB"></span></td>
+							<td><span id="tensionRealSuperfTablaB"></span></td>
+							<td><span id="esfuerzoRealSuperfTablaB"></span></td>
+							<td><span id="condicionSuperfTablaB"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><span id="profFondoTablaB"></span></td>
+							<td><span id="tensionRealFondoTablaB"></span></td>
+							<td><span id="esfuerzoRealFondoTablaB"></span></td>
+							<td><span id="condicionFondoTablaB"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="tabla_valores_elipse">
+					<thead>
+						<tr>
+							<th colspan="4">Tabla de coordenadas para graficar en Elipse de Plasticidad</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Relación de Esfuerzo (X)</td>
+							<td>Coordenada en Y (X der.)</td>
+							<td>Coordenada en Y (X izq.)</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_elipse">Colgador</td>
+							<td><span id="rel_esf_sup2"></span></td>
+							<td><span id="y_der_sup2"></span></td>
+							<td><span id="y_izq_sup2"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><span id="rel_esf_fondo2"></span></td>
+							<td><span id="y_der_fondo2"></span></td>
+							<td><span id="y_izq_fondo2"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<p><canvas width="684" height="442" id="elipse_plasticidad"></canvas></p>
+				<table class="porcentajesycorrecciones">
+					<thead>
+						<tr>
+							<th colspan="5">Corrección de Resistencias al Estallido y Colapso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Condición</td>
+							<td>R. al Est. Correg.</td>
+							<td>R. al Col. Correg.</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_correccion">Colgador</td>
+							<td><span id="profSuperfTablaB2"></span></td>
+							<td><span id="condicionSuperfTablaB2"></span></td>
+							<td><span id="resisEstCorregSuperfTablaB2"></span></td>
+							<td><span id="resisColCorregSuperfTablaB2"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</th>
+							<td><span id="profFondoTablaB2"></span></td>
+							<td><span id="condicionFondoTablaB2"></span></th>
+							<td><span id="resisEstCorregFondoTablaB2"></span></td>
+							<td><span id="resisColCorregFondoTablaB2"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="relaciones_y">
+					<tbody>
+						<tr>
+							<th></th>
+							<th>Relación de Esfuerzo (X)</th>
+							<th>Y (der.)</th>
+							<th>Y izq.</th>
+						</tr>
+						<tr>
+							<th id="segunda_fila_relaciones">Colgador</th>
+							<th><span id="rel_esf_sup"></span></th>
+							<th><span id="y_sup"></span></th>
+							<th><span id="y_izq_sup"></span></th>
+						</tr>
+						<tr>
+							<th>Fondo</th>
+							<th><span id="rel_esf_fondo"></span></th>
+							<th><span id="y_fondo"></span></th>
+							<th><span id="y_izq_fondo"></span></th>
+						</tr>
+					</tbody>
+				</table>
+				<p><button id="graficas_biaxial">Graficar Líneas del Revestidor Corregidas</button></p>
+				<p><button id="borrar_biaxial">Borrar Líneas del Revestidor Corregidas</button></p>
+			</div>
+		</section>
+
+		<h2 class="subtituloFD">QUINTO PASO</h2>
+		<p>Factores de Diseño<br><button id="mostrar_ocultar_SFD"><img src="./imagenes/caret-down-fill.svg"></button></p>
+		<section class="seccion_FD">
+			<div id="div1FD">
+				<p class="parrafo_FD"><button id="botonFD" title="Calcular factores de diseño">Calcular Factores de Diseño</button></p>
+				<table class="factoresDiseno">
+					<thead>
+						<tr>
+							<th colspan="6">Factores de Diseño</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>Profundidad (pies)</td>
+							<td>Estallido</td>
+							<td>Colapso</td>
+							<td>Tensión</td>
+							<td>Observación</td>
+						</tr>
+						<tr>
+							<td id="segunda_fila_factores">Colgador</td>
+							<td><span id="profSuperfTablaF"></span></td>
+							<td><span id="FDESuperfTablaF"></span></td>
+							<td><span id="FDCSuperfTablaF"></span></td>
+							<td><span id="FDTSuperfTablaF"></span></td>
+							<td><span id="OBSuperfTablaF"></span></td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><span id="profFondoTablaF"></span></td>
+							<td><span id="FDEFondoTablaF"></span></td>
+							<td><span id="FDCFondoTablaF"></span></td>
+							<td><span id="FDTFondoTablaF"></span></td>
+							<td><span id="OBFondoTablaF"></span></td>
+						</tr>
+					</tbody>
+				</table>
+					<p id="obsup">
+					<span id="OBSuperfE"></span>
+					<span id="OBSuperfC"></span>
+					<span id="OBSuperfT"></span>
+				</p>
+				<p id="obfon">
+					<span id="OBFondoE"></span>
+					<span id="OBFondoC"></span>
+					<span id="OBFondoT"></span>
+				</p>
+			</div>
+		</section>		
+	</main>
+	<footer>
+		<section class="contact">
+            <div>
+                <h1>Contáctame</h1>
+                <p>Si deseas ponerte en contacto conmigo para conocer un poco más acerca de mis proyectos, que colabore en alguno de los tuyos o para ofertas de trabajo, aquí te dejo la infomación que necesitas.</p>
+                <p><button onclick="location.href='../../../proyectos.html'">MIS PROYECTOS</button></p>
+            </div>
+        </section>
+        <section class="contact-info">
+            <div>
+                <h2>LinkedIn</h2>
+                <p><a href="https://linkedin.com/in/manuel-araujo-beltrán-994564153" target="_blank">Manuel Araujo</a></p>
+                <h2>Correo electrónico</h2>
+                <p>manuelmad1981@gmail.com</p>
+                <h2>GitHub</h2>
+                <p><a href="https://github.com/manuelmad" target="_blank">manuelmad</a></p>
+            </div>
+        </section>
+        <section class="personal-logo">
+            <img src="./imagenes/logo-footer.png" alt="logo"> 
+        </section>
+	</footer>
+	<script type="text/javascript" src="diseno-mec-prod.js"></script>
+</body>
+</html>

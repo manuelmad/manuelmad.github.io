@@ -5,7 +5,7 @@
 }
 
 html {
-	font-family: 'Quicksand', sans-serif;
+	/*font-family: 'Quicksand', sans-serif;*/
     font-family: 'Roboto Condensed', sans-serif;
 	font-size: 62.5%;
 }
@@ -204,37 +204,13 @@ label, p {
 	font-size: var(--ss);
 }
 
+button {
+	cursor: pointer;
+}
+
 .container-botones-filas {
-	display: flex;
 	width: 30rem;
 	margin: auto;
-	position: relative; /* Para que los elementos dentro de él lo tengan como referencia (y no al body) cuando les aplique position:absolute */
-}
-
-#eliminar_fila, #agregar_fila {
-	position: absolute;
-	background-color: var(--hospital-green);
-	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.5rem;
-	cursor: pointer;
-	color: var(--white);
-	font-weight: bold;
-}
-
-#eliminar_fila {
-	right: 0rem;
-	top: 1rem;
-}
-
-#agregar_fila {
-	right: 2.6rem;
-	top: 1rem;
-}
-
-#agregar_fila:active, #eliminar_fila:active { /* active tiene que ir despues del hover para que funcione */
-	color: gray;
-	background-color: var(--white);
-	border: 0.1rem solid var(--very-light-gray);
 }
 
 
@@ -359,23 +335,6 @@ label, p {
 	text-align: center;
 }
 
-#botoncito, #borrar_curvas {
-	height: 3rem;
-	background-color: var(--hospital-green);
-	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.8rem;
-	cursor: pointer;
-	color: var(--white);
-	font-weight: bold;
-	padding: 0.5rem;
-}
-
-#botoncito:active, #borrar_curvas:active { /* active tiene que ir despues del hover para que funcione */
-	color: gray;
-	background-color: var(--white);
-	border: 0.1rem solid var(--very-light-gray);
-}
-
 canvas {
 	margin-top: 1rem;
 }
@@ -419,23 +378,6 @@ canvas {
 
 .datos_auto .botones-lineas { /*Apliqué mayor especificida que la regla de arriba*/
 	text-align: center;
-}
-
-#lineas_auto, #deshacer, #deshacer2 {
-	height: 3rem;
-	background-color: var(--hospital-green);
-	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.8rem;
-	cursor: pointer;
-	color: var(--white);
-	font-weight: bold;
-	padding: 0.5rem;
-}
-
-#lineas_auto:active, #deshacer:active, #deshacer2:active { /* active tiene que ir despues del hover para que funcione */
-	color: gray;
-	background-color: var(--white);
-	border: 0.1rem solid var(--very-light-gray);
 }
 
 .tabla_rev {
@@ -497,22 +439,10 @@ canvas {
 
 .tabla_lineas_manuales button {
 	height: 2rem;
-	background-color: var(--white);
-	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.5rem;
-	cursor: pointer;
-	color: gray;
-	font-weight: bold;
-	padding: 0.5rem;
 	font-size: 1rem;
 	margin-left: 0.2rem;
 }
 
-.tabla_lineas_manuales button:active { /* active tiene que ir despues del hover para que funcione */
-	color: var(--white);
-	background-color: var(--very-light-gray);
-	border: 0.1rem solid var(--very-light-gray);
-}
 
 /* CÓDIGO PARA LAS SECCIONES DE AJUSTES DE PROFUNDIDADES */
 
@@ -560,23 +490,6 @@ canvas {
 
 .ajuste_int2, .ajuste_sup2 {
 	padding-bottom: 1rem;
-}
-
-#boton_ajuste_int, #boton_ajuste_sup {
-	height: 3rem;
-	background-color: var(--hospital-green);
-	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.8rem;
-	cursor: pointer;
-	color: var(--white);
-	font-weight: bold;
-	padding: 0.5rem;
-}
-
-#boton_ajuste_int:active, #boton_ajuste_sup:active { /* active tiene que ir despues del hover para que funcione */
-	color: gray;
-	background-color:  var(--white);
-	border: 0.1rem solid var(--very-light-gray);
 }
 
 #resultadoI, #resultadoS {

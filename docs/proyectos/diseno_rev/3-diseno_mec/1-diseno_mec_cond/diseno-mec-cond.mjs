@@ -2,16 +2,13 @@
 
 // CONDUCTOR //
 const FDcolapsoCond = 1.0;
+const FDestallidoCond = 1.0; // No existe, lo coloco por conveniencia.
+const FDtensionCond = 1.0; // No existe, lo coloco por conveniencia.
 
-// SUPERFICIAL //
-const FDcolapsoSup = 1.0;
-const FDestallidoSup = 1.1;
-const FDtensionSup = 1.6;
-
-// INTERMEDIO //
-const FDcolapsoInt = 1.0;
-const FDestallidoInt = 1.1;
-const FDtensionInt = 1.6;
+// SUPERFICIAL E INTERMEDIO //
+const FDcolapsoSupInt = 1.0;
+const FDestallidoSupInt = 1.1;
+const FDtensionSupInt = 1.6;
 
 // PRODUCCIÓN //
 const FDcolapsoProd = 1.1;
@@ -57,36 +54,22 @@ function mostrarOcultarSE()
 var e = document.getElementById("conductor_estallido");
 var papel = e.getContext("2d");
 
-/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN
-QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
-var h = document.getElementById("conductor_estallido2");
-var contexto = h.getContext("2d");
-h.style.display = "none";
-
 // Tamaño de canvas responsivo
 var tamano_ventana = window.innerWidth;
 console.log(tamano_ventana);
 if(tamano_ventana < 600) {
 	e.setAttribute("width", 280);
 	e.setAttribute("height", 280);
-
-	h.setAttribute("width", 280);
-	h.setAttribute("height", 280);
 }
 else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
 	e.setAttribute("width", 550);
 	e.setAttribute("height", 550);
-
-	h.setAttribute("width", 550);
-	h.setAttribute("height", 550);
 }
 else if(tamano_ventana >= 1024) {
 	e.setAttribute("width", 720);
 	e.setAttribute("height", 720);
-
-	h.setAttribute("width", 720);
-	h.setAttribute("height", 720);
 }
+
 
 // DIMENSIONES DEL CANVAS //
 var ancho_canvas = e.width;
@@ -137,81 +120,101 @@ function dibujarLineaTrans(xinicial, yinicial, xfinal, yfinal)
 	papel.closePath();
 }
 
-
-// EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA) //
-dibujarLineaPapel("black", margen, margen-5, margen, alto+margen+5); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLineaPapel("black", margen-5, margen, ancho+margen+5, margen); // LÍNEA HORIZONTAL SUPERIOR //
-
-
-// LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
-dibujarLineaPapel("black", 0.1*ancho_canvas, 0.95*alto_canvas, 0.19*ancho_canvas, 0.95*alto_canvas);
-papel.font = '1rem "Tahoma"';
-papel.fillStyle = "black";
-papel.fillText("Línea de Diseño", 0.2*ancho_canvas, 0.9553*alto_canvas);
-
-dibujarLineaSeleccionPapel("green", 0.53*ancho_canvas, 0.95*alto_canvas, 0.63*ancho_canvas, 0.95*alto_canvas);
-papel.fillText("Línea de Revestidor", 0.645*ancho_canvas, 0.9553*alto_canvas);
-
-
-// LEYENDA DEL EJE Y (ROTADA) //
-var x = 0.05*ancho_canvas; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var y = alto_canvas/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
-papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-papel.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
-papel.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-papel.font = '1.4rem "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-papel.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-papel.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
-
-
-
-// EJE X LEYENDA //
-var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var y = 0.05*alto_canvas; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
-papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-papel.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-papel.font = '1.4rem "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-papel.fillText("Presión (lpc.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-papel.restore();
-
-
-// FUNCIÓN QUE CAPTURA EL CANVAS SIN LÍNEA DE DISEÑO NI DE REVESTIDOR //
-function imageSinLineaDiseno()
-{
-	ImageData = papel.getImageData(0, 0, ancho_canvas, alto_canvas);
+// FUNCIÓN PARA BORRAR TODO LO QUE HAYA EN EL CANVAS
+function borrarCanvas() {
+	papel.clearRect(0, 0, ancho_canvas, alto_canvas);
 }
 
-// FUNCIÓN QUE ELIMINA LAS LÍNEAS DE DISEÑO Y REV., SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
-function borrarLinea()
+
+// FUNCIÓN PARA RENDERIZAR EL CANVAS INICIAL, BORRANDO PRIMERO LO QUE HAYA EN ÉL
+function canvasInicial() {
+	
+	borrarCanvas();
+
+	// EJES DE COORDENADAS DEL ÁREA DE DIBUJO
+	dibujarLineaPapel("black", margen, margen-5, margen, alto+margen+5); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLineaPapel("black", margen-5, margen, ancho+margen+5, margen); // LÍNEA HORIZONTAL SUPERIOR //
+
+	// LEYENDA DE LAS LÍNEAS DE REVESTIDORES
+	papel.fillStyle = "black";
+	papel.textAlign = 'left';
+	if(tamano_ventana < 600) {
+		papel.font = '7px "Tahoma"';
+	}
+	else {
+		papel.font = '10px "Tahoma"';
+	}
+	dibujarLineaPapel("blue", 0.095*ancho_canvas, alto+1.5*margen, 0.167*ancho_canvas, alto+1.5*margen);
+	papel.fillText("Línea de Diseño (P.P.)", 0.18*ancho_canvas, alto+1.5*margen+3);
+
+	dibujarLineaSeleccionPapel("green", 0.55*ancho_canvas, alto+1.5*margen, 0.64*ancho_canvas, alto+1.5*margen);
+	papel.fillText("Línea de Revestidor", 0.65*ancho_canvas, alto+1.5*margen+3);
+
+	// LEYENDA DEL EJE Y (ROTADA)
+	var x = 0.04*ancho_canvas; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+	var y = alto_canvas/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+	papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	papel.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
+	papel.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		papel.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		papel.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	papel.fillText("Profundidad (TVD, pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	papel.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
+
+
+	// EJE X LEYENDA
+	var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO
+	var y = 0.05*alto_canvas; // COORDENADA Y DONDE ESTARÁ EL TEXTO
+	papel.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	papel.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	papel.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		papel.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		papel.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	papel.fillText("Presión (lpc.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	papel.restore();
+
+}
+
+// EVENTO PARA QUE EL CANVAS INICIAL SE RENDERICE AL CARGAR LA PÁGINA
+window.addEventListener("load", canvasInicial);
+
+
+// FUNCIÓN QUE ELIMINA LAS LÍNEAS DE DISEÑO Y REVESTIDOR, EJECUTANDO LA RENDERIZACIÓN INICIAL DEL CANVAS
+export function borrarLinea()
 {
-	papel.putImageData(ImageData, 0, 0);
+	canvasInicial();
 }
 
 // AÑADIR EL EVENTO DE BORRAR EL GRÁFICO AL BOTÓN DE HTML //
-var boton_borrar_diseno = document.getElementById("boton_borrar_diseno");
-boton_borrar_diseno.addEventListener("click", borrarLinea);
+// var boton_borrar_diseno = document.getElementById("boton_borrar_diseno");
+// boton_borrar_diseno.addEventListener("click", borrarLinea);
 
 
 // AÑADIR EL EVENTO DE CALCULAR TABLA DE DISEÑO AL BOTÓN DE HTML //
-var boton_tabla = document.getElementById("calculo_tabla_diseno");
-boton_tabla.addEventListener("click", calcularTablaE);
+// var boton_tabla = document.getElementById("calculo_tabla_diseno");
+// boton_tabla.addEventListener("click", calcularTablaE);
 
 
 // AÑADIR EL EVENTO DE MOSTRAR LÍNEAS DE DISEÑO Y REVESTIDOR AL BOTÓN DE HTML //
-var boton = document.getElementById("boton_diseno");
-boton.addEventListener("click", disenoConductorEstallido);
-// AÑADIR EL EVENTO PARA CAPTURAR IMAGEN DEL CANVAS SIN LA LÍNEA DE DISEÑO NI DE REV. //
-boton.addEventListener("mouseup", imageSinLineaDiseno);
+// var boton = document.getElementById("boton_diseno");
+// boton.addEventListener("click", disenoConductorEstallido);
 
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR ESTALLIDO //
 
 // FUNCIÓN PARA LOS CÁLCULOS //
-function calcularTablaE()
+export function calcularTablaE()
 {
-	// a) Máxima carga de estallido: Prueba de Presión de la sarta de tubería de revestimiento cementada. //
+	// Máxima carga de estallido: Prueba de Presión de la sarta de tubería de revestimiento cementada. //
 
 	// Gradiente de Fractura de Seguridad //
 	var tipo_de_pozo = document.getElementById("tipoDePozo").value;
@@ -263,8 +266,15 @@ function calcularTablaE()
 
 
 // FUNCIÓN PARA GRAFICAR LOS RESULTADOS //
-function disenoConductorEstallido()
-{
+export function disenoConductorEstallido() {
+
+	// LLAMADO PARA QUE SE LIMPIE EL CANVAS Y SE RENDERICEN LOS EJES Y LEYENDAS
+	canvasInicial();
+
+	//CÓDIGO PARA LIMPIAR AVISOS DE FALLA ANTERIORES
+	document.getElementById("aviso_falla_estallidoCorregidoS").innerHTML = "";
+	document.getElementById("aviso_falla_estallidoCorregidoF").innerHTML = "";
+
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
 	var max_presion = document.getElementById("max_pres_graf_est").value;
 	var max_prof = document.getElementById("max_prof_graf_est").value;
@@ -274,65 +284,137 @@ function disenoConductorEstallido()
 
 	// LÍNEAS TRANSPARENTES DE REFERENCIA DENTRO DEL GRÁFICO //
 	// EJE Y //
-	for(a = 50; a <= max_prof; a = a+50) // Línea cada 50 pies //
+	for(var a = 50; a <= max_prof; a = a+50) // Línea cada 50 pies //
 	{
 		dibujarLineaTrans(margen, a*factorY + margen, ancho + margen, a*factorY + margen);
 	}
 
 	// EJE X //
-	for(a = 100; a <= max_presion; a = a+100) // Línea cada 100 lpc //
-	{
-		dibujarLineaTrans(a*factorX + margen, margen, a*factorX + margen, alto + margen);
+	if(max_presion <= 2000) {
+		for(a = 100; a <= max_presion; a = a+100)
+		{
+			dibujarLineaTrans(a*factorX + margen, margen, a*factorX + margen, alto + margen);
+		}
+	}
+	else if(max_presion > 2000 && max_presion <= 8000) {
+		for(a = 200; a <= max_presion; a = a+200)
+		{
+			dibujarLineaTrans(a*factorX + margen, margen, a*factorX + margen, alto + margen);
+		}
+	}
+	else {
+		for(a = 1000; a <= max_presion; a = a+1000)
+		{
+			dibujarLineaTrans(a*factorX + margen, margen, a*factorX + margen, alto + margen);
+		}
 	}
 
 
 	// EJE Y - GUIONES //
-	for(a = 50; a <= max_prof; a = a+50) // Guión cada 50 pies //
-	{
-		if(a % 100 == 0)
+	if(max_prof <= 2000) {
+		for(a = 50; a <= max_prof; a = a+50) // Guión cada 50 pies //
 		{
-			dibujarLineaPapel("black", margen-4, (a*factorY)+margen, margen+4, (a*factorY)+margen); // Guiones largos para múltiplos de 100 //
+			if(a % 100 == 0)
+			{
+				dibujarLineaPapel("black", margen-4, (a*factorY)+margen, margen+4, (a*factorY)+margen); // Guiones largos para múltiplos de 100 //
+			}
+			else
+			{
+				dibujarLineaPapel("black", margen-2, (a*factorY)+margen, margen+2, (a*factorY)+margen); // Guiones cortos para los demás valores //
+			}
 		}
-		else
+	}
+	else {
+		for(a = 500; a <= max_prof; a = a+500) // Guión cada 50 pies //
 		{
-			dibujarLineaPapel("black", margen-2, (a*factorY)+margen, margen+2, (a*factorY)+margen); // Guiones cortos para los demás valores //
+			if(a % 1000 == 0)
+			{
+				dibujarLineaPapel("black", margen-4, (a*factorY)+margen, margen+4, (a*factorY)+margen); // Guiones largos para múltiplos de 100 //
+			}
+			else
+			{
+				dibujarLineaPapel("black", margen-2, (a*factorY)+margen, margen+2, (a*factorY)+margen); // Guiones cortos para los demás valores //
+			}
 		}
 	}
 
 
 	// EJE Y - VALORES //
-	papel.font = '1rem "Tahoma"';
 	papel.fillStyle = "black";
-	papel.textAlign = "right";
-
-	papel.fillText(0, 0.12*ancho_canvas, 0.11*alto_canvas); // Número cero (0)//
-	for(a = 100; a <= max_prof; a = a+100)
-	{
-		papel.fillText(a, 0.12*ancho_canvas, (a*factorY+3)+margen);
+	papel.textAlign ="right";
+	if(tamano_ventana < 600){
+		papel.font = '7px "Tahoma"';
 	}
+	else{
+		papel.font = '12px "Tahoma"';
+	}
+
+	if(max_prof <= 2000) {
+		for(a = 0; a <= max_prof; a = a+100)
+		{
+			papel.fillText(a, margen-6, (a*factorY+3)+margen);
+		}
+	}
+	else {
+		for(a = 0; a <= max_prof; a = a+1000)
+		{
+			papel.fillText(a, margen-6, (a*factorY+3)+margen);
+		}
+	}
+
+
 
 	// EJE X - GUIONES //
-	for(a = 100; a <= max_presion; a = a+100)
-	{
-		if(a % 200 == 0)
+	if(max_presion <= 2000) {
+		for(a = 100; a <= max_presion; a = a+100)
 		{
-			dibujarLineaPapel("black", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
-		}
-		else
-		{
-			dibujarLineaPapel("black", (a*factorX)+margen, margen-2, (a*factorX)+margen, margen+2); // Guiones cortos para los demás valores //
+			if(a % 200 == 0)
+			{
+				dibujarLineaPapel("black", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
+			}
+			else
+			{
+				dibujarLineaPapel("black", (a*factorX)+margen, margen-2, (a*factorX)+margen, margen+2); // Guiones cortos para los demás valores //
+			}
 		}
 	}
+	else {
+		for(a = 500; a <= max_presion; a = a+500)
+		{
+			if(a % 1000 == 0)
+			{
+				dibujarLineaPapel("black", (a*factorX)+margen, margen-4, (a*factorX)+margen, margen+4); // Guiones largos para valores múltiplos de 200 //
+			}
+			else
+			{
+				dibujarLineaPapel("black", (a*factorX)+margen, margen-2, (a*factorX)+margen, margen+2); // Guiones cortos para los demás valores //
+			}
+		}
+	}
+
 
 
 	// EJE X - VALORES //
-	papel.font = '1rem "Tahoma"';
 	papel.fillStyle = "black";
-	papel.textAlign = "center";
+	papel.textAlign ="center";
+	if(tamano_ventana < 600){
+		papel.font = '7px "Tahoma"';
+	}
+	else{
+		papel.font = '12px "Tahoma"';
+	}
 
-	for(a = 200; a <= max_presion; a = a+200)
-	{
-		papel.fillText(a, (a*factorX)+margen, 0.11*alto_canvas);
+	if(max_presion <= 2000) {
+		for(a = 0; a <= max_presion; a = a+200)
+		{
+			papel.fillText(a, (a*factorX)+margen, margen-10);
+		}
+	}
+	else {
+		for(a = 0; a <= max_presion; a = a+1000)
+		{
+			papel.fillText(a, (a*factorX)+margen, margen-10);
+		}
 	}
 
 
@@ -360,13 +442,13 @@ function disenoConductorEstallido()
 
 
 // MOSTRAR Y OCULTAR A PLACER LA TABLA DE RESISTENCIA AL ESTALLIDO CORREGIDA //
-var mostrar_ocultar_EC = document.getElementById("mostrar_ocultar_EC");
-mostrar_ocultar_EC.addEventListener("click", mostrarOcultarEC);
+// var mostrar_ocultar_EC = document.getElementById("mostrar_ocultar_EC");
+// mostrar_ocultar_EC.addEventListener("click", mostrarOcultarEC);
 
 var tabla_corregidaE = document.getElementById("tablaEC");
 tabla_corregidaE.style.display = "none";
 
-function mostrarOcultarEC()
+export function mostrarOcultarEC()
 {
 	if(tabla_corregidaE.style.display == "none")
 	{
@@ -417,33 +499,18 @@ function mostrarOcultarSC()
 var d = document.getElementById("conductor_colapso");
 var lienzo = d.getContext("2d");
 
-/* MANIPULAR EL CANVAS QUE ESTARÁ OCULTO Y SOLO SERVIRÁ PARA RETENER LA GRÁFICA SIN CORRECCIÓN QUE SE CAPTURA CON EL BOTÓN DE ANÁLISIS POR TENSIÓN. ESTA IMAGEN APARECERÁ EN EL INFORME .PDF */
-var m = document.getElementById("conductor_colapso2");
-var tapiz = m.getContext("2d");
-
-m.style.display = "none";
-
 // Tamaño de canvas responsivo
 if(tamano_ventana < 600) {
 	d.setAttribute("width", 280);
 	d.setAttribute("height", 280);
-
-	m.setAttribute("width", 280);
-	m.setAttribute("height", 280);
 }
 else if(tamano_ventana >= 600 && tamano_ventana < 1024) {
 	d.setAttribute("width", 550);
 	d.setAttribute("height", 550);
-
-	m.setAttribute("width", 550);
-	m.setAttribute("height", 550);
 }
 else if(tamano_ventana >= 1024) {
 	d.setAttribute("width", 720);
 	d.setAttribute("height", 720);
-
-	m.setAttribute("width", 720);
-	m.setAttribute("height", 720);
 }
 
 // DIMENSIONES DEL CANVAS //
@@ -462,7 +529,7 @@ var medio_margenC = margenC / 2;
 
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS (2 PUNTOS) //
-function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal)
+function dibujarLineaLienzo(color, xinicial, yinicial, xfinal, yfinal)
 {
 	lienzo.beginPath();
 	lienzo.strokeStyle = (color);
@@ -483,7 +550,7 @@ function dibujarLineaTransC(xinicial, yinicial, xfinal, yfinal)
 }
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS PUNTEADAS (2 PUNTOS) (PARA REVESTIDOR SELECCIONADO)//
-function dibujarLineaSeleccion(color, xinicial, yinicial, xfinal, yfinal)
+function dibujarLineaSeleccionLienzo(color, xinicial, yinicial, xfinal, yfinal)
 {
 	lienzo.beginPath();
 	lienzo.strokeStyle = (color);
@@ -495,75 +562,85 @@ function dibujarLineaSeleccion(color, xinicial, yinicial, xfinal, yfinal)
 	lienzo.setLineDash([]);
 }
 
-
-// EJES DE COORDENADAS (ÁREA DE DIBUJO CUADRADA) //
-dibujarLinea("black", margenC, margenC-5, margenC, altoC+margenC+5); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLinea("black", margenC-5, margenC, anchoC+margenC+5, margenC); // LÍNEA HORIZONTAL SUPERIOR //
-
-// LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
-dibujarLinea("black", 0.1*ancho_canvasC, 0.95*alto_canvasC, 0.19*ancho_canvasC, 0.95*alto_canvasC);
-lienzo.font = '10px "Tahoma"';
-lienzo.fillStyle = "black";
-lienzo.fillText("Línea de Diseño", 0.2*ancho_canvasC, 0.9553*alto_canvasC);
-
-dibujarLineaSeleccion("green", 0.53*ancho_canvasC, 0.95*alto_canvasC, 0.63*ancho_canvasC, 0.95*alto_canvasC);
-lienzo.fillText("Línea de Revestidor", 0.645*ancho_canvasC, 0.9553*alto_canvasC);
-
-// LEYENDA DEL EJE Y (ROTADA) //
-var xC = 0.05*ancho_canvasC; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var yC = alto_canvasC/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
-lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
-lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-lienzo.font = '14px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-lienzo.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
-
-
-// EJE X LEYENDA //
-var xC = ancho_canvasC/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var yC = 0.05*alto_canvasC; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
-lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-lienzo.font = '14px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-lienzo.fillText("Presión (lpc.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-lienzo.restore();
-
-
-// FUNCIÓN QUE CAPTURA EL CANVAS SIN LA LÍNEA DE DISEÑO NI LA DE REVESTIDOR //
-function imageSinLineaDisenoC()
-{
-	ImageDataC = lienzo.getImageData(0, 0, ancho_canvasC, alto_canvasC);
+// FUNCIÓN PARA BORRAR TODO LO QUE HAYA EN EL CANVAS
+function borrarCanvasC() {
+	lienzo.clearRect(0, 0, ancho_canvasC, alto_canvasC);
 }
 
-// FUNCIÓN QUE ELIMINA LA LÍNEA DE DISEÑO, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
-function borrarLineaC()
+
+function canvasInicialC() {
+
+	borrarCanvasC();
+	// EJES DE COORDENADAS DEL ÁREA DE DIBUJO
+	dibujarLineaLienzo("black", margenC, margenC-5, margenC, altoC+margenC+5); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLineaLienzo("black", margenC-5, margenC, anchoC+margenC+5, margenC); // LÍNEA HORIZONTAL SUPERIOR //
+
+	// LEYENDA DE LAS LÍNEAS DE REVESTIDORES
+	lienzo.textAlign = 'left';
+	if(tamano_ventana < 600) {
+		lienzo.font = '7px "Tahoma"';
+	}
+	else {
+		lienzo.font = '10px "Tahoma"';
+	}
+	dibujarLineaLienzo("black", 0.1*ancho_canvasC, 0.95*alto_canvasC, 0.19*ancho_canvasC, 0.95*alto_canvasC);
+	lienzo.fillStyle = "black";
+	lienzo.fillText("Línea de Diseño", 0.2*ancho_canvasC, 0.9553*alto_canvasC);
+
+	dibujarLineaSeleccionLienzo("green", 0.53*ancho_canvasC, 0.95*alto_canvasC, 0.63*ancho_canvasC, 0.95*alto_canvasC);
+	lienzo.fillText("Línea de Revestidor", 0.645*ancho_canvasC, 0.9553*alto_canvasC);
+
+	// LEYENDA DEL EJE Y (ROTADA)
+	var xC = 0.04*ancho_canvasC; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+	var yC = alto_canvasC/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+	lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
+	lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	lienzo.fillText("Profundidad (TVD, pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
+
+
+	// EJE X LEYENDA
+	var xC = ancho_canvasC/2; // COORDENADA X DONDE ESTARÁ EL TEXTO
+	var yC = 0.05*alto_canvasC; // COORDENADA Y DONDE ESTARÁ EL TEXTO
+	lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	lienzo.translate(xC,yC); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	lienzo.fillText("Presión (lpc.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	lienzo.restore();
+}
+
+// EVENTO PARA QUE EL CANVAS INICIAL SE RENDERICE AL CARGAR LA PÁGINA
+window.addEventListener("load", canvasInicialC);
+
+// FUNCIÓN QUE ELIMINA LA LÍNEA DE DISEÑO, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE
+function borrarLineaC ()
 {
-	lienzo.putImageData(ImageDataC, 0, 0);
+	canvasInicialC();
 }
 
 // AÑADIR EL EVENTO DE BORRAR EL GRÁFICO AL OTRO BOTÓN DE HTML //
 var boton_borrar_disenoC = document.getElementById("boton_borrar_disenoC");
 boton_borrar_disenoC.addEventListener("click", borrarLineaC);
-boton_borrar_disenoC.addEventListener("click", ocultarStatusC); // Que el botón también borre los avisos
+boton_borrar_disenoC.addEventListener("click", ocultarAvisosFallaColapso); // Que el botón también borre los avisos
 
-var apto_c = document.getElementById("aviso_apto_colapso");
-var no_apto_c = document.getElementById("aviso_falla_colapso");
-var no_apto_e = document.getElementById("aviso_falla_colapso2");
-
-function ocultarStatusC()
-{
-	apto_c.style.display = "none";
+function ocultarAvisosFallaColapso() {
+	var no_apto_c = document.getElementById("aviso_falla_colapso");
 	no_apto_c.style.display = "none";
-	no_apto_e.style.display = "none";
 }
-
-// AÑADIR EL EVENTO DE GRAFICAR LÍNEAS AL BOTÓN DE HTML //
-var boton_grafica_colapso = document.getElementById("boton_grafica_colapso");
-boton_grafica_colapso.addEventListener("click", graficarColapso);
-
 
 // ACCESO AL INPUT NUMBER DE TOPE DE CEMENTO //
 var TTCCond = document.getElementById("TTCCond");
@@ -581,7 +658,7 @@ var conductorCementosi = document.getElementById("conductorCementosi");
 conductorCementosi.addEventListener("click", habilitarNumber0);
 
 
-// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "TTCCond" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
+// FUNCIÓN QUE DESHABILITA EL INPUT NUMBER "TTCCond" Y "DenCemCond" CUANDO EL INPUT RADIO "NO" ES ELEGIDO //
 function habilitarNumber1 ()
 {
 	TTCCond.disabled = true;
@@ -596,14 +673,12 @@ conductorCementono.addEventListener("click", habilitarNumber1);
 // AÑADIR EL EVENTO DE CALCULAR TABLA GRAFICAR AL BOTÓN DE HTML //
 var boton_tablaC = document.getElementById("boton_tablaC");
 boton_tablaC.addEventListener("click", calcularTablaC);
-// EVENTO PARA CAPTURAR IMAGEN DEL CANVAS SIN LAS LÍNEAS DE DISEÑO //
-boton_tablaC.addEventListener("mouseup", imageSinLineaDisenoC);
 
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR COLAPSO //
 function calcularTablaC()
 {
-	// b) Máxima carga de colapso: 1/3 Vacío. //
+	// Máxima carga de colapso: 1/3 Vacío.
 
 	// PERFIL DE PRESIÓN INTERNA //
 	var prof_cond_sup = 0;
@@ -720,9 +795,20 @@ function calcularTablaC()
 	document.getElementById("presionFondoTablaC").innerHTML = pres_D_fondo_cond.toFixed(1);
 }
 
+// AÑADIR EL EVENTO DE GRAFICAR LÍNEAS AL BOTÓN DE HTML //
+var boton_grafica_colapso = document.getElementById("boton_grafica_colapso");
+boton_grafica_colapso.addEventListener("click", graficarColapso);
+
 // FUNCIÓN PARA GRAFICAR LOS RESULTADOS //
 function graficarColapso()
 {
+	// LLAMADO PARA LIMPIAR EL CANVAS Y RENDERIZAR EJES Y LEYENDAS
+	canvasInicialC();
+
+	// CÓDIGO PARA BORRAR AVISOS DE FALLA ANTERIORES
+	document.getElementById("aviso_falla_colapsoCorregidoS").innerHTML = "";
+	document.getElementById("aviso_falla_colapsoCorregidoF").innerHTML = "";
+
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
 	var max_presionC = document.getElementById("max_pres_graf_col").value;
 	var max_profC = document.getElementById("max_prof_graf_col").value;
@@ -759,10 +845,25 @@ function graficarColapso()
 	}
 
 	// EJE X //
-	for(a = 100; a <= max_presionC; a = a+100) // Línea cada 100 lpc //
-	{
-		dibujarLineaTransC(a*factorXC + margenC, margenC, a*factorXC + margenC, altoC + margenC);
+	if(max_presionC <= 2000) {
+		for(a = 100; a <= max_presionC; a = a+100) // Línea cada 100 lpc //
+		{
+			dibujarLineaTransC(a*factorXC + margenC, margenC, a*factorXC + margenC, altoC + margenC);
+		}
 	}
+	else if(max_presionC > 2000 && max_presionC <= 8000) {
+			for(a = 200; a <= max_presionC; a = a+200) // Línea cada 100 lpc //
+		{
+			dibujarLineaTransC(a*factorXC + margenC, margenC, a*factorXC + margenC, altoC + margenC);
+		}
+	}
+	else {
+		for(a = 1000; a <= max_presionC; a = a+1000) // Línea cada 100 lpc //
+		{
+			dibujarLineaTransC(a*factorXC + margenC, margenC, a*factorXC + margenC, altoC + margenC);
+		}
+	}
+
 
 
 	// EJE Y - GUIONES //
@@ -770,85 +871,119 @@ function graficarColapso()
 	{
 		if(a % 100 == 0)
 		{
-			dibujarLinea("black", margenC-4, (a*factorYC)+margenC, margenC+4, (a*factorYC)+margenC); // Guiones largos para múltiplos de 100 //
+			dibujarLineaLienzo("black", margenC-4, (a*factorYC)+margenC, margenC+4, (a*factorYC)+margenC); // Guiones largos para múltiplos de 100 //
 		}
 		else
 		{
-			dibujarLinea("black", margenC-2, (a*factorYC)+margenC, margenC+2, (a*factorYC)+margenC); // Guiones cortos para los demás valores //
+			dibujarLineaLienzo("black", margenC-2, (a*factorYC)+margenC, margenC+2, (a*factorYC)+margenC); // Guiones cortos para los demás valores //
 		}
 	}
 
 
 	// EJE Y - VALORES //
-	lienzo.font = '10px "Tahoma"';
 	lienzo.fillStyle = "black";
-	lienzo.textAlign = "right";
-
-	lienzo.fillText(0, 0.12*ancho_canvasC, 0.11*alto_canvasC); // Número cero (0)//
-	for(a = 100; a <= max_profC; a = a+100)
-	{
-		lienzo.fillText(a, 34, (a*factorYC+3)+margenC);
+	lienzo.textAlign ="right";
+	if(tamano_ventana < 600){
+		lienzo.font = '7px "Tahoma"';
+	}
+	else {
+		lienzo.font = '12px "Tahoma"';
 	}
 
-	// EJE X - GUIONES //
-	for(a = 100; a <= max_presionC; a = a+100)
-	{
-		if(a % 200 == 0)
+	if(max_profC <= 2000) {
+		for(a = 0; a <= max_profC; a = a+100)
 		{
-			dibujarLinea("black", (a*factorXC)+margenC, margenC-4, (a*factorXC)+margenC, margenC+4); // Guiones largos para valores múltiplos de 500 //
+			lienzo.fillText(a, margenC-6, (a*factorYC+3)+margenC);
 		}
-		else
+	}
+	else {
+		for(a = 0; a <= max_profC; a = a+1000)
 		{
-			dibujarLinea("black", (a*factorXC)+margenC, margenC-2, (a*factorXC)+margenC, margenC+2); // Guiones cortos para los demás valores //
+			lienzo.fillText(a, margenC-6, (a*factorYC+3)+margenC);
+		}
+	}
+
+
+	// EJE X - GUIONES //
+	if(max_presionC <= 2000) {
+		for(a = 100; a <= max_presionC; a = a+100)
+		{
+			if(a % 200 == 0)
+			{
+				dibujarLineaLienzo("black", (a*factorXC)+margenC, margenC-4, (a*factorXC)+margenC, margenC+4); // Guiones largos para valores múltiplos de 500 //
+			}
+			else
+			{
+				dibujarLineaLienzo("black", (a*factorXC)+margenC, margenC-2, (a*factorXC)+margenC, margenC+2); // Guiones cortos para los demás valores //
+			}
+		}
+	}
+	else {
+		for(a = 500; a <= max_presionC; a = a+500)
+		{
+			if(a % 1000 == 0)
+			{
+				dibujarLineaLienzo("black", (a*factorXC)+margenC, margenC-4, (a*factorXC)+margenC, margenC+4); // Guiones largos para valores múltiplos de 500 //
+			}
+			else
+			{
+				dibujarLineaLienzo("black", (a*factorXC)+margenC, margenC-2, (a*factorXC)+margenC, margenC+2); // Guiones cortos para los demás valores //
+			}
 		}
 	}
 
 
 	// EJE X - VALORES //
-	lienzo.font = '10px "Tahoma"';
 	lienzo.fillStyle = "black";
-	lienzo.textAlign = "center";
-
-	for(a = 200; a <= max_presionC; a = a+200)
-	{
-		lienzo.fillText(a, (a*factorXC)+margenC, 0.11*alto_canvasC);
+	lienzo.textAlign ="center";
+	if(tamano_ventana < 600){
+		lienzo.font = '7px "Tahoma"';
 	}
+	else {
+		lienzo.font = '12px "Tahoma"';
+	}
+
+	if(max_presionC <= 2000) {
+		for(a = 200; a <= max_presionC; a = a+200)
+		{
+			lienzo.fillText(a, (a*factorXC)+margenC, margenC-10);
+		}
+	}
+	else {
+		for(a = 1000; a <= max_presionC; a = a+1000)
+		{
+			lienzo.fillText(a, (a*factorXC)+margenC, margenC-10);
+		}
+	}
+
 
 	// GRAFICAR LÍNEA DE DISEÑO//
 	if(TTCCond.disabled == true || TTC_Cond == 0)
 	{
-		dibujarLinea("black", (pres_D_sup_cond* factorXC) + margenC, (prof_cond_sup* factorYC) + margenC, (pres_D_fondo_cond* factorXC) + margenC, (prof_asent_cond* factorYC) + margenC);
+		dibujarLineaLienzo("black", (pres_D_sup_cond* factorXC) + margenC, (prof_cond_sup* factorYC) + margenC, (pres_D_fondo_cond* factorXC) + margenC, (prof_asent_cond* factorYC) + margenC);
 	}
 	else if(TTCCond.disabled == false && TTC_Cond != 0)
 	{
-		dibujarLinea("black", (pres_D_sup_cond* factorXC) + margenC, (prof_cond_sup* factorYC) + margenC, (pres_D_ttc_cond* factorXC) + margenC, (TTC_Cond* factorYC) + margenC);
-		dibujarLinea("black", (pres_D_ttc_cond* factorXC) + margenC, (TTC_Cond* factorYC) + margenC, (pres_D_fondo_cond* factorXC) + margenC, (prof_asent_cond* factorYC) + margenC);
+		dibujarLineaLienzo("black", (pres_D_sup_cond* factorXC) + margenC, (prof_cond_sup* factorYC) + margenC, (pres_D_ttc_cond* factorXC) + margenC, (TTC_Cond* factorYC) + margenC);
+		dibujarLineaLienzo("black", (pres_D_ttc_cond* factorXC) + margenC, (TTC_Cond* factorYC) + margenC, (pres_D_fondo_cond* factorXC) + margenC, (prof_asent_cond* factorYC) + margenC);
 	}
 
 	
 	// GRAFICAR LÍNEA DE REVESTIDOR //
 	var presion_colapso_cond = Number(document.getElementById("PC_rev_cond").value);
 
-	dibujarLineaSeleccion("green", (presion_colapso_cond*factorXC)+margenC, (prof_cond_sup*factorYC)+margenC, (presion_colapso_cond*factorXC)+margenC, (prof_asent_cond*factorYC)+margenC);
+	dibujarLineaSeleccionLienzo("green", (presion_colapso_cond*factorXC)+margenC, (prof_cond_sup*factorYC)+margenC, (presion_colapso_cond*factorXC)+margenC, (prof_asent_cond*factorYC)+margenC);
 
 	// MENSAJES DE FALLA/NO FALLA POR COLAPSO //
 	if(presion_colapso_cond < pres_D_sup_cond || presion_colapso_cond < pres_D_ttc_cond || presion_colapso_cond < pres_D_fondo_cond)
 	{
 		var no_apto_c = document.getElementById("aviso_falla_colapso");
 		no_apto_c.style.display = "block";
-		var no_apto_e = document.getElementById("aviso_falla_colapso2");
-		no_apto_e.style.display = "block";
-		document.getElementById("aviso_apto_colapso").innerHTML = "";
-		document.getElementById("aviso_falla_colapso").innerHTML = "<strong>AVISO:</strong> El revestidor falla por colapso. Elegir un nuevo revestidor y reiniciar el estudio.";
-		document.getElementById("aviso_falla_colapso2").innerHTML = "Cambiar resistencia al estallido según nuevo revestidor elegido, debido a falla por colapso.";
+		document.getElementById("aviso_falla_colapso").innerHTML = "AVISO: El revestidor falla por colapso. Elegir un nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
 	}
 	else
 	{
-		var apto_c = document.getElementById("aviso_apto_colapso");
-		apto_c.style.display = "block";
-		document.getElementById("aviso_apto_colapso").innerHTML = "Revestidor apto para condiciones iniciales de diseño por colapso.";
 		document.getElementById("aviso_falla_colapso").innerHTML = "";
-		document.getElementById("aviso_falla_colapso2").innerHTML = "";
 	}
 }
 
@@ -990,124 +1125,95 @@ function dibujarLineaSeleccionHoja(color, xinicial, yinicial, xfinal, yfinal)
 	hoja.setLineDash([]);
 }
 
-// LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
-
-dibujarLineaHoja("black", 0.095*ancho_canvasT, altoT+1.5*margenT, 0.167*ancho_canvasT, altoT+1.5*margenT);
-hoja.font = '10px "Tahoma"';
-hoja.fillStyle = "black";
-hoja.fillText("Línea de Tensión Real", 0.18*ancho_canvasT, altoT+1.5*margenT+3);
-
-// dibujarLineaHoja("red", 40, altoT+1.75*margenT, 70, altoT+1.75*margenT);
-dibujarLineaHoja("red", 0.095*ancho_canvasT, altoT+1.75*margenT, 0.167*ancho_canvasT, altoT+1.75*margenT);
-hoja.fillText("Línea de Diseño por Overpull", 0.18*ancho_canvasT, altoT+1.75*margenT+3);
-
-dibujarLineaSeleccionHoja("green", 0.55*ancho_canvasT, altoT+1.5*margenT, 0.64*ancho_canvasT, altoT+1.5*margenT);
-hoja.fillText("Línea de Revestidor", 0.65*ancho_canvasT, altoT+1.5*margenT+3);
-
-
-// LEYENDA DEL EJE Y (ROTADA) //
-var xT = margenT-0.083*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var yT = 0.5*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
-hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-hoja.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
-hoja.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-hoja.font = '14px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-hoja.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-hoja.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
-
-
-// EJE X LEYENDA //
-var xT = 0.5*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var yT = margenT-0.07*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
-hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-hoja.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-hoja.font = '14px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-hoja.fillText("Tensión (lbf. x 1000)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-hoja.restore();
-
-
-// FUNCIÓN QUE CAPTURA EL CANVAS SIN LA LÍNEA DE DISEÑO //
-function imageSinLineaDisenoT()
-{
-	ImageDataT = hoja.getImageData(0, 0, ancho_canvasT, alto_canvasT);
+function borrarCanvasT() {
+	hoja.clearRect(0, 0, ancho_canvasT, alto_canvasT);
 }
+
+function canvasInicialT() {
+
+	borrarCanvasT();
+
+	// LEYENDA DE LAS LÍNEAS DE REVESTIDORES //
+	hoja.textAlign = 'left';
+	if(tamano_ventana < 600) {
+		hoja.font = '8px "Tahoma"';
+	}
+	else {
+		hoja.font = '10px "Tahoma"';
+	}
+	dibujarLineaHoja("black", 0.095*ancho_canvasT, altoT+1.5*margenT, 0.167*ancho_canvasT, altoT+1.5*margenT);
+	hoja.fillStyle = "black";
+	hoja.fillText("Línea de Tensión Real", 0.18*ancho_canvasT, altoT+1.5*margenT+3);
+
+	dibujarLineaHoja("red", 0.095*ancho_canvasT, altoT+1.75*margenT, 0.167*ancho_canvasT, altoT+1.75*margenT);
+	hoja.fillText("Línea de Diseño por Overpull", 0.18*ancho_canvasT, altoT+1.75*margenT+3);
+
+	dibujarLineaSeleccionHoja("green", 0.55*ancho_canvasT, altoT+1.5*margenT, 0.64*ancho_canvasT, altoT+1.5*margenT);
+	hoja.fillText("Línea de Revestidor", 0.65*ancho_canvasT, altoT+1.5*margenT+3);
+
+	dibujarLineaHoja("purple", 0.55*ancho_canvasT, altoT+1.75*margenT, 0.64*ancho_canvasT, altoT+1.75*margenT);
+	hoja.fillText("Línea de Diseño por Factor", 0.65*ancho_canvasT, altoT+1.75*margenT+3);
+
+	// LEYENDA DEL EJE Y (ROTADA) //
+	var xT = margenT-0.083*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+	var yT = 0.5*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+	hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	hoja.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
+	hoja.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		hoja.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		hoja.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	hoja.fillText("Profundidad (MD, pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	hoja.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
+
+
+	// EJE X LEYENDA //
+	var xT = 0.5*ancho_canvasT; // COORDENADA X DONDE ESTARÁ EL TEXTO //
+	var yT = margenT-0.07*alto_canvasT; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
+	hoja.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	hoja.translate(xT,yT); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	hoja.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		hoja.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		hoja.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	hoja.fillText("Tensión (lbf. x 1000)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	hoja.restore();
+}
+
+window.addEventListener("load", canvasInicialT);
+
 
 // AÑADIR EL EVENTO DE BORRAR EL GRÁFICO AL OTRO BOTÓN DE HTML //
 var boton_borrar_disenoT = document.getElementById("boton_borrar_disenoT");
 boton_borrar_disenoT.addEventListener("click", borrarLineaT);
+boton_borrar_disenoT.addEventListener("click", ocultarAvisosFallaTension);
 
 
 // FUNCIÓN QUE ELIMINA LA LÍNEA DE DISEÑO POR TENSIÓN, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
 function borrarLineaT ()
 {
-	hoja.putImageData(ImageDataT, 0, 0);
-	papel.putImageData(ImageDataDE, 0, 0); // COLOCA SOBRE EL CANVAS DE ESTALLIDO LA GRÁFICA SIN CORRECCIÓN //
-	lienzo.putImageData(ImageDataDC, 0, 0); // COLOCA SOBRE EL CANVAS DE COLAPSO LA GRÁFICA SIN CORRECCIÓN //
-	sheet.drawImage(img, 0, 0); // COLOCA SOBRE EL CANVAS DE ELIPSE LA IMAGEN SIN LÍNEAS//
+	canvasInicialT();
+}
 
-	// COLOCAR SOBRE EL CANVAS DE LA ELIPSE LAS LÍNEAS Y LEYENDAS QUE SE DEBEN MOSTRAR SIEMPRE//
-	// LÍNEAS DE REFERENCIA
-	/*
-	dibujarLineaSheet("blue", 338, 380, 338, 72); // Esto fue para detectar el origen de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 380, 645, 380); // Esto fue para detectar la línea horizontal inferior de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 72, 645, 72); // Esto fue para detectar la línea horizontal superior de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 72, 27, 380); // Esto fue para detectar la línea Vertical izquierda de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 645, 72, 645, 380); // Esto fue para detectar la línea Vertical derecha de la gráfica (lo borraré luego) //
-  	*/
-
-  	//LEYENDA DE LA ELIPSE //
-  	dibujarLineaSheet("green", 27, 435, 67, 435);
-	sheet.font = '1rem "Tahoma"';
-	sheet.fillStyle = "black";
-	sheet.fillText("Intersección de la elipse para condición en superficie", 70, 437);
-
-	dibujarLineaSheet("blue", 360, 435, 400, 435);
-	sheet.font = '1rem "Tahoma"';
-	sheet.fillStyle = "black";
-	sheet.fillText("Intersección de la elipse para condición en fondo", 403, 437);
+function ocultarAvisosFallaTension() {
+	var no_apto_t = document.getElementById("aviso_falla_tension");
+	no_apto_t.style.display = "none";
 }
 
 // AÑADIR EL EVENTO DE MOSTRAR LÍNEA DE DISEÑO AL BOTÓN DE HTML //
 var grafica_tension_biaxial = document.getElementById("grafica_tension_biaxial");
 grafica_tension_biaxial.addEventListener("click", graficaTensionyBiaxial);
-grafica_tension_biaxial.addEventListener("mouseup", imageSinLineaDisenoT); // EVENTO PARA CAPTURAR IMAGEN DEL CANVAS DE TENSIÓN SIN LA LÍNEA DE DISEÑO //
-grafica_tension_biaxial.addEventListener("mouseup", imageConLineaDisenoE); // EVENTO PARA CAPTURAR IMAGEN DE ESTALLIDO CON LA LÍNEA DE DISEÑO //
-grafica_tension_biaxial.addEventListener("mouseup", imageConLineaDisenoC); // EVENTO PARA CAPTURAR IMAGEN DE COLAPSO CON LA LÍNEA DE DISEÑO //
 
 // AÑADIR EL EVENTO DE REALIZAR CÁLCULOS Y LLENAR TABLAS AL BOTÓN DE HTML //
 var boton5 = document.getElementById("boton_disenoT");
 boton5.addEventListener("click", disenoConductorTension);
-
-// TOMAR CAPTURA DE LAS GRÁFICAS DE ESTALLIDO Y COLAPSO ANTES DE LA CORRECCIÓN Y USARLAS EN EL INFORME .PDF //
-// ESTALLIDO //
-function imageConLineaDisenoE()
-{
-	ImageDataDE = papel.getImageData(0, 0, ancho_canvas, alto_canvas);
-}
-
-function insertarIMG () // INSERTAR LA IMAGEN EN EL CANVAS OCULTO DE ESTALLIDO
-{
-	contexto.putImageData(ImageDataDE, 0, 0);
-}
-
-// COLAPSO //
-function imageConLineaDisenoC()
-{
-	ImageDataDC = lienzo.getImageData(0, 0, ancho_canvasC, alto_canvasC);
-}
-
-function insertarIMG2 () // INSERTAR LA IMAGEN EN EL CANVAS OCULTO DE COLAPSO
-{
-	tapiz.putImageData(ImageDataDC, 0, 0);
-}
-
-// EVENTO PARA QUE EL LINK DE INFORME INSERTE IMÁGENES EN LOS CANVAS OCULTOS DE ESTALLIDO Y COLAPSO //
-var linkPDF = document.getElementById("link_pdf");
-linkPDF.addEventListener("click", insertarIMG);
-linkPDF.addEventListener("click", insertarIMG2);
-
 
 // ANÁLISIS REVESTIDOR CONDUCTOR POR TENSIÓN //
 function disenoConductorTension()
@@ -1433,6 +1539,13 @@ function disenoConductorTension()
 
 function graficaTensionyBiaxial()
 {
+	// LLAMADO PARA LIMPIAR TODOS LOS CANVAS Y RENDERIZAR EJES, LEYENDAS, LÍNEAS DE DISEÑO Y LÍNEAS DE REVESTIDORES.
+	canvasInicialT();
+
+	// CÓDIGO PARA LIMPIAR AVISOS DE FALLA POR FACTOR DE DISEÑO ANTERIORES
+	document.getElementById("aviso_falla_tensionCorregidoS").innerHTML = "";
+	document.getElementById("aviso_falla_tensionCorregidoF").innerHTML = "";
+
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
 	var max_tension = document.getElementById("max_ten_graf_ten").value;
 	var min_tension = document.getElementById("min_ten_graf_ten").value;
@@ -1468,26 +1581,57 @@ function graficaTensionyBiaxial()
 
 	// EJES DE COORDENADAS A ESCALA  //
 	// EJE Y - GUIONES //
-	for(a = 50; a <= max_profT; a = a+50) // Guión cada 50 pies //
-	{
-		if(a % 100 == 0)
+	if(max_profT <= 2000) {
+		for(a = 50; a <= max_profT; a = a+50) // Guión cada 50 pies //
 		{
-			dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-4, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+4, (a*factorYT)+margenT); // Guiones largos para múltiplos de 100 //
-		}
-		else
-		{
-			dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-2, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+2, (a*factorYT)+margenT); // Guiones cortos para los demás valores //
+			if(a % 100 == 0)
+			{
+				dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-4, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+4, (a*factorYT)+margenT); // Guiones largos para múltiplos de 100 //
+			}
+			else
+			{
+				dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-2, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+2, (a*factorYT)+margenT); // Guiones cortos para los demás valores //
+			}
 		}
 	}
+	else {
+		for(a = 500; a <= max_profT; a = a+500) // Guión cada 50 pies //
+		{
+			if(a % 1000 == 0)
+			{
+				dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-4, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+4, (a*factorYT)+margenT); // Guiones largos para múltiplos de 100 //
+			}
+			else
+			{
+				dibujarLineaHoja("black", (anchoT-((max_tension- 0)*factorXT))+margenT-2, (a*factorYT)+margenT, (anchoT-((max_tension- 0)*factorXT))+margenT+2, (a*factorYT)+margenT); // Guiones cortos para los demás valores //
+			}
+		}
+	}
+
 
 	// EJE Y - VALORES //
 	hoja.fillStyle = "black";
 	hoja.textAlign = "right";
-	hoja.font = '10px "Tahoma"';
-	for(a = 100; a <= max_profT; a = a+100)
-	{
-		hoja.fillText(a, (anchoT-((max_tension- 0)*factorXT))+margenT-6, (a*factorYT+3)+margenT);
+	if(tamano_ventana < 600){
+		hoja.font = '7px "Tahoma"';
 	}
+	else{
+		hoja.font = '12px "Tahoma"';
+	}
+
+	if(max_profT <= 2000) {
+		for(a = 100; a <= max_profT; a = a+100)
+		{
+			hoja.fillText(a, (anchoT-((max_tension- 0)*factorXT))+margenT-6, (a*factorYT+3)+margenT);
+		}
+	}
+	else {
+		for(a = 1000; a <= max_profT; a = a+1000)
+		{
+			hoja.fillText(a, (anchoT-((max_tension- 0)*factorXT))+margenT-6, (a*factorYT+3)+margenT);
+		}
+	}
+
 
 	// EJE X - GUIONES //
 	// A LA DERECHA DEL CERO
@@ -1517,15 +1661,29 @@ function graficaTensionyBiaxial()
 
 
 	// EJE X - VALORES //
-	hoja.font = '10px "Tahoma"';
 	hoja.fillStyle = "black";
 	hoja.textAlign = "center";
+	if(tamano_ventana < 600){
+		hoja.font = '7px "Tahoma"';
+	}
+	else{
+		hoja.font = '12px "Tahoma"';
+	}
 	
 	// A LA DERECHA DEL CERO
-	for(a = 0; a <= max_tension; a = a+500)
-	{
-		hoja.fillText(a, (anchoT-((max_tension- a)*factorXT))+margenT, margenT-10);
+	if(max_tension > 1000) {
+		for(a = 0; a <= max_tension; a = a+500)
+		{
+			hoja.fillText(a, (anchoT-((max_tension- a)*factorXT))+margenT, margenT-10);
+		}
 	}
+	else {
+		for(a = 0; a <= max_tension; a = a+100)
+		{
+			hoja.fillText(a, (anchoT-((max_tension- a)*factorXT))+margenT, margenT-10);
+		}
+	}
+
 	// A LA IZQUIERDA DEL CERO
 	if(min_tension > -500)
 	{
@@ -1549,17 +1707,17 @@ function graficaTensionyBiaxial()
 	var profSuperfTablaT = document.getElementById("profSuperfTablaT");
 	var prof_cond_sup = profSuperfTablaT.innerHTML;
 	var tensionRealSuperfTablaT = document.getElementById("tensionRealSuperfTablaT");
-	var fuerza_axial_sup = tensionRealSuperfTablaT.innerHTML;
+	var fuerza_axial_sup = Number(tensionRealSuperfTablaT.innerHTML);
 
 	var TTCCond = document.getElementById("TTCCond");
 	var TTC_Cond = Number(TTCCond.value);
 	var tensionRealTTCTablaT = document.getElementById("tensionRealTTCTablaT");
-	var fuerza_axial_TTC = tensionRealTTCTablaT.innerHTML;
+	var fuerza_axial_TTC = Number(tensionRealTTCTablaT.innerHTML);
 
 	var profFondoTablaT = document.getElementById("profFondoTablaT");
 	var prof_asent_cond = profFondoTablaT.innerHTML;
 	var tensionRealFondoTablaT = document.getElementById("tensionRealFondoTablaT");
-	var fuerza_axial_fondo = tensionRealFondoTablaT.innerHTML;
+	var fuerza_axial_fondo = Number(tensionRealFondoTablaT.innerHTML);
 
 	// PERFIL DE TENSIÓN REAL //
 	if(TTCCond.disabled == true || TTC_Cond == 0)
@@ -1590,8 +1748,51 @@ function graficaTensionyBiaxial()
 
 	dibujarLineaSeleccionHoja("green", (anchoT-((max_tension- resistencia_tesion_cond/1000)*factorXT))+margenT, (prof_cond_sup*factorYT)+margenT, (anchoT-((max_tension- resistencia_tesion_cond/1000)*factorXT))+margenT, (prof_asent_cond*factorYT)+margenT);
 	
+	// AVISO DE NO APTO POR TENSIÓN
+	// SUPERFICIE
+	var array_sup = [fuerza_axial_sup, fuerza_axial_sup+overpull];
+	var array_ttc = [fuerza_axial_TTC, fuerza_axial_TTC+overpull];
+	console.log(array_sup, array_ttc, array_sup.length, array_ttc.length);
 
-	/******************CORRECCIÓN BIAXIAL**********************/
+	// Función para ordenar el array de menor a mayor y luego extraer el último elemento del array, que es el mayor de todos
+	array_sup.sort(function(a, b) {return a-b});
+	var y = array_sup.pop();
+	console.log(y);
+
+	array_ttc.sort(function(a, b) {return a-b});
+	var z = array_ttc.pop();
+	console.log(z);
+
+	// FONDO
+	var array_fondo = [fuerza_axial_fondo, fuerza_axial_fondo+100000];
+	console.log(array_fondo);
+
+	array_fondo.sort(function(a, b) {return a-b});
+	var w = array_fondo.pop();
+	console.log(w);
+	
+	
+	if(resistencia_tesion_cond > y && resistencia_tesion_cond > z && resistencia_tesion_cond > w) {
+		document.getElementById("aviso_falla_tension").innerHTML = "";
+	}
+	else {
+		document.getElementById("aviso_falla_tension").style.display = "block";
+		document.getElementById("aviso_falla_tension").innerHTML = "AVISO: El revestidor falla por tensión. Elegir nuevo revestidor y reinciar el estudio desde el primer paso (Estallido).";
+	}
+}
+
+var graficas_biaxial = document.getElementById("graficas_biaxial");
+graficas_biaxial.addEventListener('click', graficaBiaxial);
+
+function graficaBiaxial() {
+
+	disenoConductorEstallido();
+	graficarColapso();
+	canvasInicialB();
+
+	var profSuperfTablaT = document.getElementById("profSuperfTablaT");
+	var prof_cond_sup = Number(profSuperfTablaT.innerHTML);
+	var prof_asent_cond = Number(document.getElementById("prof_rev_cond").value);
 
 	var rel_esf_sup = document.getElementById("rel_esf_sup");
 	var rel_esfuerzo_fluen_sup = rel_esf_sup.innerHTML;
@@ -1639,9 +1840,15 @@ function graficaTensionyBiaxial()
 	dibujarLineaSeleccionPapel("red", (correccion_estallido_sup*factorX)+margen, (prof_cond_sup*factorY)+margen, (correccion_estallido_fondo*factorX)+margen, (prof_asent_cond*factorY)+margen);
 	
 	// LEYENDA DE LÍNEA CORREGIDA //
-	dibujarLineaSeleccionPapel("red", 0.53*ancho_canvas, 0.97*alto_canvas, 0.63*ancho_canvas, 0.97*alto_canvas);
+	dibujarLineaSeleccionPapel("red", 0.55*ancho_canvas, alto+1.75*margen, 0.64*ancho_canvas, alto+1.75*margen);
+	if(tamano_ventana < 600) {
+		papel.font = '7px "Tahoma"';
+	}
+	else {
+		papel.font = '10px "Tahoma"';
+	}
 	papel.textAlign = 'left';
-	papel.fillText("Línea de Rev. Corregida", 0.645*ancho_canvas, 0.97*alto_canvas+3);
+	papel.fillText("Línea de Rev. Corregida", 0.65*ancho_canvas, alto+1.75*margen+3);
 
 	// Corrección de la gráfica de Colapso //
 	var resisColCorregSuperfTablaB2 = document.getElementById("resisColCorregSuperfTablaB2");
@@ -1655,15 +1862,28 @@ function graficaTensionyBiaxial()
 	var factorXC = anchoC / max_presionC;
 	var factorYC = altoC / max_profC;
 
-	dibujarLineaSeleccion("red", (correccion_colapso_sup*factorXC)+margenC, (prof_cond_sup*factorYC)+margenC, (correccion_colapso_fondo*factorXC)+margenC, (prof_asent_cond*factorYC)+margenC);
+	dibujarLineaSeleccionLienzo("red", (correccion_colapso_sup*factorXC)+margenC, (prof_cond_sup*factorYC)+margenC, (correccion_colapso_fondo*factorXC)+margenC, (prof_asent_cond*factorYC)+margenC);
 
 	// LEYENDA DE LÍNEA CORREGIDA //
-	dibujarLineaSeleccion("red", 0.53*ancho_canvasC, 0.97*alto_canvasC, 0.63*ancho_canvasC, 0.97*alto_canvasC);
+	dibujarLineaSeleccionLienzo("red", 0.53*ancho_canvasC, 0.97*alto_canvasC, 0.63*ancho_canvasC, 0.97*alto_canvasC);
+	if(tamano_ventana < 600) {
+		lienzo.font = '7px "Tahoma"';
+	}
+	else {
+		lienzo.font = '10px "Tahoma"';
+	}
 	lienzo.textAlign = 'left';
 	lienzo.fillText("Línea de Rev. Corregida", 0.645*ancho_canvasC, 0.97*alto_canvasC+3);
 }
 
+var borrar_biaxial = document.getElementById("borrar_biaxial");
+borrar_biaxial.addEventListener("click", borrarBiaxial);
 
+function borrarBiaxial() {
+	disenoConductorEstallido();
+	graficarColapso();
+	borrarElipse();
+}
 
 // ***************** FACTORES DE DISEÑO ******************** //
 
@@ -1710,8 +1930,23 @@ function calculoFactores()
 
 	var FDE_S = correccion_estallido_sup / PDE_S;
 
-	document.getElementById("FDESuperfTablaF").innerHTML = FDE_S.toFixed(1);
+	document.getElementById("FDESuperfTablaF").innerHTML = FDE_S.toFixed(2);
 
+	/* NO EXISTE FACTOR DE DISEÑO PARA ESTALLIDO, ASÍ QUE NO SE DEBERÍA COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
+	if(FDE_S < FDestallidoCond) // DENOTAR QUE EL REVESTIDOR FALLA EN SUPERFICIE //
+	{
+		document.getElementById("aviso_falla_estallidoCorregidoS").style.display = "block";
+		document.getElementById("aviso_falla_estallidoCorregidoS").innerHTML = "AVISO: El revestidor falla por estallido en superficie luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBSuperfE").style.display = "block";
+		document.getElementById("OBSuperfE").innerHTML = "- El revestidor falla por estallido en superficie luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("FDESuperfTablaF").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("aviso_falla_estallidoCorregidoS").innerHTML = "";
+		document.getElementById("OBSuperfE").innerHTML = "";
+		document.getElementById("FDESuperfTablaF").style.color = "black";
+	}
 
 	// FONDO //
 	var PDEFondo = document.getElementById("presionFondoTablaE");
@@ -1722,10 +1957,23 @@ function calculoFactores()
 
 	var FDE_F = correccion_estallido_fondo / PDE_F;
 
-	document.getElementById("FDEFondoTablaF").innerHTML = FDE_F.toFixed(1);
+	document.getElementById("FDEFondoTablaF").innerHTML = FDE_F.toFixed(2);
 
-	/* NO EXISTE FACTOR DE DISEÑO PARA ESTALLIDO, ASÍ QUE NO SE COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
-
+	/* NO EXISTE FACTOR DE DISEÑO PARA ESTALLIDO, ASÍ QUE NO SE DEBERÍA COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
+	if(FDE_F < FDestallidoCond) // DENOTAR QUE EL REVESTIDOR FALLA EN FONDO //
+	{
+		document.getElementById("aviso_falla_estallidoCorregidoF").style.display = "block";
+		document.getElementById("aviso_falla_estallidoCorregidoF").innerHTML = "AVISO: El revestidor falla por estallido en fondo luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBFondoE").style.display = "block";
+		document.getElementById("OBFondoE").innerHTML = "- El revestidor falla por estallido en fondo luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("FDEFondoTablaF").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("aviso_falla_estallidoCorregidoF").innerHTML = "";
+		document.getElementById("OBFondoE").innerHTML = "";
+		document.getElementById("FDEFondoTablaF").style.color = "black";
+	}
 
 	// COLAPSO //
 
@@ -1745,18 +1993,22 @@ function calculoFactores()
 	}
 	else
 	{
-		document.getElementById("FDCSuperfTablaF").innerHTML = FDC_S.toFixed(1);
+		document.getElementById("FDCSuperfTablaF").innerHTML = FDC_S.toFixed(2);
 	}
 
-	if(FDC_S < 1.0) // DENOTAR QUE EL REVESTIDOR FALLA EN SUPERFICIE //
+	if(FDC_S < FDcolapsoCond) // DENOTAR QUE EL REVESTIDOR FALLA EN SUPERFICIE //
 	{
-		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "AVISO: El revestidor falla por colapso en superficie luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio.";
-		document.getElementById("OBSuperfTablaF").innerHTML = "El revestidor falla por colapso en superficie luego de la corrección por tensión.<br>Elegir nuevo revestidor y reiniciar el estudio.";
+		document.getElementById("aviso_falla_colapsoCorregidoS").style.display = "block";
+		document.getElementById("aviso_falla_colapsoCorregidoS").innerHTML = "AVISO: El revestidor falla por colapso en superficie luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBSuperfC").style.display = "block";
+		document.getElementById("OBSuperfC").innerHTML = "- El revestidor falla por colapso en superficie luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("FDCSuperfTablaF").style.color = "red";
 	}
 	else
 	{
-		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "";
-		document.getElementById("OBSuperfTablaF").innerHTML = "";
+		document.getElementById("aviso_falla_colapsoCorregidoS").innerHTML = "";
+		document.getElementById("OBSuperfC").innerHTML = "";
+		document.getElementById("FDCSuperfTablaF").style.color = "black";
 	}
 
 	// FONDO //
@@ -1768,28 +2020,23 @@ function calculoFactores()
 
 	var FDC_F = correccion_colapso_fondo / PDC_F;
 
-	if(FDC_F >= 1) // CÓDIGO PARA QUE EL NÚMERO SEA ROJO SI ES MENOR QUE 1 //
+	document.getElementById("FDCFondoTablaF").innerHTML = FDC_F.toFixed(2);	
+
+	if(FDC_F < FDcolapsoCond) // DENOTAR QUE EL REVESTIDOR FALLA EN FONDO //
 	{
-		document.getElementById("FDCFondoTablaF").innerHTML = FDC_F.toFixed(1);
-	}
-	else
-	{
-		document.getElementById("FDCFondoTablaF").innerHTML = FDC_F.toFixed(1);
+		document.getElementById("aviso_falla_colapsoCorregidoF").style.display = "block";
+		document.getElementById("aviso_falla_colapsoCorregidoF").innerHTML = "AVISO: El revestidor falla por colapso en fondo luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBFondoC").style.display = "block";
+		document.getElementById("OBFondoC").innerHTML = "- El revestidor falla por colapso en fondo luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
 		document.getElementById("FDCFondoTablaF").style.color = "red";
 	}
-	
-
-	if(FDC_F < 1.0) // DENOTAR QUE EL REVESTIDOR FALLA EN FONDO //
-	{
-		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "AVISO: El revestidor falla por colapso en fondo luego de la corrección por tensión. Elegir nuevo revestidor y reiniciar el estudio.";
-		document.getElementById("OBFondoTablaF").innerHTML = "El revestidor falla por colapso en fondo luego de la corrección por tensión.<br>Elegir nuevo revestidor y reiniciar el estudio.";
-	}
 	else
 	{
-		document.getElementById("aviso_falla_colapsoCorregido").innerHTML = "";
-		document.getElementById("OBFondoTablaF").innerHTML = "";
+		document.getElementById("aviso_falla_colapsoCorregidoF").innerHTML = "";
+		document.getElementById("OBFondoC").innerHTML = "";
+		document.getElementById("FDCFondoTablaF").style.color = "black";
 	}
-
+	
 
 	// TENSIÓN //
 	var resistencia_tesion_cond = Number(document.getElementById("RT_rev_cond").value);
@@ -1799,16 +2046,58 @@ function calculoFactores()
 	var Fax_Os = FaxOs.innerHTML;
 	var FDT_S = resistencia_tesion_cond / Fax_Os;
 
-	document.getElementById("FDTSuperfTablaF").innerHTML = FDT_S.toFixed(1);
+	document.getElementById("FDTSuperfTablaF").innerHTML = FDT_S.toFixed(2);
+
+	/* NO EXISTE FACTOR DE DISEÑO PARA ESTALLIDO, ASÍ QUE NO SE DEBERÍA COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
+	if(FDT_S < FDtensionCond) // DENOTAR QUE EL REVESTIDOR FALLA EN SUPERFICIE //
+	{
+		document.getElementById("aviso_falla_tensionCorregidoS").style.display = "block";
+		document.getElementById("aviso_falla_tensionCorregidoS").innerHTML = "AVISO: El revestidor falla por tensión en superficie. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBSuperfT").style.display = "block";
+		document.getElementById("OBSuperfT").innerHTML = "- El revestidor falla por tensión en superficie. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("FDTSuperfTablaF").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("aviso_falla_tensionCorregidoS").innerHTML = "";
+		document.getElementById("OBSuperfT").innerHTML = "";
+		document.getElementById("FDTSuperfTablaF").style.color = "black";
+	}
 
 	// FONDO //
 	var FaxOf = document.getElementById("tensionOverpullFondoTablaT");
 	var Fax_Of = FaxOf.innerHTML;
 	var FDT_F = resistencia_tesion_cond / Fax_Of;
 
-	document.getElementById("FDTFondoTablaF").innerHTML = FDT_F.toFixed(1);
+	if(FDT_F > 0 || FDT_F != "Infinity") {
+		document.getElementById("FDTFondoTablaF").innerHTML = FDT_F.toFixed(2);
+	}
+	else {
+		document.getElementById("FDTFondoTablaF").innerHTML = "-";
+	}
 
-	/* NO EXISTE FACTOR DE DISEÑO PARA TENSIÓN, ASÍ QUE NO SE COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
+	/* NO EXISTE FACTOR DE DISEÑO PARA ESTALLIDO, ASÍ QUE NO SE DEBERÍA COLOCARÁ NINGÚN AVISO DE FALLA PARA ESTA CONDICIÓN */
+	if(FDT_F < FDtensionCond) // DENOTAR QUE EL REVESTIDOR FALLA EN FONDO //
+	{
+		document.getElementById("aviso_falla_tensionCorregidoF").style.display = "block";
+		document.getElementById("aviso_falla_tensionCorregidoF").innerHTML = "AVISO: El revestidor falla por tension en fondo. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("OBFondoT").style.display = "block";
+		document.getElementById("OBFondoT").innerHTML = "- El revestidor falla por tension en fondo. Elegir nuevo revestidor y reiniciar el estudio desde el primer paso (Estallido).";
+		document.getElementById("FDTFondoTablaF").style.color = "red";
+	}
+	else
+	{
+		document.getElementById("aviso_falla_tensionCorregidoF").innerHTML = "";
+		document.getElementById("OBFondoT").innerHTML = "";
+		document.getElementById("FDTFondoTablaF").style.color = "black";
+	}
+
+	if(FDE_S > FDestallidoCond && FDE_F > FDestallidoCond && FDC_S > FDcolapsoCond && FDC_F > FDcolapsoCond && FDT_S > FDtensionCond && FDT_F > FDtensionCond) {
+		document.getElementById("rev_apto").innerHTML = "El revestidor seleccionado es apto para las condiciones de estallido, colapso, tensión y corrección biaxial actuales.";
+	}
+	else {
+		document.getElementById("rev_apto").innerHTML = "";
+	}
 }
 
 
@@ -1841,16 +2130,9 @@ function dibujarLineaSheet(color, xinicial, yinicial, xfinal, yfinal)
 var img = new Image();
 img.src = "./imagenes/elipse-de-plasticidad.png";
 
-img.onload = function(){ // FUNCIÓN PARA QUE LA IMAGEN CARGUE JUNTO CON LA PAGINA //
-  	sheet.drawImage(img, 0, 0); // INSERTAR LA IMAGEN EN CANVAS //
-  	/*
-	dibujarLineaSheet("blue", 338, 380, 338, 72); // Esto fue para detectar el origen de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 380, 645, 380); // Esto fue para detectar la línea horizontal inferior de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 72, 645, 72); // Esto fue para detectar la línea horizontal superior de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 27, 72, 27, 380); // Esto fue para detectar la línea Vertical izquierda de la gráfica (lo borraré luego) //
-  	dibujarLineaSheet("blue", 645, 72, 645, 380); // Esto fue para detectar la línea Vertical derecha de la gráfica (lo borraré luego) //
-  	*/
-  	//LEYENDA DE LA ELIPSE//
+function canvasInicialB() {
+	sheet.drawImage(img, 0, 0);
+	 //LEYENDA DE LA ELIPSE//
   	dibujarLineaSheet("green", 27, 435, 67, 435);
 	sheet.font = '1rem "Tahoma"';
 	sheet.fillStyle = "black";
@@ -1862,331 +2144,18 @@ img.onload = function(){ // FUNCIÓN PARA QUE LA IMAGEN CARGUE JUNTO CON LA PAGI
 	sheet.fillText("Intersección de la elipse para condición en fondo", 403, 437);
 }
 
+window.addEventListener("load", canvasInicialB);
 
-// CREAR PDF //
+function borrarElipse() {
+	sheet.clearRect(0, 0, ancho_canvasP, alto_canvasP);
+	canvasInicialB();
+}
 
-// Default export is a4 paper, portrait, using millimeters for units //
-function crearPDF()
-{
-	var doc = new jsPDF();
+/****** BOTÓN DE REINICIO *******/
 
-	//PÁGINA 1 //
-	// MARCO //
-	doc.line(10, 10, 200, 10); // línea horizontal superior //
-	doc.line(10, 288, 200, 288); // línea horizontal inferior //
-	doc.line(10, 10, 10, 288); // línea vertical izq. //
-	doc.line(200, 10, 200, 288); // línea vertical der. //
+var boton_limpiar = document.getElementById("boton_limpiar_campos");
+boton_limpiar.addEventListener("click", limpiarCampos);
 
-	doc.setFontSize(12);
-
-	// ANÁLISIS ESTALLIDO //
-	doc.setFontStyle("bold");
-	doc.text(77, 20, "DISEÑO POR ESTALLIDO");
-	doc.text(33, 30, "Prueba de Presión de la sarta de tubería de revestimiento cementada");
-	
-
-	doc.setFontStyle("normal");
-	
-	// VARIABLES NECESARIAS PARA LA TABLA //
-	var tipo_de_pozo = document.getElementById("tipoDePozo").value;
-	var tipo;
-
-	if(tipo_de_pozo == 1)
-	{
-		tipo = "Exploratorio";
-	}
-
-	else if(tipo_de_pozo == 2)
-	{
-		tipo = "Desarrollo";
-	}
-	
-	var prof_asent_cond = document.getElementById("prof_rev_cond").value;
-	var den_eq_poro = document.getElementById("Dporo_rev_cond").value;
-	var den_eq_frac = document.getElementById("Dfrac_rev_cond").value;
-	var den_lodo = document.getElementById("DL_rev_cond").value;
-	var pres_sup_cond = document.getElementById("presionSuperfTablaE").innerText;
-	var pres_fondo_cond = document.getElementById("presionFondoTablaE").innerText;
-	var resist_est = document.getElementById("PE_rev_cond").value;
-	
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas = ["Datos del pozo", "Valor", "Unidades"];
-	var data = [
-	["Tipo de pozo", tipo, "-"],
-	["Profundidad de asentamiento del revestidor", prof_asent_cond, "pies"],
-	["Densidad equivalente de poro a la profundidad de asentamiento", den_eq_poro, "lpg."],
-	["Densidad equivalente de fractura a la profundidad de asentamiento", den_eq_frac, "lpg."],
-	["Densidad de lodo para bajar y asentar revestidor", den_lodo, "lpg."],
-	["Presión de diseño en superficie", pres_sup_cond, "lpc."],
-	["Presión de diseño en fondo", pres_fondo_cond, "lpc."],
-	["Resistencia al estallido del revestidor", resist_est, "lbf."]
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas, data, { margin:{ top: 35 }});
-
-	// INSERTAR UN CANVAS COMO IMAGEN EN EL ARCHIVO .pdf //
-	var grafica_est = document.getElementById("conductor_estallido2");
-	doc.addImage(grafica_est, 'PNG', 60, 120);
-
-	doc.addPage();
-
-	// PÁGINA 2 //
-	// MARCO //
-	doc.line(10, 10, 200, 10); // línea horizontal superior //
-	doc.line(10, 288, 200, 288); // línea horizontal inferior //
-	doc.line(10, 10, 10, 288); // línea vertical izq. //
-	doc.line(200, 10, 200, 288); // línea vertical der. //
-
-	// ANÁLISIS COLAPSO //
-	doc.setFontStyle("bold");
-	doc.text(77, 20, "DISEÑO POR COLAPSO");
-	doc.text(92, 30, "1/3 vacío");
-
-	//VARIABLES NECESARIAS PARA LA TABLA //
-	var TTCCond = document.getElementById("TTCCond");
-	var Den_Cem_Cond = document.getElementById("DenCemCond");
-	
-	var cementado;
-	if(TTCCond.disabled == true)
-	{
-		cementado = "No";
-		var TTC_Cond = "N/A";
-		var DenCemCond = "N/A";
-	}
-	else
-	{
-		cementado = "Sí";
-		var TTC_Cond = TTCCond.value;
-		var DenCemCond = Den_Cem_Cond.value;
-	}
-
-	var prof_prox_hoyo = document.getElementById("ProfProxHoyo").value;
-	var den_prox_hoyo = document.getElementById("DensProxHoyo").value;
-	var resist_col = document.getElementById("PC_rev_cond").value;
-	var prof_tope_lodo = document.getElementById("topeLodo").innerText;
-	var pres_dis_sup = document.getElementById("presionSuperfTablaC").innerText;
-	var pres_dis_ttc = document.getElementById("presionTTCTablaC").innerText;
-	var pres_dis_fondo = document.getElementById("presionFondoTablaC").innerText;
-
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas2 = ["Datos del pozo", "Valor", "Unidades"];
-	var data2 = [
-	["Revestidor cementado", cementado, "-"],
-	["Tope teórico de cemento", TTC_Cond, "pies"],
-	["Densidad de cemento", DenCemCond, "lpg."],
-	["Profundidad final del próximo hoyo a perforar", prof_prox_hoyo, "pies"],
-	["Densidad de lodo final del próximo hoyo a perforar", den_prox_hoyo, "lpg."],
-	["Profundidad del tope de lodo", prof_tope_lodo, "pies"],
-	["Presión de diseño en superficie", pres_dis_sup, "lpc."],
-	["Presión de diseño en T.T.C.", pres_dis_ttc, "lpc."],
-	["Presión de diseño en fondo", pres_dis_fondo, "lpc."],
-	["Resistencia al colapso del revestidor", resist_col, "lbf."]
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas2, data2, { margin:{ top: 35 }});
-
-	// INSERTAR UN CANVAS COMO IMAGEN EN EL ARCHIVO .pdf //
-	var grafica_col = document.getElementById("conductor_colapso2");
-	doc.addImage(grafica_col, 'PNG', 60, 140);
-
-	// INSERTAR AVISOS //
-	var aviso_apto = document.getElementById("aviso_apto_colapso").innerText;
-	var aviso_noapto = document.getElementById("aviso_falla_colapso").innerText;
-	var aviso_noapto_correg = document.getElementById("aviso_falla_colapsoCorregido").innerText;
-
-	doc.setTextColor(0, 128, 0); //Verde
-	doc.text(12, 250, aviso_apto);
-
-	doc.setTextColor(248, 0, 0); //Rojo
-	doc.text(12, 250, aviso_noapto);
-	doc.text(12, 260, aviso_noapto_correg);
-
-	doc.setTextColor(0, 0, 0);// Restaurar a negro
-	
-
-
-	doc.addPage();
-
-	// PÁGINA 3 //
-
-	// MARCO //
-	doc.line(10, 10, 200, 10); // línea horizontal superior //
-	doc.line(10, 288, 200, 288); // línea horizontal inferior //
-	doc.line(10, 10, 10, 288); // línea vertical izq. //
-	doc.line(200, 10, 200, 288); // línea vertical der. //
-
-	// ANÁLISIS TENSIÓN //
-	doc.setFontStyle("bold");
-	doc.text(77, 20, "DISEÑO POR TENSIÓN");
-	doc.text(77, 30, "100,000 lbf. de Overpull");
-
-	// VARIABLES NECESARIAS PARA LA TABLA //
-	var peso_nominal = document.getElementById("peso_nom_cond").value;
-	var diam_ext = document.getElementById("diam_ext_cond").value;
-	var diam_int = document.getElementById("diam_int_cond").value;
-	var grado_rev = document.getElementById("letra_grado_cond").value + "-" + document.getElementById("num_grado_cond").value;;
-	var resist_tension = document.getElementById("RT_rev_cond").value;
-	var resist_tension_calc = document.getElementById("resisT").innerText;
-	var prof_punto_neutro = document.getElementById("puntoNeutro").innerText;
-	var tension_real_sup = document.getElementById("tensionRealSuperfTablaT").innerText;
-	var tension_real_ttc = document.getElementById("tensionRealTTCTablaT").innerText;
-	var tension_real_fondo = document.getElementById("tensionRealFondoTablaT").innerText;
-	var tension_over_sup = document.getElementById("tensionOverpullSuperfTablaT").innerText;
-	var tension_over_ttc = document.getElementById("tensionOverpullTTCTablaT").innerText;
-	var tension_over_fondo = document.getElementById("tensionOverpullFondoTablaT").innerText;
-
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas3 = ["Datos del pozo", "Valor", "Unidades"];
-	var data3 = [
-	["Peso nominal del revestidor seleccionado", peso_nominal, "lbf./pie"],
-	["Grado del revestidor seleccionado", grado_rev, ""],
-	["Diámetro externo del revestidor seleccionado", diam_ext, "pulg."],
-	["Diámetro interno del revestidor seleccionado", diam_int, "pulg."],
-	["Resistencia a la tensión del cuerpo del revestidor seleccionado", resist_tension, "lbf."],
-	["Resistencia a la tensión del cuerpo del revestidor (Calculada)", resist_tension_calc, "lbf."],
-	["Profundidad del punto neutro de la sarta", prof_punto_neutro, "pies"],
-	["Tensión real en superficie", tension_real_sup, "lbf."],
-	["Tensión real en T.T.C.", tension_real_ttc, "lbf."],
-	["Tensión real en fondo", tension_real_fondo, "lbf."],
-	["Tensión con overpull en superficie", tension_over_sup, "lbf."],
-	["Tensión con overpull en T.T.C.", tension_over_ttc, "lbf."],
-	["Tensión con overpull en fondo", tension_over_fondo, "lbf."],
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas3, data3, { margin:{ top: 35 }});
-
-	// INSERTAR UN CANVAS COMO IMAGEN EN EL ARCHIVO .pdf //
-	var grafica_ten = document.getElementById("conductor_tension");
-	doc.addImage(grafica_ten, 'PNG', 60, 160);
-
-
-	doc.addPage();
-
-	// PÁGINA 4 //
-
-	// MARCO //
-	doc.line(10, 10, 200, 10); // línea horizontal superior //
-	doc.line(10, 288, 200, 288); // línea horizontal inferior //
-	doc.line(10, 10, 10, 288); // línea vertical izq. //
-	doc.line(200, 10, 200, 288); // línea vertical der. //
-
-	// ANÁLISIS CORRECCIÓN BIAXIAL //
-	doc.setFontStyle("bold");
-	doc.text(77, 20, "CORRECCIÓN BIAXIAL");
-
-	// VARIABLES NECESARIAS PARA LA TABLA //
-	var condicion_sup = document.getElementById("condicionSuperfTablaB").innerText;
-	var esfuerzo_real_sup = document.getElementById("esfuerzoRealSuperfTablaB").innerText;
-	var est_correg_sup = document.getElementById("resisEstCorregSuperfTablaB2").innerText;
-	var col_correg_sup = document.getElementById("resisColCorregSuperfTablaB2").innerText;
-
-	var condicion_fondo = document.getElementById("condicionFondoTablaB").innerText;
-	var esfuerzo_real_fondo = document.getElementById("esfuerzoRealFondoTablaB").innerText;
-	var est_correg_fondo = document.getElementById("resisEstCorregFondoTablaB2").innerText;
-	var col_correg_fondo = document.getElementById("resisColCorregFondoTablaB2").innerText;
-
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas4 = ["Datos del pozo", "Valor", "Unidades"];
-	var data4 = [
-	["Tensión real en superficie", tension_real_sup, "lbf."],
-	["Condición de la sarta en superficie", condicion_sup, ""],
-	["Esfuerzo real en superficie", esfuerzo_real_sup, "lpc."],
-	["Resistencia al estallido corregida en superficie", est_correg_sup, "lpc."],
-	["Resistencia al colapso corregida en superficie", col_correg_sup, "lpc."],
-	["Tensión real en fondo", tension_real_fondo, "lbf."],
-	["Condición de la sarta en fondo", condicion_fondo, ""],
-	["Esfuerzo real en fondo", esfuerzo_real_fondo, "lpc."],
-	["Resistencia al estallido corregida en fondo", est_correg_fondo, "lpc."],
-	["Resistencia al colapso corregida en fondo", col_correg_fondo, "lpc."],
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas4, data4, { margin:{ top: 35 }});
-
-	// INSERTAR UN CANVAS COMO IMAGEN EN EL ARCHIVO .pdf //
-	var grafica_est_correg = document.getElementById("conductor_estallido");
-	doc.addImage(grafica_est_correg, 'PNG', 10, 150);
-
-	var grafica_col_correg = document.getElementById("conductor_colapso");
-	doc.addImage(grafica_est_correg, 'PNG', 103, 150);
-
-	doc.addPage();
-
-	// PÁGINA 5 //
-	// MARCO //
-	doc.line(10, 10, 200, 10); // línea horizontal superior //
-	doc.line(10, 288, 200, 288); // línea horizontal inferior //
-	doc.line(10, 10, 10, 288); // línea vertical izq. //
-	doc.line(200, 10, 200, 288); // línea vertical der. //
-
-	// ANÁLISIS FACTORES DE DISEÑO //
-	doc.setFontStyle("bold");
-	doc.text(77, 20, "FACTORES DE DISEÑO");
-
-	// VARIABLES NECESARIAS PARA LA TABLA //
-	var prof_sup = document.getElementById("profSuperfTablaF").innerText;
-	var FD_est_sup = document.getElementById("FDESuperfTablaF").innerText;
-	var FD_col_sup = document.getElementById("FDCSuperfTablaF").innerText;
-	var FD_ten_sup = document.getElementById("FDTSuperfTablaF").innerText;
-	var OB_sup = document.getElementById("OBSuperfTablaF").innerText;
-
-	var prof_fondo = document.getElementById("profFondoTablaF").innerText;
-	var FD_est_fondo = document.getElementById("FDEFondoTablaF").innerText;
-	var FD_col_fondo = document.getElementById("FDCFondoTablaF").innerText;
-	var FD_ten_fondo = document.getElementById("FDTFondoTablaF").innerText;
-	var OB_fondo = document.getElementById("OBFondoTablaF").innerText;
-
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas5 = ["", "Profundidad (pies)", "Estallido", "Colapso", "Tensión", "Observaciones"];
-	var data5 = [
-	["Superficie", prof_sup, FD_est_sup, FD_col_sup, FD_ten_sup, OB_sup],
-	["Fondo", prof_fondo, FD_est_fondo, FD_col_fondo, FD_ten_fondo, OB_fondo],
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas5, data5, { margin:{ top: 30 }});
-
-	doc.text(70, 60, "REVESTIDOR SELECCIONADO");
-
-	// DEFINIR FILAS Y COLUMNAS DE LA TABLA //
-	var columnas6 = ["Fase", "O.D. (pulg.)", "Peso Nominal (lbf./pie)", "Grado", "Conexión", "Intervalo (pies)"];
-	var data6 = [
-	["Conductor", diam_ext, peso_nominal, grado_rev, "", "0 - " + prof_asent_cond],
-	];
-
-	// INSERTAR TABLA //
-	doc.autoTable(columnas6, data6, { margin:{ top: 100 }});
-
-	// INSERTAR UN CAVAS EN EL ARCHIVO .pdf //
-	//var grafica_CB = document.getElementById("elipse_plasticidad");
-	//doc.addImage(grafica_CB, 'PNG', 20, 160);
-	
-
-	/* Tengo que decidir cuál metodo usaré para colocar las tablas en el .pdf,
-	Automáticos: (html2canvas o autoTable). Manual: jsPDF */
-
-	// CON HTML2CANVAS //
-	/*html2canvas($(".seccion_estallido")[0], {
-        onrendered: function(canvas) {
-            document.body.appendChild(canvas);
-            var ctx = canvas.getContext('2d');
-            var imgData = canvas.toDataURL("image/png", 1.0);
-            var width = canvas.width;
-            var height = canvas.clientHeight;
-            doc.addImage(imgData, 'PNG', 20, 70, (width - 10), (height));
-
-        }
-    });
-*/
-   /* setTimeout(function() {
-        //jsPDF code to save file//
-        doc.save('sample.pdf');
-    }, 0);*/
-
-    window.open(doc.output('bloburl'), '_blank'); // Para que el .pdf aparezca en una nueva ventana //
-    //doc.output('dataurlnewwindow'); // Para que el .pdf se abra en una nueva pestaña del navegador, además de la descarga //
-	//doc.save("a4.pdf"); // Para que el .pdf se descargue directamente en la carpeta por defecto //
+function limpiarCampos() {
+	location.reload();
 }

@@ -31,7 +31,7 @@ nav #menu-principal li {
 }
 
 .avisos_colapso {
-    width: 55rem;
+	width: 55rem;
 }
 
 #div2T #avisos_tension {
@@ -42,9 +42,8 @@ nav #menu-principal li {
 	width: 11rem;
 }
 
-#div2T p:nth-child(7) {
+#div2T p:nth-child(8) {
 	width: 60rem;
-    text-align: center;
 }
 
 .tensionyesfuerzo td {
@@ -63,8 +62,8 @@ nav #menu-principal li {
 	min-width: 9rem;
 }
 
-#obsup, #obfon, #obs_apto {
-    min-width: 45rem;
+#obsup, #obfon {
+    min-width: 54rem;
 }
 
 .contact-info h2 {
