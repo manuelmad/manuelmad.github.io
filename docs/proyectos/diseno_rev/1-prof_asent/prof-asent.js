@@ -14,7 +14,6 @@ function ventanaSecundaria2 (URL)
 // ACCEDER AL BOTÓN "botoncito" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN trazarCurva AL DARLE CLICK //
 var boton = document.getElementById("botoncito");
 boton.addEventListener("click", trazarCurva);
-boton.addEventListener("mouseup", imageSinCurvas);
 boton.addEventListener("click", crearArray);
 
 // ACCEDER AL CANVAS DE HTML Y DARLE CONTEXTO //
@@ -63,6 +62,97 @@ if(tamano_ventana < 600) {
 	cabecera_5.innerHTML = "D.A." + "<br>" + "(lpg.)";
 	var cabecera_6 = document.getElementById("cabecera6");
 	cabecera_6.innerHTML = "P.F." + "<br>" + "(lpg.)";
+}
+
+// EVENTO PARA QUE EL CANVAS INICIAL SE RENDERICE AL CARGAR LA PÁGINA
+window.addEventListener("load", canvasInicial);
+
+// FUNCIÓN PARA BORRAR TODO LO QUE HAYA EN EL CANVAS
+function borrarCanvas() {
+	lienzo.clearRect(0, 0, ancho_canvas, alto_canvas);
+}
+
+// FUNCIÓN PARA RENDERIZAR EL CANVAS INICIAL, BORRANDO PRIMERO LO QUE HAYA EN ÉL
+function canvasInicial() {
+	
+	borrarCanvas();
+
+	// EJES DE COORDENADAS (FUERA DE LA FUNCIÓN DE DIBUJO "trazarCurva" PARA QUE SEA SIEMPRE VISIBLE) //
+	dibujarLinea("black", margen, margen-8, margen, alto + margen + 8); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLinea("black", margen-8, margen, ancho + margen + 8, margen); // LÍNEA HORIZONTAL SUPERIOR //
+
+	// LEYENDA DE LÍNEAS DE DENSIDAD //
+	var ancho_linea = 0.07*ancho_canvas;
+	var separacion_leyendas = 0.3*ancho_canvas;
+
+	var leyendas_y = 0.92*alto_canvas;
+	var leyendas_y_abajo = 0.96*alto_canvas;
+
+	if(tamano_ventana < 600) {
+		var leyenda1_x1 = 0.15*ancho_canvas;
+	}
+	else {
+		var leyenda1_x1 = 0.2*ancho_canvas;
+	}
+
+	var leyenda1_x2 = leyenda1_x1 + ancho_linea;
+	var leyenda3_x1 = leyenda1_x2 + separacion_leyendas;
+	var leyenda3_x2 = leyenda3_x1 + ancho_linea;
+
+	if(tamano_ventana < 600) {
+		lienzo.font = '8px "Tahoma"';
+	}
+	else {
+		lienzo.font = '10px "Tahoma"';
+	}
+	lienzo.textAlign = 'left';
+	dibujarLinea("blue", leyenda1_x1, leyendas_y, leyenda1_x2, leyendas_y);
+	lienzo.fillStyle = "black";
+	lienzo.fillText("Densidad de Poro", leyenda1_x2+5, leyendas_y+3);
+
+	dibujarLinea("green", leyenda1_x1, leyendas_y_abajo, leyenda1_x2, leyendas_y_abajo);
+	lienzo.fillStyle = "black";
+	lienzo.fillText("Densidad de Lodo", leyenda1_x2+5, leyendas_y_abajo+3);
+
+	dibujarLinea("orange", leyenda3_x1, leyendas_y, leyenda3_x2, leyendas_y);
+	lienzo.fillStyle = "black";
+	lienzo.fillText("Dens. de M. de Arrem.", leyenda3_x2+5, leyendas_y+3);
+
+	dibujarLinea("red", leyenda3_x1, leyendas_y_abajo, leyenda3_x2, leyendas_y_abajo);
+	lienzo.fillStyle = "black";
+	lienzo.fillText("Densidad de Fractura", leyenda3_x2+5, leyendas_y_abajo+3);
+
+	// LEYENDA DEL EJE Y (ROTADA) //
+	var x = margen/4; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
+	var y = alto_canvas/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
+	lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
+	lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	lienzo.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
+
+
+	// EJE X LEYENDA //
+	var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
+	var y = margen/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
+	lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
+	lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
+	lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
+	if(tamano_ventana < 600) {
+		lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	else {
+		lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
+	}
+	lienzo.fillText("Densidad Equivalente (lpg.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	lienzo.restore();
 }
 
 
@@ -197,53 +287,6 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal)
 	lienzo.closePath();
 }
 
-
-// EJES DE COORDENADAS (FUERA DE LA FUNCIÓN DE DIBUJO "trazarCurva" PARA QUE SEA SIEMPRE VISIBLE) //
-dibujarLinea("black", margen, margen-8, margen, alto + margen + 8); // LÍNEA VERTICAL IZQUIERDA //
-dibujarLinea("black", margen-8, margen, ancho + margen + 8, margen); // LÍNEA HORIZONTAL SUPERIOR //
-
-// LEYENDA DE LÍNEAS DE DENSIDAD //
-var ancho_linea = 0.07*ancho_canvas;
-var separacion_leyendas = 0.3*ancho_canvas;
-
-var leyendas_y = 0.92*alto_canvas;
-var leyendas_y_abajo = 0.96*alto_canvas;
-
-if(tamano_ventana < 600) {
-	var leyenda1_x1 = 0.15*ancho_canvas;
-}
-else {
-	var leyenda1_x1 = 0.2*ancho_canvas;
-}
-
-var leyenda1_x2 = leyenda1_x1 + ancho_linea;
-var leyenda3_x1 = leyenda1_x2 + separacion_leyendas;
-var leyenda3_x2 = leyenda3_x1 + ancho_linea;
-
-if(tamano_ventana < 600) {
-	lienzo.font = '8px "Tahoma"';
-}
-else {
-	lienzo.font = '10px "Tahoma"';
-}
-dibujarLinea("blue", leyenda1_x1, leyendas_y, leyenda1_x2, leyendas_y);
-lienzo.fillStyle = "black";
-lienzo.fillText("Densidad de Poro", leyenda1_x2+5, leyendas_y+3);
-
-dibujarLinea("green", leyenda1_x1, leyendas_y_abajo, leyenda1_x2, leyendas_y_abajo);
-lienzo.fillStyle = "black";
-lienzo.fillText("Densidad de Lodo", leyenda1_x2+5, leyendas_y_abajo+3);
-
-dibujarLinea("orange", leyenda3_x1, leyendas_y, leyenda3_x2, leyendas_y);
-lienzo.fillStyle = "black";
-lienzo.fillText("Dens. de M. de Arrem.", leyenda3_x2+5, leyendas_y+3);
-
-dibujarLinea("red", leyenda3_x1, leyendas_y_abajo, leyenda3_x2, leyendas_y_abajo);
-lienzo.fillStyle = "black";
-lienzo.fillText("Densidad de Fractura", leyenda3_x2+5, leyendas_y_abajo+3);
-
-
-
 // FUNCIÓN PARA DIBUJAR LÍNEAS CON TRANSPARENCIA (2 PUNTOS) //
 function dibujarLineaTrans(xinicial, yinicial, xfinal, yfinal)
 {
@@ -255,40 +298,6 @@ function dibujarLineaTrans(xinicial, yinicial, xfinal, yfinal)
 	lienzo.closePath();
 }
 
-
-// LEYENDA DEL EJE Y (ROTADA) //
-var x = margen/4; // COORDENADA X DONDE ESTARÁ EL TEXTO ROTADO //
-var y = alto_canvas/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO ROTADO //
-lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-lienzo.rotate(-Math.PI / 2); // ESTABLECER EL ÁNGULO DE INCLINACIÓN DEL TEXTO (-90º) //
-lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-if(tamano_ventana < 600) {
-	lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-}
-else {
-	lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-}
-lienzo.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
-
-
-// EJE X LEYENDA //
-var x = ancho_canvas/2; // COORDENADA X DONDE ESTARÁ EL TEXTO //
-var y = margen/2; // COORDENADA Y DONDE ESTARÁ EL TEXTO //
-lienzo.save(); // GRABAR EL CANVAS PARA HACER LOS SIGUIENTES CAMBIOS Y QUE NO AFECTEN AL CANVAS ORIGINAL //
-lienzo.translate(x,y); // TRASLADAR EL PUNTO DE DIBUJO DEL CANVAS A LAS COORDENADAS ANTES ESTABLECIDAS //
-lienzo.textAlign = 'center'; // ESTABLECER ALINEACIÓN DEL TEXTO //
-if(tamano_ventana < 600) {
-	lienzo.font = '10px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-}
-else {
-	lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
-}
-lienzo.fillText("Densidad Equivalente (lpg.)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
-lienzo.restore();
-
-
 // FUNCIÓN PARA TRAZAR UNA CURVA CONECTANDO LOS PUNTOS DADOS //
 function CurvaDensidades(color, xinicial, yinicial, xfinal, yfinal)
 {
@@ -299,13 +308,6 @@ function CurvaDensidades(color, xinicial, yinicial, xfinal, yfinal)
 	lienzo.lineTo(xfinal,yfinal);
 	lienzo.stroke();
 	lienzo.closePath();
-}
-
-
-// FUNCIÓN QUE CAPTURA EL CANVAS SIN LAS CURVAS DE DENSIDADES //
-function imageSinCurvas()
-{
-	ImageData = lienzo.getImageData(0, 0, ancho_canvas, alto_canvas);
 }
 
 function crearArray() {
@@ -402,6 +404,9 @@ function crearArray() {
 
 function trazarCurva()
 {
+	// LLAMADO PARA QUE SE LIMPIE EL CANVAS Y SE RENDERICEN LOS EJES Y LEYENDAS
+	canvasInicial();
+
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
 	var max_densidad = document.getElementById("max_den_graf").value;
 	var max_prof = document.getElementById("max_prof_graf").value;
@@ -551,7 +556,7 @@ boton_borrar.addEventListener("click", borrarCurvas);
 // FUNCIÓN QUE ELIMINA LAS CURVAS DE DENSIDAD, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
 function borrarCurvas ()
 {
-	lienzo.putImageData(ImageData, 0, 0);
+	canvasInicial();
 }
 
 /************* LÍNEAS DE DISEÑO ****************/
