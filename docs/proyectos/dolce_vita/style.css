@@ -157,6 +157,7 @@ main {
 #menu, #eventos, #empaques {
     margin: 2rem auto 0;
     width: 90%;
+    max-width: 75rem;
     border-top: 0.1rem solid var(--color-fondo-icono);
 }
 
@@ -567,25 +568,33 @@ footer p {
 }
 
 .contacto p:nth-child(2) {
-    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(15rem, 65.4rem);
+    grid-auto-rows: 2rem;
+    align-items: center;
 }
 
 .icono-ig {
     width: 2rem;
-    left: 6.5rem;
-    top: -0.5rem;
-    position: absolute;
+}
+
+.link-ig {
+    grid-column: 1 / 3;
 }
 
 .contacto p:nth-child(3) {
-    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(15rem, 65.4rem);
+    grid-auto-rows: 2rem;
+    align-items: center;
 }
 
 .icono-wa {
     width: 2rem;
-    left: 6.5rem;
-    top: -0.5rem;
-    position: absolute;
+}
+
+.link-wa {
+    grid-column: 1 / 3;
 }
 
 .logo {
