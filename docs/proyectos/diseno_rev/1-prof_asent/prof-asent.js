@@ -13,8 +13,9 @@ function ventanaSecundaria2 (URL)
 
 // ACCEDER AL BOTÓN "botoncito" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN trazarCurva AL DARLE CLICK //
 var boton = document.getElementById("botoncito");
+//boton.addEventListener("click", crearArray);
 boton.addEventListener("click", trazarCurva);
-boton.addEventListener("click", crearArray);
+
 
 // ACCEDER AL CANVAS DE HTML Y DARLE CONTEXTO //
 var d = document.getElementById("Prof_vs_Dens");
@@ -78,8 +79,8 @@ function canvasInicial() {
 	borrarCanvas();
 
 	// EJES DE COORDENADAS (FUERA DE LA FUNCIÓN DE DIBUJO "trazarCurva" PARA QUE SEA SIEMPRE VISIBLE) //
-	dibujarLinea("black", margen, margen-8, margen, alto + margen + 8); // LÍNEA VERTICAL IZQUIERDA //
-	dibujarLinea("black", margen-8, margen, ancho + margen + 8, margen); // LÍNEA HORIZONTAL SUPERIOR //
+	dibujarLinea("black", margen, margen-5, margen, alto + margen + 5); // LÍNEA VERTICAL IZQUIERDA //
+	dibujarLinea("black", margen-5, margen, ancho + margen + 5, margen); // LÍNEA HORIZONTAL SUPERIOR //
 
 	// LEYENDA DE LÍNEAS DE DENSIDAD //
 	var ancho_linea = 0.07*ancho_canvas;
@@ -135,7 +136,7 @@ function canvasInicial() {
 	else {
 		lienzo.font = '16px "Tahoma"'; // ESTABLECER FUENTE Y TAMAÑO DEL TEXTO //
 	}
-	lienzo.fillText("Profundidad (pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
+	lienzo.fillText("Profundidad (TVD, pies)", 0, 0); // ESTABLECER EL TEXTO Y EN QUÉ COORDENADAS DENTRO DEL PUNTO INICIAL ESTABLECIDO ANTERIORMENTE EMPEZARÁ A ESCRIBIRSE //
 	lienzo.restore(); // REGRESAR EL CANVAS A SU ESTADO ORIGINAL, ANTES DE GRABARLO CON papel.save() //
 
 
@@ -310,27 +311,41 @@ function CurvaDensidades(color, xinicial, yinicial, xfinal, yfinal)
 	lienzo.closePath();
 }
 
+// Variables que se usarán en toda la aplicación
+var max_densidad;
+var max_prof;
+
+var factorX;
+var factorY;
+
+var MargenViaje;
+var MargenArremetida;
+
+var P_vs_PP = [];
+var P_vs_DL = [];
+var P_vs_PF = [];
+var P_vs_DA = [];
+
 function crearArray() {
 
 	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
+	max_densidad = document.getElementById("max_den_graf").value;
+	max_prof = document.getElementById("max_prof_graf").value;
 
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
+	factorX = ancho / max_densidad;
+	factorY = alto / max_prof;
+
+	// Limpiar los arrays cada vez que ejecutamos esta función
+	P_vs_PP = [];
+	P_vs_DL = [];
+	P_vs_PF = [];
+	P_vs_DA = [];
 
 	var tabla = document.getElementById("tabla");
 	var filas_cuerpotabla = tabla.getElementsByTagName("tr").length -1; // Cuento las filas, con "-1" para ignorar la cabecera
-	
-	var P_vs_PP = [];
 
-	var MargenViaje = Number(document.getElementById("margen_viaje").value);
-	var P_vs_DL = [];
-
-	var P_vs_PF = [];
-
-	var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-	var P_vs_DA = [];
+	MargenViaje = Number(document.getElementById("margen_viaje").value);
+	MargenArremetida = Number(document.getElementById("margen_arremetida").value);
 
 	var m;
 	for(m=0; m<=filas_cuerpotabla-1; m=m+1)
@@ -398,8 +413,6 @@ function crearArray() {
 			P_vs_DA.push(da1, Prof12);
 		}
 	}
-	var arrays = [P_vs_PP, P_vs_DL, P_vs_DA, P_vs_PF, factorX, factorY];
-	return arrays;
 }
 
 function trazarCurva()
@@ -407,12 +420,8 @@ function trazarCurva()
 	// LLAMADO PARA QUE SE LIMPIE EL CANVAS Y SE RENDERICEN LOS EJES Y LEYENDAS
 	canvasInicial();
 
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
+	// Llenar los arrays y dar valores a las variables comunes
+	crearArray();
 
 	// LÍNEAS TRANSPARENTES DE REFERENCIA DENTRO DEL GRÁFICO //
 	// EJE Y //
@@ -518,19 +527,12 @@ function trazarCurva()
 	}
 	lienzo.fillText(0, margen-5, 0.0855*alto_canvas); // Origen de coordenadas //
 	lienzo.fillStyle = "purple"; // VALOR DE COLOR PÚRPURA //
-	lienzo.textAlign = "center"; 
+	lienzo.textAlign = "center";
 	lienzo.fillText(9, 9*factorX + margen, 0.0855*alto_canvas); // Valor de 9 lpg (Presión Normal) //
 	lienzo.fillStyle = "black"; // REGRESAR A COLOR NEGRO //
 
 	
 	// ***GRAFICAR CURVAS*** //
-	var arrays_densidades = crearArray();
-
-	var P_vs_PP = arrays_densidades[0];
-	var P_vs_DL = arrays_densidades[1];
-	var P_vs_DA = arrays_densidades[2];
-	var P_vs_PF = arrays_densidades[3];
-
 	// Tomo en cuenta el array de mayor longitud, que debe ser siempre P_vs_PP
 	var datosPP = P_vs_PP.length;
 
@@ -583,13 +585,11 @@ function mostrarOcultarAuto()
 // ACCEDER AL BOTÓN "lineas_auto"
 var auto = document.getElementById("lineas_auto");
 auto.addEventListener("click", autoLineas);
-auto.addEventListener("mouseup", image4Curvas);
 
 // ACCEDER AL BOTÓN "deshacer" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN deshacerLineaDiseno AL DARLE CLICK //
 var deshace_linea = document.getElementById("deshacer");
 deshace_linea.addEventListener("click", deshacerLineaDiseno);
 deshace_linea.addEventListener("click", eliminarTablaRev);
-
 
 // FUNCIÓN PARA DIBUJAR LÍNEAS PUNTEADAS (2 PUNTOS) //
 function dibujarLineaDiseno(color, xinicial, yinicial, xfinal, yfinal)
@@ -605,29 +605,18 @@ function dibujarLineaDiseno(color, xinicial, yinicial, xfinal, yfinal)
 }
 
 // FUNCIÓN PARA TRAZAR TODAS LAS LÍNEAS DE DISEÑO AUTOMÁTICAMENTE
-
 function autoLineas()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
+	// Limpiar canvas y renderizar curvas de densidad antes del diseño
+	trazarCurva();
 
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
+	// Limpiar tabla de revestidores antes del diseño
+	eliminarTablaRev();
 
 	var ultimaDL = (document.getElementById("DLaPT").value) * factorX;
 	var ultimaProf = (document.getElementById("PT").value) * factorY;
 
 	// ***GRAFICAR LÍNEAS DE DISEÑO*** //
-	var MargenViaje = Number(document.getElementById("margen_viaje").value);
-	var MargenArremetida = Number(document.getElementById("margen_arremetida").value);
-	
-	var arrays_densidades = crearArray();
-	var P_vs_PP = arrays_densidades[0];
-	var P_vs_DL = arrays_densidades[1];
-	var P_vs_DA = arrays_densidades[2];
-	var P_vs_PF = arrays_densidades[3];
-
 	var x = ultimaDL;
 	var y = ultimaProf;
 
@@ -758,14 +747,10 @@ function autoLineas()
 	}
 }
 
-// FUNCIÓN QUE CAPTURA EL CANVAS CON LAS CURVAS DE DENSIDADES //
-function image4Curvas() {
-	ImageData2 = lienzo.getImageData(0, 0, ancho_canvas, alto_canvas);
-}
-
 // FUNCIÓN QUE ELIMINA LAS CURVAS DE DISEÑO HORIZONTALES Y/O VERTICALES, SUPERPONIENDO SOBRE EL CANVAS LA IMAGEN CAPTURADA ANTERIORMENTE //
 function deshacerLineaDiseno() {
-	lienzo.putImageData(ImageData2, 0, 0);
+	// Limpiar canvas y renderizar curvas de densidad
+	trazarCurva();
 }
 
 function eliminarTablaRev() {
@@ -802,7 +787,6 @@ function mostrarOcultarManual()
 // ACCEDER AL BOTÓN "botoncito2" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN lineaDiseno AL DARLE CLICK //
 var boton2 = document.getElementById("botoncito2");
 boton2.addEventListener("click", lineaDiseno);
-boton2.addEventListener("mouseup", image4Curvas);
 
 // ACCEDER AL BOTÓN "deshacer" DE HTML Y QUE EJECUTE EL EVENTO DE FUNCIÓN deshacerLineaDiseno AL DARLE CLICK //
 var deshace_linea2 = document.getElementById("deshacer2");
@@ -847,13 +831,6 @@ if(tamano_ventana < 600) {
 
 function lineaDiseno()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x1 = Number(document.getElementById("x1").value)* factorX;
 	var y1 = Number(document.getElementById("y1").value) * factorY;
 	var x2 = Number(document.getElementById("x2").value)* factorX;
@@ -876,13 +853,6 @@ function lineaDiseno()
 
 function lineaDiseno2()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x3 = Number(document.getElementById("x3").value)* factorX;
 	var y3 = Number(document.getElementById("y3").value)* factorY;
 	var x4 = Number(document.getElementById("x4").value)* factorX;
@@ -899,13 +869,6 @@ function lineaDiseno2()
 
 function lineaDiseno3()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x5 = Number(document.getElementById("x5").value)* factorX;
 	var y5 = Number(document.getElementById("y5").value)* factorY;
 	var x6 = Number(document.getElementById("x6").value)* factorX;
@@ -922,13 +885,6 @@ function lineaDiseno3()
 
 function lineaDiseno4()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x7 = Number(document.getElementById("x7").value)* factorX;
 	var y7 = Number(document.getElementById("y7").value)* factorY;
 	var x8 = Number(document.getElementById("x8").value)* factorX;
@@ -945,13 +901,6 @@ function lineaDiseno4()
 
 function lineaDiseno5()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x9 = Number(document.getElementById("x9").value)* factorX;
 	var y9 = Number(document.getElementById("y9").value)* factorY;
 	var x10 = Number(document.getElementById("x10").value)* factorX;
@@ -968,13 +917,6 @@ function lineaDiseno5()
 
 function lineaDiseno6()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x11 = Number(document.getElementById("x11").value)* factorX;
 	var y11 = Number(document.getElementById("y11").value)* factorY;
 	var x12 = Number(document.getElementById("x12").value)* factorX;
@@ -991,13 +933,6 @@ function lineaDiseno6()
 
 function lineaDiseno7()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	var x13 = Number(document.getElementById("x13").value)* factorX;
 	var y13 = Number(document.getElementById("y13").value)* factorY;
 	var x14 = Number(document.getElementById("x14").value)* factorX;
@@ -1036,13 +971,6 @@ boton_ajuste1.addEventListener("click", AnalisisIntermedio);
 // FUNCIÓN QUE EJECUTA LA APARICIÓN DEl TEXTO DEL SPAN //
 function AnalisisIntermedio()
 {
-	// FACTORES PARA LLEVAR LOS DATOS A ESCALA DEL CANVAS //
-	var max_densidad = document.getElementById("max_den_graf").value;
-	var max_prof = document.getElementById("max_prof_graf").value;
-
-	var factorX = ancho / max_densidad;
-	var factorY = alto / max_prof;
-
 	// VARIABLES //
 	var Prof_Normal_Anormal = Number(ProfNormalAnormal.value);
 
@@ -1087,14 +1015,8 @@ function AnalisisIntermedio()
 		{
 			var Densidad_Zap_Int_Correg = Number(((Delta_Presion_Teorico / (0.052 * Prof_Zona_Propensa)) + Densidad_Eq_Zona_Propensa).toFixed(2));
 
-			var arrays_densidades = crearArray();
-			var P_vs_PP = arrays_densidades[0];
-			var P_vs_DL = arrays_densidades[1];
-			var P_vs_DA = arrays_densidades[2];
-			var P_vs_PF = arrays_densidades[3];
-
-			//var w = Densidad_Zap_Int_Correg;
-			var w= 11; // Eliminar cuando la app salga a producción
+			var w = Densidad_Zap_Int_Correg;
+			//var w= 11; Valor de prueba porque era muy difícil lograr falla
 			
 			// CICLO PARA QUE LA LÍNEA VERTICAL DE MÁXIMA DENSIDAD DE LODO PERMITIDA INTERSECTE A LA LÍNEA DE DL
 			var n;
@@ -1118,7 +1040,8 @@ function AnalisisIntermedio()
 						interseccion = P_vs_DL[n+3] - (pendiente*P_vs_DL[n+2]);
 						console.log(interseccion);
 						var auto1 = pendiente*w*factorX + interseccion;
-						console.log("La profundidad de asentameinto corregida del revestidor por riesgo de pega diferencial es: " + auto1/factorY + " pies.");
+						Prof_Rev_Int_Correg = auto1/factorY;
+						console.log("La profundidad de asentamiento corregida del revestidor por riesgo de pega diferencial es: " + Prof_Rev_Int_Correg + " pies.");
 					}
 				}
 			}
@@ -1145,13 +1068,13 @@ function AnalisisIntermedio()
 						interseccionDA = P_vs_DA[s+3] - (pendienteDA*P_vs_DA[s+2]);
 						console.log(interseccionDA);
 						var auto2 = (auto1 - interseccionDA)/pendienteDA;
-						console.log("La D.A. a la profundidad de " + auto1/factorY + " pies es: " + auto2/factorX + " lpg.");
+						console.log("La D.A. a la profundidad de " + Prof_Rev_Int_Correg + " pies es: " + auto2/factorX + " lpg.");
 					}
 				}
 			}
 
 
-			// CICLO PARA QUE LA LÍNEA VERTICAL DE DA INTERSECTE A LA LÍNEA DE DL
+			// CICLO PARA QUE LA LÍNEA VERTICAL DE D.A. INTERSECTE A LA LÍNEA DE DL
 			var q;
 					
 			var datosDL2 = P_vs_DL.length;
@@ -1187,7 +1110,7 @@ function AnalisisIntermedio()
 			
 			Para evitar este riesgo, la máxima densidad de lodo permitida en este hoyo es ${Densidad_Zap_Int_Correg} lpg.
 			
-			Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: ${(auto1/factorY).toFixed(0)} pies.
+			Para dicha densidad de lodo, la nueva Profundidad de Asentamiento es: ${Prof_Rev_Int_Correg.toFixed(0)} pies.
 			
 			IMPORTANTE: Se debe agregar una sarta de revestimiento adicional para cubrir el intervalo desnudo resultante de asentar este revestidor más arriba de lo diseñado.
 			
@@ -1200,9 +1123,6 @@ function AnalisisIntermedio()
 	{
 		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningún campo vacío.");
 	}
-
-	var datos = [Densidad_Zap_Int, Prof_Rev_Int, Densidad_Zap_Int_Correg, auto1/factorY, auto2/factorX, auto3/factorY];
-	return datos;
 }
 
 

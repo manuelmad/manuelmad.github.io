@@ -26,10 +26,6 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
     max-width: 80rem;
 }
 
-#mostrar_ocultar_auto:hover, #mostrar_ocultar_manual:hover {
-	background-color: var(--hospital-green);
-}
-
 .ajuste_int, .ajuste_sup {
 	display: flex;
 }

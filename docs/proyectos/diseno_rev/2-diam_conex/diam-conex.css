@@ -157,7 +157,7 @@ nav #menu-principal a {
 	list-style: none;
 	margin-right: 1rem;
 	display: block;
-	color: var(--hospital-green);
+	color: var(--dark-blue);
 	font-size: var(--ss);
 }
 
@@ -222,29 +222,29 @@ form input {
 }
 
 main button {
-	height: 3rem;
+	/* height: 3rem;
 	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
-	border-radius: 0.8rem;
+	border-radius: 0.8rem; */
 	cursor: pointer;
-	color: white;
+	/* color: white;
 	font-weight: bold;
-	padding: 0.5rem;
+	padding: 0.5rem; */
 }
 
-main button:active {
+/* main button:active {
 	color: gray;
 	background-color: var(--white);
 	border: 0.1rem solid var(--very-light-gray);
-}
+} */
 
-.limpiar-radios {
+/* .limpiar-radios {
 	background-color: var(--white);
 }
 
 .limpiar-radios:active {
 	background-color: var(--hospital-green);
-}
+} */
 
 .container-button {
 	text-align: center;

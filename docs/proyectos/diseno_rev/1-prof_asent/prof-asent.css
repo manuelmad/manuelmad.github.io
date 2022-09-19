@@ -100,9 +100,9 @@ nav #menu-desplegable li {
 	width: 15rem;
 }
   
-  nav #menu-desplegable li:last-child {
+nav #menu-desplegable li:last-child {
 	margin-bottom: 0;
-  }
+}
   
 nav #menu-desplegable a {
 	text-decoration: none;
@@ -157,7 +157,7 @@ nav #menu-principal a {
 	list-style: none;
 	margin-right: 1rem;
 	display: block;
-	color: var(--hospital-green);
+	color: var(--dark-blue);
 	font-size: var(--ss);
 }
 
@@ -226,10 +226,11 @@ button {
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
+	margin-top: 0.2rem;
 }
 
 .margenes input:hover {
-	border: 1px solid var(--hospital-green);
+	border: 0.1rem solid var(--hospital-green);
 }
 
 .margenes p {
@@ -313,10 +314,11 @@ button {
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
+	margin-top: 0.2rem;
 }
 
 .opciones_graf input:hover {
-	border: 1px solid var(--hospital-green);
+	border: 0.1rem solid var(--hospital-green);
 }
 
 .opciones_graf p {
@@ -342,7 +344,7 @@ canvas {
 #mostrar_ocultar_auto, #mostrar_ocultar_manual {
 	height: 1.5rem;
 	width: 12rem;
-	background-color: var(--white);
+	background-color: var(--hospital-green);
 	border: 0.1rem solid var(--hospital-green);
 	border-radius: 0.8rem;
 	cursor: pointer;
@@ -363,6 +365,7 @@ canvas {
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
+	margin-top: 0.2rem;
 }
 
 .datos_auto input:hover {
@@ -467,6 +470,7 @@ canvas {
 	border-radius: 0.8rem;
 	background-color: var(--text-input-field);
 	border: none;
+	margin-top: 0.2rem;
 }
 
 .ajuste_int1 input:hover, .ajuste_sup1 input:hover {
@@ -498,7 +502,7 @@ canvas {
 	border-radius: 0.8rem;
 	margin: 1rem auto 1rem;
 	padding: 1rem 0.5rem;
-	text-align: justify;
+	text-align: left;
 	background-color: var(--text-input-field);
 	min-height: 30rem;
 }
@@ -567,5 +571,3 @@ footer div, footer section {
 	width: 10rem;
 	height: 10rem;
 }
-
-

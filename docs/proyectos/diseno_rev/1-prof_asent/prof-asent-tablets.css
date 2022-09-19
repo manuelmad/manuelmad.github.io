@@ -32,7 +32,6 @@ nav #menu-principal li{
 
 .datos td:nth-child(4), th:nth-child(4){
     width: 1rem; /* Le asigno un ancho específico a una columna específica, superponiendo la orden general anterior */
-    /* background-color: black;  */
 }
 #cuerpotabla input {
     border: 0;

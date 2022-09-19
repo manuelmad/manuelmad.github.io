@@ -759,7 +759,6 @@ function recomendarConexion2() {
 // FUNCIONES PARA MANIPULAR LOS INPUT RADIOS
 function hoyoRevestido_11() {
     hoyo1Linea6.disabled = false;
-    // hoyo1Linea6_valor.style.fontWeight = "bold";
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
@@ -773,7 +772,6 @@ function hoyoRevestido_11() {
 function hoyoRevestido_12() {
     hoyo1Linea6.disabled = false;
     hoyo2Linea6.disabled = false;
-    // hoyo2Linea6_valor.style.fontWeight = "bold";
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
 
@@ -786,7 +784,6 @@ function hoyoRevestido_12() {
 function hoyoRevestido_13() {
     hoyo1Linea6.disabled = false;
     hoyo2Linea6.disabled = false;
-    // hoyo2Linea6_valor.style.fontWeight = "bold";
     hoyo3Linea6.disabled = true;
     hoyo4Linea6.disabled = true;
 
@@ -800,7 +797,6 @@ function hoyoRevestido_14() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = false;
     hoyo3Linea6.disabled = false;
-    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
 
     hoyo1Linea6_valor.style.fontWeight = "normal";
@@ -813,7 +809,6 @@ function hoyoRevestido_15() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
-    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
 
     hoyo1Linea6_valor.style.fontWeight = "normal";
@@ -826,7 +821,6 @@ function hoyoRevestido_16() {
     hoyo1Linea6.disabled = true;
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
-    // hoyo3Linea6_valor.style.fontWeight = "bold";
     hoyo4Linea6.disabled = true;
 
     hoyo1Linea6_valor.style.fontWeight = "normal";
@@ -840,7 +834,6 @@ function hoyoRevestido_17() {
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
     hoyo4Linea6.disabled = false;
-    // hoyo4Linea6_valor.style.fontWeight = "bold";
 
     hoyo1Linea6_valor.style.fontWeight = "normal";
     hoyo2Linea6_valor.style.fontWeight = "normal";
@@ -853,7 +846,6 @@ function hoyoRevestido_18() {
     hoyo2Linea6.disabled = true;
     hoyo3Linea6.disabled = false;
     hoyo4Linea6.disabled = false;
-    // hoyo4Linea6_valor.style.fontWeight = "bold";
 
     hoyo1Linea6_valor.style.fontWeight = "normal";
     hoyo2Linea6_valor.style.fontWeight = "normal";

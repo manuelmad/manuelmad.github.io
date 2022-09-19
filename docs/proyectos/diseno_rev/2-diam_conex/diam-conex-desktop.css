@@ -22,21 +22,21 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
-main button {
+/* main button {
 	color: gray;
 	background-color: var(--white);
 	border: 0.1rem solid var(--hospital-green);
-}
+} */
 
-main button:hover {
+/* main button:hover {
 	background-color: var(--hospital-green);
-}
+} */
 
-main button:active {
+/* main button:active {
 	color: var(--white);
 	background-color: var(--very-light-gray);
 	border: 0.1rem solid var(--very-light-gray);
-}
+} */
 
 .input-number:hover {
 	border: 0.1rem solid gray;
