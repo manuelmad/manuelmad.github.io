@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aplicación web para calcular precios de productos La DolceVita.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+	<title>Calculadora de Presupuestos</title>
+	<link href="calculo-precios.css" type="text/css" rel="stylesheet" />
+	<link href="calculo-precios-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="calculo-precios-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<main>
+		<h1>Calculadora de Presupuestos</h1>
+		<section class="calculos">
+			<h2>Producto Base</h2>
+			<div>
+				<p>Tasa de cambio (Bs. / USD):<br>
+					<input type="number" id="tasa-cambio" name="">
+				</p>
+				<select onchange = "actualizarPrecio()" id="lista-productos">
+					<option value="0" selected>-----------</option>
+					<option value="1">MINI BROWNIE</option>
+					<option value="2">ENRROLLADOS DE VAINILLA</option>
+					<option value="3">ALFAJORES</option>
+					<option value="4">MINI PONQUESITOS DE VAINILLA C/MERENGUE</option>
+					<option value="5">TRUFAS C/ CHISPAS</option>
+					<option value="6">MINI QUESILLOS</option>
+					<option value="7">PONQUESITOS DE VAINILLA</option>
+					<option value="8">PONQUESITOS DE VAINILLA C/ MERENGUE</option>
+					<option value="9">PONQUESITOS DE VAINILLA C/ AREQUIPE</option>
+					<option value="10">PONQUESITOS VAINILLA C/ MERENGUE + RELLENO CHOCOLATE</option>
+					<option value="11">PONQUESITOS DE CHOCOLATE</option>
+					<option value="12">PONQUESITOS CHOCOLATE C/ MERENGUE</option>
+					<option value="13">MINI PIE DE LIMÓN</option>
+					<option value="14">MINI PIE DE PARCHITA</option>
+					<option value="15">DOLCE CUP VASOS 1,5 OZ</option>
+					<option value="16">BROWNIE 9 PORCIONES</option>
+					<option value="17">QUESILLO 747</option>
+					<option value="18">PIE DE LIMON PORCIÓN</option>
+					<option value="19">PIE DE PARCHITA PORCIÓN</option>
+					<option value="20">TORTA 3 LECHES C/ MERENGUE</option>
+					<option value="21">TORTA 3 LECHES C/ CHANTILLY</option>
+					<option value="22">TORTA IMPOSIBLE</option>
+					<option value="23">TORTA HÚMEDA DE CHOCOLATE C/CHOC</option>
+					<option value="24">RED VELVET C/ MERENGUE Y CHOC</option>
+					<option value="25">TORTA DE ZANAHORIA</option>
+					<option value="26">QUESILLO COMPLETO</option>
+					<option value="27">PIE DE LIMÓN</option>
+					<option value="28">PIE DE PARCHITA</option>
+					<option value="29">BROWNIE</option>
+					<option value="30">TORTA 3 LECHES 1 1/2 KG</option>
+					<option value="31">TORTA 3 LECHES 1 KG</option>
+					<option value="32">TORTA 3 LECHES 1/2 KG</option>
+					<option value="33">TORTA 3 LECHES 1/4 KG</option>
+					<option value="34">TORTA IMPOSIBLE 1/2 KG</option>
+					<option value="35">TORTA IMPOSIBLE 1/4 KG</option>
+					<option value="36">TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA MERENGUE)</option>
+					<option value="37">TORTA HÚMEDA CHOCOLATE 1/2 (RELLENA CHOCOLATE Y CUBIERTA MERENGUE)</option>
+					<option value="38">TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA CHOCOLATE)</option>
+					<option value="39">TORTA HÚMEDA CHOCOLATE 1/2 RELLENA Y CUBIERTA CON CHOCOLATE</option>
+					<option value="40">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE)</option>
+					<option value="41">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE Y RELLENA CHOCOLATE)</option>
+					<option value="42">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA CHOCOLATE)</option>
+					<option value="43">TORTA HÚMEDA CHOCOLATE 1/4 RELLENA Y CUBIERTA CHOCOLATE</option>
+					<option value="44">TORTA HÚMEDA CHOCOLATE 1/8 (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option value="45">TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA CHOCOLATE)</option>
+					<option value="46">TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA MERENGUE)</option>
+					<option value="47">TORTA HÚMEDA CHOCOLATE 1KG</option>
+					<option value="48">TORTA PIÑA C/ CEREZAS 1/4 KG</option>
+					<option value="49">TORTA PIÑA C/ CEREZAS 1/2 KG</option>
+					<option value="50">RED VELVET 1/4 KG</option>
+					<option value="51">RED VELVET 1/2 KG</option>
+					<option value="52">TORTA ZANAHORIA 1/4 KG</option>
+					<option value="53">TORTA ZANAHORIA 1/2 KG</option>
+					<option value="54">TORTA ZANAHORIA 1 KG</option>
+					<option value="55">ROSCA DE ZANAHORIA 1/4KG</option>
+					<option value="56">ROSCA DE VAINILLA</option>
+					<option value="57">ROSCA MARMOLEADO</option>
+					<option value="58">ROSCA LIMÓN</option>
+					<option value="59">ROSCA CHOCOLATE HÚMEDA</option>
+					<option value="60">TORTA VAINILLA 1/4 KG (CUBIERTA MERENGUE)</option>
+					<option value="61">TORTA VAINILLA 1/4 KG (CUBIERTA CHOCOLATE)</option>
+					<option value="62">TORTA VAINILLA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option value="63">TORTA VAINILLA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)</option>
+					<option value="64">TORTA VAINILLA 1 KG (CUBIERTA MERENGUE)</option>
+					<option value="65">TORTA MARMOLEADA 1/4 KG (CUBIERTA MERENGUE)</option>
+					<option value="66">TORTA MARMOLEADA 1/4 KG (CUBIERTA CHOCOLATE)</option>
+					<option value="67">TORTA MARMOLEADA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option value="68">TORTA MARMOLEADA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)</option>
+					<option value="69">TORTA FRÍA DURAZNO 1/4 KG (22 CM)</option>
+					<option value="70">TORTA FRÍA DURAZNO 1/2 KG (26 CM)</option>
+					<option value="71">TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/4 KG (18 CM)</option>
+					<option value="72">TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/2 KG (22 CM)</option>
+					<option value="73">TORTA VAINILLA 3/8 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option value="74">TORTA VAINILLA 1/2 KG (CUBIERTA MERENGUE)</option>
+					<option value="75">TORTA VAINILLA 1/2 KG (CUBIERTA CHOCOLATE)</option>
+					<option value="76">TORTA VAINILLA 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option value="77">TORTA VAINILLA 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option value="78">TORTA MARMOLEADO 1/2 KG (CUBIERTA MERENGUE)</option>
+					<option value="79">TORTA MARMOLEADO 1/2 KG (CUBIERTA CHOCOLATE)</option>
+					<option value="80">TORTA MARMOLEADO 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option value="81">TORTA MARMOLEADO 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option value="82">TORTA DE LIMÓN 1/4 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option value="83">TORTA DE LIMÓN 1/2 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option value="84">TORTA DE LIMÓN 1 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option value="85">TORTA NEGRA 1/4 COMPLETA</option>
+					<option value="86">TEQUEÑOS 5*1,5 FRITOS</option>
+					<option value="87">TEQUEÑOS 7*1,5 FRITOS</option>
+					<option value="88">SERPENTINA</option>
+				</select>
+				<p>Costo Unitario:<br>
+					<span id="costo-unitario-Bs">0.00</span> Bs. / Unidad.<br>
+					<span id="costo-unitario-USD">0.00</span> USD / Unidad.
+				</p>
+				<p>Cantidad:<br>
+					<input type="number" id="cantidad" name="">
+				</p>
+				<p>Porcentaje de Ganancia (%):<br>
+					<input type="number" id="porcentaje-ganancia" name="">
+				</p>
+				<p class="parrafo-boton">
+					<button id="calcular-precio-total">Calcular Precio Inicial</button>
+				</p>
+				<p>Costo Inicial:<br>
+					<span id="costo-total-Bs">0.00</span> Bs.<br>
+					<span id="costo-total-USD">0.00</span> USD.
+				</p>
+			</div>
+		</section>
+		<section class="productos-adicionales">
+			<h2>Producto Adicional</h2>
+			<div class="producto-adicional-container">
+				<p>
+					<span>Descripción:</span>
+					<textarea name="textarea" class="area-texto" cols="33" rows="2" wrap="hard" id="descripcion_1"></textarea>
+					<!-- <input type="text" id="descripcion_1" name=""> -->
+				</p>
+				<p>
+					<span>Cantidad:</span>
+					<input type="number" id="cantidad_adicional_1" name="">
+				</p>
+				<p>
+					<span>Precio unitario (USD/U.):</span>
+					<input type="number" id="precio_adicional_1" name="">
+				</p>
+			</div>
+			<h2>Producto Adicional</h2>
+			<div class="producto-adicional-container">
+				<p>
+					<span>Descripción:</span>
+					<textarea name="textarea" class="area-texto" cols="33" rows="2" wrap="hard" id="descripcion_2"></textarea>
+					<!-- <input type="text" id="descripcion_1" name=""> -->
+				</p>
+				<p>
+					<span>Cantidad:</span>
+					<input type="number" id="cantidad_adicional_2" name="">
+				</p>
+				<p>
+					<span>Precio unitario (USD/U.):</span>
+					<input type="number" id="precio_adicional_2" name="">
+				</p>
+			</div>
+			<h2>Producto Adicional</h2>
+			<div class="producto-adicional-container">
+				<p>
+					<span>Descripción:</span>
+					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_3"></textarea>
+					<!-- <input type="text" id="descripcion_1" name=""> -->
+				</p>
+				<p>
+					<span>Cantidad:</span>
+					<input type="number" id="cantidad_adicional_3" name="">
+				</p>
+				<p>
+					<span>Precio unitario (USD/U.):</span>
+					<input type="number" id="precio_adicional_3" name="">
+				</p>
+			</div>
+			<div class="calculos-finales">
+				<p>Costo Adicional:<br>
+					<span id="costo-adicional-Bs">0.00</span> Bs. adicionales<br>
+					<span id="costo-adicional-USD">0.00</span> USD adicionales.
+				</p>
+				<p class="parrafo-boton-2">
+					<button id="calcular-precio-final">Calcular Precio Final</button>
+				</p>
+				<h2>Precio Final</h2>
+				<p>
+					<span id="costo-final-Bs">0.00</span> Bs.<br>
+					<span id="costo-final-USD">0.00</span> USD.
+				</p>
+			</div>
+		</section>
+		<section class="presupuesto">
+			<div class="logo-presupuesto"></div>
+			<h2>Presupuesto</h2>
+			<div>
+				<p>Producto:<br>
+					<span id="nombre_producto"></span>
+				</p>
+				<p>Categoría:<br>
+					<span id="categoria_producto"></span>
+				</p>
+				<p>Cantidad:<br>
+					<span id="cantidad_producto"></span>
+				</p>
+				<p>Porcentaje de Ganancia:<br>
+					<span id="ganancia_producto"></span> %
+				</p>
+				<p>Precio Inicial:<br>
+					<span id="precio_inicial_producto_Bs"></span> Bs.<br>
+					<span id="precio_inicial_producto_USD"></span> USD.
+				</p>
+				<p>Costo Adicional:<br>
+					<span id="costo_adicional_producto_Bs"></span> Bs.<br>
+					<span id="costo_adicional_producto_USD"></span> USD.
+				</p>
+				<p>Precio Final:<br>
+					<span id="costo_final_producto_Bs"></span> Bs.<br>
+					<span id="costo_final_producto_USD"></span> USD.
+				</p>
+			</div>
+		</section>
+		<section class="limpiar-campos">
+			<p class="parrafo-boton-3">
+				<button id="actualizar_pagina">Limpiar todos los campos</button>
+			</p>
+		</section>
+	</main>
+<script type="text/javascript" src="calculo-precios.js"></script>
+</body>
+</html>
