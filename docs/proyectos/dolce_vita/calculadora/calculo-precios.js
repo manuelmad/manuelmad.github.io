@@ -231,6 +231,107 @@ function actualizarPrecio() {
 	precio_unitario_USD.innerHTML = precio_unitario_producto_valor_USD.toFixed(2);
 }
 
+let nueva_fila;
+let nueva_columna;
+let nueva_columna2;
+let nueva_columna3;
+let nueva_columna4;
+let nueva_columna5;
+let nueva_columna6;
+
+let tabla;
+let cuerpo_tabla;
+let filas_cuerpotabla;
+
+let filas_tbody;
+let penultima_fila;
+
+// FUNCIÓN PARA AGREGAR FILAS CON LOS PRODUCTOS SELECCIONADOS
+function agregarFila()
+{
+	// Cuento las filas de la tabla y creo un índice
+	tabla = document.getElementById("tabla_resumen");
+	filas_cuerpotabla = tabla.getElementsByTagName("tr").length -2; // "-2" para ignorar las 2 filas de la cabecera
+	//var indice = filas_cuerpotabla + 1;
+
+	// Accedo al body de la tabla
+	cuerpo_tabla = document.getElementById("cuerpo_tabla_resumen");
+	
+	//Creo una nueva fila siempre en la penúltima posición
+	nueva_fila = cuerpo_tabla.insertRow(filas_cuerpotabla-1);
+
+	// Agrego las 6 columnas a la nueva fila para formar celdas
+	nueva_columna = nueva_fila.insertCell(0);
+	nueva_columna2 = nueva_fila.insertCell(1);
+	nueva_columna3 = nueva_fila.insertCell(2);
+	nueva_columna4 = nueva_fila.insertCell(3);
+	nueva_columna5 = nueva_fila.insertCell(4);
+	nueva_columna6 = nueva_fila.insertCell(5);
+
+	// Muestro valores en cada celda
+	nueva_columna.innerHTML = lista_productos_texto;
+	nueva_columna2.innerHTML = cantidad;
+	nueva_columna3.innerHTML = precio_unitario_producto_valor.toFixed(2);
+	nueva_columna4.innerHTML = precio_unitario_producto_valor_USD.toFixed(2);
+	nueva_columna5.innerHTML = precio_total_Bs.toFixed(2);
+	nueva_columna6.innerHTML = precio_total_USD.toFixed(2);
+}
+
+let celda_usd_total = document.getElementById("celda_suma_usd");
+let celda_Bs_total = document.getElementById("celda_suma_Bs");
+// FUNCIÓN PARA SUMAR LOS COSTOS TOTALES DE LA TABLA
+function sumarTotales() {
+
+	filas_tbody = document.getElementById("cuerpo_tabla_resumen");
+	let b = filas_tbody.getElementsByTagName("tr").length;
+
+	let suma_usd = 0;
+	let suma_Bs = 0;
+
+	let index;
+	for(index= 0; index < b-1; index++) {
+		let celda_usd = filas_tbody.children[index];
+		let usd_total = Number(celda_usd.lastElementChild.innerHTML);
+
+		suma_usd = suma_usd + usd_total;
+		celda_usd_total.innerHTML = suma_usd.toFixed(2);
+
+		let celda_Bs = filas_tbody.children[index];
+		let BS_total = Number(celda_Bs.children[4].innerHTML);
+
+		suma_Bs = suma_Bs + BS_total;
+		celda_Bs_total.innerHTML = suma_Bs.toFixed(2);
+	}
+}
+
+// Accedo al botón de eliminar fila y le asigno el evento de activar la función
+var eliminar_fila = document.getElementById("eliminar_fila");
+eliminar_fila.addEventListener("click", eliminarFila);
+
+
+function eliminarFila()
+{
+	filas_tbody = document.getElementById("cuerpo_tabla_resumen");
+	let a = filas_tbody.getElementsByTagName("tr").length;
+	console.log("Entrada " + a);
+
+	// Condicional para que el botón eliminar no funcione cuando solo queda la fila del total
+	if(a > 1) {
+		penultima_fila = cuerpo_tabla.children[a-2];
+		cuerpo_tabla.removeChild(penultima_fila);
+		a = a - 1;
+	}
+	console.log("Salida " + a);
+
+	sumarTotales();
+
+	// Condicional para que al queda solamente la fila de totales, la celda de suma total sea 0.00
+	if(a == 1) {
+		celda_usd_total.innerHTML = "0.00";
+		celda_Bs_total.innerHTML = "0.00";
+	}
+}
+
 let boton_calcular_precio = document.getElementById("calcular-precio-total");
 boton_calcular_precio.addEventListener("click", calcularPrecioInicial);
 
@@ -246,11 +347,17 @@ function calcularPrecioInicial() {
 
 	precio_total_USD = (precio_unitario_producto_valor_USD * cantidad) * ((porcentaje_ganancia/100)+1);
 	document.getElementById("costo-total-USD").innerHTML = precio_total_USD.toFixed(2);
+
+	agregarFila();
+	sumarTotales();
 }
 
 /****** PRECIO FINAL ********/
 
 // VARIABLES
+let precio_presupuesto_Bs;
+let precio_presupuesto_usd;
+
 let cantidad_adicional_1;
 let precio_adicional_1;
 
@@ -271,6 +378,10 @@ boton_calcular_precio_2.addEventListener("click", calcularPrecioFinal);
 
 // FUNCIÓN PARA CALCULAR LOS PRECIOS FINALES
 function calcularPrecioFinal() {
+
+	precio_presupuesto_Bs = Number(celda_Bs_total.innerHTML);
+	precio_presupuesto_usd = Number(celda_usd_total.innerHTML);
+
 	cantidad_adicional_1 = document.getElementById("cantidad_adicional_1").value;
 	precio_adicional_1 = document.getElementById("precio_adicional_1").value;
 
@@ -289,10 +400,10 @@ function calcularPrecioFinal() {
 	document.getElementById("costo-adicional-Bs").innerHTML = costo_adicional_Bs.toFixed(2);
 
 	// Costo Final
-	costo_final_Bs = precio_total_Bs + costo_adicional_Bs;
+	costo_final_Bs = precio_presupuesto_Bs + costo_adicional_Bs;
 	document.getElementById("costo-final-Bs").innerHTML = costo_final_Bs.toFixed(2);
 
-	costo_final_USD = precio_total_USD + costo_adicional_USD;
+	costo_final_USD = precio_presupuesto_usd + costo_adicional_USD;
 	document.getElementById("costo-final-USD").innerHTML = costo_final_USD.toFixed(2);
 
 	// Mostrar Presupuesto
@@ -304,8 +415,8 @@ function calcularPrecioFinal() {
 
 	document.getElementById("ganancia_producto").innerText = porcentaje_ganancia;
 
-	document.getElementById("precio_inicial_producto_Bs").innerText = precio_total_Bs.toFixed(2);
-	document.getElementById("precio_inicial_producto_USD").innerText = precio_total_USD.toFixed(2);
+	document.getElementById("precio_inicial_producto_Bs").innerText = precio_presupuesto_Bs.toFixed(2);
+	document.getElementById("precio_inicial_producto_USD").innerText = precio_presupuesto_usd.toFixed(2);
 
 	document.getElementById("costo_adicional_producto_Bs").innerText = costo_adicional_Bs.toFixed(2);
 	document.getElementById("costo_adicional_producto_USD").innerText = costo_adicional_USD.toFixed(2);

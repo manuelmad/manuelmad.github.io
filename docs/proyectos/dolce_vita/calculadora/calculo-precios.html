@@ -128,11 +128,44 @@
 				<p class="parrafo-boton">
 					<button id="calcular-precio-total">Calcular Precio Inicial</button>
 				</p>
-				<p>Costo Inicial:<br>
+				<p>Costo Total:<br>
 					<span id="costo-total-Bs">0.00</span> Bs.<br>
 					<span id="costo-total-USD">0.00</span> USD.
 				</p>
 			</div>
+		</section>
+		<section>
+			<h2>Tabla Resumen</h2>
+			<p class="parrafo-boton-eliminar-fila">
+				<button id="eliminar_fila" title="Eliminar fila">Eliminar fila</button>
+			</p>
+			<table id="tabla_resumen">
+				<thead id="cabecera_tabla_resumen">
+					<tr class="primera-fila-cabecera">
+						<th></th>
+						<th></th>
+						<th colspan="2">Precio Unit.</th>
+						<!-- <th></th> -->
+						<th colspan="2">Precio Total</th>
+						<!-- <th></th> -->
+					</tr>
+					<tr class="fila-referencia">
+						<th>Producto</th>
+						<th>Cant.</th>
+						<th>Bs.</th>
+						<th>USD</th>
+						<th>Bs.</th>
+						<th>USD</th>
+					</tr>
+				</thead>
+				<tbody id="cuerpo_tabla_resumen">
+					<tr class="fila-total">
+						<td colspan="4">Total</td>
+						<td id="celda_suma_Bs">0.00</td>
+						<td id="celda_suma_usd">0.00</td>
+					</tr>
+				</tbody>
+			</table>
 		</section>
 		<section class="productos-adicionales">
 			<h2>Producto Adicional</h2>

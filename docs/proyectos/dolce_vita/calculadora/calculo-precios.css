@@ -85,6 +85,15 @@ input:hover {
 	border: 0.1rem solid var(--medium-blue);
 }
 
+table {
+	margin: 1rem auto;
+}
+
+table, th, td {
+	border: 0.1rem solid var(--black);
+	border-collapse: collapse;
+}
+
 /* SECCIÓN DE CÁLCULOS INICIALES */
 
 .calculos {
@@ -115,6 +124,66 @@ input {
 .parrafo-boton {
 	text-align: center;
 	margin-top: 2rem;
+}
+
+.parrafo-boton-eliminar-fila {
+	text-align: center;
+}
+
+#eliminar_fila {
+	width: 8rem;
+	height: 2rem;
+}
+
+.primera-fila-cabecera th:first-child {
+	border-left: 0.1rem solid white;
+	border-top: 0.1rem solid white;
+	border-right: 0.1rem solid white;
+}
+
+.primera-fila-cabecera th:nth-child(2) {
+	border-top: 0.1rem solid white;
+}
+
+.fila-referencia, .primera-fila-cabecera th:nth-child(3), .primera-fila-cabecera th:nth-child(4) {
+	background-color: var(--kind-pink);
+}
+
+.fila-referencia th:first-child {
+	width: 12rem;
+}
+
+.fila-referencia th:nth-child(3),
+.fila-referencia th:nth-child(4) {
+	min-width: 3rem;
+}
+
+.fila-referencia th:nth-child(5),
+.fila-referencia th:nth-child(6) {
+	min-width: 4rem;
+}
+
+.fila-total td:first-child {
+	text-align: end;
+	padding-right: 0.5rem;
+	border-left: 0.1rem solid white;
+	border-bottom: 0.1rem solid white;
+}
+
+#cuerpo_tabla_resumen tr td:nth-child(2) {
+	text-align: center;
+}
+
+#cuerpo_tabla_resumen tr td:nth-child(3),
+#cuerpo_tabla_resumen tr td:nth-child(4),
+#cuerpo_tabla_resumen tr td:nth-child(5),
+#cuerpo_tabla_resumen tr td:nth-child(6) {
+	text-align: right;
+}
+
+#cuerpo_tabla_resumen .fila-total td:nth-child(2), .fila-total td:nth-child(3) {
+	background-color: var(--very-light-blue);
+	text-align: end;
 }
 
 /* SECCIÓN DE CÁLCULOS ADICIONALES */
@@ -235,6 +304,7 @@ input {
 	background-position: center;
     background-repeat: no-repeat;
 	margin-top: 1rem;
+	display: none;
 }
 
 .presupuesto p {
@@ -280,12 +350,13 @@ input {
 
 .limpiar-campos {
 	border: none;
+	margin-bottom: 0;
 }
 
 .parrafo-boton-3 {
 	text-align: center;
 	margin-top: 2rem;
-	margin-bottom: 2rem;
+	padding-bottom: 2rem;
 }
 
 #actualizar_pagina {
