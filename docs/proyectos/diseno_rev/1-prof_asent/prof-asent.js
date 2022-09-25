@@ -1173,3 +1173,12 @@ function AnalisisSuperficial()
 		alert("Todos los datos son necesarios para realizar el análisis. Por favor no deje ningún campo vacío.");
 	}
 }
+
+/****** BOTÓN DE REINICIO *******/
+
+var boton_limpiar = document.getElementById("boton_limpiar_campos");
+boton_limpiar.addEventListener("click", limpiarCampos);
+
+function limpiarCampos() {
+	location.reload();
+}
