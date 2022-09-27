@@ -219,7 +219,7 @@ function actualizarPrecio() {
 
 	categoria = array_categoria_producto[lista_productos_valor];
 
-	tasa_cambio = document.getElementById("tasa-cambio").value;
+	tasa_cambio = Number(document.getElementById("tasa-cambio").value);
 
 	// BOLÍVARES
 	precio_unitario_producto_valor = array_precios_unitarios[lista_productos_valor];
@@ -277,8 +277,8 @@ function agregarFila()
 	nueva_columna2.innerHTML = cantidad;
 	nueva_columna3.innerHTML = precio_unitario_producto_valor.toFixed(2);
 	nueva_columna4.innerHTML = precio_unitario_producto_valor_USD.toFixed(2);
-	nueva_columna5.innerHTML = precio_total_Bs.toFixed(2);
-	nueva_columna6.innerHTML = precio_total_USD.toFixed(2);
+	nueva_columna5.innerHTML = Number(precio_total_Bs).toFixed(2);
+	nueva_columna6.innerHTML = Number(precio_total_USD).toFixed(2);
 }
 
 let celda_usd_total = document.getElementById("celda_suma_usd");
@@ -357,11 +357,20 @@ function calcularPrecioInicial() {
 
 	porcentaje_ganancia = document.getElementById("porcentaje-ganancia").value;
 
-	precio_total_Bs = (precio_unitario_producto_valor * cantidad) * ((porcentaje_ganancia/100)+1);
-	document.getElementById("costo-total-Bs").innerHTML = precio_total_Bs.toFixed(2);
+	if(numero_producto+1 == 36 || numero_producto+1 == 37 || numero_producto+1 == 38 || numero_producto+1 == 39 || numero_producto+1 == 51 || numero_producto+1 == 53 || numero_producto+1 == 69 || numero_producto+1 == 70 || numero_producto+1 == 71 || numero_producto+1 == 72 || numero_producto+1 == 73 || numero_producto+1 == 74 || numero_producto+1 == 75 || numero_producto+1 == 76 || numero_producto+1 == 77 || numero_producto+1 == 78 || numero_producto+1 == 79 || numero_producto+1 == 80 | numero_producto+1 == 81 || numero_producto+1 == 83) {
+		precio_total_Bs = ((precio_unitario_producto_valor * cantidad) * ((porcentaje_ganancia/100)+1))+tasa_cambio;
 
-	precio_total_USD = (precio_unitario_producto_valor_USD * cantidad) * ((porcentaje_ganancia/100)+1);
-	document.getElementById("costo-total-USD").innerHTML = precio_total_USD.toFixed(2);
+		precio_total_USD = ((precio_unitario_producto_valor_USD * cantidad) * ((porcentaje_ganancia/100)+1))+1;
+	}
+	else {
+		precio_total_Bs = (precio_unitario_producto_valor * cantidad) * ((porcentaje_ganancia/100)+1);
+
+		precio_total_USD = (precio_unitario_producto_valor_USD * cantidad) * ((porcentaje_ganancia/100)+1);
+	}
+
+	document.getElementById("costo-total-Bs").innerHTML = Number(precio_total_Bs).toFixed(2);
+
+	document.getElementById("costo-total-USD").innerHTML = Number(precio_total_USD).toFixed(2);
 
 	agregarFila();
 	sumarTotales();
