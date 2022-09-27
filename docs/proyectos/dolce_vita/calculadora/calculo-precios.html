@@ -24,7 +24,100 @@
 				<p>Tasa de cambio (Bs. / USD):<br>
 					<input type="number" id="tasa-cambio" name="">
 				</p>
-				<select onchange = "actualizarPrecio()" id="lista-productos">
+				<p>Elija el producto</p>
+				<input list="productos" onchange = "actualizarPrecio()" id="input_lista">
+				<datalist id="productos">
+					<option data-value="0" value="MINI BROWNIE">MINI BROWNIE</option>
+					<option data-value="1" value="ENRROLLADOS DE VAINILLA">ENRROLLADOS DE VAINILLA</option>
+					<option data-value="2" value="ALFAJORES">ALFAJORES</option>
+					<option data-value="3" value="MINI PONQUESITOS DE VAINILLA C/MERENGUE">MINI PONQUESITOS DE VAINILLA C/MERENGUE</option>
+					<option data-value="4" value="TRUFAS C/ CHISPAS">TRUFAS C/ CHISPAS</option>
+					<option data-value="5" value="MINI QUESILLOS">MINI QUESILLOS</option>
+					<option data-value="6" value="PONQUESITOS DE VAINILLA">PONQUESITOS DE VAINILLA</option>
+					<option data-value="7" value="PONQUESITOS DE VAINILLA C/ MERENGUE">PONQUESITOS DE VAINILLA C/ MERENGUE</option>
+					<option data-value="8" value="PONQUESITOS DE VAINILLA C/ AREQUIPE">PONQUESITOS DE VAINILLA C/ AREQUIPE</option>
+					<option data-value="9" value="PONQUESITOS VAINILLA C/ MERENGUE + RELLENO CHOCOLATE">PONQUESITOS VAINILLA C/ MERENGUE + RELLENO CHOCOLATE</option>
+					<option data-value="10" value="PONQUESITOS DE CHOCOLATE">PONQUESITOS DE CHOCOLATE</option>
+					<option data-value="11" value="PONQUESITOS CHOCOLATE C/ MERENGUE">PONQUESITOS CHOCOLATE C/ MERENGUE</option>
+					<option data-value="12" value="MINI PIE DE LIMÓN">MINI PIE DE LIMÓN</option>
+					<option data-value="13" value="MINI PIE DE PARCHITA">MINI PIE DE PARCHITA</option>
+					<option data-value="14" value="DOLCE CUP VASOS 1,5 OZ">DOLCE CUP VASOS 1,5 OZ</option>
+					<option data-value="15" value="BROWNIE 9 PORCIONES">BROWNIE 9 PORCIONES</option>
+					<option data-value="16" value="QUESILLO 747">QUESILLO 747</option>
+					<option data-value="17" value="PIE DE LIMON PORCIÓN">PIE DE LIMON PORCIÓN</option>
+					<option data-value="18" value="PIE DE PARCHITA PORCIÓN">PIE DE PARCHITA PORCIÓN</option>
+					<option data-value="19" value="TORTA 3 LECHES C/ MERENGUE">TORTA 3 LECHES C/ MERENGUE</option>
+					<option data-value="20" value="TORTA 3 LECHES C/ CHANTILLY">TORTA 3 LECHES C/ CHANTILLY</option>
+					<option data-value="21" value="TORTA IMPOSIBLE">TORTA IMPOSIBLE</option>
+					<option data-value="22" value="TORTA HÚMEDA DE CHOCOLATE C/CHOC">TORTA HÚMEDA DE CHOCOLATE C/CHOC</option>
+					<option data-value="23" value="RED VELVET C/ MERENGUE Y CHOC">RED VELVET C/ MERENGUE Y CHOC</option>
+					<option data-value="24" value="TORTA DE ZANAHORIA">TORTA DE ZANAHORIA</option>
+					<option data-value="25" value="QUESILLO COMPLETO">QUESILLO COMPLETO</option>
+					<option data-value="26" value="PIE DE LIMÓN">PIE DE LIMÓN</option>
+					<option data-value="27" value="PIE DE PARCHITA">PIE DE PARCHITA</option>
+					<option data-value="28" value="BROWNIE">BROWNIE</option>
+					<option data-value="29" value="TORTA 3 LECHES 1 1/2 KG">TORTA 3 LECHES 1 1/2 KG</option>
+					<option data-value="30" value="TORTA 3 LECHES 1 KG">TORTA 3 LECHES 1 KG</option>
+					<option data-value="31" value="TORTA 3 LECHES 1/2 KG">TORTA 3 LECHES 1/2 KG</option>
+					<option data-value="32" value="TORTA 3 LECHES 1/4 KG">TORTA 3 LECHES 1/4 KG</option>
+					<option data-value="33" value="TORTA IMPOSIBLE 1/2 KG">TORTA IMPOSIBLE 1/2 KG</option>
+					<option data-value="34" value="TORTA IMPOSIBLE 1/4 KG">TORTA IMPOSIBLE 1/4 KG</option>
+					<option data-value="35" value="TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA MERENGUE)">TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA MERENGUE)</option>
+					<option data-value="36" value="TORTA HÚMEDA CHOCOLATE 1/2 (RELLENA CHOCOLATE Y CUBIERTA MERENGUE)">TORTA HÚMEDA CHOCOLATE 1/2 (RELLENA CHOCOLATE Y CUBIERTA MERENGUE)</option>
+					<option data-value="37" value="TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA CHOCOLATE)">TORTA HÚMEDA CHOCOLATE 1/2 (CUBIERTA CHOCOLATE)</option>
+					<option data-value="38" value="TORTA HÚMEDA CHOCOLATE 1/2 RELLENA Y CUBIERTA CON CHOCOLATE">TORTA HÚMEDA CHOCOLATE 1/2 RELLENA Y CUBIERTA CON CHOCOLATE</option>
+					<option data-value="39" value="TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE)">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE)</option>
+					<option data-value="40" value="TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE Y RELLENA CHOCOLATE)">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA MERENGUE Y RELLENA CHOCOLATE)</option>
+					<option data-value="41" value="TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA CHOCOLATE)">TORTA HÚMEDA CHOCOLATE 1/4 (CUBIERTA CHOCOLATE)</option>
+					<option data-value="42" value="TORTA HÚMEDA CHOCOLATE 1/4 RELLENA Y CUBIERTA CHOCOLATE">TORTA HÚMEDA CHOCOLATE 1/4 RELLENA Y CUBIERTA CHOCOLATE</option>
+					<option data-value="43" value="TORTA HÚMEDA CHOCOLATE 1/8 (RELLENA Y CUBIERTA CHOCOLATE)">TORTA HÚMEDA CHOCOLATE 1/8 (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option data-value="44" value="TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA CHOCOLATE)</option>
+						<option data-value="">TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA CHOCOLATE)</option>
+					<option data-value="45" value="TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA MERENGUE)">TORTA HÚMEDA CHOCOLATE 1/8 (CUBIERTA MERENGUE)</option>
+					<option data-value="46" value="TORTA HÚMEDA CHOCOLATE 1KG">TORTA HÚMEDA CHOCOLATE 1KG</option>
+					<option data-value="47" value="TORTA PIÑA C/ CEREZAS 1/4 KG">TORTA PIÑA C/ CEREZAS 1/4 KG</option>
+					<option data-value="48" value="TORTA PIÑA C/ CEREZAS 1/2 KG">TORTA PIÑA C/ CEREZAS 1/2 KG</option>
+					<option data-value="49" value="RED VELVET 1/4 KG">RED VELVET 1/4 KG</option>
+					<option data-value="50" value="RED VELVET 1/2 KG">RED VELVET 1/2 KG</option>
+					<option data-value="51" value="TORTA ZANAHORIA 1/4 KG">TORTA ZANAHORIA 1/4 KG</option>
+					<option data-value="52" value="TORTA ZANAHORIA 1/2 KG">TORTA ZANAHORIA 1/2 KG</option>
+					<option data-value="53" value="TORTA ZANAHORIA 1 KG">TORTA ZANAHORIA 1 KG</option>
+					<option data-value="54" value="ROSCA DE ZANAHORIA 1/4KG">ROSCA DE ZANAHORIA 1/4KG</option>
+					<option data-value="55" value="ROSCA DE VAINILLA">ROSCA DE VAINILLA</option>
+					<option data-value="56" value="ROSCA MARMOLEADO">ROSCA MARMOLEADO</option>
+					<option data-value="57" value="ROSCA LIMÓN">ROSCA LIMÓN</option>
+					<option data-value="58" value="ROSCA CHOCOLATE HÚMEDA">ROSCA CHOCOLATE HÚMEDA</option>
+					<option data-value="59" value="TORTA VAINILLA 1/4 KG (CUBIERTA MERENGUE)">TORTA VAINILLA 1/4 KG (CUBIERTA MERENGUE)</option>
+					<option data-value="60" value="TORTA VAINILLA 1/4 KG (CUBIERTA CHOCOLATE)">TORTA VAINILLA 1/4 KG (CUBIERTA CHOCOLATE)</option>
+					<option data-value="61" value="TORTA VAINILLA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)">TORTA VAINILLA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option data-value="62" value="TORTA VAINILLA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)">TORTA VAINILLA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)</option>
+					<option data-value="63" value="TORTA VAINILLA 1 KG (CUBIERTA MERENGUE)">TORTA VAINILLA 1 KG (CUBIERTA MERENGUE)</option>
+					<option data-value="64" value="TORTA MARMOLEADA 1/4 KG (CUBIERTA MERENGUE)">TORTA MARMOLEADA 1/4 KG (CUBIERTA MERENGUE)</option>
+					<option data-value="65" value="TORTA MARMOLEADA 1/4 KG (CUBIERTA CHOCOLATE)">TORTA MARMOLEADA 1/4 KG (CUBIERTA CHOCOLATE)</option>
+					<option data-value="66" value="TORTA MARMOLEADA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)">TORTA MARMOLEADA 1/4 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option data-value="67" value="TORTA MARMOLEADA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)">TORTA MARMOLEADA 1/4 KG (RELLENA Y CUBIERTA CHOCO-AREQUIPE)</option>
+					<option data-value="68" value="TORTA FRÍA DURAZNO 1/4 KG (22 CM)">TORTA FRÍA DURAZNO 1/4 KG (22 CM)</option>
+					<option data-value="69" value="TORTA FRÍA DURAZNO 1/2 KG (26 CM)">TORTA FRÍA DURAZNO 1/2 KG (26 CM)</option>
+					<option data-value="70" value="TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/4 KG (18 CM)">TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/4 KG (18 CM)</option>
+					<option data-value="71" value="TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/2 KG (22 CM)">TORTA FRÍA C/ GANACHE DE CHOCOLATE 1/2 KG (22 CM)</option>
+					<option data-value="72" value="TORTA VAINILLA 3/8 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)">TORTA VAINILLA 3/8 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option data-value="73" value="TORTA VAINILLA 1/2 KG (CUBIERTA MERENGUE)">TORTA VAINILLA 1/2 KG (CUBIERTA MERENGUE)</option>
+					<option data-value="74" value="TORTA VAINILLA 1/2 KG (CUBIERTA CHOCOLATE)">TORTA VAINILLA 1/2 KG (CUBIERTA CHOCOLATE)</option>
+					<option data-value="75" value="TORTA VAINILLA 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)">TORTA VAINILLA 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option data-value="76" value="TORTA VAINILLA 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)">TORTA VAINILLA 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option data-value="77" value="TORTA MARMOLEADO 1/2 KG (CUBIERTA MERENGUE)">TORTA MARMOLEADO 1/2 KG (CUBIERTA MERENGUE)</option>
+					<option data-value="78" value="TORTA MARMOLEADO 1/2 KG (CUBIERTA CHOCOLATE)">TORTA MARMOLEADO 1/2 KG (CUBIERTA CHOCOLATE)</option>
+					<option data-value="79" value="TORTA MARMOLEADO 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)">TORTA MARMOLEADO 1/2 KG (RELLENA CHOCO Y CUBIERTA MERENGUE)</option>
+					<option data-value="80" value="TORTA MARMOLEADO 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)">TORTA MARMOLEADO 1/2 KG (RELLENA Y CUBIERTA CHOCOLATE)</option>
+					<option data-value="81" value="TORTA DE LIMÓN 1/4 KG (RELLENA CREMA Y CUBIERTA MERENGUE)">TORTA DE LIMÓN 1/4 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option data-value="82" value="TORTA DE LIMÓN 1/2 KG (RELLENA CREMA Y CUBIERTA MERENGUE)">TORTA DE LIMÓN 1/2 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option data-value="83" value="TORTA DE LIMÓN 1 KG (RELLENA CREMA Y CUBIERTA MERENGUE)">TORTA DE LIMÓN 1 KG (RELLENA CREMA Y CUBIERTA MERENGUE)</option>
+					<option data-value="84" value="TORTA NEGRA 1/4 COMPLETA">TORTA NEGRA 1/4 COMPLETA</option>
+					<option data-value="85" value="TEQUEÑOS 5*1,5 FRITOS">TEQUEÑOS 5*1,5 FRITOS</option>
+					<option data-value="86" value="TEQUEÑOS 7*1,5 FRITOS">TEQUEÑOS 7*1,5 FRITOS</option>
+					<option data-value="87" value="SERPENTINA">SERPENTINA</option>
+				</datalist>
+				<!-- <select onchange = "actualizarPrecio()" id="lista-productos">
 					<option value="0" selected>-----------</option>
 					<option value="1">MINI BROWNIE</option>
 					<option value="2">ENRROLLADOS DE VAINILLA</option>
@@ -114,7 +207,7 @@
 					<option value="86">TEQUEÑOS 5*1,5 FRITOS</option>
 					<option value="87">TEQUEÑOS 7*1,5 FRITOS</option>
 					<option value="88">SERPENTINA</option>
-				</select>
+				</select> -->
 				<p>Costo Unitario:<br>
 					<span id="costo-unitario-Bs">0.00</span> Bs. / Unidad.<br>
 					<span id="costo-unitario-USD">0.00</span> USD / Unidad.
@@ -216,6 +309,38 @@
 					<input type="number" id="precio_adicional_3" name="">
 				</p>
 			</div>
+			<h2>Producto Adicional</h2>
+			<div class="producto-adicional-container">
+				<p>
+					<span>Descripción:</span>
+					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_4"></textarea>
+					<!-- <input type="text" id="descripcion_1" name=""> -->
+				</p>
+				<p>
+					<span>Cantidad:</span>
+					<input type="number" id="cantidad_adicional_4" name="">
+				</p>
+				<p>
+					<span>Precio unitario (USD/U.):</span>
+					<input type="number" id="precio_adicional_4" name="">
+				</p>
+			</div>
+			<h2>Producto Adicional</h2>
+			<div class="producto-adicional-container">
+				<p>
+					<span>Descripción:</span>
+					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_5"></textarea>
+					<!-- <input type="text" id="descripcion_1" name=""> -->
+				</p>
+				<p>
+					<span>Cantidad:</span>
+					<input type="number" id="cantidad_adicional_5" name="">
+				</p>
+				<p>
+					<span>Precio unitario (USD/U.):</span>
+					<input type="number" id="precio_adicional_5" name="">
+				</p>
+			</div>
 			<div class="calculos-finales">
 				<p>Costo Adicional:<br>
 					<span id="costo-adicional-Bs">0.00</span> Bs. adicionales<br>
@@ -234,8 +359,23 @@
 		<section class="presupuesto">
 			<div class="logo-presupuesto"></div>
 			<h2>Presupuesto</h2>
-			<div>
-				<p>Producto:<br>
+			<div class="container-presupuesto">
+				<table class="tabla-prespuesto" id="tabla_presupuesto">
+					<thead>
+						<tr class="fila-cabecera-prespuesto">
+							<th>Producto</th>
+							<th>Cant.</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpo_tabla_prespuesto">
+
+					</tbody>
+				</table>
+				<p>
+					Precio Total (USD):<br>
+					<input type="number" id="precio_final_manual">
+				</p>
+				<!-- <p>Producto:<br>
 					<span id="nombre_producto"></span>
 				</p>
 				<p>Categoría:<br>
@@ -258,7 +398,7 @@
 				<p>Precio Final:<br>
 					<span id="costo_final_producto_Bs"></span> Bs.<br>
 					<span id="costo_final_producto_USD"></span> USD.
-				</p>
+				</p> -->
 			</div>
 		</section>
 		<section class="limpiar-campos">

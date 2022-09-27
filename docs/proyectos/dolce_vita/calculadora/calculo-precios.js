@@ -1,22 +1,21 @@
 /****** PRECIO INICIAL ********/
 
 let array_precios_unitarios = [
-	0, /*0*/
-	0.59,/*1*/
-	0.64,/*2*/
-	0.69,/*3*/
-	0.43,/*4*/
-	0.62,/*5*/
-	0.69,/*6*/
-	0.67,/*7*/
-	1.23,/*8*/
-	1.51,/*9*/
-	1.77,/*10*/
-	0.76,/*11*/
-	1.32,/*12*/
-	1.04,/*13*/
-	1.15,/*14*/
-	1.19,/*15*/
+	0.54,/*1*/
+	0.81,/*2*/
+	0.81,/*3*/
+	0.463,/*4*/
+	0.648,/*5*/
+	0.81,/*6*/
+	0.648,/*7*/
+	1.08,/*8*/
+	1.62,/*9*/
+	1.62,/*10*/
+	0.81,/*11*/
+	1.08,/*12*/
+	1.08,/*13*/
+	1.08,/*14*/
+	1.08,/*15*/
 	3.6,/*16*/
 	8.03,/*17*/
 	14.2,/*18*/
@@ -93,7 +92,6 @@ let array_precios_unitarios = [
 ];
 
 let array_categoria_producto = [
-	"", /*0*/
 	"MINI DULCES",/*1*/
 	"MINI DULCES",/*2*/
 	"MINI DULCES",/*3*/
@@ -187,6 +185,7 @@ let array_categoria_producto = [
 // VARIABLES
 let lista_productos_valor;
 let lista_productos_texto;
+let texto;
 let categoria;
 let numero_producto;
 
@@ -207,12 +206,16 @@ let precio_total_USD;
 
 // Función para que la lista desplegable asigne los costos unitarios
 function actualizarPrecio() {
-	// Tomar el value de la option
-	lista_productos_valor = document.getElementById("lista-productos").value;
-
 	// Tomar el texto de la option
-	let texto = document.getElementById("lista-productos");
-	lista_productos_texto = texto.options[texto.selectedIndex].text;
+	// let texto = document.getElementById("lista-productos");
+	// lista_productos_texto = texto.options[texto.selectedIndex].text;
+
+	texto = document.getElementById("input_lista").value;
+
+	// Tomar el value de la option
+	// lista_productos_valor = document.getElementById("lista-productos").value;
+
+	lista_productos_valor = document.querySelector("#productos option[value='"+texto+"']").dataset.value;
 
 	categoria = array_categoria_producto[lista_productos_valor];
 
@@ -226,7 +229,8 @@ function actualizarPrecio() {
 	precio_unitario_producto_valor_USD = precio_unitario_producto_valor / tasa_cambio;
 
 	numero_producto = array_precios_unitarios.indexOf(precio_unitario_producto_valor);
-	console.log(`El número del producto es ${numero_producto}`);
+	console.log(`El número del producto es ${numero_producto+1}`);
+	console.log(`La categoria del producto es ${categoria}`);
 
 	precio_unitario_USD.innerHTML = precio_unitario_producto_valor_USD.toFixed(2);
 }
@@ -252,7 +256,6 @@ function agregarFila()
 	// Cuento las filas de la tabla y creo un índice
 	tabla = document.getElementById("tabla_resumen");
 	filas_cuerpotabla = tabla.getElementsByTagName("tr").length -2; // "-2" para ignorar las 2 filas de la cabecera
-	//var indice = filas_cuerpotabla + 1;
 
 	// Accedo al body de la tabla
 	cuerpo_tabla = document.getElementById("cuerpo_tabla_resumen");
@@ -269,7 +272,8 @@ function agregarFila()
 	nueva_columna6 = nueva_fila.insertCell(5);
 
 	// Muestro valores en cada celda
-	nueva_columna.innerHTML = lista_productos_texto;
+	//nueva_columna.innerHTML = lista_productos_texto;
+	nueva_columna.innerHTML = texto;
 	nueva_columna2.innerHTML = cantidad;
 	nueva_columna3.innerHTML = precio_unitario_producto_valor.toFixed(2);
 	nueva_columna4.innerHTML = precio_unitario_producto_valor_USD.toFixed(2);
@@ -279,6 +283,7 @@ function agregarFila()
 
 let celda_usd_total = document.getElementById("celda_suma_usd");
 let celda_Bs_total = document.getElementById("celda_suma_Bs");
+
 // FUNCIÓN PARA SUMAR LOS COSTOS TOTALES DE LA TABLA
 function sumarTotales() {
 
@@ -308,6 +313,8 @@ function sumarTotales() {
 var eliminar_fila = document.getElementById("eliminar_fila");
 eliminar_fila.addEventListener("click", eliminarFila);
 
+let ultima_fila_presupuesto;
+let filas_tbody_prespuesto;
 
 function eliminarFila()
 {
@@ -325,10 +332,18 @@ function eliminarFila()
 
 	sumarTotales();
 
-	// Condicional para que al queda solamente la fila de totales, la celda de suma total sea 0.00
+	// Condicional para que al quedar solamente la fila de totales, la celda de suma total sea 0.00
 	if(a == 1) {
 		celda_usd_total.innerHTML = "0.00";
 		celda_Bs_total.innerHTML = "0.00";
+	}
+
+	// CÓDIGO PARA ELIMINAR LAS FILAS DE LA TABLA DE PRESUPUESTO
+	filas_tbody_prespuesto = document.getElementById("cuerpo_tabla_prespuesto");
+	let b = filas_tbody_prespuesto.getElementsByTagName("tr").length;
+	ultima_fila_presupuesto = filas_tbody_prespuesto.lastElementChild;
+	if(b > 0) {
+		filas_tbody_prespuesto.removeChild(ultima_fila_presupuesto);
 	}
 }
 
@@ -350,6 +365,7 @@ function calcularPrecioInicial() {
 
 	agregarFila();
 	sumarTotales();
+	agregarFilaPresupuesto();
 }
 
 /****** PRECIO FINAL ********/
@@ -366,6 +382,12 @@ let precio_adicional_2;
 
 let cantidad_adicional_3;
 let precio_adicional_3;
+
+let cantidad_adicional_4;
+let precio_adicional_4;
+
+let cantidad_adicional_5;
+let precio_adicional_5;
 
 let costo_adicional_Bs;
 let costo_adicional_USD;
@@ -391,8 +413,14 @@ function calcularPrecioFinal() {
 	cantidad_adicional_3 = document.getElementById("cantidad_adicional_3").value;
 	precio_adicional_3 = document.getElementById("precio_adicional_3").value;
 
+	cantidad_adicional_4 = document.getElementById("cantidad_adicional_4").value;
+	precio_adicional_4 = document.getElementById("precio_adicional_4").value;
+
+	cantidad_adicional_5 = document.getElementById("cantidad_adicional_5").value;
+	precio_adicional_5 = document.getElementById("precio_adicional_5").value;
+
 	// Costo Adicional
-	costo_adicional_USD = cantidad_adicional_1*precio_adicional_1 + cantidad_adicional_2*precio_adicional_2 + cantidad_adicional_3*precio_adicional_3;
+	costo_adicional_USD = cantidad_adicional_1*precio_adicional_1 + cantidad_adicional_2*precio_adicional_2 + cantidad_adicional_3*precio_adicional_3 + + cantidad_adicional_4*precio_adicional_4 + cantidad_adicional_5*precio_adicional_5;
 
 	document.getElementById("costo-adicional-USD").innerHTML = costo_adicional_USD.toFixed(2);
 
@@ -405,24 +433,38 @@ function calcularPrecioFinal() {
 
 	costo_final_USD = precio_presupuesto_usd + costo_adicional_USD;
 	document.getElementById("costo-final-USD").innerHTML = costo_final_USD.toFixed(2);
+}
 
-	// Mostrar Presupuesto
-	document.getElementById("nombre_producto").innerText = lista_productos_texto;
+let tabla_prespuesto;
+let filas_cuerpotabla_presupuesto;
+let cuerpo_tabla_prespuesto;
 
-	document.getElementById("categoria_producto").innerText = categoria;
+let nueva_fila_presupuesto;
+let nueva_columna_presupuesto;
+let nueva_columna2_presupuesto;
 
-	document.getElementById("cantidad_producto").innerText = cantidad;
 
-	document.getElementById("ganancia_producto").innerText = porcentaje_ganancia;
+// FUNCIÓN PARA AGREGAR FILAS CON LOS PRODUCTOS SELECCIONADOS A LA TABLA DEL PRESUPUESTO
+function agregarFilaPresupuesto()
+{
+	// Cuento las filas de la tabla y creo un índice
+	tabla_prespuesto = document.getElementById("tabla_presupuesto");
+	filas_cuerpotabla_presupuesto = tabla_prespuesto.getElementsByTagName("tr").length - 1; // "-1" para ignorar la fila de la cabecera
 
-	document.getElementById("precio_inicial_producto_Bs").innerText = precio_presupuesto_Bs.toFixed(2);
-	document.getElementById("precio_inicial_producto_USD").innerText = precio_presupuesto_usd.toFixed(2);
+	// Accedo al body de la tabla
+	cuerpo_tabla_prespuesto = document.getElementById("cuerpo_tabla_prespuesto");
+	
+	//Creo una nueva fila siempre en la penúltima posición
+	nueva_fila_presupuesto = cuerpo_tabla_prespuesto.insertRow(filas_cuerpotabla_presupuesto);
 
-	document.getElementById("costo_adicional_producto_Bs").innerText = costo_adicional_Bs.toFixed(2);
-	document.getElementById("costo_adicional_producto_USD").innerText = costo_adicional_USD.toFixed(2);
+	// Agrego las 6 columnas a la nueva fila para formar celdas
+	nueva_columna_presupuesto = nueva_fila_presupuesto.insertCell(0);
+	nueva_columna2_presupuesto = nueva_fila_presupuesto.insertCell(1);
 
-	document.getElementById("costo_final_producto_Bs").innerText = costo_final_Bs.toFixed(2);
-	document.getElementById("costo_final_producto_USD").innerText = costo_final_USD.toFixed(2);
+	// Muestro valores en cada celda
+	//nueva_columna.innerHTML = lista_productos_texto;
+	nueva_columna_presupuesto.innerHTML = texto;
+	nueva_columna2_presupuesto.innerHTML = cantidad;
 }
 
 /* ACTUALIZAR PÁGINA */
