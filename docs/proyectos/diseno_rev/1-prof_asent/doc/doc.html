@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Documentación para la Determinación de Profundidades de Asentamiento de Revestidores y Ajustes.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<title>Documentación para la Determinación de Profundidades de Asentamiento de Revestidores y Ajustes.</title>
+	<link href="doc.css" type="text/css" rel="stylesheet" />
+	<!--<link href="doc-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="doc-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />-->
+</head>
+<body>
+	<main>
+		<h1>SELECCIÓN DE LA PROFUNDIDAD DE ASENTAMIENTO</h1>
+		<p>El método convencional de selección de la profundidad de asentamiento de la
+		tubería de revestimiento comienza por la identificación del gradiente de presión intersticial, o presión de poro, y del gradiente de fractura. El primero se refiere a la presión que ejercen los fluidos de la formación, mientras que el gradiente de fractura se refiere a la presión que es capaz de romper la formación.</p>
+		<p>Entonces, para la selección de la profundidad de asentamiento de la tubería de revestimiento se utiliza un gráfico donde se muestren: el gradiente de presión de poro y el gradiente de fractura.</p>
+		<p>La operación normal de perforación se desarrollará en el espacio entre ambos gradientes. Es decir, se utilizará un fluido de perforación que genere más presión que la presión de poro para “controlar” el pozo y sin embargo, ese fluido no deberá generar una presión tan grande que fracture la formación y se fugue hacia ésta. Por razones de seguridad, se trabaja entonces con una presión ligeramente superior o sobrebalance a la presión de poro, generalmente entre 0.5 y 1.0 lpg. (margen de viaje). Igual se hace con la presión de fractura a la que se le sustrae un valor similar (margen de arremetida) por seguridad.</p>
+		<p> Así finalmente, el proceso de selección de la profundidades de asentamiento se inicia en el fondo, proyectando la densidad del lodo a la profundidad total (presión intersticial más sobrebalance) hasta el punto en que intercepta el gradiente de fractura menos un margen de arremetida (segmento a-b). Se “asienta” el revestidor en ese punto y da inicio al proceso otra vez (segmento c-d).</p>
+		<p class="img-container">
+			<img src="./img/curva_densidad.jpg">
+		</p>
+
+		<h2>AJUSTE POR PEGA DIFERENCIAL</h2>
+		<p>Se ajusta inicialmente la profundidad de asentamiento de el(los) revestidor(es) intermedio(s), esto se hace tomando en cuenta una posible pega por presión diferencial, lo que a menudo ocurre a la profundidad donde la presión de formación pasa de normal a anormal.</p>
+		<p>Los límites permitidos para bajar un revestidor intermedio dependen de las condiciones siguientes:</p>
+		<ul>
+			<li>A través de zonas de presión normal &Delta;P<sub>T</sub> = 2000 lpc.</li>
+			<li>A través de zonas de presión anormal &Delta;P<sub>T</sub> = 3000 lpc.</li>
+		</ul>
+		<p>Para calcular la presión diferencial a la cual estará sometido el revestidor durante las condiciones antes mencionadas, se toma la diferencia entre la densidad del fluido utilizado a la profundidad de asentamiento del revestidor intermedio y la densidad normal equivalente de la formación (9 lpg.), y se covierte en presión utilizando la siguiente ecuación.</p>
+		<p class="delta-p-calc">&Delta;P<sub>C</sub> = 0.052 * (D<sub>L</sub> - D<sub>N</sub>) * Prof<sub>n-a</sub></p>
+		<p>
+			<span>Donde:</span>
+			<span>&Delta;P<sub>C</sub>: Diferencial de Presión Calculado (lpc.).</span>
+			<span>D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).</span>
+			<span>D<sub>N</sub>: Densidad normal equivalente de la formación (9 lpg.).</span>
+			<span>Prof<sub>n-a</sub>: Profundidad donde la presión de formación pasa de normal a anormal (pies).</span>
+		</p>
+		<p><b>Nota:</b> Si el revestidor a analizar no estará expuesto a la zona de transición normal – anormal, las variables y deben ser substituidas por la Densidad Equivalente de la formación más propensa a causar pega diferencial y su respectiva profundidad, respectivamente.</p>
+		<p>Si el valor de &Delta;P<sub>C</sub> < &Delta;P<sub>T</sub>, entonces el revestidor intermedio SÍ puede ser asentado a la profunidad determinada gráficamente.</p>
+		<p>Si de &Delta;P<sub>C</sub> > &Delta;P<sub>T</sub> , NO se puede asentar a dicha profundidad y se calcula entonces la D<sub>L</sub> que nos permita asentar el revestidor sin riesgo de pega diferencial, usando la misma ecuación arriba mostrada, pero sustituyendo &Delta;P<sub>C</sub> por el valor máximo permitido y despejando D<sub>L</sub>:</p>
+		<p class="den-lodo-cal">
+			<span>2000 = 0.052 * (D<sub>L</sub> - D<sub>N</sub>) * Prof<sub>n-a</sub></span>
+			<br>
+			<span>
+				<math>
+					<msub>
+						<mi>D</mi><mn>L</mn>
+					</msub>
+					<mo>=</mo>
+					<mfrac>
+						<mrow><mi>2000</mi></mrow>
+						<msub>
+							<mi>0.052 * Prof</mi><mn>n-a</mn>
+						</msub>
+					</mfrac>
+					<mo>+</mo>
+					<msub>
+						<mi>D</mi><mn>N</mn>
+					</msub>
+				</math>
+			</span>
+		</p>
+		<p>Finalmente, con D<sub>L</sub> calculado, ubicamos en la gráfica la profundidad de asentamiento corregida del revestidor intermedio (Prof<sub>correg</sub>), la cual será obviamente menor a la originalmente observada (Prof<sub>orig</sub>).</p>
+		<p>Este ajuste de disminución en la profundidad de asentamiento trae como consecuencia que en la perforación del siguiente hoyo quedarían expuestas las formaciones en el intervalo comprendido entre la profundidad original y la corregida, las cuales podrían ser fracturadas. Esta nueva condición obliga a añadir una sarta de revestimiento o liner adicional en el diseño para cubrir el intervalo que ha quedado comprometido (Prof<sub>correg</sub> – Prof<sub>orig</sub>).</p>
+		<p>Opcionalmente, dicho revestimiento o liner adicional podría asentarse a una profundidad mayor a Prof<sub>orig</sub>, tal decisión dependerá de las políticas de la empresa o consideraciones económicas. Para conocer la máxima profundidad a la cual puede asentarse la sarta adicional, se sigue el siguiente procedimiento: i) entrar en la gráfica Densidad Equivalente vs. Profundidad con el valor de Prof<sub>correg</sub>hasta interceptar la curva de margen de arremetida, ii) desplazarse verticalmente hacia abajo hasta interceptar la curva de densidad de lodo, iii) leer el valor de profundidad para dicho punto (Prof<sub>máx</sub>).</p>
+		<p>En conclusión, la sarta adicional de revestimiento o liner podrá asentarse a cualquier profundidad entre Prof<sub>orig</sub> y Prof<sub>máx</sub>.</p>
+
+		<h2>AJUSTE POR ARREMETIDAS</h2>
+		<p>Posteriormente, se ajusta la profundidad de asentamiento de el(los) revestidor(es) superficial(es), basados en la capacidad para resistir con seguridad una arremetida que cause un aumento en el peso del lodo de 0,5 lpg, cuando la perforación haya alcanzado la profundidad de asentamiento del siguiente revestidor (superficial o intermedio). Para esto, se realiza un procedimiento de ensayo y error, donde se calcula la densidad equivalente del fluido (DE<sub>f</sub>) a nivel de las formaciones expuestas justo por debajo del revestidor superficial que se está analizando, utilizando la siguiente ecuación:</p>
+		<p class="densidad-equiv-formula">
+			<math>
+				<msub>
+					<mi>DE</mi><mn>f</mn>
+				</msub>
+				<mo>=</mo>
+				<msub>
+					<mi>D</mi><mn>L</mn>
+				</msub>
+				<mo>+</mo>
+				<mfrac>
+					<mrow>
+						<msub>
+							<mi>Prof</mi><mn>rev-int</mn>
+						</msub>
+					</mrow>
+					<msub>
+						<mi>Prof</mi><mn>rev-sup</mn>
+					</msub>
+				</mfrac>
+				<mo>* 0.5</mo>
+			</math>
+		</p>
+		<p>
+			<span>Donde:</span>
+			<span>DE<sub>f</sub>: Densidad equivalente del fluido a nivel de la zapata del revestidor superficial (lpg.).</span>
+			<span>D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).</span>
+			<span>Prof<sub>rev-int</sub>: Profundidad de asentamiento del revestidor intermedio (pies).</span>
+			<span>Prof<sub>rev-sup</sub>: Profundidad de asentamiento del revestidor superficial (pies).</span>
+			<span>0.5: Incremento del valor de la densidad del lodo durante la arremetida (lpg.).</span>
+		</p>
+		<p>Luego de calcular la Densidad Equivalente de Fluido, se compara con la densidad equivalente de fractura a la misma profundidad (Prof<sub>rev-sup</sub>).</p>
+		<p>Si DE<sub>f</sub> < Densidad Equiv. de Fractura, el revestidor SÍ puede asentarse a la profundidad observada en la gráfica.</p>
+		<p>Si DE<sub>f</sub> > Densidad Equiv. de Fractura, el revestidor superficial NO puede ser asentado a dicha profundidad y debe escogerse una distinta, obviamente mayor. Se repite el procedimiento hasta conseguir un valor de Prof<sub>rev-sup</sub> que asegure cumplir que DE<sub>f</sub> < Densidad Equiv. de Fractura.</p>
+		<p>Nota: Se pueden graficar los puntos obtenidos en el proceso de ensayo y error, en la misma gráfica de Densidad Eq. vs. Profundidad para obtener una curva y observar en qué punto ésta intercepta a la curva de Densidad Equivalente de Fractura, obteniendo así de forma más precisa ( DE<sub>f</sub> = Densidad Equiv. de Fractura) la profundidad de asentamiento del revestidor en cuestión.</p>
+		<p class="img-container-2">
+			<img src="./img/ajuste-arremetida.jpg">
+		</p>
+
+		<h2>PROFUNDIDAD DE ASENTAMIENTO DEL REVESTIDOR CONDUCTOR</h2>
+		<p class="ultimo-parrafo">Las profundidades de asentamiento del conductor y de la primera tubería de revestimiento por encima de la tubería de superficie generalmente están determinadas en las normas o se establecen de acuerdo a los riesgos de perforación que presente el área. Las arenas que contienen agua, las formaciones no consolidadas, y el gas poco profundo constituyen algunos de los riesgos que se pueden controlar eficazmente usando la primera tubería de revestimiento o un conductor. La mayoría de los gobiernos exige proteger las arenas que contienen agua dulce con tubería de revestimiento.</p>
+	</main>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> 
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
