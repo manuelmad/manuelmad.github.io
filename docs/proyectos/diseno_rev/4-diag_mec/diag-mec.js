@@ -413,14 +413,31 @@ function dibujarLinerRanurado(color, xinicial, yinicial, xfinal, yfinal){
 	lienzo.setLineDash([]);
 }
 
-// MARCO (FUERA DE LA FUNCIÓN DE DIBUJO "diagramaMecanico" PARA QUE SEA SIEMPRE VISIBLE) //
+// EVENTO PARA QUE EL CANVAS INICIAL SE RENDERICE AL CARGAR LA PÁGINA
+window.addEventListener("load", canvasInicial);
+
+// FUNCIÓN PARA BORRAR TODO LO QUE HAYA EN EL CANVAS
+function borrarCanvas() {
+	lienzo.clearRect(0, 0, ancho, alto);
+}
+
+function canvasInicial() {
+	borrarCanvas();
+
+	// MARCO (FUERA DE LA FUNCIÓN DE DIBUJO "diagramaMecanico" PARA QUE SEA SIEMPRE VISIBLE) //
 	dibujarLinea("black", 1, 1, 1, alto - 1); // LÍNEA VERTICAL IZQUIERDA //
 	dibujarLinea("black", 1, alto - 1, ancho - 1, alto - 1); // LÍNEA HORIZONTAL INFERIOR //
 	dibujarLinea("black", 1, 1, ancho - 1, 1); // LÍNEA HORIZONTAL SUPERIOR //
 	dibujarLinea("black", ancho - 1, 1, ancho - 1, alto - 1); // ´LÍNEA VERTICAL DERECHA //
+}
+
 
 // FUNCIÓN PARA ELABORACIÓN DEL DIAGRAMA MECÁNICO RESULTANTE AL HACER CLICK EN EL BOTÓN DE HTML
 function diagramaMecanico(){
+
+	// LIMPIAR CANVAS SIEMPRE ANTES DE GRAFICAR
+	canvasInicial();
+
 	// DEFINIR LAS VARIABLES FALTANTES QUE SE UTILIZARÁN PARA EL DIBUJO //
 	var Prof_Rev_Cond = PRC.value;
 	var Prof_Rev_Sup = PRS.value;
@@ -1062,8 +1079,6 @@ var boton2 = document.getElementById("borrar_diagrama");
 boton2.addEventListener("click", borrarDiagramaMecanico);
 
 // FUNCIÓN PARA BORRAR EL DIAGRAMA MECÁNICO RESULTANTE AL HACER CLICK EN EL BOTÓN DE HTML //
-
-function borrarDiagramaMecanico ()
-{
-	lienzo.putImageData(ImageData, 0, 0);
+function borrarDiagramaMecanico() {
+	canvasInicial();
 }
