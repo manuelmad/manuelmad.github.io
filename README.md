@@ -1,0 +1,2 @@
+# manuelmad.github.io
+A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo el uso de cada una de las herramientas disponibles y las pongo en práctica en variados proyectos. Una de las mejores formas de dar a conocer todo lo que he aprendido es con un portafolio, y esta página web busca cumplir con esa función, un sitio donde además de compartir información personal y profesional, sirve de plataforma para las aplicaciones que he creado.
