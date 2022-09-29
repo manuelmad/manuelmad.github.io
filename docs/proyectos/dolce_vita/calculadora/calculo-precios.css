@@ -189,6 +189,16 @@ table, th, td {
 
 /* SECCIÓN DE CÁLCULOS ADICIONALES */
 
+.boton-desplegar {
+	width: 17rem;
+	height: 1rem;
+	font-size: 0.5rem;
+}
+.boton-desplegar svg {
+	width: 1rem;
+	height: 0.8rem;
+}
+
 .productos-adicionales {
 	border: none;
 }
@@ -343,45 +353,76 @@ table, th, td {
 	text-align: center;
 }
 
+.parrafo-boton-comentario {
+	margin: 0 0.4rem;
+	text-align: center;
+}
+
+#desplegar_comentario {
+	border: none;
+	width: 25rem;
+	height: 0.5rem;
+	background-color: var(--medium-blue);
+	border-radius: 0.5rem;
+}
+
+.parrafo-comentario {
+	margin: 0 0.4rem;
+}
+
+.parrafo-comentario #comentario {
+	max-width: 28.2rem;
+	min-width: 28.2rem;
+}
+
 #precio_final_manual {
 	margin-top: 0.5rem;
 	width: 6rem;
 	text-align: end;
 }
 
-/* .presupuesto span {
-	display: inline-block;
-	font-family: 'Roboto Condensed', sans-serif;
-	min-height: 1.4rem;
-	width: 4rem;
-	margin-top: 0.5rem;
-	text-align: start;
-	font-weight: bold;
-	font-size: var(--sm);
-	background-color: var(--very-light-gray);
-} */
-
-/* #nombre_producto, #categoria_producto {
-	width: 100%;
-} */
-
-/* #ganancia_producto, #cantidad_producto {
-	width: 2rem;
-	text-align: end;
-} */
-
-/* #precio_inicial_producto_Bs,
-#precio_inicial_producto_USD,
-#costo_adicional_producto_Bs,
-#costo_adicional_producto_USD,
-#costo_final_producto_Bs,
-#costo_final_producto_USD {
-	text-align: end;
-} */
-
-.presupuesto p:last-child {
+.parrafo-precio-manual {
 	margin-bottom: 1rem;
 	text-align: center;
+}
+
+.parrafo-fecha {
+	text-align: center;
+}
+
+.parrafo-fecha input {
+	text-align: center;
+	background-color: var(--kind-pink);
+}
+
+#dia, #mes {
+	width: 3rem;
+	height: 2rem;
+}
+
+#ano {
+	width: 4rem;
+	height: 2rem;
+}
+
+.parrafo-hora {
+	text-align: center;
+}
+
+.parrafo-hora input {
+	text-align: center;
+	background-color: var(--kind-pink);
+}
+
+#hora, #minuto {
+	width: 2rem;
+	height: 2rem;
+}
+
+#am_pm {
+	width: 4rem;
+	height: 2rem;
+	text-align: left;
 }
 
 /* ACTUALIZAR PÁGINA */

@@ -413,23 +413,53 @@ function calcularPrecioFinal() {
 	precio_presupuesto_Bs = Number(celda_Bs_total.innerHTML);
 	precio_presupuesto_usd = Number(celda_usd_total.innerHTML);
 
-	cantidad_adicional_1 = document.getElementById("cantidad_adicional_1").value;
-	precio_adicional_1 = document.getElementById("precio_adicional_1").value;
+	if(producto_adicional_container_1.style.display == "grid") {
+		cantidad_adicional_1 = document.getElementById("cantidad_adicional_1").value;
+		precio_adicional_1 = document.getElementById("precio_adicional_1").value;
+	}
+	else {
+		cantidad_adicional_1 = 0;
+		precio_adicional_1 = 0;
+	}
 
-	cantidad_adicional_2 = document.getElementById("cantidad_adicional_2").value;
-	precio_adicional_2 = document.getElementById("precio_adicional_2").value;
+	if(producto_adicional_container_2.style.display == "grid") {
+		cantidad_adicional_2 = document.getElementById("cantidad_adicional_2").value;
+		precio_adicional_2 = document.getElementById("precio_adicional_2").value;
+	}
+	else {
+		cantidad_adicional_2 = 0;
+		precio_adicional_2 = 0;
+	}
 
-	cantidad_adicional_3 = document.getElementById("cantidad_adicional_3").value;
-	precio_adicional_3 = document.getElementById("precio_adicional_3").value;
+	if(producto_adicional_container_3.style.display == "grid") {
+		cantidad_adicional_3 = document.getElementById("cantidad_adicional_3").value;
+		precio_adicional_3 = document.getElementById("precio_adicional_3").value;
+	}
+	else {
+		cantidad_adicional_3 = 0;
+		precio_adicional_3 = 0;
+	}
 
-	cantidad_adicional_4 = document.getElementById("cantidad_adicional_4").value;
-	precio_adicional_4 = document.getElementById("precio_adicional_4").value;
+	if(producto_adicional_container_4.style.display == "grid") {
+		cantidad_adicional_4 = document.getElementById("cantidad_adicional_4").value;
+		precio_adicional_4 = document.getElementById("precio_adicional_4").value;
+	}
+	else {
+		cantidad_adicional_4 = 0;
+		precio_adicional_4 = 0;
+	}
 
-	cantidad_adicional_5 = document.getElementById("cantidad_adicional_5").value;
-	precio_adicional_5 = document.getElementById("precio_adicional_5").value;
+	if(producto_adicional_container_5.style.display == "grid") {
+		cantidad_adicional_5 = document.getElementById("cantidad_adicional_5").value;
+		precio_adicional_5 = document.getElementById("precio_adicional_5").value;
+	}
+	else {
+		cantidad_adicional_5 = 0;
+		precio_adicional_5 = 0;
+	}
 
 	// Costo Adicional
-	costo_adicional_USD = cantidad_adicional_1*precio_adicional_1 + cantidad_adicional_2*precio_adicional_2 + cantidad_adicional_3*precio_adicional_3 + + cantidad_adicional_4*precio_adicional_4 + cantidad_adicional_5*precio_adicional_5;
+	costo_adicional_USD = cantidad_adicional_1*precio_adicional_1 + cantidad_adicional_2*precio_adicional_2 + cantidad_adicional_3*precio_adicional_3 + cantidad_adicional_4*precio_adicional_4 + cantidad_adicional_5*precio_adicional_5;
 
 	document.getElementById("costo-adicional-USD").innerHTML = costo_adicional_USD.toFixed(2);
 
@@ -485,3 +515,116 @@ function actualizarPagina() {
 	location.reload();
 }
 
+// FUNCIÓN PARA MOSTRAR / OCULTAR PRODUCTOS ADICIONALES
+
+let producto_adicional_container_1 = document.getElementById("producto_adicional_container_1");
+producto_adicional_container_1.style.display = "none";
+
+let boton_desplegar_1 = document.getElementById("boton_desplegar_1");
+boton_desplegar_1.addEventListener("click", mostrarOcultarAdicional1);
+
+function mostrarOcultarAdicional1() {
+	if(producto_adicional_container_1.style.display == "none")
+	{
+		producto_adicional_container_1.style.display = "grid";
+	}
+	else if(producto_adicional_container_1.style.display == "grid")
+	{
+		producto_adicional_container_1.style.display = "none";
+	}
+}
+
+
+
+let producto_adicional_container_2 = document.getElementById("producto_adicional_container_2");
+producto_adicional_container_2.style.display = "none";
+
+let boton_desplegar_2 = document.getElementById("boton_desplegar_2");
+boton_desplegar_2.addEventListener("click", mostrarOcultarAdicional2);
+
+function mostrarOcultarAdicional2() {
+	if(producto_adicional_container_2.style.display == "none")
+	{
+		producto_adicional_container_2.style.display = "grid";
+	}
+	else if(producto_adicional_container_2.style.display == "grid")
+	{
+		producto_adicional_container_2.style.display = "none";
+	}
+}
+
+
+
+let producto_adicional_container_3 = document.getElementById("producto_adicional_container_3");
+producto_adicional_container_3.style.display = "none";
+
+let boton_desplegar_3 = document.getElementById("boton_desplegar_3");
+boton_desplegar_3.addEventListener("click", mostrarOcultarAdicional3);
+
+function mostrarOcultarAdicional3() {
+	if(producto_adicional_container_3.style.display == "none")
+	{
+		producto_adicional_container_3.style.display = "grid";
+	}
+	else if(producto_adicional_container_3.style.display == "grid")
+	{
+		producto_adicional_container_3.style.display = "none";
+	}
+}
+
+
+let producto_adicional_container_4 = document.getElementById("producto_adicional_container_4");
+producto_adicional_container_4.style.display = "none";
+
+let boton_desplegar_4 = document.getElementById("boton_desplegar_4");
+boton_desplegar_4.addEventListener("click", mostrarOcultarAdicional4);
+
+function mostrarOcultarAdicional4() {
+	if(producto_adicional_container_4.style.display == "none")
+	{
+		producto_adicional_container_4.style.display = "grid";
+	}
+	else if(producto_adicional_container_4.style.display == "grid")
+	{
+		producto_adicional_container_4.style.display = "none";
+	}
+}
+
+
+
+let producto_adicional_container_5 = document.getElementById("producto_adicional_container_5");
+producto_adicional_container_5.style.display = "none";
+
+let boton_desplegar_5 = document.getElementById("boton_desplegar_5");
+boton_desplegar_5.addEventListener("click", mostrarOcultarAdicional5);
+
+function mostrarOcultarAdicional5() {
+	if(producto_adicional_container_5.style.display == "none")
+	{
+		producto_adicional_container_5.style.display = "grid";
+	}
+	else if(producto_adicional_container_5.style.display == "grid")
+	{
+		producto_adicional_container_5.style.display = "none";
+	}
+}
+
+
+// FUNCIÓN PARA MOSTRAR / OCULTAR PÁRRAFO DE COMENTARIOS FINALES
+
+let parrafo_comentario = document.getElementById("parrafo_comentario");
+parrafo_comentario.style.display = "none";
+
+let desplegar_comentario = document.getElementById("desplegar_comentario");
+desplegar_comentario.addEventListener("click", mostrarOcultarComentario);
+
+function mostrarOcultarComentario() {
+	if(parrafo_comentario.style.display == "none")
+	{
+		parrafo_comentario.style.display = "block";
+	}
+	else if(parrafo_comentario.style.display == "block")
+	{
+		parrafo_comentario.style.display = "none";
+	}
+}

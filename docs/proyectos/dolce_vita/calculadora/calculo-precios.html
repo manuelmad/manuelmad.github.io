@@ -261,8 +261,17 @@
 			</table>
 		</section>
 		<section class="productos-adicionales">
-			<h2>Producto Adicional</h2>
-			<div class="producto-adicional-container">
+			<h2>
+				Producto Adicional
+				<span>
+					<button id="boton_desplegar_1" class="boton-desplegar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						  </svg>
+					</button>
+				</span>
+			</h2>
+			<div class="producto-adicional-container" id="producto_adicional_container_1">
 				<p>
 					<span>Descripción:</span>
 					<textarea name="textarea" class="area-texto" cols="33" rows="2" wrap="hard" id="descripcion_1"></textarea>
@@ -277,8 +286,17 @@
 					<input type="number" id="precio_adicional_1" name="">
 				</p>
 			</div>
-			<h2>Producto Adicional</h2>
-			<div class="producto-adicional-container">
+			<h2>
+				Producto Adicional
+				<span>
+					<button id="boton_desplegar_2" class="boton-desplegar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						  </svg>
+					</button>
+				</span>
+			</h2>
+			<div class="producto-adicional-container"id="producto_adicional_container_2">
 				<p>
 					<span>Descripción:</span>
 					<textarea name="textarea" class="area-texto" cols="33" rows="2" wrap="hard" id="descripcion_2"></textarea>
@@ -293,8 +311,17 @@
 					<input type="number" id="precio_adicional_2" name="">
 				</p>
 			</div>
-			<h2>Producto Adicional</h2>
-			<div class="producto-adicional-container">
+			<h2>
+				Producto Adicional
+				<span>
+					<button id="boton_desplegar_3" class="boton-desplegar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						  </svg>
+					</button>
+				</span>
+			</h2>
+			<div class="producto-adicional-container" id="producto_adicional_container_3">
 				<p>
 					<span>Descripción:</span>
 					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_3"></textarea>
@@ -309,8 +336,17 @@
 					<input type="number" id="precio_adicional_3" name="">
 				</p>
 			</div>
-			<h2>Producto Adicional</h2>
-			<div class="producto-adicional-container">
+			<h2>
+				Producto Adicional
+				<span>
+					<button id="boton_desplegar_4" class="boton-desplegar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						  </svg>
+					</button>
+				</span>
+			</h2>
+			<div class="producto-adicional-container" id="producto_adicional_container_4">
 				<p>
 					<span>Descripción:</span>
 					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_4"></textarea>
@@ -325,8 +361,17 @@
 					<input type="number" id="precio_adicional_4" name="">
 				</p>
 			</div>
-			<h2>Producto Adicional</h2>
-			<div class="producto-adicional-container">
+			<h2>
+				Producto Adicional
+				<span>
+					<button id="boton_desplegar_5" class="boton-desplegar">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						  </svg>
+					</button>
+				</span>
+			</h2>
+			<div class="producto-adicional-container" id="producto_adicional_container_5">
 				<p>
 					<span>Descripción:</span>
 					<textarea name="textarea" class="area-texto" rows="2" id="descripcion_5"></textarea>
@@ -371,34 +416,24 @@
 
 					</tbody>
 				</table>
-				<p>
+				<p class="parrafo-boton-comentario">
+					<button id="desplegar_comentario"></button>
+				</p>
+				<p class="parrafo-comentario" id="parrafo_comentario">Comentario:<br>
+					<textarea name="textarea" class="area-texto-comentario" rows="5" id="comentario"></textarea>
+				</p>
+				<p class="parrafo-precio-manual">
 					Precio Total (USD):<br>
 					<input type="number" id="precio_final_manual">
 				</p>
-				<!-- <p>Producto:<br>
-					<span id="nombre_producto"></span>
+				<p class="parrafo-fecha">
+					Fecha de entrega:<br>
+					<input type="number" id="dia">/<input type="number" id="mes">/<input type="number" id="ano">
 				</p>
-				<p>Categoría:<br>
-					<span id="categoria_producto"></span>
+				<p class="parrafo-hora">
+					Hora de entrega:<br>
+					<input type="number" id="hora">:<input type="number" id="minuto"> <input type="text" id="am_pm">
 				</p>
-				<p>Cantidad:<br>
-					<span id="cantidad_producto"></span>
-				</p>
-				<p>Porcentaje de Ganancia:<br>
-					<span id="ganancia_producto"></span> %
-				</p>
-				<p>Precio Inicial:<br>
-					<span id="precio_inicial_producto_Bs"></span> Bs.<br>
-					<span id="precio_inicial_producto_USD"></span> USD.
-				</p>
-				<p>Costo Adicional:<br>
-					<span id="costo_adicional_producto_Bs"></span> Bs.<br>
-					<span id="costo_adicional_producto_USD"></span> USD.
-				</p>
-				<p>Precio Final:<br>
-					<span id="costo_final_producto_Bs"></span> Bs.<br>
-					<span id="costo_final_producto_USD"></span> USD.
-				</p> -->
 			</div>
 		</section>
 		<section class="limpiar-campos">
