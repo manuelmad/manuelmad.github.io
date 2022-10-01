@@ -1,5 +1,87 @@
 /****** PRECIO INICIAL ********/
 
+// let tasa = 8.1;
+
+// class Productos {
+// 	constructor({
+// 		nombre,
+// 		categoria,
+// 		diametro,
+// 		peso,
+// 		precioUnitarioBs,
+// 		precioUnitarioUSD,
+// 	}) {
+// 		this.nombre = nombre;
+// 		this.categoria = categoria;
+// 		this.diametro = diametro;
+// 		this.peso = peso;
+// 		this.precioUnitarioBs = precioUnitarioBs;
+// 		this.precioUnitarioUSD = Number((this.precioUnitarioBs / tasa).toFixed(2));
+// 	}
+// }
+
+// const mini_brownie = new Productos({
+// 	nombre: "MINI BROWNIE",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.54,
+// });
+
+// const enrrollados_vainilla = new Productos({
+// 	nombre: "ENRROLLADOS DE VAINILLA",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.81,
+// });
+
+// const alfajores = new Productos({
+// 	nombre: "ALFAJORES",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.81,
+// });
+
+// const mini_ponq_vai_mer = new Productos({
+// 	nombre: "MINI PONQUESITOS DE VAINILLA C/MERENGUE",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.463,
+// });
+
+// const trufas_chispas = new Productos({
+// 	nombre: "TRUFAS C/ CHISPAS",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.648,
+// });
+
+// const mini_quesillo = new Productos({
+// 	nombre: "MINI QUESILLOS",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.81,
+// });
+
+// const ponquesito_vainilla = new Productos({
+// 	nombre: "PONQUESITOS DE VAINILLA",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 0.648,
+// });
+
+// const ponquesito_vainilla_merengue = new Productos({
+// 	nombre: "PONQUESITOS DE VAINILLA C/ MERENGUE",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 1.08,
+// });
+
+// const ponquesito_vainilla_arequipe = new Productos({
+// 	nombre: "PONQUESITOS DE VAINILLA C/ AREQUIPE",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 1.62,
+// });
+
+// const ponquesito_vainilla_merengue_choco = new Productos({
+// 	nombre: "PONQUESITOS VAINILLA C/ MERENGUE + RELLENO CHOCOLATE",
+// 	categoria: "Mini Dulces",
+// 	precioUnitarioBs: 1.62,
+// });
+
+// let array_productos = [mini_brownie, enrrollados_vainilla, alfajores, mini_ponq_vai_mer, trufas_chispas, mini_quesillo, ponquesito_vainilla, ponquesito_vainilla_merengue, ponquesito_vainilla_merengue, ponquesito_vainilla_arequipe, ponquesito_vainilla_merengue_choco];
+
 let array_precios_unitarios = [
 	0.54,/*1*/
 	0.81,/*2*/
