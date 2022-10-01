@@ -1,0 +1,3 @@
+# Landing Page para Empresa de Repostería
+Una empresa floreciente en la industria de la repostería, que actualmente solo dispone de una cuenta en Instagram para promocionar y difundir sus productos.
+Este sitio web busca ser parte de una nueva y efectiva estrategia para hacer a la empresa aún más competitiva en el mercado local, alcanzar mayor número de clientes y hacerla crecer de manera sostenida.
