@@ -1,10 +1,12 @@
-#SELECCIÓN DE LA PROFUNDIDAD DE ASENTAMIENTO
+# SELECCIÓN DE LA PROFUNDIDAD DE ASENTAMIENTO
 El método convencional de selección de la profundidad de asentamiento de la tubería de revestimiento comienza por la identificación del gradiente de presión intersticial, o presión de poro, y del gradiente de fractura. El primero se refiere a la presión que ejercen los fluidos de la formación, mientras que el gradiente de fractura se refiere a la presión que es capaz de romper la formación.
 Entonces, para la selección de la profundidad de asentamiento de la tubería de revestimiento se utiliza un gráfico donde se muestren: el gradiente de presión de poro y el gradiente de fractura.
 La operación normal de perforación se desarrollará en el espacio entre ambos gradientes. Es decir, se utilizará un fluido de perforación que genere más presión que la presión de poro para “controlar” el pozo y sin embargo, ese fluido no deberá generar una presión tan grande que fracture la formación y se fugue hacia ésta. Por razones de seguridad, se trabaja entonces con una presión ligeramente superior o sobrebalance a la presión de poro, generalmente entre 0.5 y 1.0 lpg. (margen de viaje). Igual se hace con la presión de fractura a la que se le sustrae un valor similar (margen de arremetida) por seguridad.
 Así finalmente, el proceso de selección de la profundidades de asentamiento se inicia en el fondo, proyectando la densidad del lodo a la profundidad total (presión intersticial más sobrebalance) hasta el punto en que intercepta el gradiente de fractura menos un margen de arremetida (segmento a-b). Se “asienta” el revestidor en ese punto y da inicio al proceso otra vez (segmento c-d).
 
 ![](https://github.com/manuelmad/manuelmad.github.io/blob/main/docs/proyectos/diseno_rev/1-prof_asent/doc/img/curva_densidad.JPG)
+
+## AJUSTE POR PEGA DIFERENCIAL
 
 Se ajusta inicialmente la profundidad de asentamiento de el(los) revestidor(es) intermedio(s), esto se hace tomando en cuenta una posible pega por presión diferencial, lo que a menudo ocurre a la profundidad donde la presión de formación pasa de normal a anormal.
 Los límites permitidos para bajar un revestidor intermedio dependen de las condiciones siguientes:
@@ -40,7 +42,7 @@ Opcionalmente, dicho revestimiento o liner adicional podría asentarse a una pro
 
 En conclusión, la sarta adicional de revestimiento o liner podrá asentarse a cualquier profundidad entre Prof<sub>orig</sub> y Prof<sub>máx</sub>.
 
-##AJUSTE POR ARREMETIDAS
+## AJUSTE POR ARREMETIDAS
 Posteriormente, se ajusta la profundidad de asentamiento de el(los) revestidor(es) superficial(es), basados en la capacidad para resistir con seguridad una arremetida que cause un aumento en el peso del lodo de 0,5 lpg, cuando la perforación haya alcanzado la profundidad de asentamiento del siguiente revestidor (superficial o intermedio). Para esto, se realiza un procedimiento de ensayo y error, donde se calcula la densidad equivalente del fluido (DE<sub>f</sub>) a nivel de las formaciones expuestas justo por debajo del revestidor superficial que se está analizando, utilizando la siguiente ecuación:
 
 DE<sub>f</sub> = D<sub>L</sub> + [(Prof<sub>rev-int</sub> / Prof<sub>rev-sup</sub>) * 0.5]
@@ -62,5 +64,5 @@ Si DE<sub>f</sub> > Densidad Equiv. de Fractura, el revestidor superficial NO pu
 
 ![](https://github.com/manuelmad/manuelmad.github.io/blob/main/docs/proyectos/diseno_rev/1-prof_asent/doc/img/ajuste-arremetida.JPG)
 
-##PROFUNDIDAD DE ASENTAMIENTO DEL REVESTIDOR CONDUCTOR
+## PROFUNDIDAD DE ASENTAMIENTO DEL REVESTIDOR CONDUCTOR
 Las profundidades de asentamiento del conductor y de la primera tubería de revestimiento por encima de la tubería de superficie generalmente están determinadas en las normas o se establecen de acuerdo a los riesgos de perforación que presente el área. Las arenas que contienen agua, las formaciones no consolidadas, y el gas poco profundo constituyen algunos de los riesgos que se pueden controlar eficazmente usando la primera tubería de revestimiento o un conductor. La mayoría de los gobiernos exige proteger las arenas que contienen agua dulce con tubería de revestimiento.
