@@ -118,10 +118,6 @@ table, th, td {
 	margin-bottom: 1rem;
 }
 
-#input_lista {
-	/* margin-top: 0.5rem; */
-}
-
 .parrafo-boton {
 	text-align: center;
 	margin-top: 2rem;
@@ -173,6 +169,10 @@ table, th, td {
 
 #cuerpo_tabla_resumen tr td:nth-child(2) {
 	text-align: center;
+}
+
+#cuerpo_tabla_resumen tr:not(:last-child) {
+	height: 3rem;
 }
 
 #cuerpo_tabla_resumen tr td:nth-child(3),
@@ -250,6 +250,9 @@ table, th, td {
 	/* resize: none; */
 	max-width: 25rem;
 	min-width: 25rem;
+	font-size: var(--ss);
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0.5rem;
 }
 
 .calculos-finales {
@@ -276,7 +279,6 @@ table, th, td {
 }
 
 .calculos-finales p:last-child {
-	/* margin-bottom: 1rem; */
 	padding-left: 8.5rem;
 	padding-bottom: 0.5rem;
 	background-color: var(--very-light-blue);
@@ -319,7 +321,6 @@ table, th, td {
 	background-position: center;
     background-repeat: no-repeat; */
 	margin-top: 1rem;
-	/* display: none; */
 }
 
 .presupuesto p {
@@ -349,6 +350,10 @@ table, th, td {
 	width: 6rem;
 }
 
+#cuerpo_tabla_prespuesto tr {
+	height: 3rem;
+}
+
 #cuerpo_tabla_prespuesto td:nth-child(2){
 	text-align: center;
 }
@@ -373,6 +378,9 @@ table, th, td {
 .parrafo-comentario #comentario {
 	max-width: 28.2rem;
 	min-width: 28.2rem;
+	font-size: var(--ss);
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0.5rem;
 }
 
 #precio_final_manual {
