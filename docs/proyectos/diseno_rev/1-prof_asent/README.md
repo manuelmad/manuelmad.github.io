@@ -18,11 +18,11 @@ Para calcular la presión diferencial a la cual estará sometido el revestidor d
 
 ΔP<sub>C</sub> = 0.052 * (D<sub>L</sub> - D<sub>N</sub>) * Prof<sub>n-a</sub>
 
-Donde:
-ΔP<sub>C</sub>: Diferencial de Presión Calculado (lpc.).
-D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).
-D<sub>N</sub>: Densidad normal equivalente de la formación (9 lpg.).
-Prof<sub>n-a</sub>: Profundidad donde la presión de formación pasa de normal a anormal (pies).
+Donde:<br>
+ΔP<sub>C</sub>: Diferencial de Presión Calculado (lpc.).<br>
+D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).<br>
+D<sub>N</sub>: Densidad normal equivalente de la formación (9 lpg.).<br>
+Prof<sub>n-a</sub>: Profundidad donde la presión de formación pasa de normal a anormal (pies).<br>
 
 **Nota**: Si el revestidor a analizar no estará expuesto a la zona de transición normal – anormal, las variables y deben ser substituidas por la Densidad Equivalente de la formación más propensa a causar pega diferencial y su respectiva profundidad, respectivamente.
 
@@ -47,12 +47,12 @@ Posteriormente, se ajusta la profundidad de asentamiento de el(los) revestidor(e
 
 DE<sub>f</sub> = D<sub>L</sub> + [(Prof<sub>rev-int</sub> / Prof<sub>rev-sup</sub>) * 0.5]
 
-Donde:
-DE<sub>f</sub>: Densidad equivalente del fluido a nivel de la zapata del revestidor superficial (lpg.).
-D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).
-Prof<sub>rev-int</sub>: Profundidad de asentamiento del revestidor intermedio (pies).
-Prof<sub>rev-sup</sub>: Profundidad de asentamiento del revestidor superficial (pies).
-0.5: Incremento del valor de la densidad del lodo durante la arremetida (lpg.).
+Donde:<br>
+DE<sub>f</sub>: Densidad equivalente del fluido a nivel de la zapata del revestidor superficial (lpg.).<br>
+D<sub>L</sub>: Densidad del lodo a profundidad de asentamiento del revestidor intermedio (lpg.).<br>
+Prof<sub>rev-int</sub>: Profundidad de asentamiento del revestidor intermedio (pies).<br>
+Prof<sub>rev-sup</sub>: Profundidad de asentamiento del revestidor superficial (pies).<br>
+0.5: Incremento del valor de la densidad del lodo durante la arremetida (lpg.).<br>
 
 Luego de calcular la Densidad Equivalente de Fluido, se compara con la densidad equivalente de fractura a la misma profundidad (Prof<sub>rev-sup</sub>).
 
