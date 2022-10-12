@@ -82,6 +82,7 @@ input {
 	width: 25rem;
 	height: 3rem;
 	border-radius: 0.5rem;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 input:hover {
@@ -112,6 +113,10 @@ table, th, td {
 	font-weight: bold;
 	font-size: var(--sm);
 	background-color: var(--kind-pink);
+}
+
+.calculos input {
+	padding: 0.5rem;
 }
 
 .calculos p:last-child {
@@ -209,6 +214,7 @@ table, th, td {
 
 .producto-adicional-container input {
 	width: 12rem;
+	padding: 0.5rem;
 }
 
 .producto-adicional-container {
@@ -386,7 +392,7 @@ table, th, td {
 #precio_final_manual {
 	margin-top: 0.5rem;
 	width: 6rem;
-	text-align: end;
+	text-align: center;
 }
 
 .parrafo-precio-manual {
@@ -431,6 +437,12 @@ table, th, td {
 	width: 4rem;
 	height: 2rem;
 	text-align: left;
+	background-color: var(--kind-pink);
+	border: none;
+	/* -webkit-appearance: none;
+    -moz-appearance: none; */
+	appearance: none;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* ACTUALIZAR PÁGINA */

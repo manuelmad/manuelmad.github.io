@@ -1,0 +1,9 @@
+#ano {
+	width: 5rem;
+	height: 2rem;
+}
+
+#hora, #minuto {
+	width: 3rem;
+	height: 2rem;
+}

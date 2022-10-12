@@ -221,7 +221,7 @@ p, ul {
     background-color: #F7F7F7;
     width: 100%;
     padding: 5rem 3rem;
-    text-align: right;
+    /*text-align: right;*/
 }
 
 .curriculum-right h1 {
