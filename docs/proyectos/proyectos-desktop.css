@@ -38,7 +38,6 @@ p {
 }
 
 .curriculum {
-    display: flex;
     width: 100%;
     padding-right: 8rem;
     padding-left: 45rem;
@@ -48,12 +47,12 @@ p {
     font-size: 3rem;
 }
 
-.calculos-salud {
+.admin-condo {
     padding-left: 8rem;
     padding-right: 45rem;
 }
 
-.calculos-salud h1 {
+.admin-condo h1 {
     font-size: 3rem;
 }
 
