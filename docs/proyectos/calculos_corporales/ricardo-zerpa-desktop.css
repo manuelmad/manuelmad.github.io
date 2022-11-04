@@ -1,0 +1,13 @@
+section:not(.logo, .resultados) {
+	width: 60rem;
+}
+
+.logo-container {
+	width: 55.4rem;
+	height: 49rem;
+	background-image: url(./img/logo-zerpa-large.png);
+}
+
+h1 {
+	font-size: var(--xlg);
+}

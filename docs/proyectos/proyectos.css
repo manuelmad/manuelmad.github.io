@@ -220,22 +220,22 @@ p, ul {
 }
 
 /* La Dolce Vita */
-.curriculum {
+.curriculum, .calculos-corporales {
     background-color: #F7F7F7;
     width: 100%;
     padding: 5rem 3rem;
     /*text-align: right;*/
 }
 
-.curriculum-right h1 {
+.curriculum-right h1, .calculos-corporales h1 {
     font-size: 2.5rem;
 }
 
-.curriculum-right p {
+.curriculum-right p, .calculos-corporales p {
     margin-top: 1rem;
 }
 
-.curriculum-right a {
+.curriculum-right a, .calculos-corporales a {
     color: var(--dark-blue);
     font-weight: bold;
 }
