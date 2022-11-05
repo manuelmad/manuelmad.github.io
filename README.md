@@ -16,6 +16,8 @@ A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo 
 		*  [Revestidor de Producción.](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/diseno_rev/3-diseno_mec/3-diseno_mec_prod)
 	*  [Diagrama Mecánico.](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/diseno_rev/4-diag_mec)
 * [**Landing Page para Empresa de Repostería.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/dolce_vita)
+* [**Administración de Condominio.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/admin_condo)
+* [**Cálculo de Parámetros Corporales.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/calculos_corporales)
 
 ## Currículum
 **2022**<br>
@@ -33,6 +35,7 @@ A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo 
 * Curso de Responsive Design: Maquetación Mobile First.
 * Curso Profesional de CSS Grid Layout.
 * Curso Básico de Programación Orientada a Objetos con JavaScript.
+* Curso de Manipulación de Arrays en JavaScript.
 
 **2013**<br>
 *Institución*: La Universidad del Zulia (L.U.Z.).<br>
