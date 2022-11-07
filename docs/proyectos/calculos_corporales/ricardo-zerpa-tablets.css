@@ -1,4 +1,4 @@
-section:not(.logo, .resultados) {
+.datos-generales, .circunferencias, .pliegues {
 	width: 50rem;
 }
 

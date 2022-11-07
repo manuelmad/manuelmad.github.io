@@ -39,7 +39,7 @@ main {
 	background-color: var(--background);
 }
 
-section:not(.logo, .resultados) {
+.datos-generales, .circunferencias, .pliegues {
 	width: 30rem;
 	margin: 0 auto;
 	border: 0.3rem solid var(--white);
@@ -151,6 +151,19 @@ input, span {
 	border: 0.2rem solid var(--prussian-blue);
 }
 
+#genero {
+	border-radius: 0.8rem;
+	background-color: var(--text-input-field);
+	color: var(--black);
+	border: none;
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	font-size: var(--md);
+	width: 25rem;
+	height: 3.2rem;
+	font-weight: normal;
+}
+
 .circunferencias {
 	padding-bottom: 4rem;
 	background-color: var(--ivory-black);
@@ -258,5 +271,5 @@ html main .resultados {
 
 .resultados div span {
 	border-radius: 0;
-	font-weight: bold;
+	color: var(--black);
 }
