@@ -48,13 +48,22 @@ let indice_noviembre = meses_ano.indexOf("Noviembre");
 let indice_diciembre = meses_ano.indexOf("Diciembre");
 
 
-let ultimo_mes_vencido = "Agosto";
-document.getElementById("mes_vencido").innerText = ultimo_mes_vencido;
-document.getElementById("mes_fondo").innerText = ultimo_mes_vencido;
-console.log("Último mes vencido: " + ultimo_mes_vencido);
+let ultimo_mes_vencido;
+// ultimo_mes_vencido = "Agosto";
+let indice_ultimo_mes_vencido;
 
-let indice_ultimo_mes_vencido = meses_ano.indexOf(ultimo_mes_vencido);
-console.log("Índice del último mes vencido: " + indice_ultimo_mes_vencido);
+function actualizarMesVencido(mes) {
+	ultimo_mes_vencido = mes;
+	document.getElementById("mes_vencido").innerText = ultimo_mes_vencido;
+	document.getElementById("mes_fondo").innerText = ultimo_mes_vencido;
+	console.log("Último mes vencido: " + ultimo_mes_vencido);
+
+	indice_ultimo_mes_vencido = meses_ano.indexOf(ultimo_mes_vencido);
+	console.log("Índice del último mes vencido: " + indice_ultimo_mes_vencido);
+}
+
+actualizarMesVencido("Agosto");
+
 
 let tasa_mora = 0.1;
 
@@ -113,6 +122,7 @@ for(let i = 0; i < meses_ano.length; i++) {
 const cuotasEspeciales = {
 	hidrolago: 115.35,
 	tanque_azotea: 1.5,
+	corpoelec:25,
 };
 console.log("Objeto Literal Cuotas Especiales: ");
 console.log(cuotasEspeciales);
@@ -330,11 +340,24 @@ class Propietario {
 	actualizarEnero(aporte) {
 		this.pagoEnero.push(aporte);
 
-		let suma = this.pagoEnero.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoEnero.reduce((sum, item) => sum + item, 0)).toFixed(1);
+		let capital = (this.deudaCondominioEnero / (1 + tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1))).toFixed(1);
+		let interes;
+
 
 		if(this.deudaCondominioEnero != 0) {
+			interes = this.deudaCondominioEnero - capital;
+
 			if(indice_enero <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioEnero = (this.deudaCondominioEnero  - this.pagoEnero[this.pagoEnero.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1)));
+				if(aporte < interes) {
+					capital = cuotasCondominio.cuotaEnero;
+					interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1)) -suma /*(interes - suma) + (capital * (tasa_mora))*/;
+				}
+				else {
+					capital = cuotasCondominio.cuotaEnero - suma;
+					interes = (capital * (tasa_mora));
+				}
+				this.deudaCondominioEnero = capital + interes;
 			}
 			else {
 				this.abonoEnero = suma;
@@ -343,23 +366,29 @@ class Propietario {
 		}
 		else {
 			if(indice_enero <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioEnero = (cuotasCondominio.cuotaEnero - suma)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1)));
+				interes = ((cuotasCondominio.cuotaEnero - aporte) * (tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1)));
+				this.deudaCondominioEnero = cuotasCondominio.cuotaEnero + interes;
 			}
 			else {
 				this.abonoEnero = suma;
 				this.pendienteEnero = cuotasCondominio.cuotaEnero - this.abonoEnero;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarFebrero(aporte) {
 		this.pagoFebrero.push(aporte);
 
-		let suma = this.pagoFebrero.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoFebrero.reduce((sum, item) => sum + item, 0)).toFixed(1);
 
 		if(this.deudaCondominioFebrero != 0) {
 			if(indice_febrero <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioFebrero = (this.deudaCondominioFebrero  - this.pagoFebrero[this.pagoFebrero.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_febrero+1)));
+				this.deudaCondominioFebrero = (this.deudaCondominioFebrero  - this.pagoFebrero[this.pagoFebrero.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_febrero+1))).toFixed(1);
+				this.abonoFebrero = 0;
+				this.pendienteFebrero = 0;
 			}
 			else {
 				this.abonoFebrero = suma;
@@ -368,22 +397,30 @@ class Propietario {
 		}
 		else {
 			if(indice_febrero <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioFebrero = (cuotasCondominio.cuotaFebrero - this.pagoFebrero)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_febrero+1)));
+				this.deudaCondominioFebrero = (cuotasCondominio.cuotaFebrero -suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_febrero+1))).toFixed(1);
+				this.abonoFebrero = 0;
+				this.pendienteFebrero = 0;
 			}
 			else {
 				this.abonoFebrero = suma;
 				this.pendienteFebrero = cuotasCondominio.cuotaFebrero - this.abonoFebrero;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarMarzo(aporte) {
 		this.pagoMarzo.push(aporte);
 
-		let suma = this.pagoMarzo.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoMarzo.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioMarzo != 0) {
 			if(indice_marzo <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioMarzo = (this.deudaCondominioMarzo  - this.pagoMarzo[this.pagoMarzo.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_marzo+1)));
+				this.deudaCondominioMarzo = (this.deudaCondominioMarzo  - this.pagoMarzo[this.pagoMarzo.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_marzo+1))).toFixed(1);
+				this.abonoMarzo = 0;
+				this.pendienteMarzo = 0;
 			}
 			else {
 				this.abonoMarzo = suma;
@@ -392,22 +429,30 @@ class Propietario {
 		}
 		else {
 			if(indice_marzo <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioMarzo = (cuotasCondominio.cuotaMarzo - this.pagoMarzo)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_marzo+1)));
+				this.deudaCondominioMarzo = (cuotasCondominio.cuotaMarzo - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_marzo+1))).toFixed(1);
+				this.abonoMarzo = 0;
+				this.pendienteMarzo = 0;
 			}
 			else {
 				this.abonoMarzo = suma;
 				this.pendienteMarzo = cuotasCondominio.cuotaMarzo - this.abonoMarzo;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarAbril(aporte) {
 		this.pagoAbril.push(aporte);
 
-		let suma = this.pagoAbril.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoAbril.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioAbril != 0) {
 			if(indice_abril <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioAbril = (this.deudaCondominioAbril  - this.pagoAbril[this.pagoAbril.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_abril+1)));
+				this.deudaCondominioAbril = (this.deudaCondominioAbril  - this.pagoAbril[this.pagoAbril.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_abril+1))).toFixed(1);
+				this.abonoAbril = 0;
+				this.pendienteAbril = 0;
 			}
 			else {
 				this.abonoAbril = suma;
@@ -416,22 +461,32 @@ class Propietario {
 		}
 		else {
 			if(indice_abril <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioAbril = (cuotasCondominio.cuotaAbril - this.pagoAbril)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_abril+1)));
+				this.deudaCondominioAbril = (cuotasCondominio.cuotaAbril - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_abril+1))).toFixed(1);
+				this.abonoAbril = 0;
+				this.pendienteAbril = 0;
 			}
 			else {
 				this.abonoAbril = suma;
 				this.pendienteAbril = cuotasCondominio.cuotaAbril - this.abonoAbril;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarMayo(aporte) {
 		this.pagoMayo.push(aporte);
 
-		let suma = this.pagoMayo.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoMayo.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
+		console.log('suma mayo', suma);
+		console.log('deuda mayo', this.deudaCondominioMayo);
 		if(this.deudaCondominioMayo != 0) {
 			if(indice_mayo <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioMayo = (this.deudaCondominioMayo  - this.pagoMayo[this.pagoMayo.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_mayo+1)));
+				this.deudaCondominioMayo = (this.deudaCondominioMayo  - this.pagoMayo[this.pagoMayo.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_mayo+1))).toFixed(1);
+				this.abonoMayo = 0;
+				this.pendienteMayo = 0;
 			}
 			else {
 				this.abonoMayo = suma;
@@ -440,22 +495,30 @@ class Propietario {
 		}
 		else {
 			if(indice_mayo <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioMayo = (cuotasCondominio.cuotaMayo - this.pagoMayo)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_mayo+1)));
+				this.deudaCondominioMayo = (cuotasCondominio.cuotaMayo - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_mayo+1))).toFixed(1);
+				this.abonoMayo = 0;
+				this.pendienteMayo = 0;
 			}
 			else {
 				this.abonoMayo = suma;
 				this.pendienteMayo = cuotasCondominio.cuotaMayo - this.abonoMayo;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarJunio(aporte) {
 		this.pagoJunio.push(aporte);
 
-		let suma = this.pagoJunio.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoJunio.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioJunio != 0) {
 			if(indice_junio <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioJunio = (this.deudaCondominioJunio  - this.pagoJunio[this.pagoJunio.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_junio+1)));
+				this.deudaCondominioJunio = (this.deudaCondominioJunio  - this.pagoJunio[this.pagoJunio.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_junio+1))).toFixed(1);
+				this.abonoJunio = 0;
+				this.pendienteJunio = 0;
 			}
 			else {
 				this.abonoJunio = suma;
@@ -464,22 +527,30 @@ class Propietario {
 		}
 		else {
 			if(indice_junio <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioJunio = (cuotasCondominio.cuotaJunio - this.pagoJunio)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_junio+1)));
+				this.deudaCondominioJunio = (cuotasCondominio.cuotaJunio - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_junio+1))).toFixed(1);
+				this.abonoJunio = 0;
+				this.pendienteJunio = 0;
 			}
 			else {
 				this.abonoJunio = suma;
 				this.pendienteJunio = cuotasCondominio.cuotaJunio - this.abonoJunio;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarJulio(aporte) {
 		this.pagoJulio.push(aporte);
 
-		let suma = this.pagoJulio.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoJulio.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioJulio != 0) {
 			if(indice_julio <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioJulio = (this.deudaCondominioJulio  - this.pagoJulio[this.pagoJulio.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_julio+1)));
+				this.deudaCondominioJulio = (this.deudaCondominioJulio  - this.pagoJulio[this.pagoJulio.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_julio+1))).toFixed(1);
+				this.abonoJulio = 0;
+				this.pendienteJulio = 0;
 			}
 			else {
 				this.abonoJulio = suma;
@@ -488,22 +559,31 @@ class Propietario {
 		}
 		else {
 			if(indice_julio <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioJulio = (cuotasCondominio.cuotaJulio - this.pagoJulio)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_julio+1)));
+				this.deudaCondominioJulio = (cuotasCondominio.cuotaJulio - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_julio+1))).toFixed(1);
+				this.abonoJulio = 0;
+				this.pendienteJulio = 0;
 			}
 			else {
 				this.abonoJulio = suma;
 				this.pendienteJulio = cuotasCondominio.cuotaJulio - this.abonoJulio;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarAgosto(aporte) {
 		this.pagoAgosto.push(aporte);
+		console.log(this.deudaCondominioAgosto);
 
-		let suma = this.pagoAgosto.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoAgosto.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioAgosto != 0) {
 			if(indice_agosto <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioAgosto = (this.deudaCondominioAgosto  - this.pagoAgosto[this.pagoAgosto.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_agosto+1)));
+				this.deudaCondominioAgosto = (this.deudaCondominioAgosto  - this.pagoAgosto[this.pagoAgosto.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_agosto+1))).toFixed(1);
+				this.abonoAgosto = 0;
+				this.pendienteAgosto = 0;
 			}
 			else {
 				this.abonoAgosto = suma;
@@ -512,23 +592,30 @@ class Propietario {
 		}
 		else {
 			if(indice_agosto <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioAgosto = (cuotasCondominio.cuotaAgosto - this.pagoAgosto)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_agosto+1)));
+				this.deudaCondominioAgosto = (cuotasCondominio.cuotaAgosto - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_agosto+1))).toFixed(1);
+				this.abonoAgosto = 0;
+				this.pendienteAgosto = 0;
 			}
 			else {
 				this.abonoAgosto = suma;
 				this.pendienteAgosto = cuotasCondominio.cuotaAgosto - this.abonoAgosto;
 			}
 		}
-
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarSeptiembre(aporte) {
 		this.pagoSeptiembre.push(aporte);
 
-		let suma = this.pagoSeptiembre.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoSeptiembre.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioSeptiembre != 0) {
 			if(indice_septiembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioSeptiembre = (this.deudaCondominioSeptiembre  - this.pagoSeptiembre[this.pagoSeptiembre.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_septiembre+1)));
+				this.deudaCondominioSeptiembre = (this.deudaCondominioSeptiembre  - this.pagoSeptiembre[this.pagoSeptiembre.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_septiembre+1))).toFixed(1);
+				this.abonoSeptiembre = 0;
+				this.pendienteSeptiembre = 0;
 			}
 			else {
 				this.abonoSeptiembre = suma;
@@ -537,22 +624,30 @@ class Propietario {
 		}
 		else {
 			if(indice_septiembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioSeptiembre = (cuotasCondominio.cuotaSeptiembre - this.pagoSeptiembre)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_septiembre+1)));
+				this.deudaCondominioSeptiembre = (cuotasCondominio.cuotaSeptiembre - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_septiembre+1))).toFixed(1);
+				this.abonoSeptiembre = 0;
+				this.pendienteSeptiembre = 0;
 			}
 			else {
 				this.abonoSeptiembre = suma;
 				this.pendienteSeptiembre = cuotasCondominio.cuotaSeptiembre - this.abonoSeptiembre;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarOctubre(aporte) {
 		this.pagoOctubre.push(aporte);
 
-		let suma = this.pagoOctubre.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoOctubre.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioOctubre != 0) {
 			if(indice_octubre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioOctubre = (this.deudaCondominioOctubre  - this.pagoOctubre[this.pagoOctubre.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_octubre+1)));
+				this.deudaCondominioOctubre = (this.deudaCondominioOctubre  - this.pagoOctubre[this.pagoOctubre.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_octubre+1))).toFixed(1);
+				this.abonoOctubre = 0;
+				this.pendienteOctubre = 0;
 			}
 			else {
 				this.abonoOctubre = suma;
@@ -561,22 +656,30 @@ class Propietario {
 		}
 		else {
 			if(indice_octubre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioOctubre = (cuotasCondominio.cuotaOctubre - this.pagoOctubre)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_octubre+1)));
+				this.deudaCondominioOctubre = (cuotasCondominio.cuotaOctubre - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_octubre+1))).toFixed(1);
+				this.abonoOctubre = 0;
+				this.pendienteOctubre = 0;
 			}
 			else {
 				this.abonoOctubre = suma;
 				this.pendienteOctubre = cuotasCondominio.cuotaOctubre - this.abonoOctubre;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarNoviembre(aporte) {
 		this.pagoNoviembre.push(aporte);
 
-		let suma = this.pagoNoviembre.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoNoviembre.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioNoviembre != 0) {
 			if(indice_noviembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioNoviembre = (this.deudaCondominioNoviembre  - this.pagoNoviembre[this.pagoNoviembre.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_noviembre+1)));
+				this.deudaCondominioNoviembre = (this.deudaCondominioNoviembre  - this.pagoNoviembre[this.pagoNoviembre.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_noviembre+1))).toFixed(1);
+				this.abonoNoviembre = 0;
+				this.pendienteNoviembre = 0;
 			}
 			else {
 				this.abonoNoviembre = suma;
@@ -585,22 +688,30 @@ class Propietario {
 		}
 		else {
 			if(indice_noviembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioNoviembre = (cuotasCondominio.cuotaNoviembre - this.pagoNoviembre)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_noviembre+1)));
+				this.deudaCondominioNoviembre = (cuotasCondominio.cuotaNoviembre - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_noviembre+1))).toFixed(1);
+				this.abonoNoviembre = 0;
+				this.pendienteNoviembre = 0;
 			}
 			else {
 				this.abonoNoviembre = suma;
 				this.pendienteNoviembre = cuotasCondominio.cuotaNoviembre - this.abonoNoviembre;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarDiciembre(aporte) {
 		this.pagoDiciembre.push(aporte);
 
-		let suma = this.pagoDiciembre.reduce((sum, item) => sum + item, 0);
+		let suma = (this.pagoDiciembre.reduce((sum, item) => sum + item, 0)).toFixed(1);
+
 		if(this.deudaCondominioDiciembre != 0) {
 			if(indice_diciembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioDiciembre = (this.deudaCondominioDiciembre  - this.pagoDiciembre[this.pagoDiciembre.length-1])*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_diciembre+1)));
+				this.deudaCondominioDiciembre = (this.deudaCondominioDiciembre - this.pagoDiciembre[this.pagoDiciembre.length-1]).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_diciembre+1))).toFixed(1);
+				this.abonoDiciembre = 0;
+				this.pendienteDiciembre = 0;
 			}
 			else {
 				this.abonoDiciembre = suma;
@@ -609,13 +720,18 @@ class Propietario {
 		}
 		else {
 			if(indice_diciembre <= indice_ultimo_mes_vencido) {
-				this.deudaCondominioDiciembre = (cuotasCondominio.cuotaDiciembre - this.pagoDiciembre)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_diciembre+1)));
+				this.deudaCondominioDiciembre = (cuotasCondominio.cuotaDiciembre - suma).toFixed(1)*(1+(tasa_mora*(indice_ultimo_mes_vencido-indice_diciembre+1))).toFixed(1);
+				this.abonoDiciembre = 0;
+				this.pendienteDiciembre = 0;
 			}
 			else {
 				this.abonoDiciembre = suma;
 				this.pendienteDiciembre = cuotasCondominio.cuotaDiciembre - this.abonoDiciembre;
 			}
 		}
+		this.actualizarPagosTotales();
+		this.actualizarDeudaTotal();
+		this.actualizarAbonosTotales();
 	}
 
 	actualizarPagosTotales() {
@@ -657,7 +773,7 @@ class Propietario {
 
 	actualizarDeudaHidrolago(aporte) {
 		this.pagoCuotaHidrolago = aporte;
-		this.deudaCuotaHidrolago = cuotasEspeciales.hidrolago - this.pagoCuotaHidrolago;
+		this.deudaCuotaHidrolago = cuotasEspeciales.hidrolago - this.pagoCuotaHidrolago;	
 	}
 
 	actualizarDeudaAzotea(aporte) {
@@ -689,10 +805,10 @@ ceila_fuenmayor.actualizarOctubre(0.5);
 //ceila_fuenmayor.actualizarNoviembre(0);
 //ceila_fuenmayor.actualizarDiciembre(0);
 
-ceila_fuenmayor.actualizarDeudaTotal();
+// ceila_fuenmayor.actualizarDeudaTotal();
 
-ceila_fuenmayor.actualizarAbonosTotales();
-ceila_fuenmayor.actualizarPagosTotales();
+// ceila_fuenmayor.actualizarAbonosTotales();
+// ceila_fuenmayor.actualizarPagosTotales();
 
 ceila_fuenmayor.actualizarDeudaHidrolago(40);
 ceila_fuenmayor.actualizarDeudaAzotea(1.5);
@@ -723,10 +839,10 @@ maria_troconiz.actualizarSeptiembre(6);
 //maria_troconiz.actualizarNoviembre(0);
 //maria_troconiz.actualizarDiciembre(0);
 
-maria_troconiz.actualizarDeudaTotal();
+// maria_troconiz.actualizarDeudaTotal();
 
-maria_troconiz.actualizarAbonosTotales();
-maria_troconiz.actualizarPagosTotales();
+// maria_troconiz.actualizarAbonosTotales();
+// maria_troconiz.actualizarPagosTotales();
 
 maria_troconiz.actualizarDeudaHidrolago(100);
 maria_troconiz.actualizarDeudaAzotea(1.5);
@@ -756,10 +872,10 @@ euro_ochoa.actualizarAgosto(0);
 //euro_ochoa.actualizarNoviembre(0);
 //euro_ochoa.actualizarDiciembre(0);
 
-euro_ochoa.actualizarDeudaTotal();
+// euro_ochoa.actualizarDeudaTotal();
 
-euro_ochoa.actualizarAbonosTotales();
-euro_ochoa.actualizarPagosTotales();
+// euro_ochoa.actualizarAbonosTotales();
+// euro_ochoa.actualizarPagosTotales();
 
 euro_ochoa.actualizarDeudaHidrolago(0);
 euro_ochoa.actualizarDeudaAzotea(1.5);
@@ -789,10 +905,10 @@ oscar_salas.actualizarAgosto(0);
 //oscar_salas.actualizarNoviembre(0);
 //oscar_salas.actualizarDiciembre(0);
 
-oscar_salas.actualizarDeudaTotal();
+// oscar_salas.actualizarDeudaTotal();
 
-oscar_salas.actualizarAbonosTotales();
-oscar_salas.actualizarPagosTotales();
+// oscar_salas.actualizarAbonosTotales();
+// oscar_salas.actualizarPagosTotales();
 
 oscar_salas.actualizarDeudaHidrolago(0);
 oscar_salas.actualizarDeudaAzotea(1.5);
@@ -821,10 +937,10 @@ thania_avila.actualizarSeptiembre(23);
 //thania_avila.actualizarNoviembre(0);
 //thania_avila.actualizarDiciembre(0);
 
-thania_avila.actualizarDeudaTotal();
+// thania_avila.actualizarDeudaTotal();
 
-thania_avila.actualizarAbonosTotales();
-thania_avila.actualizarPagosTotales();
+// thania_avila.actualizarAbonosTotales();
+// thania_avila.actualizarPagosTotales();
 
 thania_avila.actualizarDeudaHidrolago(115.35);
 thania_avila.actualizarDeudaAzotea(1.5);
@@ -853,10 +969,10 @@ wilson_manzano.actualizarAgosto(0);
 //wilson_manzano.actualizarNoviembre(0);
 //wilson_manzano.actualizarDiciembre(0);
 
-wilson_manzano.actualizarDeudaTotal();
+// wilson_manzano.actualizarDeudaTotal();
 
-wilson_manzano.actualizarAbonosTotales();
-wilson_manzano.actualizarPagosTotales();
+// wilson_manzano.actualizarAbonosTotales();
+// wilson_manzano.actualizarPagosTotales();
 
 wilson_manzano.actualizarDeudaHidrolago(0);
 wilson_manzano.actualizarDeudaAzotea(1.5);
@@ -885,10 +1001,10 @@ yesenia_berris.actualizarAgosto(0);
 //yesenia_berris.actualizarNoviembre(0);
 //yesenia_berris.actualizarDiciembre(0);
 
-yesenia_berris.actualizarDeudaTotal();
+// yesenia_berris.actualizarDeudaTotal();
 
-yesenia_berris.actualizarAbonosTotales();
-yesenia_berris.actualizarPagosTotales();
+// yesenia_berris.actualizarAbonosTotales();
+// yesenia_berris.actualizarPagosTotales();
 
 yesenia_berris.actualizarDeudaHidrolago(0);
 yesenia_berris.actualizarDeudaAzotea(1.5);
@@ -912,15 +1028,14 @@ luzmarina_paz.actualizarMayo(11.84);
 luzmarina_paz.actualizarJunio(0);
 luzmarina_paz.actualizarJulio(0);
 luzmarina_paz.actualizarAgosto(0);
-//luzmarina_paz.actualizarSeptiembre(0);
 //luzmarina_paz.actualizarOctubre(0);
 //luzmarina_paz.actualizarNoviembre(0);
 //luzmarina_paz.actualizarDiciembre(0);
 
-luzmarina_paz.actualizarDeudaTotal();
+// luzmarina_paz.actualizarDeudaTotal();
 
-luzmarina_paz.actualizarAbonosTotales();
-luzmarina_paz.actualizarPagosTotales();
+// luzmarina_paz.actualizarAbonosTotales();
+// luzmarina_paz.actualizarPagosTotales();
 
 luzmarina_paz.actualizarDeudaHidrolago(115.35);
 luzmarina_paz.actualizarDeudaAzotea(1.5);
@@ -949,12 +1064,12 @@ luis_rivas.actualizarAgosto(23);
 //luis_rivas.actualizarNoviembre(0);
 //luis_rivas.actualizarDiciembre(0);
 
-luis_rivas.actualizarDeudaTotal();
+// luis_rivas.actualizarDeudaTotal();
 
-luis_rivas.actualizarAbonosTotales();
-luis_rivas.actualizarPagosTotales();
+// luis_rivas.actualizarAbonosTotales();
+// luis_rivas.actualizarPagosTotales();
 
-luis_rivas.actualizarDeudaHidrolago(32);
+luis_rivas.actualizarDeudaHidrolago(32+7);
 luis_rivas.actualizarDeudaAzotea(1.5);
 
 console.log("Objeto Luís: ");
@@ -981,10 +1096,10 @@ veronica_hernandez.actualizarAgosto(0);
 //veronica_hernandez.actualizarNoviembre(0);
 //veronica_hernandez.actualizarDiciembre(0);
 
-veronica_hernandez.actualizarDeudaTotal();
+// veronica_hernandez.actualizarDeudaTotal();
 
-veronica_hernandez.actualizarAbonosTotales();
-veronica_hernandez.actualizarPagosTotales();
+// veronica_hernandez.actualizarAbonosTotales();
+// veronica_hernandez.actualizarPagosTotales();
 
 veronica_hernandez.actualizarDeudaHidrolago(115.35);
 veronica_hernandez.actualizarDeudaAzotea(1.5);
@@ -1013,10 +1128,10 @@ euro_alfaro.actualizarAgosto(3.25);
 //euro_alfaro.actualizarNoviembre(0);
 //euro_alfaro.actualizarDiciembre(0);
 
-euro_alfaro.actualizarDeudaTotal();
+// euro_alfaro.actualizarDeudaTotal();
 
-euro_alfaro.actualizarAbonosTotales();
-euro_alfaro.actualizarPagosTotales();
+// euro_alfaro.actualizarAbonosTotales();
+// euro_alfaro.actualizarPagosTotales();
 
 euro_alfaro.actualizarDeudaHidrolago(115.35);
 euro_alfaro.actualizarDeudaAzotea(1.5);
@@ -1045,10 +1160,10 @@ manuel_araujo.actualizarAgosto(23);
 //manuel_araujo.actualizarNoviembre(0);
 //manuel_araujo.actualizarDiciembre(0);
 
-manuel_araujo.actualizarDeudaTotal();
+// manuel_araujo.actualizarDeudaTotal();
 
-manuel_araujo.actualizarAbonosTotales();
-manuel_araujo.actualizarPagosTotales();
+// manuel_araujo.actualizarAbonosTotales();
+// manuel_araujo.actualizarPagosTotales();
 
 manuel_araujo.actualizarDeudaHidrolago(115.35);
 manuel_araujo.actualizarDeudaAzotea(1.5);
@@ -1077,10 +1192,10 @@ neidy_atencio.actualizarAgosto(8.8);
 //neidy_atencio.actualizarNoviembre(0);
 //neidy_atencio.actualizarDiciembre(0);
 
-neidy_atencio.actualizarDeudaTotal();
+// neidy_atencio.actualizarDeudaTotal();
 
-neidy_atencio.actualizarAbonosTotales();
-neidy_atencio.actualizarPagosTotales();
+// neidy_atencio.actualizarAbonosTotales();
+// neidy_atencio.actualizarPagosTotales();
 
 neidy_atencio.actualizarDeudaHidrolago(100);
 neidy_atencio.actualizarDeudaAzotea(0);
@@ -1109,10 +1224,10 @@ mariely_garcia.actualizarSeptiembre(1.95);
 //mariely_garcia.actualizarNoviembre(0);
 //mariely_garcia.actualizarDiciembre(0);
 
-mariely_garcia.actualizarDeudaTotal();
+// mariely_garcia.actualizarDeudaTotal();
 
-mariely_garcia.actualizarAbonosTotales();
-mariely_garcia.actualizarPagosTotales();
+// mariely_garcia.actualizarAbonosTotales();
+// mariely_garcia.actualizarPagosTotales();
 
 mariely_garcia.actualizarDeudaHidrolago(115.35);
 mariely_garcia.actualizarDeudaAzotea(1.5);
@@ -1141,10 +1256,10 @@ elias_gamboa.actualizarAgosto(0);
 //elias_gamboa.actualizarNoviembre(0);
 //elias_gamboa.actualizarDiciembre(0);
 
-elias_gamboa.actualizarDeudaTotal();
+// elias_gamboa.actualizarDeudaTotal();
 
-elias_gamboa.actualizarAbonosTotales();
-elias_gamboa.actualizarPagosTotales();
+// elias_gamboa.actualizarAbonosTotales();
+// elias_gamboa.actualizarPagosTotales();
 
 elias_gamboa.actualizarDeudaHidrolago(115.35);
 elias_gamboa.actualizarDeudaAzotea(1.5);
@@ -1173,16 +1288,53 @@ isabel_aponte.actualizarAgosto(0);
 //isabel_aponte.actualizarNoviembre(0);
 //isabel_aponte.actualizarDiciembre(0);
 
-isabel_aponte.actualizarDeudaTotal();
+// isabel_aponte.actualizarDeudaTotal();
 
-isabel_aponte.actualizarAbonosTotales();
-isabel_aponte.actualizarPagosTotales();
+// isabel_aponte.actualizarAbonosTotales();
+// isabel_aponte.actualizarPagosTotales();
 
 isabel_aponte.actualizarDeudaHidrolago(0);
 isabel_aponte.actualizarDeudaAzotea(1.5);
 
 console.log("Objeto Isabel: ");
 console.log(isabel_aponte);
+
+
+/* ACTUALIZACIÓN DE CONDOMINIO */
+
+luzmarina_paz.actualizarMayo(8.64);
+luzmarina_paz.actualizarJunio(29.9);
+luzmarina_paz.actualizarJulio(27.6);
+luzmarina_paz.actualizarAgosto(3.86);
+// luzmarina_paz.actualizarPagosTotales();
+// luzmarina_paz.actualizarDeudaTotal();
+
+// ultimo_mes_vencido = "Septiembre";
+actualizarMesVencido("Septiembre");
+
+
+maria_troconiz.actualizarSeptiembre(0);
+
+euro_ochoa.actualizarEnero(0);
+euro_ochoa.actualizarFebrero(0);
+euro_ochoa.actualizarMarzo(0);
+euro_ochoa.actualizarAbril(0);
+euro_ochoa.actualizarMayo(0);
+euro_ochoa.actualizarJunio(0);
+euro_ochoa.actualizarJulio(0);
+euro_ochoa.actualizarAgosto(0);
+euro_ochoa.actualizarSeptiembre(0);
+
+oscar_salas.actualizarAgosto(0);
+oscar_salas.actualizarSeptiembre(0);
+
+luzmarina_paz.actualizarSeptiembre(0);
+
+luis_rivas.actualizarSeptiembre(23);
+manuel_araujo.actualizarSeptiembre(23);
+mariely_garcia.actualizarSeptiembre(23);
+// luzmarina_paz.actualizarPagosTotales();
+// luzmarina_paz.actualizarDeudaTotal();
 
 // CÓDIGO PARA LLENAR LAS TABLAS DE AZOTEA E HIDROLAGO
 let propietarios = [
@@ -1272,7 +1424,7 @@ for(let i = 0; i < propietarios.length; i++) {
 	// Inserto contenido a las celdas de la nueva fila
 	nueva_columna1.innerText = propietarios[i].apartamento;
 	nueva_columna2.innerText = `${propietarios[i].nombre} ${propietarios[i].apellido}`;
-	nueva_columna3.innerText = propietarios[i].pagoCuotaHidrolago.toFixed(2);
+	nueva_columna3.innerText = propietarios[i].pagoCuotaHidrolago;
 	nueva_columna4.innerText = propietarios[i].deudaCuotaHidrolago.toFixed(2);
 
 	// Cuento las filas del cuerpo de la tabla
