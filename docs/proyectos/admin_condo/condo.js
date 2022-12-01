@@ -363,6 +363,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaEnero - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_enero+1));
 				this.deudaCondominioEnero = capital + interes;
+				this.abonoEnero = 0;
 			}
 			else {
 				this.abonoEnero = suma;
@@ -400,6 +401,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaFebrero - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_febrero+1));
 				this.deudaCondominioFebrero = capital + interes;
+				this.abonoFebrero = 0;
 			}
 			else {
 				this.abonoFebrero = suma;
@@ -437,6 +439,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaMarzo - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_marzo+1));
 				this.deudaCondominioMarzo = capital + interes;
+				this.abonoMarzo = 0;
 			}
 			else {
 				this.abonoMarzo = suma;
@@ -474,6 +477,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaAbril - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_abril+1));
 				this.deudaCondominioAbril = capital + interes;
+				this.abonoAbril = 0;
 			}
 			else {
 				this.abonoAbril = suma;
@@ -511,6 +515,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaMayo - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_mayo+1));
 				this.deudaCondominioMayo = capital + interes;
+				this.abonoMayo = 0;
 			}
 			else {
 				this.abonoMayo = suma;
@@ -548,6 +553,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaJunio - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_junio+1));
 				this.deudaCondominioJunio = capital + interes;
+				this.abonoJunio = 0;
 			}
 			else {
 				this.abonoJunio = suma;
@@ -585,6 +591,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaJulio - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_julio+1));
 				this.deudaCondominioJulio = capital + interes;
+				this.abonoJulio = 0;
 			}
 			else {
 				this.abonoJulio = suma;
@@ -622,6 +629,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaAgosto - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_agosto+1));
 				this.deudaCondominioAgosto = capital + interes;
+				this.abonoAgosto = 0;
 			}
 			else {
 				this.abonoAgosto = suma;
@@ -659,7 +667,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaSeptiembre - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_septiembre+1));
 				this.deudaCondominioSeptiembre = capital + interes;
-
+				this.abonoSeptiembre = 0;
 			}
 			else {
 				this.abonoSeptiembre = suma;
@@ -698,6 +706,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaOctubre - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_octubre+1));
 				this.deudaCondominioOctubre = capital + interes;
+				this.abonoOctubre = 0;
 			}
 			else {
 				this.abonoOctubre = suma;
@@ -735,6 +744,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaNoviembre - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_noviembre+1));
 				this.deudaCondominioNoviembre = capital + interes;
+				this.abonoNoviembre = 0;
 			}
 			else {
 				this.abonoNoviembre = suma;
@@ -772,6 +782,7 @@ class Propietario {
 				capital = cuotasCondominio.cuotaDiciembre - aporte;
 				interes = capital*(tasa_mora*(indice_ultimo_mes_vencido-indice_diciembre+1));
 				this.deudaCondominioDiciembre = capital + interes;
+				this.abonoDiciembre = 0;
 			}
 			else {
 				this.abonoDiciembre = suma;
@@ -849,7 +860,7 @@ ceila_fuenmayor.actualizarMayo(18);
 ceila_fuenmayor.actualizarJunio(23);
 ceila_fuenmayor.actualizarJulio(23);
 ceila_fuenmayor.actualizarAgosto(23);
-ceila_fuenmayor.actualizarSeptiembre(23);
+//ceila_fuenmayor.actualizarSeptiembre(23);
 
 ceila_fuenmayor.actualizarDeudaHidrolago(40+12.5);
 ceila_fuenmayor.actualizarDeudaAzotea(1.5);
@@ -875,15 +886,6 @@ maria_troconiz.actualizarMayo(18);
 maria_troconiz.actualizarJunio(23);
 maria_troconiz.actualizarJulio(23);
 maria_troconiz.actualizarAgosto(23);
-//maria_troconiz.actualizarSeptiembre(6);
-//maria_troconiz.actualizarOctubre(0);
-//maria_troconiz.actualizarNoviembre(0);
-//maria_troconiz.actualizarDiciembre(0);
-
-// maria_troconiz.actualizarDeudaTotal();
-
-// maria_troconiz.actualizarAbonosTotales();
-// maria_troconiz.actualizarPagosTotales();
 
 maria_troconiz.actualizarDeudaHidrolago(100);
 maria_troconiz.actualizarDeudaAzotea(1.5);
@@ -908,15 +910,6 @@ euro_ochoa.actualizarMayo(0);
 euro_ochoa.actualizarJunio(0);
 euro_ochoa.actualizarJulio(0);
 euro_ochoa.actualizarAgosto(0);
-//euro_ochoa.actualizarSeptiembre(0);
-//euro_ochoa.actualizarOctubre(0);
-//euro_ochoa.actualizarNoviembre(0);
-//euro_ochoa.actualizarDiciembre(0);
-
-// euro_ochoa.actualizarDeudaTotal();
-
-// euro_ochoa.actualizarAbonosTotales();
-// euro_ochoa.actualizarPagosTotales();
 
 euro_ochoa.actualizarDeudaHidrolago(0);
 euro_ochoa.actualizarDeudaAzotea(1.5);
@@ -941,15 +934,6 @@ oscar_salas.actualizarMayo(18);
 oscar_salas.actualizarJunio(23);
 oscar_salas.actualizarJulio(23);
 oscar_salas.actualizarAgosto(0);
-//oscar_salas.actualizarSeptiembre(0);
-//oscar_salas.actualizarOctubre(0);
-//oscar_salas.actualizarNoviembre(0);
-//oscar_salas.actualizarDiciembre(0);
-
-// oscar_salas.actualizarDeudaTotal();
-
-// oscar_salas.actualizarAbonosTotales();
-// oscar_salas.actualizarPagosTotales();
 
 oscar_salas.actualizarDeudaHidrolago(0);
 oscar_salas.actualizarDeudaAzotea(1.5);
@@ -973,15 +957,7 @@ thania_avila.actualizarMayo(18);
 thania_avila.actualizarJunio(23);
 thania_avila.actualizarJulio(23);
 thania_avila.actualizarAgosto(23);
-thania_avila.actualizarSeptiembre(23);
-//thania_avila.actualizarOctubre(0);
-//thania_avila.actualizarNoviembre(0);
-//thania_avila.actualizarDiciembre(0);
-
-// thania_avila.actualizarDeudaTotal();
-
-// thania_avila.actualizarAbonosTotales();
-// thania_avila.actualizarPagosTotales();
+//thania_avila.actualizarSeptiembre(23);
 
 thania_avila.actualizarDeudaHidrolago(115.35);
 thania_avila.actualizarDeudaAzotea(1.5);
@@ -1005,15 +981,6 @@ wilson_manzano.actualizarMayo(0);
 wilson_manzano.actualizarJunio(0);
 wilson_manzano.actualizarJulio(0);
 wilson_manzano.actualizarAgosto(0);
-//wilson_manzano.actualizarSeptiembre(0);
-//wilson_manzano.actualizarOctubre(0);
-//wilson_manzano.actualizarNoviembre(0);
-//wilson_manzano.actualizarDiciembre(0);
-
-// wilson_manzano.actualizarDeudaTotal();
-
-// wilson_manzano.actualizarAbonosTotales();
-// wilson_manzano.actualizarPagosTotales();
 
 wilson_manzano.actualizarDeudaHidrolago(0);
 wilson_manzano.actualizarDeudaAzotea(1.5);
@@ -1037,15 +1004,6 @@ yesenia_berris.actualizarMayo(18);
 yesenia_berris.actualizarJunio(0);
 yesenia_berris.actualizarJulio(0);
 yesenia_berris.actualizarAgosto(0);
-//yesenia_berris.actualizarSeptiembre(0);
-//yesenia_berris.actualizarOctubre(0);
-//yesenia_berris.actualizarNoviembre(0);
-//yesenia_berris.actualizarDiciembre(0);
-
-// yesenia_berris.actualizarDeudaTotal();
-
-// yesenia_berris.actualizarAbonosTotales();
-// yesenia_berris.actualizarPagosTotales();
 
 yesenia_berris.actualizarDeudaHidrolago(0);
 yesenia_berris.actualizarDeudaAzotea(1.5);
@@ -1068,15 +1026,7 @@ luzmarina_paz.actualizarAbril(13);
 luzmarina_paz.actualizarMayo(11.84);
 luzmarina_paz.actualizarJunio(0);
 luzmarina_paz.actualizarJulio(0);
-//luzmarina_paz.actualizarAgosto(0);
-//luzmarina_paz.actualizarOctubre(0);
-//luzmarina_paz.actualizarNoviembre(0);
-//luzmarina_paz.actualizarDiciembre(0);
-
-// luzmarina_paz.actualizarDeudaTotal();
-
-// luzmarina_paz.actualizarAbonosTotales();
-// luzmarina_paz.actualizarPagosTotales();
+luzmarina_paz.actualizarAgosto(0);
 
 luzmarina_paz.actualizarDeudaHidrolago(115.35);
 luzmarina_paz.actualizarDeudaAzotea(1.5);
@@ -1100,15 +1050,6 @@ luis_rivas.actualizarMayo(18);
 luis_rivas.actualizarJunio(23);
 luis_rivas.actualizarJulio(23);
 luis_rivas.actualizarAgosto(23);
-//luis_rivas.actualizarSeptiembre(0);
-//luis_rivas.actualizarOctubre(0);
-//luis_rivas.actualizarNoviembre(0);
-//luis_rivas.actualizarDiciembre(0);
-
-// luis_rivas.actualizarDeudaTotal();
-
-// luis_rivas.actualizarAbonosTotales();
-// luis_rivas.actualizarPagosTotales();
 
 luis_rivas.actualizarDeudaHidrolago(32+7+22);
 luis_rivas.actualizarDeudaAzotea(1.5);
@@ -1132,15 +1073,6 @@ veronica_hernandez.actualizarMayo(18);
 veronica_hernandez.actualizarJunio(18);
 veronica_hernandez.actualizarJulio(0);
 veronica_hernandez.actualizarAgosto(0);
-//veronica_hernandez.actualizarSeptiembre(0);
-//veronica_hernandez.actualizarOctubre(0);
-//veronica_hernandez.actualizarNoviembre(0);
-//veronica_hernandez.actualizarDiciembre(0);
-
-// veronica_hernandez.actualizarDeudaTotal();
-
-// veronica_hernandez.actualizarAbonosTotales();
-// veronica_hernandez.actualizarPagosTotales();
 
 veronica_hernandez.actualizarDeudaHidrolago(115.35);
 veronica_hernandez.actualizarDeudaAzotea(1.5);
@@ -1164,15 +1096,6 @@ euro_alfaro.actualizarMayo(18);
 euro_alfaro.actualizarJunio(23);
 euro_alfaro.actualizarJulio(23);
 euro_alfaro.actualizarAgosto(3.25);
-//euro_alfaro.actualizarSeptiembre(0);
-//euro_alfaro.actualizarOctubre(0);
-//euro_alfaro.actualizarNoviembre(0);
-//euro_alfaro.actualizarDiciembre(0);
-
-// euro_alfaro.actualizarDeudaTotal();
-
-// euro_alfaro.actualizarAbonosTotales();
-// euro_alfaro.actualizarPagosTotales();
 
 euro_alfaro.actualizarDeudaHidrolago(115.35);
 euro_alfaro.actualizarDeudaAzotea(1.5);
@@ -1196,15 +1119,6 @@ manuel_araujo.actualizarMayo(18);
 manuel_araujo.actualizarJunio(23);
 manuel_araujo.actualizarJulio(23);
 manuel_araujo.actualizarAgosto(23);
-//manuel_araujo.actualizarSeptiembre(0);
-//manuel_araujo.actualizarOctubre(0);
-//manuel_araujo.actualizarNoviembre(0);
-//manuel_araujo.actualizarDiciembre(0);
-
-// manuel_araujo.actualizarDeudaTotal();
-
-// manuel_araujo.actualizarAbonosTotales();
-// manuel_araujo.actualizarPagosTotales();
 
 manuel_araujo.actualizarDeudaHidrolago(115.35);
 manuel_araujo.actualizarDeudaAzotea(1.5);
@@ -1228,15 +1142,6 @@ neidy_atencio.actualizarMayo(18);
 neidy_atencio.actualizarJunio(23);
 neidy_atencio.actualizarJulio(23);
 neidy_atencio.actualizarAgosto(8.8);
-//neidy_atencio.actualizarSeptiembre(0);
-//neidy_atencio.actualizarOctubre(0);
-//neidy_atencio.actualizarNoviembre(0);
-//neidy_atencio.actualizarDiciembre(0);
-
-// neidy_atencio.actualizarDeudaTotal();
-
-// neidy_atencio.actualizarAbonosTotales();
-// neidy_atencio.actualizarPagosTotales();
 
 neidy_atencio.actualizarDeudaHidrolago(100);
 neidy_atencio.actualizarDeudaAzotea(0);
@@ -1261,14 +1166,6 @@ mariely_garcia.actualizarJunio(23);
 mariely_garcia.actualizarJulio(23);
 mariely_garcia.actualizarAgosto(23);
 // mariely_garcia.actualizarSeptiembre(1.95);
-//mariely_garcia.actualizarOctubre(0);
-//mariely_garcia.actualizarNoviembre(0);
-//mariely_garcia.actualizarDiciembre(0);
-
-// mariely_garcia.actualizarDeudaTotal();
-
-// mariely_garcia.actualizarAbonosTotales();
-// mariely_garcia.actualizarPagosTotales();
 
 mariely_garcia.actualizarDeudaHidrolago(115.35);
 mariely_garcia.actualizarDeudaAzotea(1.5);
@@ -1292,15 +1189,6 @@ elias_gamboa.actualizarMayo(18);
 elias_gamboa.actualizarJunio(4.48);
 elias_gamboa.actualizarJulio(0);
 elias_gamboa.actualizarAgosto(0);
-//elias_gamboa.actualizarSeptiembre(1.95);
-//elias_gamboa.actualizarOctubre(0);
-//elias_gamboa.actualizarNoviembre(0);
-//elias_gamboa.actualizarDiciembre(0);
-
-// elias_gamboa.actualizarDeudaTotal();
-
-// elias_gamboa.actualizarAbonosTotales();
-// elias_gamboa.actualizarPagosTotales();
 
 elias_gamboa.actualizarDeudaHidrolago(115.35);
 elias_gamboa.actualizarDeudaAzotea(1.5);
@@ -1324,15 +1212,6 @@ isabel_aponte.actualizarMayo(6.65);
 isabel_aponte.actualizarJunio(0);
 isabel_aponte.actualizarJulio(0);
 isabel_aponte.actualizarAgosto(0);
-//isabel_aponte.actualizarSeptiembre(1.95);
-//isabel_aponte.actualizarOctubre(0);
-//isabel_aponte.actualizarNoviembre(0);
-//isabel_aponte.actualizarDiciembre(0);
-
-// isabel_aponte.actualizarDeudaTotal();
-
-// isabel_aponte.actualizarAbonosTotales();
-// isabel_aponte.actualizarPagosTotales();
 
 isabel_aponte.actualizarDeudaHidrolago(0);
 isabel_aponte.actualizarDeudaAzotea(1.5);
@@ -1348,13 +1227,9 @@ luzmarina_paz.actualizarJunio(29.9);
 luzmarina_paz.actualizarJulio(27.6);
 luzmarina_paz.actualizarAgosto(3.86);
 
-// mariely_garcia.actualizarSeptiembre(21.05);
-// mariely_garcia.actualizarOctubre(1.95);
-
-
-// ultimo_mes_vencido = "Septiembre";
 actualizarMesVencido("Septiembre");
 
+ceila_fuenmayor.actualizarSeptiembre(23);
 
 maria_troconiz.actualizarSeptiembre(6);
 
@@ -1371,6 +1246,8 @@ euro_ochoa.actualizarSeptiembre(0);
 oscar_salas.actualizarAgosto(0);
 oscar_salas.actualizarSeptiembre(0);
 
+thania_avila.actualizarSeptiembre(23);
+
 wilson_manzano.actualizarMarzo(0);
 wilson_manzano.actualizarAbril(0);
 wilson_manzano.actualizarMayo(0);
@@ -1384,7 +1261,7 @@ yesenia_berris.actualizarJulio(0);
 yesenia_berris.actualizarAgosto(0);
 yesenia_berris.actualizarSeptiembre(0);
 
-luzmarina_paz.actualizarAgosto(0);
+luzmarina_paz.actualizarAgosto(3.86);
 luzmarina_paz.actualizarSeptiembre(0);
 
 luis_rivas.actualizarSeptiembre(23);
@@ -1403,7 +1280,7 @@ neidy_atencio.actualizarAgosto(0);
 neidy_atencio.actualizarSeptiembre(0);
 
 mariely_garcia.actualizarSeptiembre(1.95+21.05);
-mariely_garcia.actualizarOctubre(1.95);
+//mariely_garcia.actualizarOctubre(1.95);
 
 elias_gamboa.actualizarJunio(0);
 elias_gamboa.actualizarJulio(0);
@@ -1421,7 +1298,7 @@ actualizarMesVencido("Octubre");
 
 
 ceila_fuenmayor.actualizarOctubre(28);
-ceila_fuenmayor.actualizarNoviembre(0.5);
+//ceila_fuenmayor.actualizarNoviembre(0.5);
 
 maria_troconiz.actualizarSeptiembre(18.7);
 maria_troconiz.actualizarOctubre(21.3);
@@ -1459,7 +1336,7 @@ yesenia_berris.actualizarAgosto(27.6);
 yesenia_berris.actualizarSeptiembre(21.1);
 yesenia_berris.actualizarOctubre(0);
 
-luzmarina_paz.actualizarAgosto(0); // Tego que ver porqué da este malo, creo que tengo q borrarlo del mes anterior
+luzmarina_paz.actualizarAgosto(0);
 luzmarina_paz.actualizarSeptiembre(0);
 luzmarina_paz.actualizarOctubre(0);
 
@@ -1485,7 +1362,7 @@ mariely_garcia.actualizarOctubre(28);
 mariely_garcia.actualizarNoviembre(28);
 mariely_garcia.actualizarDiciembre(28);
 
-elias_gamboa.actualizarJunio(25.93); // sale negativo el balance
+elias_gamboa.actualizarJunio(25.925);
 elias_gamboa.actualizarJulio(29.9);
 elias_gamboa.actualizarAgosto(27.6);
 elias_gamboa.actualizarSeptiembre(25.3);
@@ -2247,13 +2124,13 @@ function crearPDF() {
 	doc.line(30, 80, 30, 120); // Línea vertical separadora
 
 	// CÓDIGO PARA ASIGNAR EL ESTATUS MENSUAL DE CADA PROPIETARIO
-	// En un condominio donde se conozcan los montos de todas las coutas del año, hay que agregar el condicional para que si se hace un pago adelantado, determinar si es completo o un abono.
+	// En un condominio donde se conozcan los montos de todas las cuotas del año, hay que agregar el condicional para que si se hace un pago adelantado, determinar si es completo o un abono.
 	let check_enero;
-	if(propietario.deudaCondominioEnero == 0 && meses_ano.indexOf("Enero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioEnero.toFixed(1) == 0 && meses_ano.indexOf("Enero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_enero = "PAGADO";
 	} else if (propietario.abonoEnero !== 0) {
 		check_enero = "ABONADO";
-	} else if(propietario.deudaCondominioEnero !== 0) {
+	} else if(propietario.deudaCondominioEnero.toFixed(1) !== 0 && meses_ano.indexOf("Enero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_enero = "MES ADEUDADO";
 	} else {
 		check_enero = "-";
@@ -2261,11 +2138,11 @@ function crearPDF() {
 	doc.text(32, 86, check_enero);
 
 	let check_febrero;
-	if(propietario.deudaCondominioFebrero == 0 && meses_ano.indexOf("Febrero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioFebrero.toFixed(1) == 0 && meses_ano.indexOf("Febrero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_febrero = "PAGADO";
 	} else if (propietario.abonoFebrero !== 0) {
 		check_febrero = "ABONADO";
-	} else if(propietario.deudaCondominioFebrero !== 0) {
+	} else if(propietario.deudaCondominioFebrero.toFixed(1) !== 0 && meses_ano.indexOf("Febrero") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_febrero = "MES ADEUDADO";
 	} else {
 		check_febrero = "-";
@@ -2273,11 +2150,11 @@ function crearPDF() {
 	doc.text(32, 96, check_febrero);
 
 	let check_marzo;
-	if(propietario.deudaCondominioMarzo == 0 && meses_ano.indexOf("Marzo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioMarzo.toFixed(1) == 0 && meses_ano.indexOf("Marzo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_marzo = "PAGADO";
 	} else if (propietario.abonoMarzo !== 0) {
 		check_marzo = "ABONADO";
-	} else if(propietario.deudaCondominioMarzo !== 0) {
+	} else if(propietario.deudaCondominioMarzo.toFixed(1) !== 0 && meses_ano.indexOf("Marzo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_marzo = "MES ADEUDADO";
 	} else {
 		check_marzo = "-";
@@ -2285,11 +2162,11 @@ function crearPDF() {
 	doc.text(32, 106, check_marzo);
 
 	let check_abril;
-	if(propietario.deudaCondominioAbril == 0 && meses_ano.indexOf("Abril") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioAbril.toFixed(1) == 0 && meses_ano.indexOf("Abril") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_abril = "PAGADO";
 	} else if (propietario.abonoAbril !== 0) {
 		check_abril = "ABONADO";
-	} else if(propietario.deudaCondominioAbril !== 0) {
+	} else if(propietario.deudaCondominioAbril.toFixed(1) !== 0 && meses_ano.indexOf("Abril") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_abril = "MES ADEUDADO";
 	} else {
 		check_abril = "-";
@@ -2304,11 +2181,11 @@ function crearPDF() {
 	doc.line(118.3, 80, 118.3, 120); // Línea vertical separadora
 
 	let check_mayo;
-	if(propietario.deudaCondominioMayo == 0 && meses_ano.indexOf("Mayo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioMayo.toFixed(1) == 0 && meses_ano.indexOf("Mayo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_mayo = "PAGADO";
 	} else if (propietario.abonoMayo !== 0) {
 		check_mayo = "ABONADO";
-	} else if(propietario.deudaCondominioMayo !== 0) {
+	} else if(propietario.deudaCondominioMayo.toFixed(1) !== 0 && meses_ano.indexOf("Mayo") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_mayo = "MES ADEUDADO";
 	} else {
 		check_mayo = "-";
@@ -2316,11 +2193,11 @@ function crearPDF() {
 	doc.text(120.3, 86, check_mayo);
 
 	let check_junio;
-	if(propietario.deudaCondominioJunio == 0 && meses_ano.indexOf("Junio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioJunio.toFixed(1) == 0 && meses_ano.indexOf("Junio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_junio = "PAGADO";
 	} else if (propietario.abonoJunio !== 0) {
 		check_junio = "ABONADO";
-	} else if(propietario.deudaCondominioJunio !== 0) {
+	} else if(propietario.deudaCondominioJunio.toFixed(1) !== 0 && meses_ano.indexOf("Junio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_junio = "MES ADEUDADO";
 	} else {
 		check_junio = "-";
@@ -2328,11 +2205,11 @@ function crearPDF() {
 	doc.text(120.3, 96, check_junio);
 
 	let check_julio;
-	if(propietario.deudaCondominioJulio == 0 && meses_ano.indexOf("Julio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioJulio.toFixed(1) == 0 && meses_ano.indexOf("Julio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_julio = "PAGADO";
 	} else if (propietario.abonoJulio !== 0) {
 		check_julio = "ABONADO";
-	} else if(propietario.deudaCondominioJulio !== 0) {
+	} else if(propietario.deudaCondominioJulio.toFixed(1) !== 0 && meses_ano.indexOf("Julio") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_julio = "MES ADEUDADO";
 	} else {
 		check_julio = "-";
@@ -2340,11 +2217,11 @@ function crearPDF() {
 	doc.text(120.3, 106, check_julio);
 
 	let check_agosto;
-	if(propietario.deudaCondominioAgosto == 0 && meses_ano.indexOf("Agosto") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioAgosto.toFixed(1) == 0 && meses_ano.indexOf("Agosto") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_agosto = "PAGADO";
 	} else if (propietario.abonoAgosto !== 0) {
 		check_agosto = "ABONADO";
-	} else if(propietario.deudaCondominioAgosto !== 0) {
+	} else if(propietario.deudaCondominioAgosto.toFixed(1) !== 0 && meses_ano.indexOf("Agosto") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_agosto = "MES ADEUDADO";
 	} else {
 		check_agosto = "-";
@@ -2359,11 +2236,11 @@ function crearPDF() {
 	doc.line(216.67, 80, 216.67, 120); // Línea vertical separadora
 
 	let check_septiembre;
-	if(propietario.deudaCondominioSeptiembre == 0 && meses_ano.indexOf("Septiembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioSeptiembre.toFixed(1) == 0 && meses_ano.indexOf("Septiembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_septiembre = "PAGADO";
 	} else if (propietario.abonoSeptiembre !== 0) {
 		check_septiembre = "ABONADO";
-	} else if(propietario.deudaCondominioSeptiembre !== 0) {
+	} else if(propietario.deudaCondominioSeptiembre.toFixed(1) !== 0 && meses_ano.indexOf("Septiembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_septiembre = "MES ADEUDADO";
 	} else {
 		check_septiembre = "-";
@@ -2371,11 +2248,11 @@ function crearPDF() {
 	doc.text(218.67, 86, check_septiembre);
 
 	let check_octubre;
-	if(propietario.deudaCondominioOctubre == 0 && meses_ano.indexOf("Octubre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioOctubre.toFixed(1) == 0 && meses_ano.indexOf("Octubre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_octubre = "PAGADO";
 	} else if (propietario.abonoOctubre !== 0) {
 		check_octubre = "ABONADO";
-	} else if(propietario.deudaCondominioOctubre !== 0) {
+	} else if(propietario.deudaCondominioOctubre.toFixed(1) !== 0 && meses_ano.indexOf("Octubre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_octubre = "MES ADEUDADO";
 	} else {
 		check_octubre = "-";
@@ -2383,11 +2260,11 @@ function crearPDF() {
 	doc.text(218.67, 96, check_octubre);
 
 	let check_noviembre;
-	if(propietario.deudaCondominioNoviembre == 0 && meses_ano.indexOf("Noviembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioNoviembre.toFixed(1) == 0 && meses_ano.indexOf("Noviembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_noviembre = "PAGADO";
 	} else if (propietario.abonoNoviembre !== 0) {
 		check_noviembre = "ABONADO";
-	} else if(propietario.deudaCondominioNoviembre !== 0) {
+	} else if(propietario.deudaCondominioNoviembre.toFixed(1) !== 0 && meses_ano.indexOf("Noviembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_noviembre = "MES ADEUDADO";
 	} else {
 		check_noviembre = "-";
@@ -2395,11 +2272,11 @@ function crearPDF() {
 	doc.text(218.67, 106, check_noviembre);
 
 	let check_diciembre;
-	if(propietario.deudaCondominioDiciembre == 0 && meses_ano.indexOf("Diciembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
+	if(propietario.deudaCondominioDiciembre.toFixed(1) == 0 && meses_ano.indexOf("Diciembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_diciembre = "PAGADO";
 	} else if (propietario.abonoDiciembre !== 0) {
 		check_diciembre = "ABONADO";
-	} else if(propietario.deudaCondominioDiciembre !== 0) {
+	} else if(propietario.deudaCondominioDiciembre.toFixed(1) !== 0 && meses_ano.indexOf("Diciembre") <= meses_ano.indexOf(ultimo_mes_vencido)) {
 		check_diciembre = "MES ADEUDADO";
 	} else {
 		check_diciembre = "-";

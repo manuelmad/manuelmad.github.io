@@ -169,10 +169,12 @@ table tr {
 }
 
 #filtro_busqueda {
+	font-family: 'Roboto Condensed', sans-serif;
 	width: 10rem;
 }
 
 #lista_propietarios {
+	font-family: 'Roboto Condensed', sans-serif;
 	width: 15rem;
 }
 
