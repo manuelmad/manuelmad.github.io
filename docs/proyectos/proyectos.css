@@ -242,20 +242,20 @@ p, ul {
 
 /* Administración de Condominio */
 
-.admin-condo {
+.admin-condo, .videojuegos {
     width: 100%;
     padding: 5rem 3rem;
 }
 
-.admin-condo h1 {
+.admin-condo h1, .videojuegos h1 {
     font-size: 2.5rem;
 }
 
-.admin-condo p {
+.admin-condo p, .videojuegos p {
     padding-top: 1rem;
 }
 
-.admin-condo a {
+.admin-condo a, .videojuegos a {
     color: var(--dark-blue);
     font-weight: bold;
 }

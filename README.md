@@ -18,6 +18,7 @@ A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo 
 * [**Landing Page para Empresa de Repostería.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/dolce_vita)
 * [**Administración de Condominio.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/admin_condo)
 * [**Cálculo de Parámetros Corporales.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/calculos_corporales)
+* [**Aplicación para Videojuegos.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/videojuegos)
 
 ## Currículum
 **2022**<br>

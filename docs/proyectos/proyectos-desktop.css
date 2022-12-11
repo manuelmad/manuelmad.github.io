@@ -47,12 +47,12 @@ p {
     font-size: 3rem;
 }
 
-.admin-condo {
+.admin-condo, .videojuegos {
     padding-left: 8rem;
     padding-right: 45rem;
 }
 
-.admin-condo h1 {
+.admin-condo h1, .videojuegos h1 {
     font-size: 3rem;
 }
 
