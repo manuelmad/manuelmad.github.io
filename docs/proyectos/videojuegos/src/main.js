@@ -17,7 +17,7 @@ async function createFullDataBase(list) {
         let API_URL_GAME = `${API_URL}/games/${game}?key=${API_KEY}`;
         let res = await fetch(API_URL_GAME);
         let data = await res.json();
-        data.background_image = `../img/sonic/${game}.jpg`;
+        // data.background_image = `../img/sonic/${game}.jpg`;
 
         if(res.status !== 200) {
             console.log("Hubo un error: " + res.status);
