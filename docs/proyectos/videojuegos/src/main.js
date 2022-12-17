@@ -1,4 +1,6 @@
 // URL GENERAL
+const API_KEY = '8d35f3d37cff4c7c816bce53458b3cb4'; // No quito el secrets.js del .gitignore porque tengo otra información allí.
+
 const API_URL = 'https://api.rawg.io/api';
 
 const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
