@@ -14,6 +14,11 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+section article .empty {
+    grid-column: 1/4;
+    font-size: 1.3rem;
+}
+
 .detail-games-container div {
     width: 50rem;
 }
@@ -23,27 +28,27 @@
     height: 28.6rem;
 }
 
-.credits {
+/* .credits {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-content: center;
-}
+} */
 
-.contact-info {
+/* .contact-info {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
-}
+} */
 
-.teacher {
+/* .teacher {
     grid-column: 2/3;
 }
 
 .api {
     grid-column: 3/4;
-}
+} */
 
-.linkedin {
+/* .linkedin {
     grid-column: 1/2;
 }
 
@@ -53,4 +58,28 @@
 
 .github {
     grid-column: 3/4;
+} */
+
+footer article div {
+    margin-top: 2rem;
+}
+
+footer h3 {
+    font-size: 1.4rem;
+}
+
+footer p {
+    font-size: 1.3rem;
+}
+
+.linkedin svg {
+    width: 1.6rem;
+}
+
+.email svg {
+    width: 1.7rem;
+}
+
+.github svg {
+    width: 1.6rem;
 }

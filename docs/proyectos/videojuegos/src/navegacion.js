@@ -135,6 +135,9 @@ function searchPage() {
     toplaySectionContainer.classList.add('inactive');
     searchSectionContainer.classList.remove('inactive');
     detailSectionContainer.classList.add('inactive');
+
+    // Muestro siempre las tendencias en la página de search, hasta que el usuario haga una búsqueda.
+    trendingGames();
 }
 
 function detailPage() {

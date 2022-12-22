@@ -9,34 +9,118 @@ const API_URL_GAMES = 'https://api.rawg.io/api/games';
 
 const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
 
-// Array general que contendrá todos los juegos del usuario en forma de objetos
-let allGamesObjects = [];
+let userInfo;
+let userGames;
+let userGamesPage;
+//Función para obtener información de usuario
+async function getUserInfo(list) {
+    const res = await fetch(`${API_URL_USER}/games?key=${API_KEY}`);
+    const data = await res.json();
 
-// Función para agregar al array anterior los juegos de los arrays creados en variables.js
-async function createFullDataBase(list) {
+    userInfo = data;
+    userGames = userInfo.results;
+    // console.log('UserInfo', userInfo);
+    // console.log('UserGames', userGames);
+
+     // Inicio el conteo de las páginas de resultados
+     userGamesPage = 1;
+
+    // Una forma trucada de mostrar algo en la aplicación por ahora
     for(let j=0; j < list.length; j++) {
         let game = list[j];
-        let API_URL_GAME = `${API_URL}/games/${game}?key=${API_KEY}`;
-        let res = await fetch(API_URL_GAME);
-        let data = await res.json();
-        // data.background_image = `../img/sonic/${game}.jpg`;
-
-        if(res.status !== 200) {
-            console.log("Hubo un error: " + res.status);
-        } else {
-            allGamesObjects.push(data);
-        }
+        userGames.forEach(item => {
+            if(item.slug == game) {
+                allGamesObjects.push(item);
+            }
+        });
     }
+    nextPageGames(list);
+    console.log('UserInfo', userInfo);
+    console.log('UserGames', userGames);
+    console.log('allGamesObjects', allGamesObjects);
 }
+getUserInfo(playED_games);
+getUserInfo(playING_games);
+getUserInfo(TOplay_games);
+
+// Función para recorrer las demás páginas de los juegos del usuario
+async function nextPageGames(list) {
+    let nextPage = userGamesPage + 1;
+    for(let i = nextPage; i <= Math.ceil(userInfo.count/20); i++) {
+        const res = await fetch(`${API_URL_USER}/games?key=${API_KEY}&page=${nextPage}`);
+        const data = await res.json();
+        let NewUserGames = data.results;
+        console.log(NewUserGames);
+        userGames.push(NewUserGames);
+        userGames.flat();
+        // console.log(userGames);
+        // console.log(NewUserGames);
+        NewUserGames.forEach(item => {
+            for(let k = 0; k < list.length; k++) {
+                if(item.slug == list[k]) {
+                    allGamesObjects.push(item);
+                }
+            }
+        });
+    }
+    // console.log('UserInfo', userInfo);
+    // console.log('UserGames', userGames);
+    // console.log('allGamesObjects', allGamesObjects);
+}
+
+// nextPageGames(playED_games);
+// nextPageGames(playING_games);
+// nextPageGames(TOplay_games);
+
+// Array general que contendrá todos los juegos del usuario en forma de objetos
+let allGamesObjects = []; // 38 juegos
+
+// Función para agregar al array anterior los juegos de los arrays creados en variables.js
+// async function createFullDataBase(list) {
+//     for(let j=0; j < list.length; j++) {
+//         let game = list[j];
+//         let API_URL_GAME = `${API_URL_GAMES}/${game}?key=${API_KEY}`;
+//         let res = await fetch(API_URL_GAME);
+//         console.log(res);
+//         let data = await res.json();
+//         console.log(data);
+//         // data.background_image = `../img/sonic/${game}.jpg`;
+
+//         if(res.status !== 200) {
+//             console.log("Hubo un error: " + res.status);
+//         } else {
+//             allGamesObjects.push(data);
+//         }
+//     }
+// }
+
+// function createFullDataBase(list) {
+//     for(let j=0; j < list.length; j++) {
+//         let game = list[j];
+//         userGames.forEach(item => {
+//             if(item.slug == game) {
+//                 allGamesObjects.push(item);
+//             }
+//         });
+//     }
+// }
 // A la función anterior, le paso los array que creé en variables.js para agregar todos esos juegos a la lista general
-createFullDataBase(playED_games);
-createFullDataBase(playING_games);
-createFullDataBase(TOplay_games);
+// createFullDataBase(playED_games);
+// createFullDataBase(playING_games);
+// createFullDataBase(TOplay_games);
 
 
 // Función que muestra los playED Games
 function showPlayedGames(list) {
     playedGamesContainer.innerHTML = '';
+
+    // Condicional para mostrar un mensaje de categorpia vacía (debo cambiar el array por el de playED games)
+    if(allGamesObjects.length == 0) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('empty');
+        emptyDiv.innerText = 'You have not added any game in this category yet';
+        playedGamesContainer.appendChild(emptyDiv);
+    }
  
     for(let i=0; i < list.length; i++) {
         allGamesObjects.forEach(item => {
@@ -196,7 +280,7 @@ async function searchGame() {
     const data = await res.json();
 
     searchGamesContainer.innerHTML = '';
-    trendingTitle.innerText = `Search results by "${query}"`;
+    trendingTitle.innerHTML = `Search results by <span>"${query}"</span>`;
 
     if(res.status !== 200) {
         console.log("There was an error: " + res.status);
@@ -342,7 +426,7 @@ async function showGameDetails(game) {
 
 // Función que muestra por defecto en la vista de búsqueda los juegos en tendencia. Estos serán sustituidos luego por los juegos resultantes de la búsqueda
 async function trendingGames() {
-    const res = await fetch(`${API_URL_GAMES}?key=${API_KEY}`);
+    const res = await fetch(`${API_URL_GAMES}?key=${API_KEY}&limit=20`);
     const data = await res.json();
 
     searchGamesContainer.innerHTML = '';
@@ -435,6 +519,3 @@ async function trendingGames() {
     // Mostrar el número de página actual / número de páginas totales
     page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
 }
-
-// Muestro siempre las tendencias en la página de search, hasta que el usuario haga una búsqueda.
-trendingGames();

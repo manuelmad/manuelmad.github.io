@@ -33,7 +33,9 @@ const sonic_the_hedgehog_4_episode_2 =  'sonic-the-hedgehog-4-episode-ii-2';
 const sonic_lost_world = 'sonic-lost-world';
 const sonic_mania = 'sonic-mania';
 const sonic_forces = 'sonic-forces';
-const sonic_frontiers = 'sonic-frontiers'; // No está en la base de datos
+const sonic_frontiers = 'sonic-frontiers';
+
+// const pokemon_quest = 'pokemon-quest';
 
 const header = document.querySelector('.header');
 const main = document.querySelector('.main');
@@ -65,6 +67,7 @@ const previous_page_button = document.getElementById('previous_page_button');
 
 // ARRAYS DE CATEGORÍAS
 
+// 17 juegos
 let playED_games = [
     sonic_the_hedgehog,
     sonic_the_hedgehog_2,
@@ -79,15 +82,20 @@ let playED_games = [
     sonic_3d_blast,
     sonic_adventure,
     sonic_the_hedgehog_pocket_adventure,
-    sonic_adventure_2
-];
-
-let playING_games = [
+    sonic_adventure_2,
     sonic_advance,
     sonic_advance_2,
     sonic_advance_3
 ];
 
+// 3 juegos
+let playING_games = [
+    'pokemon-quest',
+    'paper-mario-sticker-star',
+    'the-secret-of-monkey-island'
+];
+
+// 18 juegos
 let TOplay_games = [
     sonic_heroes,
     shadow_the_hedgehog,
