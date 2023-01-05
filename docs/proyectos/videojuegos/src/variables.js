@@ -1,3 +1,13 @@
+const API_KEY = '8d35f3d37cff4c7c816bce53458b3cb4';
+
+const API_URL = 'https://api.rawg.io/api';
+
+const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
+
+const API_URL_GAMES = 'https://api.rawg.io/api/games';
+
+const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
+
 // VARIABLES DE JUEGOS
 const sonic_the_hedgehog = 'sonic-the-hedgehog';
 const sonic_the_hedgehog_2 = 'sonic-the-hedgehog-2';

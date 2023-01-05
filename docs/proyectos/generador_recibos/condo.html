@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aplicación web para crear recibos de pago del Conjunto 16 Yacambú.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+	<title>Generador de Recibos de Pago</title>
+	<link href="condo.css" type="text/css" rel="stylesheet" />
+	<link href="condo-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="condo-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+
+	</header>
+	<main>
+		<section class="propietarios">
+			<div class="logo-container"></div>
+			<h2>CONTROL DE PAGOS DE CUOTA DE CONDOMINIO</h2>
+			<div id = "container_tabla_condominio" class="container-tabla-condominio">
+				<p class="boton-examinar-container"><input type="file" id="file" accept=".xls, .xlsx"></p>
+				<p>Seleccione un propietario y el año a validar:</p>
+				<table id="tabla_condominio" class="tabla-propietarios">
+					<thead>
+						<tr>
+							<th id="nombre_propietario" colspan="3">
+								<input list="filtro_busqueda" onchange="addHouse()" id="selected_owner">
+								<datalist id="filtro_busqueda">
+									
+								</datalist>
+							</th>
+						</tr>
+						<tr>
+							<th id="apart_propietario" colspan="3"></th>
+						</tr>
+						<tr>
+							<th id="ano_deuda" colspan="3">
+								<select id="filtro_ano">
+									<option value="2022">2022</option>
+									<option value="2023" selected>2023</option>
+								</select>
+							</th>
+						</tr>
+						<tr>
+							<th class="columna-mes">Mes</th>
+							<th>Pago</th>
+							<th>Deuda</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpo_tabla_propietarios">
+						<tr>
+							<td>Enero</td>
+							<td id="pago_enero_propietario"></td>
+							<td id="deuda_enero_propietario"></td>
+						</tr>
+						<tr>
+							<td>Febrero</td>
+							<td id="pago_febrero_propietario"></td>
+							<td id="deuda_febrero_propietario"></td>
+						</tr>
+						<tr>
+							<td>Marzo</td>
+							<td id="pago_marzo_propietario"></td>
+							<td id="deuda_marzo_propietario"></td>
+						</tr>
+						<tr>
+							<td>Abril</td>
+							<td id="pago_abril_propietario"></td>
+							<td id="deuda_abril_propietario"></td>
+						</tr>
+						<tr>
+							<td>Mayo</td>
+							<td id="pago_mayo_propietario"></td>
+							<td id="deuda_mayo_propietario"></td>
+						</tr>
+						<tr>
+							<td>Junio</td>
+							<td id="pago_junio_propietario"></td>
+							<td id="deuda_junio_propietario"></td>
+						</tr>
+						<tr>
+							<td>Julio</td>
+							<td id="pago_julio_propietario"></td>
+							<td id="deuda_julio_propietario"></td>
+						</tr>
+						<tr>
+							<td>Agosto</td>
+							<td id="pago_agosto_propietario"></td>
+							<td id="deuda_agosto_propietario"></td>
+						</tr>
+						<tr>
+							<td>Septiembre</td>
+							<td id="pago_septiembre_propietario"></td>
+							<td id="deuda_septiembre_propietario"></td>
+						</tr>
+						<tr>
+							<td>Octubre</td>
+							<td id="pago_octubre_propietario"></td>
+							<td id="deuda_octubre_propietario"></td>
+						</tr>
+						<tr>
+							<td>Noviembre</td>
+							<td id="pago_noviembre_propietario"></td>
+							<td id="deuda_noviembre_propietario"></td>
+						</tr>
+						<tr>
+							<td>Diciembre</td>
+							<td id="pago_diciembre_propietario"></td>
+							<td id="deuda_diciembre_propietario"></td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Montos expresados en Bs.</p>
+				<p><button id="boton_tabla" onclick="llenarTabla()">Mostrar Valores en Tabla</button></p>
+				<p id="mes_vencido">Indique el último mes vencido:
+					<select name="" id="lista_meses">
+						<option value="Enero">Enero</option>
+						<option value="Febrero">Febrero</option>
+						<option value="Marzo">Marzo</option>
+						<option value="Abril">Abril</option>
+						<option value="Mayo">Mayo</option>
+						<option value="Junio">Junio</option>
+						<option value="Julio">Julio</option>
+						<option value="Agosto">Agosto</option>
+						<option value="Septiembre">Septiembre</option>
+						<option value="Octubre">Octubre</option>
+						<option value="Noviembre">Noviembre</option>
+						<option value="Diciembre">Diciembre</option>
+					</select>
+				</p>
+				<p><button id="boton_recibo">Descargar Recibo de Pago</button></p>
+			</div>
+		</section>
+	</main>
+	<script src="./xlsx.full.min.js"></script>
+	<script src="./FileSaver.min.js"></script>
+	<script type="text/javascript" src="jspdf.min.js"></script> <!-- Script para generar e imprimir archivo .pdf -->
+	<script type="text/javascript" src="condo.js"></script>
+</body>
+</html>

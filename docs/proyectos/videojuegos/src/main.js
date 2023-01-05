@@ -1,13 +1,13 @@
 // URL GENERAL
-const API_KEY = '8d35f3d37cff4c7c816bce53458b3cb4'; // No quito el secrets.js del .gitignore porque tengo otra información allí.
+// const API_KEY = '8d35f3d37cff4c7c816bce53458b3cb4'; // No quito el secrets.js del .gitignore porque tengo otra información allí.
 
-const API_URL = 'https://api.rawg.io/api';
+// const API_URL = 'https://api.rawg.io/api';
 
-const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
+// const API_URL_USER = 'https://api.rawg.io/api/users/manuelmad';
 
-const API_URL_GAMES = 'https://api.rawg.io/api/games';
+// const API_URL_GAMES = 'https://api.rawg.io/api/games';
 
-const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
+// const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
 
 let userInfo;
 let userGames;
@@ -519,3 +519,13 @@ async function trendingGames() {
     // Mostrar el número de página actual / número de páginas totales
     page_number.innerText = `${list_page} / ${Math.ceil(data.count/20)}`;
 }
+
+// async function test() {
+//     const res = await fetch(`https://rawg.io/api/3498/movies`);
+//     // const data = await res.json();
+//     // const data = await JSON.parse(res);
+
+//     console.log('test', res);
+// }
+
+// test();
