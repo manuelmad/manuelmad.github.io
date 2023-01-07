@@ -191,7 +191,12 @@ function agregarCheckedTrue() {
 		}
 	});
 }
-//agregarCheckedTrue(); // Tengo que aplicarla dentro de la funcion del pdf
+
+// Función para cambiar el año en el número de recibo
+function modSpan() {
+	let year = document.getElementById("filtro_ano").value;
+	document.getElementById("ano_recibo").innerText = year;
+}
 
 
 // Imprimir recibo en .pdf
@@ -245,7 +250,8 @@ function crearPDF() {
 	doc.setFontType('normal');
 	doc.text(230, 25,`N° de recibo: `);
 	doc.setTextColor(255, 0, 0); // Rojo
-	// doc.text(253, 25,`${ano}-${mes_vencido}-${propietario['Casa N°']}`);
+	let numero_recibo = document.getElementById("numero_recibo").value;
+	doc.text(253, 25,`${ano}-${numero_recibo}`);
 	let fecha = new Date();
 	doc.setTextColor(0, 0, 0);
 	doc.text(230, 30, "Fecha de emisión: " + fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear());
@@ -253,7 +259,7 @@ function crearPDF() {
 	// Fila Propietario
 	doc.setFillColor(255, 87, 51); // orange
 	doc.rect(10, 50, 20, 10, 'f'); // 3ra coordenada: ancho, 4° coordenada: alto
-	doc.rect(228, 50, 30, 10, 'f'); // 3ra coordenada: ancho, 4° coordenada: alto
+	doc.rect(238, 50, 20, 10, 'f'); // 3ra coordenada: ancho, 4° coordenada: alto
 	doc.line(10, 50, 285, 50); // Línea horizontal superior
 	doc.setTextColor(255,255,255); // Blanco
 	doc.setFontType('bold');
@@ -263,13 +269,13 @@ function crearPDF() {
 	doc.text(35, 56, propietario['Nombre Completo']);
 	doc.setTextColor(255,255,255); // Blanco
 	doc.setFontType('bold');
-	doc.text(230, 56, "Casa N°: ");
+	doc.text(240, 56, "Casa N°: ");
 	doc.setFontType('normal');
 	doc.setTextColor(0,0,0); // Negro
 	doc.text(263, 56, propietario['Casa N°']);
 	doc.line(10, 60, 285, 60); // Línea horizontal inferior
 	doc.line(30, 50, 30, 60); // Línea vertical separadora
-	doc.line(228, 50, 228, 60); // Línea vertical separadora
+	doc.line(238, 50, 238, 60); // Línea vertical separadora
 	doc.line(258, 50, 258, 60); // Línea vertical separadora
 
 	// Fila mensualidades
@@ -469,108 +475,289 @@ function crearPDF() {
 	doc.setFontType('normal');
 
 	doc.line(10, 150, 285, 150); // Línea horizontal
-	doc.line(147.5, 140, 147.5, 150); // Línea vertical separadora
-	doc.line(30, 140, 30, 150); // Línea vertical separadora
-	doc.line(167.5, 140, 167.5, 150); // Línea vertical separadora
+	doc.line(33, 140, 33, 150); // Línea vertical separadora
+	doc.line(33, 150, 33, 160); // Línea vertical separadora
 	doc.setTextColor(0,0,0); // Blanco
 	doc.text(43.5, 146, "N° de Ref.:");
-	doc.text(100, 146, "Banco:");
-	doc.text(181, 146, "N° de Ref.:");
-	doc.text(237.5, 146, "Banco:");
+	doc.text(140, 146, "Banco:");
+	doc.text(43.5, 156, "N° de Ref.:");
+	doc.text(140, 156, "Banco:");
+	doc.line(10, 160, 285, 160); // Línea horizontal
 
+	array_checked = []; // Limpiar array de inputs checked
 	agregarCheckedTrue(); // Invocar función para crear array de checkbox true
 
 	doc.setTextColor(0,0,0); // Negro
 	if(array_checked[0]) {
 		doc.text(12, 146, `${array_checked[0].value}:`); // Primer mes seleccionado
+
+		// Código para asignar número de referencia, banco y monto del primer mes seleccionado
+		let ref_mes_1;
+		let banco_mes_1;
+		let monto_mes_1;
+		let moneda_mes_1;
+
+		if(array_checked[0].value == "Enero") {
+			ref_mes_1 = propietario['N° Ref. Enero'];
+			banco_mes_1 = propietario['Banco Enero'];
+			monto_mes_1 = propietario['Pago Enero'];
+			if(propietario['N° Ref. Enero'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Febrero") {
+			ref_mes_1 = propietario['N° Ref. Febrero'];
+			banco_mes_1 = propietario['Banco Febrero'];
+			monto_mes_1 = propietario['Pago Febrero'];
+			if(propietario['N° Ref. Febrero'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Marzo") {
+			ref_mes_1 = propietario['N° Ref. Marzo'];
+			banco_mes_1 = propietario['Banco Marzo'];
+			monto_mes_1 = propietario['Pago Marzo'];
+			if(propietario['N° Ref. Marzo'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Abril") {
+			ref_mes_1 = propietario['N° Ref. Abril'];
+			banco_mes_1 = propietario['Banco Abril'];
+			monto_mes_1 = propietario['Pago Abril'];
+			if(propietario['N° Ref. Abril'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Mayo") {
+			ref_mes_1 = propietario['N° Ref. Mayo'];
+			banco_mes_1 = propietario['Banco Mayo'];
+			monto_mes_1 = propietario['Pago Mayo'];
+			if(propietario['N° Ref. Mayo'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Junio") {
+			ref_mes_1 = propietario['N° Ref. Junio'];
+			banco_mes_1 = propietario['Banco Junio'];
+			monto_mes_1 = propietario['Pago Junio'];
+			if(propietario['N° Ref. Junio'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Julio") {
+			ref_mes_1 = propietario['N° Ref. Julio'];
+			banco_mes_1 = propietario['Banco Julio'];
+			monto_mes_1 = propietario['Pago Julio'];
+			if(propietario['N° Ref. Julio'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Agosto") {
+			ref_mes_1 = propietario['N° Ref. Agosto'];
+			banco_mes_1 = propietario['Banco Agosto'];
+			monto_mes_1 = propietario['Pago Agosto'];
+			if(propietario['N° Ref. Agosto'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Septiembre") {
+			ref_mes_1 = propietario['N° Ref. Septiembre'];
+			banco_mes_1 = propietario['Banco Septiembre'];
+			monto_mes_1 = propietario['Pago Septiembre'];
+			if(propietario['N° Ref. Septiembre'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Octubre") {
+			ref_mes_1 = propietario['N° Ref. Octubre'];
+			banco_mes_1 = propietario['Banco Octubre'];
+			monto_mes_1 = propietario['Pago Octubre'];
+			if(propietario['N° Ref. Octubre'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Noviembre") {
+			ref_mes_1 = propietario['N° Ref. Noviembre'];
+			banco_mes_1 = propietario['Banco Noviembre'];
+			monto_mes_1 = propietario['Pago Noviembre'];
+			if(propietario['N° Ref. Noviembre'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		else if(array_checked[0].value == "Diciembre") {
+			ref_mes_1 = propietario['N° Ref. Diciembre'];
+			banco_mes_1 = propietario['Banco Diciembre'];
+			monto_mes_1 = propietario['Pago Diciembre'];
+			if(propietario['N° Ref. Diciembre'] == "EFECTIVO") {
+				moneda_mes_1 = "($)";
+			} else {
+				moneda_mes_1 = "(Bs.)";
+			}
+		}
+		doc.text(70, 146, `${ref_mes_1}`);
+		doc.text(160, 146, `${banco_mes_1}`);
+		doc.text(245, 146, `${monto_mes_1}`);
+		doc.text(220, 146, `Monto ${moneda_mes_1}:`);
 	}
+
 	if(array_checked[1]) {
-		doc.text(149.5, 146, `${array_checked[1].value}:`); // Segundo mes seleccionado
-	}
+		doc.text(12, 156, `${array_checked[1].value}:`); // Segundo mes seleccionado
 
-	// Código para asignar número de referencia del primer mes seleccionado
-	let ref_mes_1;
-	if(array_checked[0].value == "Enero") {
-		ref_mes_1 = propietario['N° Ref. Enero'];
-	}
-	else if(array_checked[0].value == "Febrero") {
-		ref_mes_1 = propietario['N° Ref. Febrero'];
-	}
-	else if(array_checked[0].value == "Marzo") {
-		ref_mes_1 = propietario['N° Ref. Marzo'];
-	}
-	else if(array_checked[0].value == "Abril") {
-		ref_mes_1 = propietario['N° Ref. Abril'];
-	}
-	else if(array_checked[0].value == "Mayo") {
-		ref_mes_1 = propietario['N° Ref. Mayo'];
-	}
-	else if(array_checked[0].value == "Junio") {
-		ref_mes_1 = propietario['N° Ref. Junio'];
-	}
-	else if(array_checked[0].value == "Julio") {
-		ref_mes_1 = propietario['N° Ref. Julio'];
-	}
-	else if(array_checked[0].value == "Agosto") {
-		ref_mes_1 = propietario['N° Ref. Agosto'];
-	}
-	else if(array_checked[0].value == "Septiembre") {
-		ref_mes_1 = propietario['N° Ref. Septiembre'];
-	}
-	else if(array_checked[0].value == "Octubre") {
-		ref_mes_1 = propietario['N° Ref. Octubre'];
-	}
-	else if(array_checked[0].value == "Noviembre") {
-		ref_mes_1 = propietario['N° Ref. Noviembre'];
-	}
-	else if(array_checked[0].value == "Diciembre") {
-		ref_mes_1 = propietario['N° Ref. Diciembre'];
-	}
+		// Código para asignar número de referencia, banco y monto del segundo mes seleccionado
+		let ref_mes_2;
+		let banco_mes_2;
+		let monto_mes_2;
+		let moneda_mes_2;
 
-	doc.text(70, 146, `${ref_mes_1}`);
+		if(array_checked[1].value == "Enero") {
+			ref_mes_2 = propietario['N° Ref. Enero'];
+			banco_mes_2 = propietario['Banco Enero'];
+			monto_mes_2 = propietario['Pago Enero'];
+			if(propietario['N° Ref. Enero'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Febrero") {
+			ref_mes_2 = propietario['N° Ref. Febrero'];
+			banco_mes_2 = propietario['Banco Febrero'];
+			monto_mes_2 = propietario['Pago Febrero'];
+			if(propietario['N° Ref. Febrero'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Marzo") {
+			ref_mes_2 = propietario['N° Ref. Marzo'];
+			banco_mes_2 = propietario['Banco Marzo'];
+			monto_mes_2 = propietario['Pago Marzo'];
+			if(propietario['N° Ref. Marzo'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Abril") {
+			ref_mes_2 = propietario['N° Ref. Abril'];
+			banco_mes_2 = propietario['Banco Abril'];
+			monto_mes_2 = propietario['Pago Abril'];
+			if(propietario['N° Ref. Abril'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Mayo") {
+			ref_mes_2 = propietario['N° Ref. Mayo'];
+			banco_mes_2 = propietario['Banco Mayo'];
+			monto_mes_2 = propietario['Pago Mayo'];
+			if(propietario['N° Ref. Mayo'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Junio") {
+			ref_mes_2 = propietario['N° Ref. Junio'];
+			banco_mes_2 = propietario['Banco Junio'];
+			monto_mes_2 = propietario['Pago Junio'];
+			if(propietario['N° Ref. Junio'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Julio") {
+			ref_mes_2 = propietario['N° Ref. Julio'];
+			banco_mes_2 = propietario['Banco Julio'];
+			monto_mes_2 = propietario['Pago Julio'];
+			if(propietario['N° Ref. Julio'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Agosto") {
+			ref_mes_2 = propietario['N° Ref. Agosto'];
+			banco_mes_2 = propietario['Banco Agosto'];
+			monto_mes_2 = propietario['Pago Agosto'];
+			if(propietario['N° Ref. Agosto'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Septiembre") {
+			ref_mes_2 = propietario['N° Ref. Septiembre'];
+			banco_mes_2 = propietario['Banco Septiembre'];
+			monto_mes_2 = propietario['Pago Septiembre'];
+			if(propietario['N° Ref. Septiembre'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Octubre") {
+			ref_mes_2 = propietario['N° Ref. Octubre'];
+			banco_mes_2 = propietario['Banco Octubre'];
+			monto_mes_2 = propietario['Pago Octubre'];
+			if(propietario['N° Ref. Octubre'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Noviembre") {
+			ref_mes_2 = propietario['N° Ref. Noviembre'];
+			banco_mes_2 = propietario['Banco Noviembre'];
+			monto_mes_2 = propietario['Pago Noviembre'];
+			if(propietario['N° Ref. Noviembre'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
+		else if(array_checked[1].value == "Diciembre") {
+			ref_mes_2 = propietario['N° Ref. Diciembre'];
+			banco_mes_2 = propietario['Banco Diciembre'];
+			monto_mes_2 = propietario['Pago Diciembre'];
+			if(propietario['N° Ref. Diciembre'] == "EFECTIVO") {
+				moneda_mes_2 = "($)";
+			} else {
+				moneda_mes_2 = "(Bs.)";
+			}
+		}
 
-	// Código para asignar número de referencia del segundo mes seleccionado
-	let ref_mes_2;
-	if(array_checked[1].value == "Enero") {
-		ref_mes_2 = propietario['N° Ref. Enero'];
+		doc.text(70, 156, `${ref_mes_2}`);
+		doc.text(160, 156, `${banco_mes_2}`);
+		doc.text(245, 156, `${monto_mes_2}`);
+		doc.text(220, 156, `Monto ${moneda_mes_2}:`);
 	}
-	else if(array_checked[1].value == "Febrero") {
-		ref_mes_2 = propietario['N° Ref. Febrero'];
-	}
-	else if(array_checked[1].value == "Marzo") {
-		ref_mes_2 = propietario['N° Ref. Marzo'];
-	}
-	else if(array_checked[1].value == "Abril") {
-		ref_mes_2 = propietario['N° Ref. Abril'];
-	}
-	else if(array_checked[1].value == "Mayo") {
-		ref_mes_2 = propietario['N° Ref. Mayo'];
-	}
-	else if(array_checked[1].value == "Junio") {
-		ref_mes_2 = propietario['N° Ref. Junio'];
-	}
-	else if(array_checked[1].value == "Julio") {
-		ref_mes_2 = propietario['N° Ref. Julio'];
-	}
-	else if(array_checked[1].value == "Agosto") {
-		ref_mes_2 = propietario['N° Ref. Agosto'];
-	}
-	else if(array_checked[1].value == "Septiembre") {
-		ref_mes_2 = propietario['N° Ref. Septiembre'];
-	}
-	else if(array_checked[1].value == "Octubre") {
-		ref_mes_2 = propietario['N° Ref. Octubre'];
-	}
-	else if(array_checked[1].value == "Noviembre") {
-		ref_mes_2 = propietario['N° Ref. Noviembre'];
-	}
-	else if(array_checked[1].value == "Diciembre") {
-		ref_mes_2 = propietario['N° Ref. Diciembre'];
-	}
-
-	doc.text(207.5, 146, `${ref_mes_2}`);
-
-	/* AGREGAR BANCO AQUÍ */
 	
 	// Firma
 	let administrador = "Richard Luzardo"
