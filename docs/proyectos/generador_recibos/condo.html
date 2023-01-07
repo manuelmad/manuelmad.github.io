@@ -116,9 +116,26 @@
 						</tr>
 					</tbody>
 				</table>
-				<p>Montos expresados en Bs.</p>
 				<p><button id="boton_tabla" onclick="llenarTabla()">Mostrar Valores en Tabla</button></p>
-				<p id="mes_vencido">Indique el último mes vencido:
+			</div>
+			<h2>GENERADOR DE RECIBOS DE PAGO</h2>
+			<div class="recibos-container">
+				<p>Seleccione los meses que serán detallados en el recibo (máximo 2):</p>
+				<p class="inputs-radio-container">
+					<label for="enero"><input type="checkbox" name="" id="enero" value="Enero"> Enero</label>
+					<label for="febrero"><input type="checkbox" name="" id="febrero" value="Febrero"> Febrero</label>
+					<label for="marzo"><input type="checkbox" name="" id="marzo" value="Marzo"> Marzo</label>
+					<label for="abril"><input type="checkbox" name="" id="abril" value="Abril"> Abril</label>
+					<label for="mayo"><input type="checkbox" name="" id="mayo" value="Mayo"> Mayo</label>
+					<label for="junio"><input type="checkbox" name="" id="junio" value="Junio"> Junio</label>
+					<label for="julio"><input type="checkbox" name="" id="julio" value="Julio"> Julio</label>
+					<label for="agosto"><input type="checkbox" name="" id="agosto" value="Agosto"> Agosto</label>
+					<label for="septiembre"><input type="checkbox" name="" id="septiembre" value="Septiembre"> Septiembre</label>
+					<label for="octubre"><input type="checkbox" name="" id="octubre" value="Octubre"> Octubre</label>
+					<label for="noviembre"><input type="checkbox" name="" id="noviembre" value="Noviembre"> Noviembre</label>
+					<label for="diciembre"><input type="checkbox" name="" id="diciembre" value="Diciembre"> Diciembre</label>
+				</p>
+				<!-- <p id="mes_vencido">Indique el último mes vencido:
 					<select name="" id="lista_meses">
 						<option value="Enero">Enero</option>
 						<option value="Febrero">Febrero</option>
@@ -133,7 +150,7 @@
 						<option value="Noviembre">Noviembre</option>
 						<option value="Diciembre">Diciembre</option>
 					</select>
-				</p>
+				</p> -->
 				<p><button id="boton_recibo">Descargar Recibo de Pago</button></p>
 			</div>
 		</section>

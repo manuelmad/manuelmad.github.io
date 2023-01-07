@@ -174,6 +174,25 @@ table tr {
 	width: 7rem;
 }
 
+.propietarios div:nth-child(5) {
+	border-top: 0.2rem solid var(--main-green);
+	padding-top: 2rem;
+	margin-top: 0;
+}
+
+.recibos-container p:first-child {
+	text-align: start;
+}
+
+.inputs-radio-container {
+	border: 0.5rem solid var(--main-green);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: start;
+}
+
 #boton_recibo, #boton_tabla {
 	/* border: 0.3rem solid var(--main-green);
 	background-color: var(--white);

@@ -1,9 +1,18 @@
 /* IMPORTAR ARCHIVO EXCEL PARA CREAR TABLA EN HTML */
 
 // GENERAR ARRAY EN JS A PARTIR DE ARCHIVO EXCEL
-const result = [];
+let result = [];
 
+// Evento para que al tocar el input file, se quite el archivo anterior
+document.querySelector("#file").addEventListener("mousedown", () => {
+	document.querySelector("#file").value = "";
+});
+
+// Evento para importar el archivo excel
 document.querySelector("#file").addEventListener("change", function () {
+	// Obtener el array de archivos cargados
+	let filesArray = document.querySelector("#file").files;
+	console.log(filesArray);
 	// Obtener el archivo seleccionado
 	let file = document.querySelector("#file").files[0];
 
@@ -12,7 +21,7 @@ document.querySelector("#file").addEventListener("change", function () {
 
 	// Mostrar un alert en caso de que el archivo no sea un excel y detener la función
 	if (type[type.length - 1] !== 'xlsx' && type[type.length - 1] !== 'xls') {
-		alert ('Seleccione solo el archivo de Excel para importar');
+		alert ('Solo puede seleccionar un archivo de Excel (.xls, .xlsx) para importar');
 		return false;
 	}
 
@@ -25,7 +34,9 @@ document.querySelector("#file").addEventListener("change", function () {
  		});
 
 		// const result = []; Lo saqué de la función para usarlo luego para crear una tabla
-
+		
+		// Limpio la variable result para que no se dupliquen sus elementos cada vez que cargamos un nuevo archivo
+		result = [];
 		// Código para recorrer las hojas del excel e ir agregado sus contenidos en el array "result"
 		for (let i = 0; i < zzexcel.SheetNames.length; i++) {
 			const newData = window.XLS.utils.sheet_to_json(zzexcel.Sheets[zzexcel.SheetNames[i]]);
@@ -153,6 +164,35 @@ for(let i = 0; i < conteo_filas_propietarios; i++) {
 	}
 }
 
+// Crear array con los boolean checked de los input checkbox
+let array_meses = [
+	document.getElementById("enero"),
+	document.getElementById("febrero"),
+	document.getElementById("marzo"),
+	document.getElementById("abril"),
+	document.getElementById("mayo"),
+	document.getElementById("junio"),
+	document.getElementById("julio"),
+	document.getElementById("agosto"),
+	document.getElementById("septiembre"),
+	document.getElementById("octubre"),
+	document.getElementById("noviembre"),
+	document.getElementById("diciembre"),
+];
+
+// Crear array vacío, para los boolean true del array anterior
+let array_checked = [];
+
+// Función para agregar los boolean true del array anterior al nuevo array
+function agregarCheckedTrue() {
+	array_meses.forEach(element => {
+		if(element.checked === true) {
+			array_checked.push(element);
+		}
+	});
+}
+//agregarCheckedTrue(); // Tengo que aplicarla dentro de la funcion del pdf
+
 
 // Imprimir recibo en .pdf
 let boton_recibo = document.getElementById("boton_recibo");
@@ -172,7 +212,7 @@ function crearPDF() {
 	}
 
 	let ano = Number(document.getElementById("filtro_ano").value);
-	let mes_vencido = document.getElementById("lista_meses").value;
+	// let mes_vencido = document.getElementById("lista_meses").value;
 
 	// Método .find() para encontrar cuál propietario de la base de datos coincide con el que está en la tabla
 	let propietario = result.find(item => item['Nombre Completo'] === nombre_propietario && item['Año'] === ano);
@@ -205,7 +245,7 @@ function crearPDF() {
 	doc.setFontType('normal');
 	doc.text(230, 25,`N° de recibo: `);
 	doc.setTextColor(255, 0, 0); // Rojo
-	doc.text(253, 25,`${ano}-${mes_vencido}-${propietario['Casa N°']}`);
+	// doc.text(253, 25,`${ano}-${mes_vencido}-${propietario['Casa N°']}`);
 	let fecha = new Date();
 	doc.setTextColor(0, 0, 0);
 	doc.text(230, 30, "Fecha de emisión: " + fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear());
@@ -419,42 +459,119 @@ function crearPDF() {
 
 
 	// Fila cuotas especiales
-	// doc.setFillColor(171,42,62); // Granate
-	// doc.rect(10, 130, 275, 10, 'f'); // 3ra coordenada: ancho, 4° coordenada: alto
-	// doc.line(10, 130, 285, 130); // Línea horizontal superior
-	// doc.line(10, 140, 285, 140); // Línea horizontal inferior
-	// doc.setTextColor(255,255,255); // Blanco
-	// doc.text(147.5, 136, "CUOTAS ESPECIALES", 'center');
+	doc.setFillColor(255, 87, 51); // Orange
+	doc.rect(10, 130, 275, 10, 'f'); // 3ra coordenada: ancho, 4° coordenada: alto
+	doc.line(10, 130, 285, 130); // Línea horizontal superior
+	doc.line(10, 140, 285, 140); // Línea horizontal inferior
+	doc.setTextColor(255,255,255); // Blanco
+	doc.setFontType('bold');
+	doc.text(147.5, 136, "DETALLES DE PAGO", 'center');
+	doc.setFontType('normal');
 
-	// doc.line(10, 150, 285, 150); // Línea horizontal
-	// doc.line(147.5, 140, 147.5, 150); // Línea vertical separadora
-	// doc.line(50, 140, 50, 150); // Línea vertical separadora
-	// doc.line(178, 140, 178, 150); // Línea vertical separadora
+	doc.line(10, 150, 285, 150); // Línea horizontal
+	doc.line(147.5, 140, 147.5, 150); // Línea vertical separadora
+	doc.line(30, 140, 30, 150); // Línea vertical separadora
+	doc.line(167.5, 140, 167.5, 150); // Línea vertical separadora
+	doc.setTextColor(0,0,0); // Blanco
+	doc.text(43.5, 146, "N° de Ref.:");
+	doc.text(100, 146, "Banco:");
+	doc.text(181, 146, "N° de Ref.:");
+	doc.text(237.5, 146, "Banco:");
 
-	// doc.setTextColor(0,0,0); // Negro
-	// doc.text(12, 146, "Cuota Tanque Azotea: ");
-	// doc.text(149.5, 146, "Cuota Hidrolago: ");
+	agregarCheckedTrue(); // Invocar función para crear array de checkbox true
 
-	// let check_azotea;
-	// if(propietario.deudaCuotaAzotea == 0) {
-	// 	check_azotea = "PAGADO";
-	// } else if (propietario.pagoCuotaAzotea !==0 && propietario.pagoCuotaAzotea !==0 < cuotasEspeciales.tanque_azotea) {
-	// 	check_azotea = "ABONADO";
-	// } else if(propietario.pagoCuotaAzotea == 0) {
-	// 	check_azotea = "CUOTA ADEUDADA";
-	// }
-	// doc.text(52, 146, check_azotea);
+	doc.setTextColor(0,0,0); // Negro
+	if(array_checked[0]) {
+		doc.text(12, 146, `${array_checked[0].value}:`); // Primer mes seleccionado
+	}
+	if(array_checked[1]) {
+		doc.text(149.5, 146, `${array_checked[1].value}:`); // Segundo mes seleccionado
+	}
 
-	// let check_hidrolago;
-	// if(propietario.deudaCuotaHidrolago == 0) {
-	// 	check_hidrolago = "PAGADO";
-	// } else if (propietario.pagoCuotaHidrolago !==0 && propietario.pagoCuotaHidrolago !==0 < cuotasEspeciales.hidrolago) {
-	// 	check_hidrolago = "ABONADO";
-	// } else if(propietario.pagoCuotaHidrolago == 0) {
-	// 	check_hidrolago = "CUOTA ADEUDADA";
-	// }
-	// doc.text(180, 146, check_hidrolago);
+	// Código para asignar número de referencia del primer mes seleccionado
+	let ref_mes_1;
+	if(array_checked[0].value == "Enero") {
+		ref_mes_1 = propietario['N° Ref. Enero'];
+	}
+	else if(array_checked[0].value == "Febrero") {
+		ref_mes_1 = propietario['N° Ref. Febrero'];
+	}
+	else if(array_checked[0].value == "Marzo") {
+		ref_mes_1 = propietario['N° Ref. Marzo'];
+	}
+	else if(array_checked[0].value == "Abril") {
+		ref_mes_1 = propietario['N° Ref. Abril'];
+	}
+	else if(array_checked[0].value == "Mayo") {
+		ref_mes_1 = propietario['N° Ref. Mayo'];
+	}
+	else if(array_checked[0].value == "Junio") {
+		ref_mes_1 = propietario['N° Ref. Junio'];
+	}
+	else if(array_checked[0].value == "Julio") {
+		ref_mes_1 = propietario['N° Ref. Julio'];
+	}
+	else if(array_checked[0].value == "Agosto") {
+		ref_mes_1 = propietario['N° Ref. Agosto'];
+	}
+	else if(array_checked[0].value == "Septiembre") {
+		ref_mes_1 = propietario['N° Ref. Septiembre'];
+	}
+	else if(array_checked[0].value == "Octubre") {
+		ref_mes_1 = propietario['N° Ref. Octubre'];
+	}
+	else if(array_checked[0].value == "Noviembre") {
+		ref_mes_1 = propietario['N° Ref. Noviembre'];
+	}
+	else if(array_checked[0].value == "Diciembre") {
+		ref_mes_1 = propietario['N° Ref. Diciembre'];
+	}
 
+	doc.text(70, 146, `${ref_mes_1}`);
+
+	// Código para asignar número de referencia del segundo mes seleccionado
+	let ref_mes_2;
+	if(array_checked[1].value == "Enero") {
+		ref_mes_2 = propietario['N° Ref. Enero'];
+	}
+	else if(array_checked[1].value == "Febrero") {
+		ref_mes_2 = propietario['N° Ref. Febrero'];
+	}
+	else if(array_checked[1].value == "Marzo") {
+		ref_mes_2 = propietario['N° Ref. Marzo'];
+	}
+	else if(array_checked[1].value == "Abril") {
+		ref_mes_2 = propietario['N° Ref. Abril'];
+	}
+	else if(array_checked[1].value == "Mayo") {
+		ref_mes_2 = propietario['N° Ref. Mayo'];
+	}
+	else if(array_checked[1].value == "Junio") {
+		ref_mes_2 = propietario['N° Ref. Junio'];
+	}
+	else if(array_checked[1].value == "Julio") {
+		ref_mes_2 = propietario['N° Ref. Julio'];
+	}
+	else if(array_checked[1].value == "Agosto") {
+		ref_mes_2 = propietario['N° Ref. Agosto'];
+	}
+	else if(array_checked[1].value == "Septiembre") {
+		ref_mes_2 = propietario['N° Ref. Septiembre'];
+	}
+	else if(array_checked[1].value == "Octubre") {
+		ref_mes_2 = propietario['N° Ref. Octubre'];
+	}
+	else if(array_checked[1].value == "Noviembre") {
+		ref_mes_2 = propietario['N° Ref. Noviembre'];
+	}
+	else if(array_checked[1].value == "Diciembre") {
+		ref_mes_2 = propietario['N° Ref. Diciembre'];
+	}
+
+	doc.text(207.5, 146, `${ref_mes_2}`);
+
+	/* AGREGAR BANCO AQUÍ */
+	
 	// Firma
 	let administrador = "Richard Luzardo"
 	doc.line(117.5, 185, 177.5, 185); // Línea horizontal
@@ -464,7 +581,7 @@ function crearPDF() {
 	// Logo
 	let img = new Image();
 	img.src = "./img/logo-yacambu.png";
-	doc.addImage(img, 15, 150, 90, 30);
+	doc.addImage(img, 15, 165, 90, 30);
 
 	
 	window.open(doc.output('bloburl'), '_blank'); // Para que el .pdf aparezca en una nueva ventana //
