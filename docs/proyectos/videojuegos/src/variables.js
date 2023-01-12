@@ -9,41 +9,41 @@ const API_URL_GAMES = 'https://api.rawg.io/api/games';
 const API_URL_SEARCH = 'https://api.rawg.io/api/games?search=';
 
 // VARIABLES DE JUEGOS
-const sonic_the_hedgehog = 'sonic-the-hedgehog';
-const sonic_the_hedgehog_2 = 'sonic-the-hedgehog-2';
-const sonic_and_tails = 'sonic-chaos';
-const sonic_cd = 'sonic-cd';
-const sonic_the_hedgehog_3 = 'sonic-the-hedgehog-3';
-const sonic_and_knuckles = 'sonic-knuckles';
-const sonic_3_and_knuckles = 'sonic-3-and-knuckles';
-const sonic_and_tails_2 = 'sonic-the-hedgehog-triple-trouble';
-const knuckles_chaotix = 'knuckles-chaotix';
-const sonic_blast = 'sonic-blast';
-const sonic_3d_blast = 'sonic-3d-blast-1996';
-const sonic_adventure = 'sonic-adventure';
-const sonic_the_hedgehog_pocket_adventure = 'sonic-the-hedgehog-pocket-adventure';
-const sonic_adventure_2 = 'sonic-adventure-2';
-const sonic_advance = 'sonic-advance';
-const sonic_advance_2 = 'sonic-advance-2';
-const sonic_advance_3 = 'sonic-advance-3';
-const sonic_heroes = 'sonic-heroes';
-const shadow_the_hedgehog =  'shadow-the-hedgehog';
-const sonic_rush = 'sonic-rush';
-const sonic_rivals = 'sonic-rivals';
-const sonic_the_hedgehog_2006 =  'sonic-the-hedgehog-4';
-const sonic_rivals_2 = 'sonic-rivals-2';
-const sonic_rush_adventure = 'sonic-rush-adventure';
-const sonic_and_the_secrets_rings = 'sonic-and-the-secret-rings';
-const sonic_unleashed = 'sonic-unleashed';
-const sonic_and_the_black_knight = 'sonic-and-the-black-knight';
-const sonic_colors = 'sonic-colors';
-const sonic_the_hedgehog_4_episode_1 = 'sonic-the-hedgehog-4-episode-1';
-const sonic_generations = 'sonic-generations';
-const sonic_the_hedgehog_4_episode_2 =  'sonic-the-hedgehog-4-episode-ii-2';
-const sonic_lost_world = 'sonic-lost-world';
-const sonic_mania = 'sonic-mania';
-const sonic_forces = 'sonic-forces';
-const sonic_frontiers = 'sonic-frontiers';
+// const sonic_the_hedgehog = 'sonic-the-hedgehog';
+// const sonic_the_hedgehog_2 = 'sonic-the-hedgehog-2';
+// const sonic_and_tails = 'sonic-chaos';
+// const sonic_cd = 'sonic-cd';
+// const sonic_the_hedgehog_3 = 'sonic-the-hedgehog-3';
+// const sonic_and_knuckles = 'sonic-knuckles';
+// const sonic_3_and_knuckles = 'sonic-3-and-knuckles';
+// const sonic_and_tails_2 = 'sonic-the-hedgehog-triple-trouble';
+// const knuckles_chaotix = 'knuckles-chaotix';
+// const sonic_blast = 'sonic-blast';
+// const sonic_3d_blast = 'sonic-3d-blast-1996';
+// const sonic_adventure = 'sonic-adventure';
+// const sonic_the_hedgehog_pocket_adventure = 'sonic-the-hedgehog-pocket-adventure';
+// const sonic_adventure_2 = 'sonic-adventure-2';
+// const sonic_advance = 'sonic-advance';
+// const sonic_advance_2 = 'sonic-advance-2';
+// const sonic_advance_3 = 'sonic-advance-3';
+// const sonic_heroes = 'sonic-heroes';
+// const shadow_the_hedgehog =  'shadow-the-hedgehog';
+// const sonic_rush = 'sonic-rush';
+// const sonic_rivals = 'sonic-rivals';
+// const sonic_the_hedgehog_2006 =  'sonic-the-hedgehog-4';
+// const sonic_rivals_2 = 'sonic-rivals-2';
+// const sonic_rush_adventure = 'sonic-rush-adventure';
+// const sonic_and_the_secrets_rings = 'sonic-and-the-secret-rings';
+// const sonic_unleashed = 'sonic-unleashed';
+// const sonic_and_the_black_knight = 'sonic-and-the-black-knight';
+// const sonic_colors = 'sonic-colors';
+// const sonic_the_hedgehog_4_episode_1 = 'sonic-the-hedgehog-4-episode-1';
+// const sonic_generations = 'sonic-generations';
+// const sonic_the_hedgehog_4_episode_2 =  'sonic-the-hedgehog-4-episode-ii-2';
+// const sonic_lost_world = 'sonic-lost-world';
+// const sonic_mania = 'sonic-mania';
+// const sonic_forces = 'sonic-forces';
+// const sonic_frontiers = 'sonic-frontiers';
 
 // const pokemon_quest = 'pokemon-quest';
 
@@ -78,7 +78,7 @@ const previous_page_button = document.getElementById('previous_page_button');
 // ARRAYS DE CATEGORÍAS
 
 // 17 juegos
-let playED_games = [
+/*let playED_games = Object.values(JSON.parse(localStorage.getItem('played_games'))).slug; [
     sonic_the_hedgehog,
     sonic_the_hedgehog_2,
     sonic_and_tails,
@@ -96,17 +96,17 @@ let playED_games = [
     sonic_advance,
     sonic_advance_2,
     sonic_advance_3
-];
+];*/
 
 // 3 juegos
-let playING_games = [
+/*let playING_games = Object.values(JSON.parse(localStorage.getItem('playing_games'))).slug;[
     'pokemon-quest',
     'paper-mario-sticker-star',
     'the-secret-of-monkey-island'
-];
+];*/
 
 // 18 juegos
-let TOplay_games = [
+/*let TOplay_games = Object.values(JSON.parse(localStorage.getItem('toplay_games'))).slug;[
     sonic_heroes,
     shadow_the_hedgehog,
     sonic_rush,
@@ -125,4 +125,4 @@ let TOplay_games = [
     sonic_mania,
     sonic_forces,
     sonic_frontiers
-];
+];*/

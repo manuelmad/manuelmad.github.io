@@ -228,6 +228,10 @@ section article .empty {
     font-weight: bold;
 }
 
+.detail-games-container {
+    padding-bottom: 8rem;
+}
+
 .detail-games-container div {
     margin: 2rem auto 0;
     width: 30rem;
