@@ -137,7 +137,7 @@ function searchPage() {
     detailSectionContainer.classList.add('inactive');
 
     // Muestro siempre las tendencias en la página de search, hasta que el usuario haga una búsqueda.
-    // trendingGames();
+    trendingGames();
 }
 
 function detailPage() {
