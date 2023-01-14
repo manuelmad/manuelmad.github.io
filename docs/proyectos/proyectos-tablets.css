@@ -15,7 +15,6 @@ nav #menu-principal li{
 }
 
 .introduction {
-    /* height: 48rem; */
     height: auto;
     background-size: 90% 90%;
 }
@@ -42,16 +41,12 @@ nav #menu-principal li{
     height: 20rem;
 }
 
-.personal-info {
+.justified-left {
     padding-right: 30rem;
 }
 
-.curriculum, .calculos-corporales {
+.justified-right {
     padding-left: 30rem;
-}
-
-.admin-condo, .videojuegos {
-    padding-right: 30rem;
 }
 
 .contact-info h2 {

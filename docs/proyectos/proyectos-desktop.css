@@ -28,31 +28,22 @@ p {
     height: 30rem;
 }
 
-.personal-info {
+.justified-left {
     padding-left: 8rem;
     padding-right: 45rem;
 }
 
-.personal-info__right h1 {
+.justified-left h1 {
     font-size: 3rem;
 }
 
-.curriculum, .calculos-corporales {
+.justified-right {
     width: 100%;
     padding-right: 8rem;
     padding-left: 45rem;
 }
 
-.curriculum-right h1, .calculos-corporales h1 {
-    font-size: 3rem;
-}
-
-.admin-condo, .videojuegos {
-    padding-left: 8rem;
-    padding-right: 45rem;
-}
-
-.admin-condo h1, .videojuegos h1 {
+.justified-right h1 {
     font-size: 3rem;
 }
 
