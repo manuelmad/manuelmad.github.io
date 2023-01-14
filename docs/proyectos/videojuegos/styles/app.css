@@ -154,10 +154,12 @@ h1 {
 
 /* VISTA DE JUEGOS JUGADOS, JUGANDO, POR JUGAR Y SEARCH */
 
-/* .search-games-container .searchedgame-container-loading {
+.search-games-container .searchedgame-container-loading {
     background-color: var(--light-blue-playstation);
     animation: loading-skeleton infinite 1.5s;
-} */
+    width: 14.5rem;
+    border-radius: 0.5rem;
+}
 
 section article .empty {
     grid-column: 1/3;
@@ -470,11 +472,11 @@ footer article div {
 }
 
 /* Animations */
-/* @keyframes loading-skeleton {
+@keyframes loading-skeleton {
     0%, 100% {
       opacity: 30%;
     }
     50% {
       opacity: 0%;
     }
-} */
+}

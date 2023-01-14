@@ -463,7 +463,7 @@ async function trendingGames() {
     const data = await res.json();
 
     searchGamesContainer.innerHTML = '';
-    trendingTitle.innerText = 'Trending Games';
+    trendingTitle.innerText = 'Popular Games';
 
     if(res.status !== 200) {
         console.log("Hubo un error: " + res.status);
