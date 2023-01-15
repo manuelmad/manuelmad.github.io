@@ -1,4 +1,4 @@
-header > div {
+/* header > .header-logo-container {
     margin-left: 5rem;
 }
     
@@ -11,6 +11,10 @@ nav #menu-principal a {
 }
     
 nav #menu-principal a:hover, #menu-secundario a:hover {
+    color: var(--very-light-gray);
+} */
+
+#menu-secundario a:hover {
     color: var(--very-light-gray);
 }
 

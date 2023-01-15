@@ -24,7 +24,7 @@ html {
     --lg: 1.8rem;
 }
 
-/* Código para modificar el color de fondo del header, color de fuente y color de borde del menú desplegable */
+/* Código para modificar el color de fondo del header (--bckg-color), color de fuente y color de borde del menú desplegable (--font-color) */
 /* my-header {
     --bckg-color: #bad7f1;
     --font-color: red;

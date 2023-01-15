@@ -3,7 +3,7 @@
     --ancho-sub-ul: 50rem;
 }
 
-header > div {
+/* header > .header-logo-container {
     margin-left: 5rem;
 }
     
@@ -14,7 +14,7 @@ nav #menu-principal {
     
 nav #menu-principal a:hover {
     color: var(--very-light-gray);
-}
+} */
 
 main h1 {
     font-size: 2rem;
