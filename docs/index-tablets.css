@@ -1,4 +1,4 @@
-.container__icono-menu {
+/* .container__icono-menu {
     display: none;
 }
 
@@ -10,9 +10,9 @@ nav #menu-principal {
     margin-right: 3rem;
 }
 
-nav #menu-principal li{
+nav #menu-principal li {
 	padding: 0.8rem;
-}
+} */
 
 .introduction {
     height: auto;
@@ -81,6 +81,3 @@ nav #menu-principal li{
     width: 15rem;
     height: 15rem;
 }
-
-
-
