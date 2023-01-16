@@ -4,7 +4,7 @@ class customHeader extends HTMLElement {
         this.attachShadow({mode: "open"});
     }
     static get observedAttributes() {
-        return ["img", "name1", "name2", "name3", "name4","linkHome", "link1", "link2", "link3", "link4"];
+        return ["img", "name1", "name2", "name3", "name4","linkhome", "link1", "link2", "link3", "link4"];
     }
     attributeChangedCallback(attr, oldVal, newVal) {
         if(attr === "img") {
@@ -22,8 +22,8 @@ class customHeader extends HTMLElement {
         if(attr === "name4") {
             this.name4 = newVal;
         }
-        if(attr === "linkHome") {
-            this.linkHome = newVal;
+        if(attr === "linkhome") {
+            this.linkhome = newVal;
         }
         if(attr === "link1") {
             this.link1 = newVal;
@@ -43,7 +43,7 @@ class customHeader extends HTMLElement {
         template.innerHTML = `
             <header>
                 <div class="header-logo-container">
-                    <a href="${this.linkHome}"><img src="${this.img}" alt="logo"></a>
+                    <a href="${this.linkhome}"><img src="${this.img}" alt="logo"></a>
                 </div>
                 <nav>
                     <div class="container__menu-principal">
