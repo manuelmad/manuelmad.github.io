@@ -138,6 +138,7 @@ nav #menu-principal a {
 
 main {
     width: 100%;
+    padding-bottom: 5rem;
 }
 
 p, ul {
@@ -280,6 +281,7 @@ p, ul {
 
 .curriculum-left ul li {
     margin-left: 2rem;
+    margin-top: 0.5rem;
 }
 
 .curriculum-left h2, .curriculum-left ul {

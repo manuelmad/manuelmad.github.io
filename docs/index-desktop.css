@@ -94,10 +94,14 @@ p {
     margin-left: 8rem;
 }
 
+.curriculum-right {
+    align-items: center;
+}
+
 .curriculum-right h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 3rem;
-    margin-top: 10.6rem;
+    margin-top: 18.6rem;
 }
 
 .curriculum-right p {

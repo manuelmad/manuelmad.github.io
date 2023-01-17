@@ -169,6 +169,7 @@ nav #menu-principal a {
 
 main {
 	width: 100%;
+	padding-bottom: 5rem;
 }
 
 .container-rev, .container-grafica {
@@ -256,7 +257,7 @@ button:active { /* active tiene que ir despues del hover para que funcione */
 	border: 0.1rem solid var(--very-light-gray);
 }
 
-footer {
+/* footer {
 	width: 100%;
 	height: 20rem;
 	display: flex;
@@ -319,4 +320,4 @@ footer div, footer section {
 .personal-logo img {
 	width: 10rem;
 	height: 10rem;
-}
+} */

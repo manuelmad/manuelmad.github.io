@@ -3,41 +3,17 @@ class customFooter extends HTMLElement {
         super();
         this.attachShadow({mode: "open"});
     }
-    // static get observedAttributes() {
-    //     return ["img", "name1", "name2", "name3", "name4","linkhome", "link1", "link2", "link3", "link4"];
-    // }
-    // attributeChangedCallback(attr, oldVal, newVal) {
-    //     if(attr === "img") {
-    //         this.img = newVal;
-    //     }
-    //     if(attr === "name1") {
-    //         this.name1 = newVal;
-    //     }
-    //     if(attr === "name2") {
-    //         this.name2 = newVal;
-    //     }
-    //     if(attr === "name3") {
-    //         this.name3 = newVal;
-    //     }
-    //     if(attr === "name4") {
-    //         this.name4 = newVal;
-    //     }
-    //     if(attr === "linkhome") {
-    //         this.linkhome = newVal;
-    //     }
-    //     if(attr === "link1") {
-    //         this.link1 = newVal;
-    //     }
-    //     if(attr === "link2") {
-    //         this.link2 = newVal;
-    //     }
-    //     if(attr === "link3") {
-    //         this.link3 = newVal;
-    //     }
-    //     if(attr === "link4") {
-    //         this.link4 = newVal;
-    //     }
-    // }
+    static get observedAttributes() {
+        return ["textbutton", "linkbutton"];
+    }
+    attributeChangedCallback(attr, oldVal, newVal) {
+        if(attr === "textbutton") {
+            this.textbutton = newVal;
+        }
+        if(attr === "linkbutton") {
+            this.linkbutton = newVal;
+        }
+    }
     getTemplate() {
         const template = document.createElement("template");
         template.innerHTML = `
@@ -46,7 +22,7 @@ class customFooter extends HTMLElement {
                     <div>
                         <h1>Contáctame</h1>
                         <p>Si deseas ponerte en contacto conmigo para conocer un poco más acerca de mis proyectos, que colabore en alguno de los tuyos o para ofertas de trabajo, aquí te dejo la información que necesitas.</p>
-                        <p><button onclick="location.href='./proyectos/proyectos.html'">MIS PROYECTOS</button></p>
+                        <p><button onclick="location.href='${this.linkbutton}'">${this.textbutton}</button></p>
                     </div>
                 </section>
                 <section class="contact-info">

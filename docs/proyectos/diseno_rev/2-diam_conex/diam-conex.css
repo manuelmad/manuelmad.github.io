@@ -169,6 +169,7 @@ nav #menu-principal a {
 
 main {
 	width: 100%;
+	padding-bottom: 5rem;
 }
 
 .hoja-datos {
@@ -298,7 +299,7 @@ table select {
 	border-left: 0.1rem solid white;
 }
 
-footer {
+/* footer {
 	width: 100%;
 	height: 20rem;
 	display: flex;
@@ -361,4 +362,4 @@ footer div, footer section {
 .personal-logo img {
 	width: 10rem;
 	height: 10rem;
-}
+} */
