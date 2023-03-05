@@ -28,7 +28,7 @@ class customFooter extends HTMLElement {
                 <section class="contact-info">
                     <div>
                         <h2>LinkedIn</h2>
-                        <p><a href="https://linkedin.com/in/manuel-araujo-beltrán-994564153" target="_blank">Manuel Araujo</a></p>
+                        <p><a href="https://www.linkedin.com/in/manuel-araujo-beltran-994564153/" target="_blank">Manuel Araujo</a></p>
                         <h2>Correo electrónico</h2>
                         <p>manuelmad1981@gmail.com</p>
                         <h2>GitHub</h2>
