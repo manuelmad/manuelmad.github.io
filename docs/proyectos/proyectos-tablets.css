@@ -31,10 +31,10 @@ nav #menu-principal li{
     font-size: 2rem;
 }
 
-.introduction-left p:nth-child(2), .introduction-left p:nth-child(3) {
+/* .introduction-left p:nth-child(2), .introduction-left p:nth-child(3) {
     visibility: visible;
     position: static;
-}
+} */
 
 .introduction-right img{
     width: 16.3rem;

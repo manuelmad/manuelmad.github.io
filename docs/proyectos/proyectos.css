@@ -166,15 +166,15 @@ p, ul {
     font-family: 'Work Sans', sans-serif;
 }
 
-.introduction-left h2, .introduction-left p {
+.introduction-left h1, .introduction-left p {
     width: 100%;
     margin-top: 1rem;
 }
 
-.introduction-left p:nth-child(2), .introduction-left p:nth-child(3) {
+/* .introduction-left p:nth-child(2), .introduction-left p:nth-child(3) {
     visibility: hidden;
     position: absolute;
-}
+} */
 
 .introduction-left button {
     color: var(--white);
@@ -202,6 +202,14 @@ p, ul {
 .introduction-right img{
     width: 9.35rem;
     height: 11.5rem;
+}
+
+.casing-design iframe {
+    display: none;
+}
+
+.planetageek-webpage img {
+    display: none;
 }
 
 

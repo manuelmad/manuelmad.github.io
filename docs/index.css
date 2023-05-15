@@ -176,11 +176,11 @@ p, ul {
     width: 100%;
     margin-top: 1rem;
 }
-
+/* 
 .introduction-left p:nth-child(3) {
     visibility: hidden;
     position: absolute;
-}
+} */
 
 .introduction-left button {
     color: var(--white);
@@ -220,7 +220,7 @@ p, ul {
     width: 100%;
 }
 
-.personal-info__left img{
+.personal-info__left img {
     width: 13rem;
     height: 11.6rem;
     margin-left: 3rem;
@@ -288,7 +288,7 @@ p, ul {
     margin-top: 1rem;
 }
 
-.curriculum-right h1{
+.curriculum-right h1 {
     font-size: 2.5rem;
     margin-left: 3rem;
     margin-top: 5rem;
@@ -297,6 +297,20 @@ p, ul {
 .curriculum-right p {
     margin-left: 3rem;
     margin-top: 1rem;
+}
+
+.habilities-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.curriculum-right .technical-habilities {
+    margin-top: 4rem;
+}
+
+.habilities-container img {
+    width: 4rem;
+    height: 4rem;
 }
 
 /* footer {

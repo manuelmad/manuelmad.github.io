@@ -19,6 +19,10 @@ p {
     height: 40rem;
 }
 
+.introduction-left h1 {
+    margin-top: 5rem;
+}
+
 .introduction-left button {
     font-weight: 700;
 }
@@ -26,6 +30,16 @@ p {
 .introduction-right img{
     width: 24.4rem;
     height: 30rem;
+}
+
+.casing-design iframe {
+    display: block;
+}
+
+.planetageek-webpage img {
+    display: inline-block;
+    width: 56rem;
+    height: 26.67rem;
 }
 
 .justified-left {
