@@ -232,6 +232,7 @@ var tipo_revestimiento = document.tipoRevestimiento.tipo1; //Crea un array con l
 var longitud_array_tipo = tipo_revestimiento.length;
 
 function recomendarConexion() {
+    document.getElementById("conexionrev1").innerHTML = "-----";
     var diam_rev;
     var diam_hoyo;
     var holgura;
@@ -279,8 +280,13 @@ function recomendarConexion() {
             option1.text = "STL";
             var option2 = document.createElement("option");
             option2.text = "511";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
+
             console.log("Las conexiones recomendadas son STL y 511");
             console.log("La máxima inclinación del hoyo es: " + inclinacion_hoyo);
         }
@@ -293,6 +299,10 @@ function recomendarConexion() {
             option1.text = "SLX";
             var option2 = document.createElement("option");
             option2.text = "NJO";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
             console.log("Las conexiones recomendadas son SLX y NJO");
@@ -311,6 +321,10 @@ function recomendarConexion() {
             option1.text = "NK35B";
             var option2 = document.createElement("option");
             option2.text = "TC-II";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
             console.log("Las conexiones recomendadas son NK35B y TC-II");
@@ -323,6 +337,10 @@ function recomendarConexion() {
             }
             var option1 = document.createElement("option");
             option1.text = "Buttress";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             console.log("Las conexión recomendada es Buttress");
             console.log("La máxima DLS del hoyo es: " + DLS_hoyo);
@@ -656,6 +674,7 @@ var tipo_revestimiento2 = document.tipoRevestimiento2.tipo2; //Crea un array con
 var longitud_array_tipo2 = tipo_revestimiento2.length;
 
 function recomendarConexion2() {
+    document.getElementById("conexionrev2").innerHTML = '-----';
     var diam_rev;
     var diam_hoyo;
     var holgura;
@@ -703,6 +722,10 @@ function recomendarConexion2() {
             option1.text = "STL";
             var option2 = document.createElement("option");
             option2.text = "511";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
             console.log("Las conexiones recomendadas son STL y 511");
@@ -717,6 +740,10 @@ function recomendarConexion2() {
             option1.text = "SLX";
             var option2 = document.createElement("option");
             option2.text = "NJO";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
             console.log("Las conexiones recomendadas son SLX y NJO");
@@ -735,6 +762,10 @@ function recomendarConexion2() {
             option1.text = "NK35B";
             var option2 = document.createElement("option");
             option2.text = "TC-II";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             lista.appendChild(option2);
             console.log("Las conexiones recomendadas son NK35B y TC-II");
@@ -747,6 +778,10 @@ function recomendarConexion2() {
             }
             var option1 = document.createElement("option");
             option1.text = "Buttress";
+            var option3 = document.createElement("option");
+            option3.text = "-----";
+
+            lista.appendChild(option3);
             lista.appendChild(option1);
             console.log("Las conexión recomendada es Buttress");
             console.log("La máxima DLS del hoyo es: " + DLS_hoyo);
@@ -1780,3 +1815,225 @@ function recomendarConexion5() {
         } 
     }  
 }
+
+/* CÓDIGO PARA LLENAR LA TABLA FINAL */
+
+let tablaFinal = document.getElementById("tabla");
+
+// FILA 1
+// Nombre
+const nombreRev1 = document.getElementById("nombre-rev");
+nombreRev1.addEventListener("change", inputCasingName1);
+
+function inputCasingName1() {
+    let span = document.getElementById("nombrelinea1");
+   
+    let selectValue = nombreRev1.value;
+    if(selectValue == 1) {
+        span.innerHTML = 'Producción II';
+    } else if(selectValue == 2) {
+        span.innerHTML = 'Producción I';
+    } else if(selectValue == 3) {
+        span.innerHTML = 'Producción';
+    } else if(selectValue == 4) {
+        span.innerHTML = '-----';
+    }
+}
+
+// Diámetro
+const casingSelection1 = document.getElementById("casing1");
+casingSelection1.addEventListener("change", inputCasing1);
+
+function inputCasing1() {
+    let span = document.getElementById("diametrolinea1");
+   
+    // Ciclo para verificar cuál input está sleccionado
+    for(i=0; i < longitud_array_rev; i++) {
+        if(diametros_revestidores[i].checked == true) {
+            break;
+        }
+    }
+
+    // Acceder al valor del input conseguido
+    let diam_rev = Number(diametros_revestidores[i].value);
+
+    // Agregar texto al span
+    if(diam_rev == 4) {
+        span.innerHTML = diam_rev+'"';
+    } else if(diam_rev == 4.5) {
+        span.innerHTML = '4 1/2"';
+    } else if(diam_rev == 5) {
+        span.innerHTML = diam_rev+'"';
+    } else if(diam_rev == 5.5) {
+        span.innerHTML = '5 1/2"';
+    }
+}
+
+// Conexión
+const conexRev1 = document.getElementById("conexionlinea1");
+conexRev1.addEventListener("change", inputCasingConect1);
+
+function inputCasingConect1() {
+    let span = document.getElementById("conexionrev1");
+
+    // Accedo a las options agregadas en el select
+    let conect_rev = conexRev1.options;
+    
+    // Agrego al span el texto de la option seleccionada
+    span.innerHTML = conect_rev[conect_rev.selectedIndex].text;
+}
+
+// FILA 2
+// Nombre
+// No Aplica por ser Hoyo
+
+// Diámetro
+let holeSelection1 = document.getElementById("hole1");
+holeSelection1.addEventListener("change", inputHole1);
+
+function inputHole1() {
+    let span = document.getElementById("diametrolinea2");
+    
+    // Ciclo para verificar cuál input está sleccionado
+    for(i=0; i < longitud_array_hoyo; i++) {
+        if(diametros_hoyo[i].checked == true) {
+            break;
+        }
+    }
+
+    // Acceder al valor del input conseguido
+    let diam_hoyo = Number(diametros_hoyo[i].value);
+
+    // Agregar texto al span
+    if(diam_hoyo == 4.75) {
+        span.innerHTML = '4 3/4"';
+    } else if(diam_hoyo == 5.875) {
+        span.innerHTML = '5 7/8"';
+    } else if(diam_hoyo == 6.125) {
+        span.innerHTML = '6 1/8"';
+    } else if(diam_hoyo == 6.5) {
+        span.innerHTML = '6 1/2"';
+    } else if(diam_hoyo == 7.875) {
+        span.innerHTML = '7 7/8"';
+    }
+}
+
+// Conexión
+// No Aplica por ser hoyo
+
+// FILA 3
+// Nombre
+const nombreRev2 = document.getElementById("nombre-rev2");
+nombreRev2.addEventListener("change", inputCasingName2);
+
+function inputCasingName2() {
+    let span = document.getElementById("nombrelinea3");
+   
+    let selectValue = nombreRev2.value;
+    if(selectValue == 1) {
+        span.innerHTML = 'Producción II';
+    } else if(selectValue == 2) {
+        span.innerHTML = 'Producción I';
+    } else if(selectValue == 3) {
+        span.innerHTML = 'Producción';
+    } else if(selectValue == 4) {
+        span.innerHTML = 'Intermedio II';
+    } else if(selectValue == 5) {
+        span.innerHTML = 'Intermedio I';
+    } else if(selectValue == 6) {
+        span.innerHTML = 'Intermedio';
+    } else if(selectValue == 7) {
+        span.innerHTML = '-----';
+    }
+}
+
+// Diámetro
+const casingSelection2 = document.getElementById("casing2");
+casingSelection2.addEventListener("change", inputCasing2);
+
+function inputCasing2() {
+    let span = document.getElementById("diametrolinea3");
+   
+    // Ciclo para verificar cuál input está sleccionado
+    for(i=0; i < longitud_array_rev2; i++) {
+        if(diametros_revestidores2[i].checked == true) {
+            break;
+        }
+    }
+
+    // Acceder al valor del input conseguido
+    let diam_rev = Number(diametros_revestidores2[i].value);
+
+    // Agregar texto al span
+    if(diam_rev == 6.625) {
+        span.innerHTML = '6 5/8"';
+    } else if(diam_rev == 7) {
+        span.innerHTML = diam_rev+'"';
+    } else if(diam_rev == 7.625) {
+        span.innerHTML = '7 5/8"';
+    } else if(diam_rev == 7.75) {
+        span.innerHTML = '7 3/4"';
+    } else if(diam_rev == 8.625) {
+        span.innerHTML = '8 5/8"';
+    } else if(diam_rev == 9.625) {
+        span.innerHTML = '9 5/8"';
+    }
+}
+
+// Conexión
+const conexRev2 = document.getElementById("conexionlinea2");
+conexRev2.addEventListener("change", inputCasingConect2);
+
+function inputCasingConect2() {
+    let span = document.getElementById("conexionrev2");
+
+    // Accedo a las options agregadas en el select
+    let conect_rev = conexRev2.options;
+    
+    // Agrego al span el texto de la option seleccionada
+    span.innerHTML = conect_rev[conect_rev.selectedIndex].text;
+}
+
+
+// FILA 4
+// Nombre
+// No Aplica por ser Hoyo
+
+// Diámetro
+let holeSelection2 = document.getElementById("hole2");
+holeSelection2.addEventListener("change", inputHole2);
+
+function inputHole2() {
+    let span = document.getElementById("diametrolinea4");
+    
+    // Ciclo para verificar cuál input está sleccionado
+    for(i=0; i < longitud_array_hoyo2; i++) {
+        if(diametros_hoyo2[i].checked == true) {
+            break;
+        }
+    }
+
+    // Acceder al valor del input conseguido
+    let diam_hoyo = Number(diametros_hoyo2[i].value);
+
+    // Agregar texto al span
+    if(diam_hoyo == 7.875) {
+        span.innerHTML = '7 7/8"';
+    } else if(diam_hoyo == 8.5) {
+        span.innerHTML = '8 1/2"';
+    } else if(diam_hoyo == 8.75) {
+        span.innerHTML = '8 3/4"';
+    } else if(diam_hoyo == 9.5) {
+        span.innerHTML = '9 1/2"';
+    } else if(diam_hoyo == 10.625) {
+        span.innerHTML = '10 5/8"';
+    } else if(diam_hoyo == 12.25) {
+        span.innerHTML = '12 1/4"';
+    }
+}
+
+// Conexión
+// No Aplica por ser hoyo
+
+// FILA 5
+// Nombre

@@ -31,13 +31,17 @@ form {
 	text-align:center
 }
 
+table {
+	font-size: var(--sm);
+}
+
 .tabla td {
     width: 10rem;
 }
 
-table select {
+/* table select {
     width: 10rem;
-}
+} */
 
 .tabla tr > td:first-child {
     width: 20rem;

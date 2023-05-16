@@ -80,14 +80,14 @@
 		<section class="hoja-datos">
 			<h2>HOJA DE DATOS I</h2>
 			<p>Diámetro externo del revestidor (pulg.):</p>
-			<form name="diametrosRevestidores">
+			<form id="casing1" name="diametrosRevestidores">
 				<input type="radio" name="rev1" value="4" id = "rev1-linea1"> 4"
 				<input type="radio" name="rev1" value="4.5" id = "rev2-linea1"> 4 1/2"
 				<input type="radio" name="rev1" value="5" id = "rev3-linea1"> 5"
 				<input type="radio" name="rev1" value="5.5" id = "rev4-linea1"> 5 1/2"
 			</form>
 			<p>Diámetro del hoyo (pulg.):</p>
-			<form name="diametrosHoyo">
+			<form id="hole1" name="diametrosHoyo">
 				<input type="radio" name="hoyo1" value="4.75" id = "hoyo1-linea2"><span id="valor_h1l2" name="hoyo1-valor">4 3/4"</span>
 				<input type="radio" name="hoyo1" value="5.875" id = "hoyo2-linea2"><span id="valor_h2l2" name="hoyo1-valor">5 7/8"</span>
 				<input type="radio" name="hoyo1" value="6.125" id = "hoyo3-linea2"><span id="valor_h3l2" name="hoyo1-valor">6 1/8"</span>
@@ -103,7 +103,7 @@
 					<option value = "1">Producción II</option>
 					<option value = "2">Producción I</option>
 					<option value = "3">Producción</option>
-					<option value = "11" selected>-----</option>
+					<option value = "4" selected>-----</option>
 				</select>
 			</p>
 			<p>
@@ -137,7 +137,7 @@
 		<section class="hoja-datos">
 			<h2>HOJA DE DATOS II</h2>
 			<p>Diámetro externo del revestidor (pulg.):</p>
-			<form name="diametrosRevestidores2">
+			<form id="casing2" name="diametrosRevestidores2">
 				<input type="radio" name="rev2" value="6.625" id = "rev1-linea3"><span id="valor_r1l3" name="rev2-valor">6 5/8"</span>
 				<input type="radio" name="rev2" value="7" id = "rev2-linea3"><span id="valor_r2l3" name="rev2-valor">7"</span>
 				<input type="radio" name="rev2" value="7.625" id = "rev3-linea3"><span id="valor_r3l3" name="rev2-valor">7 5/8"</span>
@@ -147,7 +147,7 @@
 				<input type="radio" name="rev2" value="9.625" id = "rev6-linea3"><span id="valor_r6l3" name="rev2-valor">9 5/8"</span>
 			</form>
 			<p>Diámetro del hoyo (pulg.):</p>
-			<form name="diametrosHoyo2">
+			<form id="hole2" name="diametrosHoyo2">
 				<input type="radio" name="hoyo2" value="7.875" id = "hoyo1-linea4"><span id="valor_h1l4" name="hoyo2-valor">7 7/8"</span>
 				<input type="radio" name="hoyo2" value="8.5" id = "hoyo2-linea4"><span id="valor_h2l4" name="hoyo2-valor">8 1/2"</span>
 				<input type="radio" name="hoyo2" value="8.75" id = "hoyo3-linea4"><span id="valor_h3l4" name="hoyo2-valor">8 3/4"</span>
@@ -389,62 +389,28 @@
 			<tbody>
 				<tr>
 					<td>Revestidor o camisa</td>
-				  <td>
-					  <select id="nombrelinea1">
-						  <option value = "1">Producción II</option>
-						  <option value = "2">Producción I</option>
-						  <option value = "3">Producción</option>
-						  <option value = "4" selected>-----</option>
-					  </select>
+				  	<td>
+						<span id="nombrelinea1">-----</span>
+					</td>
+					<td><span id="diametrolinea1">-----</span>
 					</td>
 					<td>
-					  <select id="diametrolinea1">
-						  <option value = "1">4"</option>
-						  <option value = "2">4 1/2"</option>
-						  <option value = "3">5"</option>
-						  <option value = "4">5 1/2"</option>
-						  <option value = "5" selected>-----</option>
-					  </select>
-					</td>
-					<td>
-					  <select id="conexionlinea1">
-						  <option value = "1">SLX</option>
-						  <option value = "2">NJO</option>
-						  <option value = "3">STL</option>
-						  <option value = "4">511</option>
-						  <option value = "5" selected>-----</option>
-					  </select>
-				  </td>
+						<span id="conexionrev1">-----</span>
+				  	</td>
 			  </tr>
 			  <tr>
-				  <td>Mecha y hoyo</td>
-				  <td>
-					  <select id="nombrelinea2">
-						  <option value = "1">Producción II</option>
-						  <option value = "2">Producción I</option>
-						  <option value = "3">Producción</option>
-						  <option value = "4">Intermedio II</option>
-						  <option value = "5">Intermedio I</option>
-						  <option value = "6">Intermedio</option>
-						  <option value = "7" selected>-----</option>
-					  </select>
-				  </td>
-				  <td>
-					  <select id="diametrolinea2">
-						  <option value = "1">4 3/4"</option>
-						  <option value = "2">5 7/8"</option>
-						  <option value = "3">6 1/8"</option>
-						  <option value = "4">6 1/2"</option>
-						  <option value = "5">7 7/8"</option>
-						  <option value = "6" selected>-----</option>
-					  </select>
-				  </td>
-				  <td></td>
+					<td>Mecha y hoyo</td>
+					<td></td>
+					<td>
+						<span id="diametrolinea2">-----</span>
+					</td>
+					<td></td>
 			  </tr>
 			  <tr>
 				  <td>Revestidor o camisa</td>
 				  <td>
-					  <select id="nombrelinea3">
+					<span id="nombrelinea3">-----</span>
+					  <!-- <select id="nombrelinea3">
 						  <option value = "1">Producción II</option>
 						  <option value = "2">Producción I</option>
 						  <option value = "3">Producción</option>
@@ -452,20 +418,22 @@
 						  <option value = "5">Intermedio I</option>
 						  <option value = "6">Intermedio</option>
 						  <option value = "7" selected>-----</option>
-					  </select>
+					  </select> -->
 				  </td>
 				  <td>
-					  <select id="diametrolinea3">
+					<span id="diametrolinea3">-----</span>
+					  <!-- <select id="diametrolinea3">
 						  <option value = "1">6 5/8"</option>
 						  <option value = "2">7"</option>
 						  <option value = "3">7 5/8" ó 7 3/4"</option>
 						  <option value = "4">8 5/8"</option>
 						  <option value = "5">9 5/8"</option>
 						  <option value = "6" selected>-----</option>
-					  </select>
+					  </select> -->
 				  </td>
 				  <td>
-					  <select id="conexionlinea3">
+					<span id="conexionrev2">-----</span>
+					  <!-- <select id="conexionlinea3">
 						  <option value = "1">SLX</option>
 						  <option value = "2">NJO</option>
 						  <option value = "3">STL</option>
@@ -474,27 +442,15 @@
 						  <option value = "6">NK3SB</option>
 						  <option value = "7">TC-II</option>
 						  <option value = "8" selected>-----</option>
-					  </select>
+					  </select> -->
 				  </td>
 			  </tr>
 			  <tr>
 				  <td>Mecha y hoyo</td>
+				  <td></td>
 				  <td>
-					  <select id="nombrelinea4">
-						  <option value = "1">Producción II</option>
-						  <option value = "2">Producción I</option>
-						  <option value = "3">Producción</option>
-						  <option value = "4">Intermedio II</option>
-						  <option value = "5">Intermedio I</option>
-						  <option value = "6">Intermedio</option>
-						  <option value = "7">Superficial II</option>
-						  <option value = "8">Superficial I</option>
-						  <option value = "9">Superficial</option>
-						  <option value = "10" selected>-----</option>
-					  </select>
-				  </td>
-				  <td>
-					  <select id="diametrolinea4">
+					<span id="diametrolinea4"></span>
+					  <!-- <select id="diametrolinea4">
 						  <option value = "1">7 7/8"</option>
 						  <option value = "2">8 1/2"</option>
 						  <option value = "3">8 3/4"</option>
@@ -502,7 +458,7 @@
 						  <option value = "5">10 5/8"</option>
 						  <option value = "6">12 1/4"</option>
 						  <option value = "7" selected>-----</option>
-					  </select>
+					  </select> -->
 				  </td>
 				  <td></td>
 			  </tr>

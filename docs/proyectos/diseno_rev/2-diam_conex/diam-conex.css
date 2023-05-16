@@ -164,7 +164,7 @@ nav #menu-principal a {
 	margin-right: 1rem;
 	display: block;
 	color: var(--dark-blue);
-	font-size: var(--ss);
+	font-size: var(--sm);
 }
 
 main {
@@ -193,7 +193,7 @@ main h1 {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: var(--md);
+  font-size: var(--lg);
 }
 
 main h2 {
@@ -201,7 +201,7 @@ main h2 {
 	width: 100%;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: var(--sm);
+	font-size: var(--md);
 }
 
 label, p, form {
@@ -273,15 +273,16 @@ table, th, td, tr {
 
 table {
     margin: 1rem auto 2rem;
+	font-size: var(--ss);
 }
 
 .tabla td {
     width: 7rem;
 }
-
+/* 
 table select {
     width: 7rem;
-}
+} */
 
 .tabla tr > td:first-child {
     width: 10rem;
@@ -297,6 +298,10 @@ table select {
 .tabla thead tr th:first-child {
 	border-top: 0.1rem solid white;
 	border-left: 0.1rem solid white;
+}
+
+.tabla tbody td {
+	text-align: center;
 }
 
 /* footer {

@@ -26,6 +26,10 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 	font-size: var(--md);
 }
 
+.hoja-datos, main h2, form {
+    max-width: 80rem;
+}
+
 /* main button {
 	color: gray;
 	background-color: var(--white);
@@ -44,6 +48,11 @@ nav #menu-principal a:hover, #menu-secundario a:hover {
 
 .input-number:hover {
 	border: 0.1rem solid gray;
+}
+
+
+label, p, form {
+	font-size: var(--sm);
 }
 
 /* footer {
