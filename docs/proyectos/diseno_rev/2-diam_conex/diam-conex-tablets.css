@@ -39,13 +39,8 @@ table {
     width: 10rem;
 }
 
-/* table select {
-    width: 10rem;
-} */
-
 .tabla tr > td:first-child {
     width: 20rem;
-    text-align: center;
 }
 
 /* .contact-info h2 {

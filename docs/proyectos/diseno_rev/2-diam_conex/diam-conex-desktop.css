@@ -55,6 +55,18 @@ label, p, form {
 	font-size: var(--sm);
 }
 
+table {
+	font-size: var(--lg);
+}
+
+.tabla td {
+    width: 15rem;
+}
+
+.tabla tr > td:first-child {
+    width: 35rem;
+}
+
 /* footer {
     height: 25rem;
 }
