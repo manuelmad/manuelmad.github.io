@@ -29,8 +29,8 @@ class customFooter extends HTMLElement {
                     <div>
                         <h2>LinkedIn</h2>
                         <p><a href="https://www.linkedin.com/in/manuel-araujo-beltran-994564153/" target="_blank">Manuel Araujo</a></p>
-                        <h2>Correo electrónico</h2>
-                        <p>manuelmad1981@gmail.com</p>
+                        <h2>YouTube</h2>
+                        <p><a href="https://www.youtube.com/channel/UCi6wdvohTO_5MuaIteiRm_A" target="_blank">@manuelaraujo81</a></p>
                         <h2>GitHub</h2>
                         <p><a href="https://github.com/manuelmad" target="_blank">manuelmad</a></p>
                     </div>

@@ -248,16 +248,30 @@ function recomendarConexion() {
             break;
         }
     }
-    var diam_rev = Number(diametros_revestidores[i].value);
-    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+
+    if(!diametros_revestidores[i]) {
+        alert("Por favor seleccione un diámetro de revestidor.");
+        return;
+    } else {
+        var diam_rev = Number(diametros_revestidores[i].value);
+        console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    }
+
 
     for(j=0; j < longitud_array_hoyo; j++) {
         if(diametros_hoyo[j].checked == true) {
             break;
         }
     }
-    var diam_hoyo = Number(diametros_hoyo[j].value);
-    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+
+    if(!diametros_hoyo[j]) {
+        alert("Por favor seleccione un diámetro de hoyo.");
+        return;
+    } else {
+        var diam_hoyo = Number(diametros_hoyo[j].value);
+        console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+    }
+
 
     for(k=0; k < longitud_array_tipo; k++) {
         if(tipo_revestimiento[k].checked == true) {
@@ -690,16 +704,30 @@ function recomendarConexion2() {
             break;
         }
     }
-    var diam_rev = Number(diametros_revestidores2[i].value);
-    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+
+    if(!diametros_revestidores2[i]) {
+        alert("Por favor seleccione un diámetro de revestidor.");
+        return;
+    } else {
+        var diam_rev = Number(diametros_revestidores2[i].value);
+        console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    }
+
 
     for(j=0; j < longitud_array_hoyo2; j++) {
         if(diametros_hoyo2[j].checked == true) {
             break;
         }
     }
-    var diam_hoyo = Number(diametros_hoyo2[j].value);
-    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+
+    if(!diametros_hoyo2[j]) {
+        alert("Por favor seleccione un diámetro de hoyo.");
+        return;
+    } else {
+        var diam_hoyo = Number(diametros_hoyo2[j].value);
+        console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+    }
+
 
     for(k=0; k < longitud_array_tipo2; k++) {
         if(tipo_revestimiento2[k].checked == true) {
@@ -1075,16 +1103,29 @@ function recomendarConexion3() {
             break;
         }
     }
-    var diam_rev = Number(diametros_revestidores3[i].value);
-    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    if(!diametros_revestidores3[i]) {
+        alert("Por favor seleccione un diámetro de revestidor.");
+        return;
+    } else {
+        var diam_rev = Number(diametros_revestidores3[i].value);
+        console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    }
+
 
     for(j=0; j < longitud_array_hoyo3; j++) {
         if(diametros_hoyo3[j].checked == true) {
             break;
         }
     }
-    var diam_hoyo = Number(diametros_hoyo3[j].value);
-    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+
+    if(!diametros_hoyo3[j]) {
+        alert("Por favor seleccione un diámetro de hoyo.");
+        return;
+    } else {
+        var diam_hoyo = Number(diametros_hoyo3[j].value);
+        console.log("El diámetro del hoyo es " + diam_hoyo + " pulg."); 
+    }
+
 
     for(k=0; k < longitud_array_tipo3; k++) {
         if(tipo_revestimiento3[k].checked == true) {
@@ -1432,16 +1473,30 @@ function recomendarConexion4() {
             break;
         }
     }
-    var diam_rev = Number(diametros_revestidores4[i].value);
-    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+
+    if(!diametros_revestidores4[i]) {
+        alert("Por favor seleccione un diámetro de revestidor.");
+        return;
+    } else {
+        var diam_rev = Number(diametros_revestidores4[i].value);
+        console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    }
+
 
     for(j=0; j < longitud_array_hoyo4; j++) {
         if(diametros_hoyo4[j].checked == true) {
             break;
         }
     }
-    var diam_hoyo = Number(diametros_hoyo4[j].value);
-    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+
+    if(!diametros_hoyo4[j]) {
+        alert("Por favor seleccione un diámetro de hoyo.");
+        return;
+    } else {
+        var diam_hoyo = Number(diametros_hoyo4[j].value);
+        console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
+    }
+
 
     for(k=0; k < longitud_array_tipo4; k++) {
         if(tipo_revestimiento4[k].checked == true) {
@@ -1726,23 +1781,30 @@ function recomendarConexion5() {
             break;
         }
     }
-    var diam_rev = Number(diametros_revestidores5[i].value);
-    console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+
+    if(!diametros_revestidores5[i]) {
+        alert("Por favor seleccione un diámetro de revestidor.");
+        return;
+    } else {
+        var diam_rev = Number(diametros_revestidores5[i].value);
+        console.log("El diámetro del revestidor es " + diam_rev + " pulg.");
+    }
+
 
     for(j=0; j < longitud_array_hoyo5; j++) {
         if(diametros_hoyo5[j].checked == true) {
             break;
         }
     }
-    if(diametros_hoyo5[j] == undefined) {
+    if(!diametros_hoyo5[j]) {
         diam_hoyo = 0; // Para que corra el código
+        console.log("No existe hoyo para esta fase");
     }
     else {
         var diam_hoyo = Number(diametros_hoyo5[j].value);
+        console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
     }
-    console.log("El diámetro del hoyo es " + diam_hoyo + " pulg.");
-    
-    
+
 
     for(k=0; k < longitud_array_tipo5; k++) {
         if(tipo_revestimiento5[k].checked == true) {
@@ -1755,7 +1817,7 @@ function recomendarConexion5() {
     holgura = (diam_hoyo-diam_rev)/2;
     console.log("La holgura entre hoyo y revestidor es " + holgura + " pulg.");
 
-    if(diam_rev > 20) {
+    if(diam_rev == 24 || diam_rev == 30) {
         console.log("Es un revestidor conductor hincado.");
         var lista = document.getElementById("conexionlinea5");
             for(n = lista.options.length; n >= 0; n--) {
@@ -1774,7 +1836,7 @@ function recomendarConexion5() {
             console.log("Las conexiones recomendadas son Drillequib y RL-4S");
     }
     else {
-        if(diam_rev > 16) {
+        if(diam_rev == 20) {
             console.log("La presión en fondo es: " + presion + " lpc.");
             if(prof_asent > 1000 || presion > 2000) {
                 var lista = document.getElementById("conexionlinea5");
@@ -1808,7 +1870,7 @@ function recomendarConexion5() {
                 console.log("Las conexión recomendada es Buttress");
             }
         }
-        else {
+        else if(diam_rev == 16) {
             if(inclinacion_hoyo > 45 || holgura < 0.75) {
                 if(tipo_rev == "Camisa") {
                     var lista = document.getElementById("conexionlinea5");
