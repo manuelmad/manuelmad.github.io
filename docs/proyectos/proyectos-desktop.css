@@ -33,13 +33,19 @@ p {
 }
 
 .casing-design iframe {
-    display: block;
+    width: 56rem;
+    height: 30.15rem;
 }
 
 .planetageek-webpage img {
     display: inline-block;
     width: 56rem;
     height: 26.67rem;
+}
+
+.videojuegos iframe {
+    width: 56rem;
+    height: 30.15rem;
 }
 
 .justified-left {

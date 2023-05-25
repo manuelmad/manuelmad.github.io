@@ -205,11 +205,18 @@ p, ul {
 }
 
 .casing-design iframe {
-    display: none;
+    width: 25rem;
+    height: 14rem;
 }
 
 .planetageek-webpage img {
-    display: none;
+    width: 25rem;
+    height: 11.9rem;
+}
+
+.videojuegos iframe {
+    width: 25rem;
+    height: 14rem;
 }
 
 

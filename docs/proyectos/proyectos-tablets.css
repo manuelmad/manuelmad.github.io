@@ -46,7 +46,23 @@ nav #menu-principal li{
 }
 
 .justified-right {
-    padding-left: 30rem;
+    padding-left: 20rem;
+}
+
+.casing-design iframe {
+    width: 35rem;
+    height: 19.66rem;
+}
+
+.planetageek-webpage img {
+    display: inline-block;
+    width: 35rem;
+    height: 16.67rem;
+}
+
+.videojuegos iframe {
+    width: 35rem;
+    height: 19.66rem;
 }
 
 /* .contact-info h2 {
