@@ -48,6 +48,17 @@ p {
     height: 30.15rem;
 }
 
+.admin-condo iframe {
+    width: 56rem;
+    height: 30.15rem;
+}
+
+.lenin-caraballo img {
+    display: inline-block;
+    width: 56rem;
+    height: 26.67rem;
+}
+
 .justified-left {
     padding-left: 8rem;
     padding-right: 45rem;

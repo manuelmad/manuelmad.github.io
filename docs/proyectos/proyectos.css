@@ -219,6 +219,16 @@ p, ul {
     height: 14rem;
 }
 
+.admin-condo iframe {
+    width: 25rem;
+    height: 14rem;
+}
+
+.lenin-caraballo img {
+    width: 25rem;
+    height: 11.9rem;
+}
+
 
 /* Diseño de Revestidores, Administración de Condominio, Videojuegos */
 .justified-left {
