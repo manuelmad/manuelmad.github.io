@@ -76,6 +76,12 @@ nav #menu-principal li{
     height: 16.67rem;
 }
 
+.dolce-vita img {
+    display: inline-block;
+    width: 35rem;
+    height: 16.67rem;
+}
+
 /* .contact-info h2 {
     margin-left: 8rem;
 }

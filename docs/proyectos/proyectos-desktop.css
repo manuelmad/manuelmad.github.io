@@ -59,6 +59,12 @@ p {
     height: 26.67rem;
 }
 
+.dolce-vita img {
+    display: inline-block;
+    width: 56rem;
+    height: 26.67rem;
+}
+
 .justified-left {
     padding-left: 8rem;
     padding-right: 45rem;
