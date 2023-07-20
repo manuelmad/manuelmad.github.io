@@ -63,10 +63,17 @@ A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo 
 * Buen dominio del idioma Inglés.
 
 ## Habilidades técnicas
-* ![logo html5](./docs/imagenes/html-5.png){'width=40px'}
+<!-- * ![logo html5](./docs/imagenes/html-5.png){'width=40px'}
 * ![logo css3](./docs/imagenes/css-3.png){'width=40px'}
 * ![logo js](./docs/imagenes/js.png){'width=40px'}
 * ![logo react](./docs/imagenes/react.png){'width=40px'}
 * ![logo git](./docs/imagenes/git.png){'width=40px'}
 * ![logo github](./docs/imagenes/github.png){'width=40px'}
-* ![logo npm](./docs/imagenes/npm.png){'width=40px'}
+* ![logo npm](./docs/imagenes/npm.png){'width=40px'} -->
+* <img src="./docs/imagenes/html-5.png" width="40">
+* <img src="./docs/imagenes/css-3.png" width="40">
+* <img src="./docs/imagenes/js.png" width="40">
+* <img src="./docs/imagenes/react.png" width="40">
+* <img src="./docs/imagenes/git.png" width="40">
+* <img src="./docs/imagenes/github.png" width="40">
+* <img src="./docs/imagenes/npm.png" width="40">
