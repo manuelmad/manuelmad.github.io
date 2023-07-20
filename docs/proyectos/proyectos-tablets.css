@@ -81,6 +81,11 @@ nav #menu-principal li{
     height: 16.67rem;
 }
 
+.formation-pressures iframe {
+    width: 35rem;
+    height: 19.66rem;
+}
+
 /* .contact-info h2 {
     margin-left: 8rem;
 }

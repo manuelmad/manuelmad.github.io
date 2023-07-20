@@ -234,8 +234,13 @@ p, ul {
     height: 11.9rem;
 }
 
+.formation-pressures iframe {
+    width: 25rem;
+    height: 14rem;
+}
 
-/* Diseño de Revestidores, Administración de Condominio, Videojuegos */
+
+/* Diseño de Revestidores, Administración de Condominio, Videojuegos, presiones */
 .justified-left {
     width: 100%;
     padding: 5rem 3rem;
@@ -254,7 +259,7 @@ p, ul {
     font-weight: bold;
 }
 
-/* La Dolce Vita, Cálculos corporales */
+/* La Dolce Vita, Cálculos corporales, Lenín Caraballo */
 .justified-right {
     background-color: #F7F7F7;
     width: 100%;
