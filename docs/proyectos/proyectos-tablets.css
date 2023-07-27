@@ -86,6 +86,11 @@ nav #menu-principal li{
     height: 19.66rem;
 }
 
+.well-trajectory iframe {
+    width: 35rem;
+    height: 19.66rem;
+}
+
 /* .contact-info h2 {
     margin-left: 8rem;
 }

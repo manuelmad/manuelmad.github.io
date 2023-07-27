@@ -239,6 +239,11 @@ p, ul {
     height: 14rem;
 }
 
+.well-trajectory iframe {
+    width: 25rem;
+    height: 14rem;
+}
+
 
 /* Diseño de Revestidores, Administración de Condominio, Videojuegos, presiones */
 .justified-left {

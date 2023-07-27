@@ -21,6 +21,7 @@ A medida que avanzo en distintos cursos en el área del desarrollo web, aprendo 
 * [**Generador de Recibos para Administrador de Condominio.**](https://github.com/manuelmad/manuelmad.github.io/tree/main/docs/proyectos/generador_recibos)
 * [**Aplicación web hecha con React para empresa de pastelería.**](https://github.com/manuelmad/dolcevita-budget-calculator)
 * [**Aplicación web para calcular presiones de poro y fractura.**](https://github.com/manuelmad/pressures)
+* [**Aplicación web para graficar la trayectoria de pozos direccionales 2D tipo “S”.**](https://github.com/manuelmad/well-trajectory)
 
 
 
